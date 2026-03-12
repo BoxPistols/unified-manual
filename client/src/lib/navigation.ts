@@ -87,7 +87,7 @@ export const sections: SectionInfo[] = [
   { id: 'git-intro', title: 'はじめに', manualId: 'git' },
   { id: 'environment', title: '環境準備', manualId: 'git' },
   { id: 'github-basics', title: 'GitHub 基礎', manualId: 'git' },
-  { id: 'markdown-prompt', title: 'Markdown & プロンプト', manualId: 'git' },
+  { id: 'markdown-prompt', title: 'Markdown/プロンプト', manualId: 'git' },
   { id: 'git-workflow', title: 'Git ワークフロー実践', manualId: 'git' },
   { id: 'react-practice', title: 'React 実践', manualId: 'git' },
   { id: 'advanced-setup', title: '実践的な環境構築', manualId: 'git' },

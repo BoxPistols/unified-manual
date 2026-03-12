@@ -26,6 +26,20 @@ const manualBgColors: Record<ManualId, string> = {
   'claude-mux': 'bg-amber-600',
 };
 
+const manualBorderColors: Record<ManualId, string> = {
+  react: 'border-blue-500',
+  git: 'border-orange-500',
+  threejs: 'border-cyan-500',
+  'claude-mux': 'border-amber-500',
+};
+
+const manualActiveBg: Record<ManualId, string> = {
+  react: 'bg-blue-500/15',
+  git: 'bg-orange-500/15',
+  threejs: 'bg-cyan-500/15',
+  'claude-mux': 'bg-amber-500/15',
+};
+
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
@@ -123,20 +137,19 @@ export default function Navigation() {
           </Link>
 
           {/* マニュアルタブ */}
-          <div className="grid grid-cols-4 gap-1 mb-4">
+          <div className="grid grid-cols-2 gap-1.5 mb-4">
             {manuals.map((m) => (
               <Link
                 key={m.id}
                 href={`/${m.id}`}
                 onClick={() => setIsOpen(false)}
-                className={`flex flex-col items-center gap-0.5 px-1 py-2 rounded-lg text-center transition-colors ${
+                className={`px-2.5 py-1.5 rounded-full text-center text-[11px] font-semibold border transition-colors truncate ${
                   activeManualId === m.id
-                    ? `${manualBgColors[m.id]} text-white`
-                    : 'bg-muted/50 text-muted-foreground hover:bg-muted'
+                    ? `${manualBorderColors[m.id]} ${manualActiveBg[m.id]} ${manualColors[m.id]}`
+                    : 'border-border text-muted-foreground hover:bg-muted/50'
                 }`}
               >
-                <span className="text-xs font-bold">{m.icon}</span>
-                <span className="text-[9px] leading-tight">{m.shortTitle}</span>
+                {m.shortTitle}
               </Link>
             ))}
           </div>
@@ -177,6 +190,7 @@ export default function Navigation() {
                 <Bookmark size={12} />
                 ブックマーク
               </p>
+              <div className="max-h-40 overflow-y-auto">
               {bookmarks.map((bPath) => {
                 const p = getPageByPath(bPath);
                 if (!p) return null;
@@ -187,6 +201,7 @@ export default function Navigation() {
                   </Link>
                 );
               })}
+              </div>
             </div>
           )}
 
