@@ -107,6 +107,7 @@ export default function CodingChallenge({
   const [showHint, setShowHint] = useState(false);
   const [hintIndex, setHintIndex] = useState(0);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [matchInfo, setMatchInfo] = useState<{ matched: number; total: number } | null>(null);
   const [previewHtml, setPreviewHtml] = useState('');
   const debounceRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
@@ -134,9 +135,20 @@ export default function CodingChallenge({
 
   const handleCheck = () => {
     if (validator) {
-      setIsCorrect(validator(code));
+      const correct = validator(code);
+      setIsCorrect(correct);
+      setMatchInfo(null);
     } else {
-      setIsCorrect(fuzzyCheck(code, answer, keywords));
+      const correct = fuzzyCheck(code, answer, keywords);
+      setIsCorrect(correct);
+      if (!correct && keywords && keywords.length > 0) {
+        const normalize = (s: string) => s.replace(/\s+/g, ' ').trim();
+        const normalizedCode = normalize(code);
+        const matched = keywords.filter((kw) => normalizedCode.includes(kw)).length;
+        setMatchInfo({ matched, total: keywords.length });
+      } else {
+        setMatchInfo(null);
+      }
     }
   };
 
@@ -153,6 +165,7 @@ export default function CodingChallenge({
     setShowHint(false);
     setHintIndex(0);
     setIsCorrect(null);
+    setMatchInfo(null);
   };
 
   // Three.js プレビューは高さを大きめに
@@ -185,6 +198,7 @@ export default function CodingChallenge({
               onChange={(e) => {
                 setCode(e.target.value);
                 setIsCorrect(null);
+                setMatchInfo(null);
               }}
               spellCheck={false}
               wrap="off"
@@ -217,6 +231,7 @@ export default function CodingChallenge({
             onChange={(e) => {
               setCode(e.target.value);
               setIsCorrect(null);
+              setMatchInfo(null);
             }}
             spellCheck={false}
             wrap="off"
@@ -243,7 +258,7 @@ export default function CodingChallenge({
           ) : (
             <>
               <Code2 size={18} />
-              <span className="text-sm font-semibold">もう少し！ヒントを確認してみましょう。</span>
+              <span className="text-sm font-semibold">{matchInfo ? `もう少し！キーワードが ${matchInfo.matched}/${matchInfo.total} 含まれています。` : 'もう少し！ヒントを確認してみましょう。'}</span>
             </>
           )}
         </div>
