@@ -1,11 +1,10 @@
 import { ArrowRight, Zap, Users, CheckCircle2, Eye, Box, Lightbulb, Layers, Palette, Rocket, Keyboard, Search, Monitor, Code, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { modKey, navModKey } from "@/lib/keyLabels";
+import { getIsMac, modKey, navModKey } from "@/lib/keyLabels";
 import { Link } from "wouter";
 
 export default function Home() {
-  const isMac =
-    typeof navigator !== "undefined" && navigator.platform.includes("Mac");
+  const isMac = getIsMac();
 
   const shortcuts = [
     { keys: `${modKey(isMac)}+K`, description: "ページ検索" },
