@@ -131,9 +131,9 @@ export default function Navigation() {
           {/* ロゴ & マニュアル切替 */}
           <Link href="/" className="flex items-center gap-2 mb-4">
             <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-heading font-bold text-lg">D</span>
+              <span className="text-primary-foreground font-heading font-bold text-sm">DA</span>
             </div>
-            <span className="font-heading font-bold text-lg text-foreground">DevDeck</span>
+            <span className="font-heading font-bold text-lg text-foreground">Dev Album</span>
           </Link>
 
           {/* マニュアルタブ */}

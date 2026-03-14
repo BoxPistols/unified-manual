@@ -120,15 +120,15 @@ export default function Landing() {
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
           <div className="flex items-center gap-2 mb-6">
             <BookOpen size={20} />
-            <span className="text-sm font-medium tracking-wider uppercase opacity-80">DevDeck</span>
+            <span className="text-sm font-medium tracking-wider uppercase opacity-80">Dev Album</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-heading font-extrabold mb-6 leading-[1.15]">
-            フロントエンド開発の<br />
-            <span className="text-blue-200">全体像を、ひとつの場所で</span>
+            技術の学びを、<br />
+            <span className="text-blue-200">1冊のアルバムに</span>
           </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed mb-8">
             React・Git・Three.js・Claude Code — 現場で求められる 4 つの技術領域を、
-            ステップバイステップの実践形式で体系的に学べる開発ガイドコレクション。
+            1ページずつ書き溜めていく開発アルバム。手を動かしながら、自分だけの記録が積み上がります。
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
@@ -151,7 +151,7 @@ export default function Landing() {
       {/* ═══ Problem Statement ═══ */}
       <section className="max-w-5xl mx-auto px-6 py-16 md:py-20">
         <div className="max-w-3xl">
-          <p className="text-sm font-semibold text-primary mb-3 tracking-wider uppercase">Why DevDeck?</p>
+          <p className="text-sm font-semibold text-primary mb-3 tracking-wider uppercase">Why Dev Album?</p>
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 leading-snug">
             断片的な情報では、<br className="hidden md:block" />開発力は身につかない
           </h2>
@@ -159,7 +159,7 @@ export default function Landing() {
             React のチュートリアルを終えても、Git でチーム開発する方法がわからない。
             Next.js を学んでも、デプロイや CI/CD の繋げ方が見えない。
             — 技術は単体ではなく<strong className="text-foreground">繋がりの中で</strong>初めて力になります。
-            DevDeck は 4 つの技術領域を横断的に結び、
+            Dev Album は 4 つの技術領域を 1 冊のアルバムに綴じ、
             「環境構築からデプロイ・チーム開発」までの道筋を一本のラインで描きます。
           </p>
         </div>
