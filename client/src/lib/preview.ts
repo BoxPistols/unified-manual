@@ -55,7 +55,7 @@ pre{white-space:pre-wrap;font-size:13px;line-height:1.5;}</style></head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"><\/script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"><\/script>
-${needsThree ? '<script src="https://unpkg.com/three@0.183.2/build/three.min.js"><\\/script>' : ''}
+${needsThree ? '<script src="https://unpkg.com/three@0.160.1/build/three.min.js"><\\/script>' : ''}
 <style>
 :root{
   --bg:${isDark ? '#1e1e2e' : '#fff'};
@@ -117,7 +117,7 @@ export function buildThreePreviewHtml(code: string, isDark = true): string {
 <script>
 (function() {
   var s = document.createElement('script');
-  s.src = 'https://cdn.jsdelivr.net/npm/three@0.183.2/build/three.min.js';
+  s.src = 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js';
   s.onload = function() {
     try {
       ${safeCode}
