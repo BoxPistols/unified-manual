@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Code2, CheckCircle2, Lightbulb, RotateCcw, Eye, EyeOff } from 'lucide-react';
+import { Highlight, themes } from 'prism-react-renderer';
 import {
   buildPreviewHtml,
   buildThreePreviewHtml,
@@ -98,6 +99,81 @@ function buildPreviewForType(type: string, code: string, css: string, isDark: bo
     default:
       return buildPreviewHtml(code, css, isDark);
   }
+}
+
+/** コードの言語を推定 */
+function detectLanguage(code: string): 'tsx' | 'css' | 'bash' | 'markup' {
+  const trimmed = code.trim();
+  if (/^\s*(git |npm |npx |curl |ssh |cd |mkdir |brew |sudo |#)/.test(trimmed)) return 'bash';
+  if (/^\s*(\.|#|@media|@keyframes|:root|body|html)\s*\{/.test(trimmed)) return 'css';
+  if (/^\s*<(!DOCTYPE|html|div|section|form|table|ul|ol|nav|header|main|footer)/i.test(trimmed)) return 'markup';
+  return 'tsx';
+}
+
+/** シンタックスハイライト付きエディタ */
+function HighlightedEditor({
+  code,
+  onChange,
+  minHeight = 160,
+}: {
+  code: string;
+  onChange: (v: string) => void;
+  minHeight?: number;
+}) {
+  const highlightRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const language = detectLanguage(code);
+  const editorHeight = Math.max(minHeight, (code.split('\n').length + 1) * 20.8 + 32);
+
+  const handleScroll = () => {
+    if (highlightRef.current && textareaRef.current) {
+      highlightRef.current.scrollTop = textareaRef.current.scrollTop;
+      highlightRef.current.scrollLeft = textareaRef.current.scrollLeft;
+    }
+  };
+
+  return (
+    <div className="relative" style={{ height: editorHeight }}>
+      {/* ハイライト層 */}
+      <div
+        ref={highlightRef}
+        className="absolute inset-0 overflow-auto pointer-events-none"
+        aria-hidden="true"
+      >
+        <Highlight theme={themes.vsDark} code={code} language={language}>
+          {({ tokens, getLineProps, getTokenProps }) => (
+            <pre
+              className="py-4 px-5 font-mono text-sm leading-relaxed m-0 bg-[#1e1e2e] w-fit min-w-full min-h-full"
+              style={{ tabSize: 2 }}
+            >
+              {tokens.map((line, i) => {
+                const { key: _lk, ...lineProps } = getLineProps({ line });
+                return (
+                  <div key={i} {...lineProps} className="whitespace-pre">
+                    {line.map((token, j) => {
+                      const { key: _tk, ...tokenProps } = getTokenProps({ token });
+                      return <span key={j} {...tokenProps} />;
+                    })}
+                  </div>
+                );
+              })}
+            </pre>
+          )}
+        </Highlight>
+      </div>
+      {/* 透明 textarea 層 */}
+      <textarea
+        ref={textareaRef}
+        value={code}
+        onChange={(e) => onChange(e.target.value)}
+        onScroll={handleScroll}
+        spellCheck={false}
+        wrap="off"
+        className="absolute inset-0 w-full h-full py-4 px-5 font-mono text-sm leading-relaxed bg-transparent text-transparent caret-white resize-none focus:outline-none selection:bg-blue-500/30 overflow-auto z-10 whitespace-pre"
+        style={{ tabSize: 2 }}
+      />
+    </div>
+  );
 }
 
 export default function CodingChallenge({
@@ -201,17 +277,9 @@ export default function CodingChallenge({
             <div className="flex items-center justify-between px-4 py-2 bg-[#181825] border-b border-[#313244]">
               <span className="text-xs font-mono text-[#cdd6f4]/60 uppercase">エディタ</span>
             </div>
-            <textarea
-              value={code}
-              onChange={(e) => {
-                setCode(e.target.value);
-                setIsCorrect(null);
-                setMatchInfo(null);
-              }}
-              spellCheck={false}
-              wrap="off"
-              className="w-full py-4 px-5 font-mono text-sm leading-relaxed bg-transparent text-[#cdd6f4] resize-none focus:outline-none min-h-[160px] overflow-auto whitespace-pre"
-              rows={Math.max(6, code.split('\n').length + 1)}
+            <HighlightedEditor
+              code={code}
+              onChange={(v) => { setCode(v); setIsCorrect(null); setMatchInfo(null); }}
             />
           </div>
           <div className="relative rounded-lg overflow-hidden border border-border bg-white dark:bg-[#1e1e2e]" style={{ minHeight: previewMinHeight }}>
@@ -234,17 +302,9 @@ export default function CodingChallenge({
           <div className="flex items-center justify-between px-4 py-2 bg-[#181825] border-b border-[#313244]">
             <span className="text-xs font-mono text-[#cdd6f4]/60 uppercase">エディタ</span>
           </div>
-          <textarea
-            value={code}
-            onChange={(e) => {
-              setCode(e.target.value);
-              setIsCorrect(null);
-              setMatchInfo(null);
-            }}
-            spellCheck={false}
-            wrap="off"
-            className="w-full py-4 px-5 font-mono text-sm leading-relaxed bg-transparent text-[#cdd6f4] resize-none focus:outline-none min-h-[160px] overflow-auto whitespace-pre"
-            rows={Math.max(6, code.split('\n').length + 1)}
+          <HighlightedEditor
+            code={code}
+            onChange={(v) => { setCode(v); setIsCorrect(null); setMatchInfo(null); }}
           />
         </div>
       )}
