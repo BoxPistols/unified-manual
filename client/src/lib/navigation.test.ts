@@ -20,7 +20,7 @@ import {
 describe("navigation データ整合性", () => {
   it("全マニュアルが定義されている", () => {
     const ids = manuals.map((m) => m.id);
-    expect(ids).toEqual(["react", "git", "threejs", "claude-mux"]);
+    expect(ids).toEqual(["git", "react", "claude-mux", "threejs"]);
   });
 
   it("ページ数が163", () => {

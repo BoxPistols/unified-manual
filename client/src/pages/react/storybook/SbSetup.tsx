@@ -1,4 +1,6 @@
 import CodeBlock from '@/components/CodeBlock';
+import CodePreview from '@/components/CodePreview';
+import CodingChallenge from '@/components/CodingChallenge';
 import InfoBox from '@/components/InfoBox';
 import WhyNowBox from '@/components/WhyNowBox';
 import PageNavigation from '@/components/PageNavigation';
@@ -420,6 +422,84 @@ export default preview;`}
 # 初回起動時はオンボーディングガイドが表示される`}
             />
 
+            <CodePreview
+  code={`function StorybookUI() {
+  const sidebarItems = [
+    { label: 'Configure', indent: 0, active: false, icon: '📄' },
+    { label: 'Example', indent: 0, active: false, icon: '📁', isFolder: true },
+    { label: 'Button', indent: 1, active: false, icon: '📦' },
+    { label: 'Primary', indent: 2, active: true, icon: '▶' },
+    { label: 'Secondary', indent: 2, active: false, icon: '▶' },
+    { label: 'Large', indent: 2, active: false, icon: '▶' },
+    { label: 'Small', indent: 2, active: false, icon: '▶' },
+    { label: 'Header', indent: 1, active: false, icon: '📦' },
+    { label: 'Page', indent: 1, active: false, icon: '📦' },
+  ];
+  return (
+    <div style={{ display: 'flex', height: '380px', fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif', border: '1px solid var(--border)', borderRadius: '8px', overflow: 'hidden' }}>
+      {/* サイドバー */}
+      <div style={{ width: '220px', background: 'var(--bg, #f8f8f8)', borderRight: '1px solid var(--border, #e0e0e0)', padding: '12px 0', flexShrink: 0, overflow: 'auto' }}>
+        <div style={{ padding: '8px 16px 16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ width: '20px', height: '20px', background: '#ff4785', borderRadius: '4px' }} />
+          <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text, #333)' }}>Storybook</span>
+        </div>
+        <div style={{ padding: '0 8px' }}>
+          <input placeholder="Search..." style={{ width: '100%', padding: '6px 10px', border: '1px solid var(--border, #ddd)', borderRadius: '6px', fontSize: '12px', background: 'var(--bg-accent, #fff)', color: 'var(--text, #333)', boxSizing: 'border-box' }} readOnly />
+        </div>
+        <div style={{ marginTop: '12px' }}>
+          {sidebarItems.map((item, i) => (
+            <div key={i} style={{
+              padding: '4px 12px 4px ' + (12 + item.indent * 16) + 'px',
+              fontSize: '13px',
+              color: item.active ? '#ff4785' : 'var(--text, #555)',
+              background: item.active ? 'rgba(255,71,133,0.08)' : 'transparent',
+              fontWeight: item.active || item.isFolder ? 600 : 400,
+              cursor: 'pointer',
+              display: 'flex', alignItems: 'center', gap: '6px',
+            }}>
+              <span style={{ fontSize: '10px', opacity: 0.7 }}>{item.icon}</span>
+              {item.label}
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* メインエリア */}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: 'var(--bg-accent, #fff)' }}>
+        {/* ツールバー */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '2px', padding: '8px 12px', borderBottom: '1px solid var(--border, #e0e0e0)', fontSize: '12px' }}>
+          <span style={{ padding: '4px 10px', background: 'rgba(255,71,133,0.1)', color: '#ff4785', borderRadius: '4px', fontWeight: 600 }}>Canvas</span>
+          <span style={{ padding: '4px 10px', color: 'var(--text-muted, #888)', cursor: 'pointer' }}>Docs</span>
+          <div style={{ flex: 1 }} />
+          <span style={{ color: 'var(--text-muted, #888)', fontSize: '11px' }}>Example / Button / Primary</span>
+        </div>
+        {/* Canvas */}
+        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <button style={{ padding: '10px 24px', background: '#ff4785', color: '#fff', border: 'none', borderRadius: '48px', fontSize: '14px', fontWeight: 600, cursor: 'pointer', boxShadow: '0 2px 8px rgba(255,71,133,0.3)' }}>
+            Button
+          </button>
+        </div>
+        {/* Controls パネル */}
+        <div style={{ borderTop: '1px solid var(--border, #e0e0e0)', padding: '10px 16px', fontSize: '12px' }}>
+          <div style={{ display: 'flex', gap: '12px', marginBottom: '8px' }}>
+            <span style={{ fontWeight: 600, color: '#ff4785' }}>Controls</span>
+            <span style={{ color: 'var(--text-muted, #888)' }}>Actions</span>
+            <span style={{ color: 'var(--text-muted, #888)' }}>Accessibility</span>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '100px 1fr', gap: '4px 12px', fontSize: '12px', color: 'var(--text, #444)' }}>
+            <span style={{ fontWeight: 500 }}>label</span>
+            <input value="Button" readOnly style={{ padding: '3px 8px', border: '1px solid var(--border, #ddd)', borderRadius: '4px', fontSize: '12px', background: 'var(--bg, #f8f8f8)', color: 'var(--text, #333)' }} />
+            <span style={{ fontWeight: 500 }}>primary</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '14px', height: '14px', borderRadius: '3px', background: '#ff4785' }} /><span style={{ fontSize: '11px' }}>true</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}`}
+  title="Storybook 初期画面のイメージ"
+  language="tsx"
+/>
+
             <div className="mt-6 space-y-4">
               <div className="p-4 rounded-lg border border-border bg-card">
                 <h3 className="font-bold text-foreground mb-2">Welcome ページ</h3>
@@ -511,6 +591,53 @@ export const Small: Story = {
                 これにより、Story 側で <code>args</code> の型推論が正確に働きます。
               </p>
             </InfoBox>
+
+            <p className="text-muted-foreground my-4 leading-relaxed">
+              上の Story ファイルで定義した4つのバリエーションが、
+              Storybook 上ではそれぞれ独立したストーリーとして描画されます。
+            </p>
+
+            <CodePreview
+  code={`function ButtonStoryResult() {
+  const variants = [
+    { name: 'Primary', bg: '#ff4785', color: '#fff', size: '14px', pad: '10px 20px' },
+    { name: 'Secondary', bg: 'transparent', color: 'var(--text, #333)', size: '14px', pad: '10px 20px', border: '1px solid var(--border, #ccc)' },
+    { name: 'Large', bg: '#ff4785', color: '#fff', size: '16px', pad: '12px 28px' },
+    { name: 'Small', bg: '#ff4785', color: '#fff', size: '12px', pad: '8px 16px' },
+  ];
+  return (
+    <div style={{ padding: '24px', fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif' }}>
+      <div style={{ fontSize: '12px', color: 'var(--text-muted, #888)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '16px', fontWeight: 600 }}>Example / Button  —  全バリエーション</div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
+        {variants.map((v, i) => (
+          <div key={i} style={{ border: '1px solid var(--border, #e0e0e0)', borderRadius: '8px', overflow: 'hidden' }}>
+            <div style={{ padding: '6px 12px', background: 'var(--bg, #f5f5f5)', borderBottom: '1px solid var(--border, #e0e0e0)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span style={{ fontSize: '10px', color: '#ff4785' }}>▶</span>
+              <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text, #333)' }}>{v.name}</span>
+            </div>
+            <div style={{ padding: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-accent, #fff)' }}>
+              <button style={{
+                padding: v.pad,
+                background: v.bg,
+                color: v.color,
+                border: v.border || 'none',
+                borderRadius: '48px',
+                fontSize: v.size,
+                fontWeight: 600,
+                cursor: 'pointer',
+              }}>
+                Button
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}`}
+  title="Story ファイルの出力結果"
+  language="tsx"
+/>
           </section>
 
           {/* セクション6: ファイルが増えすぎて不安 */}
@@ -860,6 +987,59 @@ echo "storybook-static" >> .gitignore`}
                 <li>次のステップでは、自分のコンポーネントに Story を書く方法を学びます</li>
               </ul>
             </InfoBox>
+          </section>
+
+          {/* CodingChallenge */}
+          <section>
+            <CodingChallenge
+              title="preview.ts にグローバルデコレーターを追加しよう"
+              description="すべての Story に padding: 24px の余白と、1px solid の枠線を適用するグローバルデコレーターを完成させてください。Story コンポーネントを div でラップし、インラインスタイルで余白と枠線を設定します。"
+              preview={true}
+              initialCode={`function Story() {
+  return <button style={{ padding: '8px 20px', background: '#ff4785', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Click me</button>;
+}
+
+// デコレーター: Story を div でラップして装飾する
+function withPaddingAndBorder(StoryFn) {
+  return (
+    <div style={{
+      /* ここにスタイルを追加してください */
+    }}>
+      <StoryFn />
+    </div>
+  );
+}
+
+// デコレーター適用後の結果
+function DecoratedResult() {
+  return withPaddingAndBorder(Story);
+}`}
+              answer={`function Story() {
+  return <button style={{ padding: '8px 20px', background: '#ff4785', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer' }}>Click me</button>;
+}
+
+function withPaddingAndBorder(StoryFn) {
+  return (
+    <div style={{
+      padding: '24px',
+      border: '1px solid var(--border, #e0e0e0)',
+      borderRadius: '8px',
+    }}>
+      <StoryFn />
+    </div>
+  );
+}
+
+function DecoratedResult() {
+  return withPaddingAndBorder(Story);
+}`}
+              keywords={['padding', '24px', 'border', '1px solid', '<StoryFn']}
+              hints={[
+                'padding: "24px" で上下左右に24pxの余白を設定します',
+                'border: "1px solid var(--border, #e0e0e0)" で枠線を追加します',
+                'デコレーターは Story をラップするだけなので、StoryFn の呼び出しはそのままにしてスタイルだけ追加します',
+              ]}
+            />
           </section>
         </div>
 

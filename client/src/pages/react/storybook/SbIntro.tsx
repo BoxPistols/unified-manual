@@ -1,4 +1,6 @@
 import CodeBlock from '@/components/CodeBlock';
+import CodePreview from '@/components/CodePreview';
+import CodingChallenge from '@/components/CodingChallenge';
 import InfoBox from '@/components/InfoBox';
 import WhyNowBox from '@/components/WhyNowBox';
 import PageNavigation from '@/components/PageNavigation';
@@ -94,6 +96,37 @@ export const Loading = {
   },
 };`}
             />
+
+            <p className="text-muted-foreground my-4 leading-relaxed">
+              上のコードで定義した Story が、Storybook 上ではこのように表示されます。
+              デザイナーは <strong>コードを読まなくても</strong>、ブラウザ上でバリエーションを確認できます。
+            </p>
+
+            <CodePreview
+  code={`function ButtonShowcase() {
+  const base = { padding: '8px 20px', borderRadius: '6px', fontSize: '14px', fontWeight: '600', cursor: 'pointer', border: 'none', transition: 'opacity 0.2s' };
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px' }}>
+      <h3 style={{ margin: 0, fontSize: '13px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Button Variants</h3>
+      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+        <button style={{ ...base, background: '#6366F1', color: 'white' }}>Primary</button>
+        <button style={{ ...base, background: '#E2E8F0', color: '#334155' }}>Secondary</button>
+        <button style={{ ...base, background: 'transparent', color: '#6366F1', border: '1px solid #6366F1' }}>Outline</button>
+        <button style={{ ...base, background: '#EF4444', color: 'white' }}>Danger</button>
+        <button style={{ ...base, background: '#6366F1', color: 'white', opacity: 0.5, cursor: 'not-allowed' }}>Disabled</button>
+      </div>
+      <h3 style={{ margin: 0, fontSize: '13px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '8px' }}>Button Sizes</h3>
+      <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+        <button style={{ ...base, background: '#6366F1', color: 'white', padding: '4px 12px', fontSize: '12px' }}>Small</button>
+        <button style={{ ...base, background: '#6366F1', color: 'white' }}>Medium</button>
+        <button style={{ ...base, background: '#6366F1', color: 'white', padding: '12px 28px', fontSize: '16px' }}>Large</button>
+      </div>
+    </div>
+  );
+}`}
+  language="tsx"
+  title="Storybook で表示されるボタンのバリエーション"
+/>
           </section>
 
           {/* セクション2: なぜ Storybook を使うべきか */}
@@ -403,6 +436,41 @@ export const SubmitForm: Story = {
               </table>
             </div>
 
+            <p className="text-muted-foreground mb-4 leading-relaxed">
+              Figma で作ったデザインが、どのように Storybook の Story になるかを視覚的に見てみましょう。
+              左が Figma のワイヤーフレーム、右が実装後の Storybook プレビューです。
+            </p>
+
+            <CodePreview
+  code={`function FigmaToStorybook() {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', padding: '20px' }}>
+      <div>
+        <p style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '600', marginBottom: '12px', textTransform: 'uppercase' }}>Figma Design</p>
+        <div style={{ border: '2px dashed var(--border)', borderRadius: '12px', padding: '20px', background: 'var(--bg-muted)' }}>
+          <div style={{ width: '100%', height: '120px', background: 'linear-gradient(135deg, #6366F1, #8B5CF6)', borderRadius: '8px', marginBottom: '12px' }} />
+          <div style={{ height: '14px', width: '60%', background: 'var(--border)', borderRadius: '4px', marginBottom: '8px' }} />
+          <div style={{ height: '10px', width: '90%', background: 'var(--border)', borderRadius: '4px', marginBottom: '4px' }} />
+          <div style={{ height: '10px', width: '75%', background: 'var(--border)', borderRadius: '4px' }} />
+        </div>
+      </div>
+      <div>
+        <p style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '600', marginBottom: '12px', textTransform: 'uppercase' }}>Storybook Story</p>
+        <div style={{ border: '1px solid var(--border)', borderRadius: '12px', overflow: 'hidden', background: 'var(--bg)' }}>
+          <div style={{ width: '100%', height: '120px', background: 'linear-gradient(135deg, #6366F1, #8B5CF6)', borderRadius: '8px 8px 0 0' }} />
+          <div style={{ padding: '16px' }}>
+            <h4 style={{ margin: '0 0 8px', fontSize: '16px', color: 'var(--text)' }}>プロジェクトカード</h4>
+            <p style={{ margin: 0, fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.5 }}>Figma のデザインが React コンポーネントとして実装された状態</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}`}
+  language="tsx"
+  title="Figma → Storybook: デザインからコンポーネントへ"
+/>
+
             <InfoBox type="info" title="デザイナーの方へ">
               <p>
                 Storybook はコードを書かなくても利用できます。
@@ -550,7 +618,60 @@ export default meta;
                   </div>
                 </div>
               </div>
+            </div>
 
+            <p className="text-muted-foreground my-4 leading-relaxed">
+              Controls パネルの動作イメージです。左側にコンポーネントのプレビュー、
+              右側に Props を変更できるフォームが表示されます。実際に操作してみてください。
+            </p>
+
+            <CodePreview
+  code={`function ControlsPanel() {
+  const [variant, setVariant] = useState('primary');
+  const [size, setSize] = useState('medium');
+  const [label, setLabel] = useState('ボタン');
+  const [disabled, setDisabled] = useState(false);
+  const variants = { primary: { bg: '#6366F1', color: 'white' }, secondary: { bg: '#E2E8F0', color: '#334155' }, danger: { bg: '#EF4444', color: 'white' } };
+  const sizes = { small: { padding: '4px 12px', fontSize: '12px' }, medium: { padding: '8px 20px', fontSize: '14px' }, large: { padding: '12px 28px', fontSize: '16px' } };
+  const v = variants[variant] || variants.primary;
+  const s = sizes[size] || sizes.medium;
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: 'var(--border)', borderRadius: '8px', overflow: 'hidden', fontSize: '13px' }}>
+      <div style={{ background: 'var(--bg)', padding: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '120px' }}>
+        <button style={{ ...s, background: v.bg, color: v.color, border: 'none', borderRadius: '6px', fontWeight: 600, cursor: disabled ? 'not-allowed' : 'pointer', opacity: disabled ? 0.5 : 1 }}>{label}</button>
+      </div>
+      <div style={{ background: 'var(--bg)', padding: '16px' }}>
+        <p style={{ fontWeight: 700, marginBottom: '12px', color: 'var(--text)', fontSize: '12px', textTransform: 'uppercase' }}>Controls</p>
+        <div style={{ marginBottom: '10px' }}>
+          <label style={{ display: 'block', fontSize: '11px', color: 'var(--text-muted)', marginBottom: '4px' }}>variant</label>
+          <select value={variant} onChange={e => setVariant(e.target.value)} style={{ width: '100%', padding: '4px 8px', border: '1px solid var(--border)', borderRadius: '4px', fontSize: '13px', background: 'var(--bg)', color: 'var(--text)' }}>
+            <option value="primary">primary</option><option value="secondary">secondary</option><option value="danger">danger</option>
+          </select>
+        </div>
+        <div style={{ marginBottom: '10px' }}>
+          <label style={{ display: 'block', fontSize: '11px', color: 'var(--text-muted)', marginBottom: '4px' }}>size</label>
+          <select value={size} onChange={e => setSize(e.target.value)} style={{ width: '100%', padding: '4px 8px', border: '1px solid var(--border)', borderRadius: '4px', fontSize: '13px', background: 'var(--bg)', color: 'var(--text)' }}>
+            <option value="small">small</option><option value="medium">medium</option><option value="large">large</option>
+          </select>
+        </div>
+        <div style={{ marginBottom: '10px' }}>
+          <label style={{ display: 'block', fontSize: '11px', color: 'var(--text-muted)', marginBottom: '4px' }}>label</label>
+          <input value={label} onChange={e => setLabel(e.target.value)} style={{ width: '100%', padding: '4px 8px', border: '1px solid var(--border)', borderRadius: '4px', fontSize: '13px', background: 'var(--bg)', color: 'var(--text)' }} />
+        </div>
+        <div>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: 'var(--text-muted)' }}>
+            <input type="checkbox" checked={disabled} onChange={e => setDisabled(e.target.checked)} /> disabled
+          </label>
+        </div>
+      </div>
+    </div>
+  );
+}`}
+  language="tsx"
+  title="Storybook Controls: デザイナーがコードなしで操作できる"
+/>
+
+            <div className="space-y-4 mb-6">
               <div className="p-4 rounded-lg border border-border bg-card">
                 <div className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500 text-white flex items-center justify-center font-bold text-sm">4</span>
@@ -634,6 +755,82 @@ export default meta;
                 </ul>
               </div>
             </div>
+
+            <CodingChallenge
+              title="コンポーネントショーケースを作ってみよう"
+              description="Storybook では、1つのコンポーネントのさまざまなバリエーションを並べて表示します。下のコードを編集して、Alert コンポーネントに「warning」バリエーション（黄色背景 #FEF3C7、ボーダー #F59E0B、テキスト #92400E）を追加してください。"
+              preview={true}
+              initialCode={`function AlertShowcase() {
+  const base = {
+    padding: '12px 16px',
+    borderRadius: '8px',
+    fontSize: '14px',
+    borderLeft: '4px solid',
+    marginBottom: '12px',
+  };
+
+  return (
+    <div style={{ padding: '24px', maxWidth: '480px' }}>
+      <h3 style={{ margin: '0 0 16px', fontSize: '13px', color: '#6B7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        Alert Variants
+      </h3>
+
+      <div style={{ ...base, background: '#EFF6FF', borderColor: '#3B82F6', color: '#1E40AF' }}>
+        Info: お知らせがあります
+      </div>
+
+      <div style={{ ...base, background: '#F0FDF4', borderColor: '#22C55E', color: '#166534' }}>
+        Success: 保存しました
+      </div>
+
+      <div style={{ ...base, background: '#FEF2F2', borderColor: '#EF4444', color: '#991B1B' }}>
+        Error: エラーが発生しました
+      </div>
+
+      {/* ここに Warning バリエーションを追加 */}
+    </div>
+  );
+}`}
+              answer={`function AlertShowcase() {
+  const base = {
+    padding: '12px 16px',
+    borderRadius: '8px',
+    fontSize: '14px',
+    borderLeft: '4px solid',
+    marginBottom: '12px',
+  };
+
+  return (
+    <div style={{ padding: '24px', maxWidth: '480px' }}>
+      <h3 style={{ margin: '0 0 16px', fontSize: '13px', color: '#6B7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        Alert Variants
+      </h3>
+
+      <div style={{ ...base, background: '#EFF6FF', borderColor: '#3B82F6', color: '#1E40AF' }}>
+        Info: お知らせがあります
+      </div>
+
+      <div style={{ ...base, background: '#F0FDF4', borderColor: '#22C55E', color: '#166534' }}>
+        Success: 保存しました
+      </div>
+
+      <div style={{ ...base, background: '#FEF2F2', borderColor: '#EF4444', color: '#991B1B' }}>
+        Error: エラーが発生しました
+      </div>
+
+      <div style={{ ...base, background: '#FEF3C7', borderColor: '#F59E0B', color: '#92400E' }}>
+        Warning: 入力内容を確認してください
+      </div>
+    </div>
+  );
+}`}
+              hints={[
+                '既存の Alert（Info, Success, Error）のパターンを参考にしてください',
+                'background: "#FEF3C7", borderColor: "#F59E0B", color: "#92400E" を使います',
+                '<div style={{ ...base, background: "#FEF3C7", borderColor: "#F59E0B", color: "#92400E" }}>Warning: ...</div>',
+              ]}
+              keywords={['#FEF3C7', '#F59E0B', '#92400E', 'Warning']}
+            />
 
             <InfoBox type="success" title="このステップのまとめ">
               <ul className="list-disc pl-4 space-y-1">

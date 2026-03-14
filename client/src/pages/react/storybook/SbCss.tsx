@@ -1,4 +1,6 @@
 import CodeBlock from '@/components/CodeBlock';
+import CodePreview from '@/components/CodePreview';
+import CodingChallenge from '@/components/CodingChallenge';
 import InfoBox from '@/components/InfoBox';
 import WhyNowBox from '@/components/WhyNowBox';
 import PageNavigation from '@/components/PageNavigation';
@@ -246,6 +248,112 @@ export const Secondary: Story = {
                 Vite の CSS Modules サポートがそのまま使われます。
               </p>
             </InfoBox>
+
+            <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">CSS Modules のビジュアルプレビュー</h3>
+            <p className="text-foreground/80 mb-4 leading-relaxed">
+              CSS Modules でスコープされたクラス名がどのように適用されるか、実際のカードコンポーネントで確認します。
+              各クラスは <code>.module.css</code> によって自動的にユニークな名前に変換されます。
+            </p>
+            <CodePreview
+              title="CSS Modules でスタイリングされたコンポーネント"
+              code={`function CardCssModules() {
+  /* CSS Modules ではスコープされたクラス名が自動生成される
+     例: .card → .Card_card_x7k2a */
+  const styles = {
+    card: {
+      border: '1px solid #e2e8f0',
+      borderRadius: '12px',
+      overflow: 'hidden',
+      maxWidth: '320px',
+      fontFamily: '"Inter", system-ui, sans-serif',
+      background: '#ffffff',
+      boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+    },
+    image: {
+      width: '100%',
+      height: '160px',
+      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      fontSize: '14px',
+      fontWeight: '600',
+      letterSpacing: '0.05em',
+    },
+    body: {
+      padding: '16px',
+    },
+    tag: {
+      display: 'inline-block',
+      background: '#eef2ff',
+      color: '#4f46e5',
+      fontSize: '11px',
+      fontWeight: '600',
+      padding: '2px 8px',
+      borderRadius: '9999px',
+      marginBottom: '8px',
+      textTransform: 'uppercase',
+      letterSpacing: '0.05em',
+    },
+    title: {
+      fontSize: '16px',
+      fontWeight: '700',
+      color: '#1e293b',
+      margin: '0 0 6px 0',
+    },
+    desc: {
+      fontSize: '13px',
+      color: '#64748b',
+      margin: '0 0 12px 0',
+      lineHeight: '1.5',
+    },
+    btn: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      padding: '8px 16px',
+      background: '#4f46e5',
+      color: 'white',
+      border: 'none',
+      borderRadius: '8px',
+      fontSize: '13px',
+      fontWeight: '600',
+      cursor: 'pointer',
+    },
+    scopeInfo: {
+      marginTop: '12px',
+      padding: '8px 12px',
+      background: '#f8fafc',
+      borderRadius: '6px',
+      border: '1px dashed #cbd5e1',
+    },
+    scopeText: {
+      fontSize: '10px',
+      color: '#94a3b8',
+      fontFamily: 'monospace',
+      margin: 0,
+    },
+  };
+
+  return (
+    <div style={{ padding: '24px', background: '#f8fafc', minHeight: '100%' }}>
+      <div style={styles.card}>
+        <div style={styles.image}>CSS Modules Card</div>
+        <div style={styles.body}>
+          <span style={styles.tag}>scoped</span>
+          <h3 style={styles.title}>プロフィールカード</h3>
+          <p style={styles.desc}>CSS Modules で自動スコープされたクラスが適用されています。名前衝突の心配がありません。</p>
+          <button style={styles.btn}>詳細を見る</button>
+          <div style={styles.scopeInfo}>
+            <p style={styles.scopeText}>クラス名: .Card_card_x7k2a</p>
+            <p style={styles.scopeText}>クラス名: .Card_title_m3j1b</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}`}
+            />
           </section>
 
           {/* セクション 3: Tailwind CSS */}
@@ -404,6 +512,100 @@ export default preview;`}
                 Storybook での設定もよりシンプルになりました。
               </p>
             </InfoBox>
+
+            <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">Tailwind CSS のビジュアルプレビュー</h3>
+            <p className="text-foreground/80 mb-4 leading-relaxed">
+              同じカードコンポーネントを Tailwind CSS のユーティリティクラスで構築した場合のイメージです。
+              クラス名を見るだけでスタイルが把握できるのが Tailwind の特徴です。
+            </p>
+            <CodePreview
+              title="Tailwind CSS コンポーネント"
+              code={`function CardTailwind() {
+  /* Tailwind ではユーティリティクラスで直接スタイルを適用する
+     ここでは inline style で Tailwind 的なアプローチを再現 */
+  return (
+    <div style={{ padding: '24px', background: '#f8fafc', minHeight: '100%' }}>
+      <div style={{
+        maxWidth: '320px',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        background: '#ffffff',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06)',
+        fontFamily: '"Inter", system-ui, sans-serif',
+      }}>
+        {/* bg-gradient-to-br from-cyan-500 to-blue-600 */}
+        <div style={{
+          width: '100%',
+          height: '160px',
+          background: 'linear-gradient(to bottom right, #06b6d4, #2563eb)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'white',
+          fontSize: '14px',
+          fontWeight: '600',
+        }}>Tailwind Card</div>
+
+        {/* p-4 space-y-2 */}
+        <div style={{ padding: '16px' }}>
+          {/* text-xs font-semibold text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded-full */}
+          <span style={{
+            display: 'inline-block',
+            background: '#ecfeff',
+            color: '#0891b2',
+            fontSize: '11px',
+            fontWeight: '600',
+            padding: '2px 8px',
+            borderRadius: '9999px',
+            marginBottom: '8px',
+            textTransform: 'uppercase',
+          }}>utility-first</span>
+
+          {/* text-base font-bold text-slate-800 */}
+          <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#1e293b', margin: '0 0 6px 0' }}>
+            プロフィールカード
+          </h3>
+
+          {/* text-sm text-slate-500 */}
+          <p style={{ fontSize: '13px', color: '#64748b', margin: '0 0 12px 0', lineHeight: '1.5' }}>
+            Tailwind のユーティリティクラスだけで構築。className に直接スタイルを記述します。
+          </p>
+
+          {/* bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-lg text-sm font-semibold */}
+          <button style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            padding: '8px 16px',
+            background: '#0891b2',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            fontSize: '13px',
+            fontWeight: '600',
+            cursor: 'pointer',
+          }}>詳細を見る</button>
+
+          {/* クラス名の可視化 */}
+          <div style={{
+            marginTop: '12px',
+            padding: '8px 12px',
+            background: '#f0fdfa',
+            borderRadius: '6px',
+            border: '1px dashed #99f6e4',
+          }}>
+            <p style={{ fontSize: '10px', color: '#5eead4', fontFamily: 'monospace', margin: '0 0 2px 0' }}>
+              className="rounded-xl shadow-md overflow-hidden"
+            </p>
+            <p style={{ fontSize: '10px', color: '#5eead4', fontFamily: 'monospace', margin: 0 }}>
+              className="bg-cyan-600 text-white px-4 py-2 rounded-lg"
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}`}
+            />
           </section>
 
           {/* セクション 4: MUI (Material UI) */}
@@ -786,6 +988,105 @@ export default preview;`}
                 styled-components はエコシステムが成熟しており、独立したスタイリングライブラリとしての実績があります。
               </p>
             </InfoBox>
+
+            <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">styled-components のビジュアルプレビュー</h3>
+            <p className="text-foreground/80 mb-4 leading-relaxed">
+              CSS-in-JS アプローチでは、スタイルが JavaScript の中に埋め込まれます。
+              テーマの値を props 経由で参照し、動的なスタイリングが可能です。
+            </p>
+            <CodePreview
+              title="styled-components スタイル"
+              code={`function CardStyledComponents() {
+  /* styled-components / Emotion では JS の中にスタイルを書く
+     テーマ値は props.theme で参照可能 */
+  const theme = {
+    primary: '#8b5cf6',
+    primaryLight: '#ede9fe',
+    text: '#1e293b',
+    textMuted: '#64748b',
+    bg: '#ffffff',
+    border: '#e2e8f0',
+    radius: '12px',
+  };
+
+  return (
+    <div style={{ padding: '24px', background: '#f8fafc', minHeight: '100%' }}>
+      <div style={{
+        maxWidth: '320px',
+        borderRadius: theme.radius,
+        overflow: 'hidden',
+        background: theme.bg,
+        border: '1px solid ' + theme.border,
+        fontFamily: '"Inter", system-ui, sans-serif',
+        boxShadow: '0 4px 6px -1px rgba(0,0,0,0.07)',
+      }}>
+        {/* background: \${({ theme }) => theme.gradient} */}
+        <div style={{
+          width: '100%',
+          height: '160px',
+          background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'white',
+          fontSize: '14px',
+          fontWeight: '600',
+        }}>styled-components Card</div>
+
+        <div style={{ padding: '16px' }}>
+          {/* \${({ theme }) => theme.colors.primaryLight} */}
+          <span style={{
+            display: 'inline-block',
+            background: theme.primaryLight,
+            color: theme.primary,
+            fontSize: '11px',
+            fontWeight: '600',
+            padding: '2px 8px',
+            borderRadius: '9999px',
+            marginBottom: '8px',
+            textTransform: 'uppercase',
+          }}>css-in-js</span>
+
+          <h3 style={{ fontSize: '16px', fontWeight: '700', color: theme.text, margin: '0 0 6px 0' }}>
+            プロフィールカード
+          </h3>
+          <p style={{ fontSize: '13px', color: theme.textMuted, margin: '0 0 12px 0', lineHeight: '1.5' }}>
+            styled-components ではテーマ値を JS 変数として参照。動的なスタイリングが得意です。
+          </p>
+
+          <button style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            padding: '8px 16px',
+            background: theme.primary,
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            fontSize: '13px',
+            fontWeight: '600',
+            cursor: 'pointer',
+          }}>詳細を見る</button>
+
+          <div style={{
+            marginTop: '12px',
+            padding: '8px 12px',
+            background: '#faf5ff',
+            borderRadius: '6px',
+            border: '1px dashed #c4b5fd',
+          }}>
+            <p style={{ fontSize: '10px', color: '#a78bfa', fontFamily: 'monospace', margin: '0 0 2px 0' }}>
+              background: theme.primary
+            </p>
+            <p style={{ fontSize: '10px', color: '#a78bfa', fontFamily: 'monospace', margin: 0 }}>
+              color: theme.text
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}`}
+            />
           </section>
 
           {/* セクション 6: 環境別比較表 */}
@@ -846,6 +1147,297 @@ export default preview;`}
                 </tbody>
               </table>
             </div>
+          </section>
+
+          {/* ダークモード対応の比較プレビュー */}
+          <section>
+            <h2 className="text-2xl font-bold text-foreground mb-4">ダークモード対応の比較</h2>
+            <p className="text-foreground/80 mb-4 leading-relaxed">
+              Storybook の decorator でダークモードを切り替えると、コンポーネントの見た目がどう変わるかを確認します。
+              ライトモードとダークモードを並べて比較することで、テーマ設計の品質を検証できます。
+            </p>
+            <CodePreview
+              title="ダークモード対応の比較"
+              previewHeight={420}
+              code={`function DarkModeComparison() {
+  const lightTheme = {
+    bg: '#ffffff',
+    cardBg: '#ffffff',
+    text: '#1e293b',
+    textMuted: '#64748b',
+    border: '#e2e8f0',
+    primary: '#3b82f6',
+    primaryBg: '#eff6ff',
+    tag: '#dbeafe',
+    tagText: '#2563eb',
+    surfaceBg: '#f8fafc',
+  };
+
+  const darkTheme = {
+    bg: '#0f172a',
+    cardBg: '#1e293b',
+    text: '#f1f5f9',
+    textMuted: '#94a3b8',
+    border: '#334155',
+    primary: '#60a5fa',
+    primaryBg: '#1e3a5f',
+    tag: '#1e3a5f',
+    tagText: '#93c5fd',
+    surfaceBg: '#1e293b',
+  };
+
+  function Card({ theme, mode }) {
+    return (
+      <div style={{
+        flex: '1 1 0',
+        minWidth: '240px',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        background: theme.cardBg,
+        border: '1px solid ' + theme.border,
+        fontFamily: '"Inter", system-ui, sans-serif',
+      }}>
+        <div style={{
+          padding: '10px 16px',
+          background: theme.surfaceBg,
+          borderBottom: '1px solid ' + theme.border,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}>
+          <span style={{ fontSize: '11px', fontWeight: '700', color: theme.textMuted, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            {mode === 'light' ? '☀ ライトモード' : '☾ ダークモード'}
+          </span>
+          <span style={{
+            fontSize: '10px',
+            color: theme.tagText,
+            background: theme.tag,
+            padding: '2px 6px',
+            borderRadius: '4px',
+            fontWeight: '600',
+          }}>{mode}</span>
+        </div>
+        <div style={{ padding: '16px' }}>
+          <h3 style={{ fontSize: '15px', fontWeight: '700', color: theme.text, margin: '0 0 8px 0' }}>
+            通知カード
+          </h3>
+          <p style={{ fontSize: '12px', color: theme.textMuted, margin: '0 0 12px 0', lineHeight: '1.5' }}>
+            新しいコメントが 3 件あります。確認してください。
+          </p>
+          <div style={{ display: 'flex', gap: '8px' }}>
+            <button style={{
+              padding: '6px 14px',
+              background: theme.primary,
+              color: 'white',
+              border: 'none',
+              borderRadius: '6px',
+              fontSize: '12px',
+              fontWeight: '600',
+              cursor: 'pointer',
+            }}>確認する</button>
+            <button style={{
+              padding: '6px 14px',
+              background: 'transparent',
+              color: theme.primary,
+              border: '1px solid ' + theme.primary,
+              borderRadius: '6px',
+              fontSize: '12px',
+              fontWeight: '600',
+              cursor: 'pointer',
+            }}>後で</button>
+          </div>
+          <div style={{
+            marginTop: '12px',
+            padding: '8px',
+            background: theme.primaryBg,
+            borderRadius: '6px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+          }}>
+            <div style={{
+              width: '28px',
+              height: '28px',
+              borderRadius: '50%',
+              background: theme.primary,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'white',
+              fontSize: '12px',
+              fontWeight: '700',
+              flexShrink: 0,
+            }}>A</div>
+            <div>
+              <p style={{ fontSize: '11px', fontWeight: '600', color: theme.text, margin: 0 }}>Alice</p>
+              <p style={{ fontSize: '10px', color: theme.textMuted, margin: 0 }}>デザインレビューをお願いします</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{
+      display: 'flex',
+      gap: '16px',
+      padding: '24px',
+      background: '#f1f5f9',
+      minHeight: '100%',
+      flexWrap: 'wrap',
+    }}>
+      <Card theme={lightTheme} mode="light" />
+      <Card theme={darkTheme} mode="dark" />
+    </div>
+  );
+}`}
+            />
+          </section>
+
+          {/* コーディングチャレンジ */}
+          <section>
+            <CodingChallenge
+              title="Storybook の decorator でテーマ切替を実装"
+              description="以下のコードに decorator を完成させてください。globals.theme の値（'light' または 'dark'）に応じて、背景色とテキスト色を切り替える decorator を書いてください。ライトモードでは白背景＋黒文字、ダークモードではダーク背景＋白文字にします。"
+              preview={true}
+              initialCode={`function ThemeDecorator() {
+  const [mode, setMode] = React.useState('light');
+
+  const themes = {
+    light: {
+      bg: '#ffffff',
+      text: '#1e293b',
+      muted: '#64748b',
+      primary: '#3b82f6',
+      border: '#e2e8f0',
+    },
+    dark: {
+      bg: '#0f172a',
+      text: '#f1f5f9',
+      muted: '#94a3b8',
+      primary: '#60a5fa',
+      border: '#334155',
+    },
+  };
+
+  const t = themes[mode];
+
+  return (
+    <div style={{
+      padding: '24px',
+      background: t.bg,
+      minHeight: '200px',
+      fontFamily: '"Inter", system-ui, sans-serif',
+      transition: 'all 0.3s ease',
+    }}>
+      {/* テーマ切替ボタン */}
+      <div style={{ marginBottom: '16px' }}>
+        <button
+          onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
+          style={{
+            padding: '6px 14px',
+            background: t.primary,
+            color: 'white',
+            border: 'none',
+            borderRadius: '6px',
+            fontSize: '13px',
+            fontWeight: '600',
+            cursor: 'pointer',
+          }}
+        >
+          {mode === 'light' ? 'ダークモードへ' : 'ライトモードへ'}
+        </button>
+      </div>
+
+      {/* ここに decorator でラップされるコンポーネントを表示 */}
+      <div style={{
+        padding: '16px',
+        border: '1px solid ' + t.border,
+        borderRadius: '8px',
+        background: mode === 'light' ? '#f8fafc' : '#1e293b',
+      }}>
+        <h3 style={{ color: t.text, margin: '0 0 8px 0', fontSize: '16px' }}>
+          サンプルコンポーネント
+        </h3>
+        <p style={{ color: t.muted, margin: 0, fontSize: '13px' }}>
+          テーマが正しく切り替わっています
+        </p>
+      </div>
+    </div>
+  );
+}`}
+              answer={`function ThemeDecorator() {
+  const [mode, setMode] = React.useState('light');
+
+  const themes = {
+    light: {
+      bg: '#ffffff',
+      text: '#1e293b',
+      muted: '#64748b',
+      primary: '#3b82f6',
+      border: '#e2e8f0',
+    },
+    dark: {
+      bg: '#0f172a',
+      text: '#f1f5f9',
+      muted: '#94a3b8',
+      primary: '#60a5fa',
+      border: '#334155',
+    },
+  };
+
+  const t = themes[mode];
+
+  return (
+    <div style={{
+      padding: '24px',
+      background: t.bg,
+      minHeight: '200px',
+      fontFamily: '"Inter", system-ui, sans-serif',
+      transition: 'all 0.3s ease',
+    }}>
+      <div style={{ marginBottom: '16px' }}>
+        <button
+          onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
+          style={{
+            padding: '6px 14px',
+            background: t.primary,
+            color: 'white',
+            border: 'none',
+            borderRadius: '6px',
+            fontSize: '13px',
+            fontWeight: '600',
+            cursor: 'pointer',
+          }}
+        >
+          {mode === 'light' ? 'ダークモードへ' : 'ライトモードへ'}
+        </button>
+      </div>
+
+      <div style={{
+        padding: '16px',
+        border: '1px solid ' + t.border,
+        borderRadius: '8px',
+        background: mode === 'light' ? '#f8fafc' : '#1e293b',
+      }}>
+        <h3 style={{ color: t.text, margin: '0 0 8px 0', fontSize: '16px' }}>
+          サンプルコンポーネント
+        </h3>
+        <p style={{ color: t.muted, margin: 0, fontSize: '13px' }}>
+          テーマが正しく切り替わっています
+        </p>
+      </div>
+    </div>
+  );
+}`}
+              keywords={['themes', 'light', 'dark', 'bg:', 'text:', 'setMode', 'onClick']}
+              hints={[
+                'テーマオブジェクトに light と dark の 2 つの設定を定義して、mode に応じて切り替えます',
+                'const t = themes[mode] で現在のテーマを取得し、スタイルに適用します',
+                'ボタンの onClick で setMode を呼び、light/dark を切り替えます',
+              ]}
+            />
           </section>
 
           {/* セクション 7: 生徒の疑問 */}

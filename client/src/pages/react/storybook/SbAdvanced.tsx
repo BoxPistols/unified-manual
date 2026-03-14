@@ -1,4 +1,6 @@
 import CodeBlock from '@/components/CodeBlock';
+import CodePreview from '@/components/CodePreview';
+import CodingChallenge from '@/components/CodingChallenge';
 import InfoBox from '@/components/InfoBox';
 import WhyNowBox from '@/components/WhyNowBox';
 import PageNavigation from '@/components/PageNavigation';
@@ -108,6 +110,70 @@ export default meta;`}
                 実装段階で発見でき、より多くのユーザーに使いやすい UI を作れます。
               </p>
             </InfoBox>
+
+            <p className="text-muted-foreground my-4 leading-relaxed">
+              addon-a11y のパネルでは、コンポーネントに対する WCAG 準拠チェックの結果が
+              リアルタイムに表示されます。以下はその出力イメージです。
+            </p>
+
+            <CodePreview
+  code={`function A11yAddonPanel() {
+  const violations = [
+    { impact: 'critical', rule: 'color-contrast', desc: 'テキストのコントラスト比が 2.5:1 です（最低 4.5:1 が必要）', element: '<span class="light-text">', fix: 'テキスト色をより濃い色に変更するか、背景色を明るくしてください' },
+    { impact: 'serious', rule: 'button-name', desc: 'アイコンのみのボタンにアクセシブルな名前がありません', element: '<button class="icon-btn">', fix: 'aria-label 属性を追加してボタンの目的を説明してください' },
+  ];
+  const passes = [
+    { rule: 'aria-roles', desc: 'ARIA ロールが正しく使用されています' },
+    { rule: 'image-alt', desc: 'すべての画像に代替テキストがあります' },
+    { rule: 'heading-order', desc: '見出しの順序が正しいです' },
+  ];
+  const impactColors = { critical: { bg: '#fef2f2', border: '#fca5a5', text: '#dc2626', badge: '#dc2626' }, serious: { bg: '#fffbeb', border: '#fcd34d', text: '#d97706', badge: '#d97706' } };
+  return (
+    <div style={{ fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif', border: '1px solid var(--border, #e0e0e0)', borderRadius: '8px', overflow: 'hidden' }}>
+      {/* パネルタブ */}
+      <div style={{ display: 'flex', gap: '2px', padding: '8px 12px', borderBottom: '1px solid var(--border, #e0e0e0)', background: 'var(--bg, #f8f8f8)', fontSize: '12px' }}>
+        <span style={{ padding: '4px 10px', color: 'var(--text-muted, #888)' }}>Controls</span>
+        <span style={{ padding: '4px 10px', color: 'var(--text-muted, #888)' }}>Actions</span>
+        <span style={{ padding: '4px 10px', background: 'rgba(139,92,246,0.1)', color: '#8b5cf6', borderRadius: '4px', fontWeight: 600 }}>Accessibility</span>
+      </div>
+      <div style={{ padding: '16px' }}>
+        {/* Violations */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+          <span style={{ fontSize: '13px', fontWeight: 700, color: '#dc2626' }}>Violations</span>
+          <span style={{ background: '#fef2f2', color: '#dc2626', fontSize: '11px', fontWeight: 600, padding: '2px 8px', borderRadius: '10px' }}>{violations.length}</span>
+        </div>
+        {violations.map((v, i) => {
+          const c = impactColors[v.impact];
+          return (
+            <div key={i} style={{ background: c.bg, border: '1px solid ' + c.border, borderRadius: '6px', padding: '12px', marginBottom: '8px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                <span style={{ background: c.badge, color: '#fff', fontSize: '10px', fontWeight: 600, padding: '2px 6px', borderRadius: '3px', textTransform: 'uppercase' }}>{v.impact}</span>
+                <span style={{ fontWeight: 600, fontSize: '13px', color: c.text }}>{v.rule}</span>
+              </div>
+              <p style={{ fontSize: '12px', color: 'var(--text, #444)', margin: '0 0 6px', lineHeight: 1.5 }}>{v.desc}</p>
+              <div style={{ fontSize: '11px', color: 'var(--text-muted, #888)', fontFamily: 'monospace', background: 'rgba(0,0,0,0.05)', padding: '4px 8px', borderRadius: '4px', marginBottom: '6px' }}>{v.element}</div>
+              <p style={{ fontSize: '11px', color: c.text, margin: 0 }}>修正方法: {v.fix}</p>
+            </div>
+          );
+        })}
+        {/* Passes */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', margin: '16px 0 8px' }}>
+          <span style={{ fontSize: '13px', fontWeight: 700, color: '#16a34a' }}>Passes</span>
+          <span style={{ background: '#f0fdf4', color: '#16a34a', fontSize: '11px', fontWeight: 600, padding: '2px 8px', borderRadius: '10px' }}>{passes.length}</span>
+        </div>
+        {passes.map((p, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', background: '#f0fdf4', borderRadius: '6px', marginBottom: '4px' }}>
+            <span style={{ color: '#16a34a', fontWeight: 700, fontSize: '12px' }}>✓</span>
+            <span style={{ fontSize: '12px', color: 'var(--text, #444)' }}><strong>{p.rule}</strong>: {p.desc}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}`}
+  title="Addon パネルのイメージ"
+  language="tsx"
+/>
 
             <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">@storybook/addon-viewport（レスポンシブプレビュー）</h3>
             <p className="text-foreground/80 mb-4 leading-relaxed">
@@ -368,6 +434,54 @@ export default create({
   brandImage: '/logo-dark.svg',
 });`}
             />
+
+            <p className="text-muted-foreground my-4 leading-relaxed">
+              カスタムデコレーターを適用すると、同じコンポーネントの見た目がどのように変わるか見てみましょう。
+              左がデコレーターなし、右がテーマプロバイダーデコレーターを適用した結果です。
+            </p>
+
+            <CodePreview
+  code={`function DecoratorComparison() {
+  const cardStyle = {
+    padding: '20px',
+    borderRadius: '8px',
+    border: '1px solid var(--border, #e0e0e0)',
+    fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
+  };
+  const btnBase = { padding: '8px 20px', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer', fontSize: '14px' };
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', padding: '20px' }}>
+      {/* デコレーターなし */}
+      <div>
+        <div style={{ fontSize: '11px', color: 'var(--text-muted, #888)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>デコレーターなし</div>
+        <div style={{ ...cardStyle, background: 'var(--bg-accent, #fff)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <button style={{ ...btnBase, background: '#ddd', color: '#333' }}>Primary</button>
+            <button style={{ ...btnBase, background: 'transparent', color: '#333', border: '1px solid #ccc' }}>Secondary</button>
+            <p style={{ fontSize: '12px', color: 'var(--text-muted, #999)', margin: 0 }}>テーマ未適用: デフォルトのスタイル</p>
+          </div>
+        </div>
+      </div>
+      {/* デコレーターあり */}
+      <div>
+        <div style={{ fontSize: '11px', color: 'var(--text-muted, #888)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span style={{ background: '#a6e3a1', color: '#1e1e2e', borderRadius: '3px', padding: '1px 6px', fontSize: '10px' }}>Decorator</span>
+          テーマプロバイダー適用
+        </div>
+        <div style={{ ...cardStyle, background: '#1e293b', borderColor: '#334155' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <button style={{ ...btnBase, background: '#3b82f6', color: '#fff' }}>Primary</button>
+            <button style={{ ...btnBase, background: 'transparent', color: '#e2e8f0', border: '1px solid #475569' }}>Secondary</button>
+            <p style={{ fontSize: '12px', color: '#94a3b8', margin: 0 }}>テーマ適用済: ダークテーマのスタイル</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}`}
+  title="カスタム Decorator の効果"
+  language="tsx"
+/>
 
             <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">カスタム Vite 設定</h3>
             <p className="text-foreground/80 mb-4 leading-relaxed">
@@ -742,6 +856,68 @@ export default config;`}
                 参照先の Storybook は公開 URL が必要です（Chromatic や GitHub Pages でデプロイ済みのもの）。
               </p>
             </InfoBox>
+
+            <p className="text-muted-foreground my-4 leading-relaxed">
+              MDX ファイルを使うと、Markdown のドキュメントと実際のコンポーネントを
+              1つのページにまとめて表示できます。以下はその表示イメージです。
+            </p>
+
+            <CodePreview
+  code={`function MdxDocPreview() {
+  const btnStyle = { padding: '8px 20px', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer', fontSize: '14px' };
+  return (
+    <div style={{ padding: '32px', fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif', maxWidth: '640px', color: 'var(--text, #333)' }}>
+      <div style={{ fontSize: '11px', color: '#ff4785', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>Docs / Components / Button</div>
+      <h1 style={{ fontSize: '28px', fontWeight: 800, margin: '0 0 8px', color: 'var(--text, #1a1a1a)' }}>Button</h1>
+      <p style={{ fontSize: '15px', color: 'var(--text-muted, #666)', lineHeight: 1.7, margin: '0 0 20px' }}>
+        アプリケーション全体で使用する汎用ボタンコンポーネントです。
+        <code style={{ background: 'var(--bg, #f0f0f0)', padding: '2px 6px', borderRadius: '3px', fontSize: '13px' }}>primary</code>,
+        <code style={{ background: 'var(--bg, #f0f0f0)', padding: '2px 6px', borderRadius: '3px', fontSize: '13px' }}>secondary</code>,
+        <code style={{ background: 'var(--bg, #f0f0f0)', padding: '2px 6px', borderRadius: '3px', fontSize: '13px' }}>danger</code> の3バリエーションがあります。
+      </p>
+      <h2 style={{ fontSize: '18px', fontWeight: 700, margin: '0 0 12px', color: 'var(--text, #1a1a1a)' }}>バリエーション</h2>
+      {/* ライブコンポーネント表示エリア */}
+      <div style={{ border: '1px solid var(--border, #e0e0e0)', borderRadius: '8px', overflow: 'hidden', marginBottom: '20px' }}>
+        <div style={{ padding: '24px', display: 'flex', gap: '12px', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-accent, #fafafa)' }}>
+          <button style={{ ...btnStyle, background: '#3b82f6', color: '#fff' }}>Primary</button>
+          <button style={{ ...btnStyle, background: 'transparent', color: 'var(--text, #333)', border: '1px solid var(--border, #ccc)' }}>Secondary</button>
+          <button style={{ ...btnStyle, background: '#ef4444', color: '#fff' }}>Danger</button>
+        </div>
+        <div style={{ borderTop: '1px solid var(--border, #e0e0e0)', padding: '8px 12px', background: 'var(--bg, #f8f8f8)', fontSize: '11px', color: 'var(--text-muted, #888)' }}>
+          <span style={{ fontFamily: 'monospace' }}>{'<Button variant="primary" />'}</span>
+        </div>
+      </div>
+      <h2 style={{ fontSize: '18px', fontWeight: 700, margin: '0 0 12px', color: 'var(--text, #1a1a1a)' }}>Props</h2>
+      {/* Props テーブル */}
+      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
+        <thead>
+          <tr style={{ borderBottom: '2px solid var(--border, #e0e0e0)' }}>
+            <th style={{ textAlign: 'left', padding: '8px 12px', fontWeight: 600, color: 'var(--text, #333)' }}>Name</th>
+            <th style={{ textAlign: 'left', padding: '8px 12px', fontWeight: 600, color: 'var(--text, #333)' }}>Type</th>
+            <th style={{ textAlign: 'left', padding: '8px 12px', fontWeight: 600, color: 'var(--text, #333)' }}>Default</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { name: 'variant', type: '"primary" | "secondary" | "danger"', def: '"primary"' },
+            { name: 'size', type: '"sm" | "md" | "lg"', def: '"md"' },
+            { name: 'disabled', type: 'boolean', def: 'false' },
+            { name: 'onClick', type: '() => void', def: '-' },
+          ].map((row, i) => (
+            <tr key={i} style={{ borderBottom: '1px solid var(--border, #eee)' }}>
+              <td style={{ padding: '8px 12px' }}><code style={{ color: '#3b82f6', fontWeight: 600, fontSize: '12px' }}>{row.name}</code></td>
+              <td style={{ padding: '8px 12px', fontFamily: 'monospace', fontSize: '12px', color: 'var(--text-muted, #888)' }}>{row.type}</td>
+              <td style={{ padding: '8px 12px', fontSize: '12px', color: 'var(--text-muted, #888)' }}>{row.def}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}`}
+  title="MDX ドキュメント風の表示"
+  language="tsx"
+/>
           </section>
 
           {/* セクション 5: Storybook 8 の最新機能 */}
@@ -956,6 +1132,72 @@ const config: StorybookConfig = {
                 この「段階的な導入」が Storybook を長く活用するコツです。
               </p>
             </InfoBox>
+          </section>
+
+          {/* CodingChallenge */}
+          <section>
+            <CodingChallenge
+              title="MSW で API モックのストーリーを作ろう"
+              description="ユーザープロフィールを表示するコンポーネントの Story を完成させてください。parameters.msw.handlers に GET /api/user のモックハンドラーを追加し、name と email を返すようにしましょう。"
+              preview={true}
+              initialCode={`function UserProfile() {
+  // 本来は fetch で取得するデータをモックで再現
+  const user = { name: '/* ここに名前 */', email: '/* ここにメール */' };
+  return (
+    <div style={{
+      padding: '24px',
+      border: '1px solid var(--border, #e0e0e0)',
+      borderRadius: '12px',
+      fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
+      maxWidth: '320px',
+    }}>
+      <div style={{
+        width: '48px', height: '48px',
+        borderRadius: '50%',
+        background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
+        marginBottom: '12px',
+      }} />
+      <h3 style={{ margin: '0 0 4px', fontSize: '16px', fontWeight: 700, color: 'var(--text, #333)' }}>
+        {user.name}
+      </h3>
+      <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-muted, #888)' }}>
+        {user.email}
+      </p>
+    </div>
+  );
+}`}
+              answer={`function UserProfile() {
+  const user = { name: '田中太郎', email: 'tanaka@example.com' };
+  return (
+    <div style={{
+      padding: '24px',
+      border: '1px solid var(--border, #e0e0e0)',
+      borderRadius: '12px',
+      fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
+      maxWidth: '320px',
+    }}>
+      <div style={{
+        width: '48px', height: '48px',
+        borderRadius: '50%',
+        background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
+        marginBottom: '12px',
+      }} />
+      <h3 style={{ margin: '0 0 4px', fontSize: '16px', fontWeight: 700, color: 'var(--text, #333)' }}>
+        {user.name}
+      </h3>
+      <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-muted, #888)' }}>
+        {user.email}
+      </p>
+    </div>
+  );
+}`}
+              keywords={['name', 'email', '田中', 'tanaka', 'user.name', 'user.email']}
+              hints={[
+                'user オブジェクトの name に日本語の名前を入れましょう（例: "田中太郎"）',
+                'email にはメールアドレスを入れましょう（例: "tanaka@example.com"）',
+                'MSW の実際のコードでは http.get で URL をマッチさせ HttpResponse.json でレスポンスを返します',
+              ]}
+            />
           </section>
         </div>
 

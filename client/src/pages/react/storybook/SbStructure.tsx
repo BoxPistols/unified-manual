@@ -1,4 +1,6 @@
 import CodeBlock from '@/components/CodeBlock';
+import CodePreview from '@/components/CodePreview';
+import CodingChallenge from '@/components/CodingChallenge';
 import InfoBox from '@/components/InfoBox';
 import WhyNowBox from '@/components/WhyNowBox';
 import PageNavigation from '@/components/PageNavigation';
@@ -83,6 +85,59 @@ export const Secondary: Story = {
                 データだけで表現でき、コードが簡潔になりました。新規プロジェクトでは CSF3 を使いましょう。
               </p>
             </InfoBox>
+
+            <p className="text-muted-foreground my-4 leading-relaxed">
+              上のコードで定義した Story が Storybook 上ではこのように表示されます。
+              各バリエーションがカタログのように一覧でき、デザイナーもコードを読まずに確認できます。
+            </p>
+
+            <CodePreview
+  code={`function StoryOutputDemo() {
+  const base = { padding: '10px 24px', borderRadius: '8px', fontSize: '14px', fontWeight: '600', cursor: 'pointer', border: 'none', transition: 'all 0.2s', fontFamily: 'system-ui, sans-serif' };
+  return (
+    <div style={{ padding: '24px', fontFamily: 'system-ui, sans-serif' }}>
+      <div style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        {/* Storybook ヘッダー風 */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 16px', background: '#fff', borderBottom: '1px solid #e2e8f0' }}>
+          <span style={{ fontSize: '11px', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Components / Button</span>
+        </div>
+        {/* Story 一覧 */}
+        <div style={{ padding: '24px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {/* Primary */}
+            <div>
+              <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 600, marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Primary</div>
+              <button style={{ ...base, background: '#6366f1', color: 'white' }}>ボタン</button>
+            </div>
+            {/* Secondary */}
+            <div>
+              <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 600, marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Secondary</div>
+              <button style={{ ...base, background: '#e2e8f0', color: '#334155' }}>ボタン</button>
+            </div>
+            {/* Danger */}
+            <div>
+              <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 600, marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Danger</div>
+              <button style={{ ...base, background: '#ef4444', color: 'white' }}>削除する</button>
+            </div>
+            {/* All Variants */}
+            <div>
+              <div style={{ fontSize: '12px', color: '#94a3b8', fontWeight: 600, marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>All Variants</div>
+              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                <button style={{ ...base, background: '#6366f1', color: 'white' }}>Primary</button>
+                <button style={{ ...base, background: '#e2e8f0', color: '#334155' }}>Secondary</button>
+                <button style={{ ...base, background: '#ef4444', color: 'white' }}>Danger</button>
+                <button style={{ ...base, background: 'transparent', color: '#6366f1', border: '1px solid #6366f1' }}>Ghost</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}`}
+  title="CSF で書いた Story の出力イメージ"
+  language="tsx"
+/>
           </section>
 
           {/* セクション2: Meta オブジェクト */}
@@ -333,6 +388,50 @@ export const Danger: Story = {
                 「ラベルを長くしたら？」「disabled にしたら？」といった確認が完了します。
               </p>
             </InfoBox>
+
+            <p className="text-muted-foreground my-4 leading-relaxed">
+              args を変えるだけでコンポーネントの見た目がどう変わるか、実際に試してみましょう。
+              下のコードで <code>title</code> や <code>hasImage</code> を編集すると、カードの表示がリアルタイムに変化します。
+            </p>
+
+            <CodePreview
+  code={`function ArgsVariationDemo() {
+  const [activeTab, setActiveTab] = React.useState(0);
+  const variants = [
+    { title: 'React 入門ガイド', description: '初心者向けのチュートリアルです。', hasImage: true, imgColor: '#6366f1' },
+    { title: 'CSS Tips', description: 'レスポンシブデザインのコツ', hasImage: false, imgColor: '' },
+    { title: '超長いタイトルのカードで折り返し表示のテストを行う場合はこのように書きます', description: 'エッジケースの確認', hasImage: true, imgColor: '#f59e0b' },
+  ];
+  const tabs = ['画像あり', '画像なし', '長いタイトル'];
+  const v = variants[activeTab];
+  return (
+    <div style={{ padding: '24px', fontFamily: 'system-ui, sans-serif' }}>
+      <div style={{ fontSize: '13px', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>args を切り替えてバリエーション確認</div>
+      {/* タブ */}
+      <div style={{ display: 'flex', gap: '8px', marginBottom: '20px' }}>
+        {tabs.map((t, i) => (
+          <button key={i} onClick={() => setActiveTab(i)} style={{ padding: '6px 16px', borderRadius: '20px', fontSize: '13px', fontWeight: 600, border: 'none', cursor: 'pointer', background: activeTab === i ? '#6366f1' : '#f1f5f9', color: activeTab === i ? 'white' : '#64748b', transition: 'all 0.2s' }}>{t}</button>
+        ))}
+      </div>
+      {/* カード */}
+      <div style={{ width: '320px', borderRadius: '12px', border: '1px solid #e2e8f0', overflow: 'hidden', background: 'white', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+        {v.hasImage && <div style={{ height: '160px', background: v.imgColor, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '24px', fontWeight: 700 }}>Image</div>}
+        <div style={{ padding: '16px' }}>
+          <h3 style={{ margin: '0 0 8px', fontSize: '16px', fontWeight: 700, color: '#1e293b', lineHeight: 1.4 }}>{v.title}</h3>
+          <p style={{ margin: 0, fontSize: '14px', color: '#64748b', lineHeight: 1.5 }}>{v.description}</p>
+        </div>
+      </div>
+      {/* 現在の args 表示 */}
+      <div style={{ marginTop: '16px', padding: '12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <div style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', marginBottom: '4px' }}>現在の args</div>
+        <code style={{ fontSize: '12px', color: '#6366f1' }}>{'{ title: "' + v.title.substring(0, 30) + (v.title.length > 30 ? '...' : '') + '", hasImage: ' + v.hasImage + ' }'}</code>
+      </div>
+    </div>
+  );
+}`}
+  title="args によるバリエーション管理"
+  language="tsx"
+/>
           </section>
 
           {/* セクション5: play 関数 */}
@@ -419,6 +518,85 @@ await expect(mockFn).toHaveBeenCalledWith(arg);`}
                 CI では <code>@storybook/test-runner</code> で play 関数を自動実行できます。
               </p>
             </InfoBox>
+
+            <p className="text-muted-foreground my-4 leading-relaxed">
+              play 関数が実行されると、フォームへの入力や送信が自動的に行われます。
+              下のデモでは「テスト実行」を押すと、play 関数が何をするかをアニメーションで確認できます。
+            </p>
+
+            <CodePreview
+  code={`function PlayFunctionDemo() {
+  const [step, setStep] = React.useState(0);
+  const [running, setRunning] = React.useState(false);
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [result, setResult] = React.useState('');
+  const [log, setLog] = React.useState([]);
+  const steps = [
+    { action: 'email', value: 'user@example.com', log: 'userEvent.type(email, "user@example.com")' },
+    { action: 'password', value: 'password123', log: 'userEvent.type(password, "password123")' },
+    { action: 'click', value: '', log: 'userEvent.click(loginButton)' },
+    { action: 'assert', value: '', log: 'expect(onSubmit).toHaveBeenCalled() ✓' },
+  ];
+  const runTest = () => {
+    if (running) return;
+    setRunning(true); setStep(0); setEmail(''); setPassword(''); setResult(''); setLog([]);
+    let i = 0;
+    const interval = setInterval(() => {
+      const s = steps[i];
+      if (s.action === 'email') setEmail(s.value);
+      else if (s.action === 'password') setPassword(s.value);
+      else if (s.action === 'click') setResult('送信中...');
+      else if (s.action === 'assert') setResult('ログイン成功！');
+      setLog(prev => [...prev, s.log]);
+      setStep(i + 1);
+      i++;
+      if (i >= steps.length) { clearInterval(interval); setTimeout(() => setRunning(false), 500); }
+    }, 800);
+  };
+  const reset = () => { setStep(0); setEmail(''); setPassword(''); setResult(''); setLog([]); setRunning(false); };
+  const inputStyle = { width: '100%', padding: '8px 12px', borderRadius: '6px', border: '1px solid #d1d5db', fontSize: '14px', fontFamily: 'system-ui', outline: 'none', transition: 'border-color 0.2s' };
+  return (
+    <div style={{ padding: '24px', fontFamily: 'system-ui, sans-serif' }}>
+      <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
+        {/* フォーム */}
+        <div style={{ width: '280px', padding: '24px', background: 'white', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
+          <h3 style={{ margin: '0 0 16px', fontSize: '18px', fontWeight: 700, color: '#1e293b' }}>ログイン</h3>
+          <div style={{ marginBottom: '12px' }}>
+            <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#475569', marginBottom: '4px' }}>メールアドレス</label>
+            <input value={email} readOnly style={{ ...inputStyle, borderColor: step === 1 ? '#6366f1' : '#d1d5db', boxShadow: step === 1 ? '0 0 0 2px rgba(99,102,241,0.2)' : 'none' }} />
+          </div>
+          <div style={{ marginBottom: '16px' }}>
+            <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#475569', marginBottom: '4px' }}>パスワード</label>
+            <input type="password" value={password} readOnly style={{ ...inputStyle, borderColor: step === 2 ? '#6366f1' : '#d1d5db', boxShadow: step === 2 ? '0 0 0 2px rgba(99,102,241,0.2)' : 'none' }} />
+          </div>
+          <button style={{ width: '100%', padding: '10px', borderRadius: '8px', border: 'none', background: step === 3 ? '#4f46e5' : '#6366f1', color: 'white', fontSize: '14px', fontWeight: 600, cursor: 'pointer', transform: step === 3 ? 'scale(0.98)' : 'scale(1)', transition: 'all 0.15s' }}>ログイン</button>
+          {result && <div style={{ marginTop: '12px', padding: '8px 12px', borderRadius: '6px', background: result.includes('成功') ? '#f0fdf4' : '#f8fafc', color: result.includes('成功') ? '#16a34a' : '#64748b', fontSize: '13px', fontWeight: 600, textAlign: 'center' }}>{result}</div>}
+        </div>
+        {/* ログパネル */}
+        <div style={{ flex: 1, minWidth: '240px' }}>
+          <div style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>Interactions ログ</div>
+          <div style={{ background: '#1e1e2e', borderRadius: '8px', padding: '12px', minHeight: '160px' }}>
+            {log.length === 0 && <div style={{ color: '#585b70', fontSize: '13px', fontStyle: 'italic' }}>テスト実行を押すと、play 関数の動作を確認できます</div>}
+            {log.map((l, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '4px 0', fontSize: '12px', fontFamily: 'monospace', animation: 'fadeIn 0.3s ease' }}>
+                <span style={{ color: l.includes('✓') ? '#a6e3a1' : '#89b4fa' }}>{l.includes('✓') ? '✓' : '▶'}</span>
+                <span style={{ color: l.includes('✓') ? '#a6e3a1' : '#cdd6f4' }}>{l}</span>
+              </div>
+            ))}
+          </div>
+          <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
+            <button onClick={runTest} disabled={running} style={{ padding: '8px 20px', borderRadius: '8px', border: 'none', background: running ? '#94a3b8' : '#6366f1', color: 'white', fontSize: '13px', fontWeight: 600, cursor: running ? 'not-allowed' : 'pointer' }}>{running ? '実行中...' : 'テスト実行'}</button>
+            <button onClick={reset} style={{ padding: '8px 16px', borderRadius: '8px', border: '1px solid #e2e8f0', background: 'white', color: '#64748b', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}>リセット</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}`}
+  title="play function のインタラクションテスト"
+  language="tsx"
+/>
           </section>
 
           {/* セクション6: decorators */}
@@ -733,6 +911,78 @@ export const NoDescription: Story = {
               </ul>
             </InfoBox>
 
+            <p className="text-muted-foreground my-4 leading-relaxed">
+              <code>title</code> のスラッシュ（<code>/</code>）でサイドバーが階層化されます。
+              Storybook のサイドバーがどのようにグルーピングされるか視覚的に確認しましょう。
+            </p>
+
+            <CodePreview
+  code={`function StoryGroupingDemo() {
+  const [expanded, setExpanded] = React.useState({ Components: true, Form: true, Layout: false, Pages: false });
+  const toggle = (key) => setExpanded(prev => ({ ...prev, [key]: !prev[key] }));
+  const Folder = ({ name, open, onClick, children, depth = 0 }) => (
+    <div>
+      <div onClick={onClick} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '6px 12px', paddingLeft: 12 + depth * 16, cursor: 'pointer', fontSize: '13px', fontWeight: 600, color: '#334155', borderRadius: '6px', background: 'transparent', transition: 'background 0.15s' }} onMouseEnter={e => e.currentTarget.style.background='#f1f5f9'} onMouseLeave={e => e.currentTarget.style.background='transparent'}>
+        <span style={{ fontSize: '10px', transition: 'transform 0.2s', transform: open ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block' }}>▶</span>
+        <span style={{ fontSize: '14px' }}>{open ? '📂' : '📁'}</span>
+        {name}
+      </div>
+      {open && <div>{children}</div>}
+    </div>
+  );
+  const Story = ({ name, depth = 0, icon = '📄' }) => (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '5px 12px', paddingLeft: 12 + depth * 16, fontSize: '13px', color: '#64748b', borderRadius: '6px', cursor: 'pointer', transition: 'all 0.15s' }} onMouseEnter={e => { e.currentTarget.style.background='#ede9fe'; e.currentTarget.style.color='#6366f1'; }} onMouseLeave={e => { e.currentTarget.style.background='transparent'; e.currentTarget.style.color='#64748b'; }}>
+      <span style={{ fontSize: '12px' }}>{icon}</span>
+      {name}
+    </div>
+  );
+  return (
+    <div style={{ padding: '16px', fontFamily: 'system-ui, sans-serif' }}>
+      <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
+        {/* サイドバー風ツリー */}
+        <div style={{ width: '240px', background: 'white', borderRadius: '12px', border: '1px solid #e2e8f0', padding: '12px 8px', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
+          <div style={{ fontSize: '10px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.08em', padding: '4px 12px', marginBottom: '4px' }}>Storybook Sidebar</div>
+          <Folder name="Components" open={expanded.Components} onClick={() => toggle('Components')} depth={0}>
+            <Story name="Button" depth={1} />
+            <Folder name="Form" open={expanded.Form} onClick={() => toggle('Form')} depth={1}>
+              <Story name="Input" depth={2} />
+              <Story name="Select" depth={2} />
+              <Story name="Checkbox" depth={2} />
+            </Folder>
+            <Story name="Card" depth={1} />
+            <Story name="Badge" depth={1} />
+          </Folder>
+          <Folder name="Layout" open={expanded.Layout} onClick={() => toggle('Layout')} depth={0}>
+            <Story name="Header" depth={1} />
+            <Story name="Sidebar" depth={1} />
+            <Story name="Footer" depth={1} />
+          </Folder>
+          <Folder name="Pages" open={expanded.Pages} onClick={() => toggle('Pages')} depth={0}>
+            <Story name="Home" depth={1} icon="🏠" />
+            <Story name="Dashboard" depth={1} icon="📊" />
+          </Folder>
+        </div>
+        {/* title の対応表 */}
+        <div style={{ flex: 1, minWidth: '200px' }}>
+          <div style={{ fontSize: '12px', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', marginBottom: '12px', letterSpacing: '0.05em' }}>title とサイドバーの対応</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {[["'Components/Button'", 'Components > Button'], ["'Components/Form/Input'", 'Components > Form > Input'], ["'Layout/Header'", 'Layout > Header'], ["'Pages/Home'", 'Pages > Home']].map(([code, result], i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '8px 12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                <code style={{ fontSize: '12px', color: '#6366f1', fontWeight: 600 }}>{code}</code>
+                <span style={{ color: '#94a3b8' }}>→</span>
+                <span style={{ fontSize: '13px', color: '#334155' }}>{result}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}`}
+  title="Story のグルーピング（サイドバー階層）"
+  language="tsx"
+/>
+
             <InfoBox type="success" title="Story ファイルはアプリのビルドに含まれない">
               <p>
                 <code>.stories.tsx</code> は Storybook のビルドにだけ使われます。
@@ -799,6 +1049,146 @@ import * as ButtonStories from './Button.stories';
 
 - プライマリボタンは1画面に1つが原則
 - 破壊的アクションには確認ダイアログを併用`}
+            />
+
+            {/* コーディングチャレンジ 1: Badge コンポーネント */}
+            <CodingChallenge
+              title="Badge コンポーネントを作ろう"
+              description="success / warning / error の3つのバリアントを持つ Badge コンポーネントを作成してください。各バリアントで背景色とテキスト色が変わるようにしましょう。"
+              preview={true}
+              initialCode={`function Badge({ variant = 'success', children }) {
+  // variant に応じてスタイルを変える
+  const styles = {
+    // ここにバリアントごとのスタイルを定義
+  };
+
+  return (
+    <span style={{
+      padding: '4px 12px',
+      borderRadius: '9999px',
+      fontSize: '12px',
+      fontWeight: 600,
+    }}>
+      {children}
+    </span>
+  );
+}
+
+function App() {
+  return (
+    <div style={{ display: 'flex', gap: '8px', padding: '24px', flexWrap: 'wrap' }}>
+      <Badge variant="success">完了</Badge>
+      <Badge variant="warning">注意</Badge>
+      <Badge variant="error">エラー</Badge>
+    </div>
+  );
+}`}
+              answer={`function Badge({ variant = 'success', children }) {
+  const styles = {
+    success: { background: '#dcfce7', color: '#16a34a' },
+    warning: { background: '#fef9c3', color: '#ca8a04' },
+    error: { background: '#fee2e2', color: '#dc2626' },
+  };
+
+  return (
+    <span style={{
+      padding: '4px 12px',
+      borderRadius: '9999px',
+      fontSize: '12px',
+      fontWeight: 600,
+      ...styles[variant],
+    }}>
+      {children}
+    </span>
+  );
+}
+
+function App() {
+  return (
+    <div style={{ display: 'flex', gap: '8px', padding: '24px', flexWrap: 'wrap' }}>
+      <Badge variant="success">完了</Badge>
+      <Badge variant="warning">注意</Badge>
+      <Badge variant="error">エラー</Badge>
+    </div>
+  );
+}`}
+              keywords={['success', 'warning', 'error', 'background', 'color', '#dcfce7', '#fee2e2', '...styles']}
+              hints={[
+                'styles オブジェクトに success / warning / error のキーを作り、それぞれ background と color を定義しましょう。',
+                'スプレッド構文 ...styles[variant] で、variant に応じたスタイルを span に適用します。',
+                'success は緑系（#dcfce7 / #16a34a）、warning は黄系（#fef9c3 / #ca8a04）、error は赤系（#fee2e2 / #dc2626）が定番です。',
+              ]}
+            />
+
+            {/* コーディングチャレンジ 2: Story ファイル構造 */}
+            <CodingChallenge
+              title="Alert の Story を CSF3 で書こう"
+              description="Alert コンポーネントの Story ファイルを CSF3 形式で完成させてください。Meta の定義と、info / success / error の3つの Story を追加しましょう。"
+              preview={true}
+              initialCode={`function Alert({ variant = 'info', title, children }) {
+  const styles = {
+    info: { bg: '#eff6ff', border: '#bfdbfe', color: '#1d4ed8', icon: 'ℹ️' },
+    success: { bg: '#f0fdf4', border: '#bbf7d0', color: '#16a34a', icon: '✅' },
+    error: { bg: '#fef2f2', border: '#fecaca', color: '#dc2626', icon: '❌' },
+  };
+  const s = styles[variant] || styles.info;
+  return (
+    <div style={{ padding: '12px 16px', borderRadius: '8px', background: s.bg, border: '1px solid ' + s.border, display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+      <span>{s.icon}</span>
+      <div>
+        <div style={{ fontWeight: 600, color: s.color, fontSize: '14px' }}>{title}</div>
+        <div style={{ fontSize: '13px', color: '#475569', marginTop: '2px' }}>{children}</div>
+      </div>
+    </div>
+  );
+}
+
+// CSF3 形式で Story を書いてみよう
+function App() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '24px', maxWidth: '480px' }}>
+      {/* Info Story */}
+
+      {/* Success Story */}
+
+      {/* Error Story */}
+
+    </div>
+  );
+}`}
+              answer={`function Alert({ variant = 'info', title, children }) {
+  const styles = {
+    info: { bg: '#eff6ff', border: '#bfdbfe', color: '#1d4ed8', icon: 'ℹ️' },
+    success: { bg: '#f0fdf4', border: '#bbf7d0', color: '#16a34a', icon: '✅' },
+    error: { bg: '#fef2f2', border: '#fecaca', color: '#dc2626', icon: '❌' },
+  };
+  const s = styles[variant] || styles.info;
+  return (
+    <div style={{ padding: '12px 16px', borderRadius: '8px', background: s.bg, border: '1px solid ' + s.border, display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+      <span>{s.icon}</span>
+      <div>
+        <div style={{ fontWeight: 600, color: s.color, fontSize: '14px' }}>{title}</div>
+        <div style={{ fontSize: '13px', color: '#475569', marginTop: '2px' }}>{children}</div>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '24px', maxWidth: '480px' }}>
+      <Alert variant="info" title="お知らせ">新機能が追加されました。</Alert>
+      <Alert variant="success" title="完了">データの保存が完了しました。</Alert>
+      <Alert variant="error" title="エラー">入力内容に問題があります。</Alert>
+    </div>
+  );
+}`}
+              keywords={['variant="info"', 'variant="success"', 'variant="error"', '<Alert', 'title=']}
+              hints={[
+                'Alert コンポーネントは variant, title, children の3つの props を受け取ります。',
+                '各 Story は <Alert variant="..." title="...">子テキスト</Alert> の形で書きます。',
+                'info / success / error の3バリアントをそれぞれ App 内に配置してください。',
+              ]}
             />
 
             <InfoBox type="success" title="このステップのまとめ">
