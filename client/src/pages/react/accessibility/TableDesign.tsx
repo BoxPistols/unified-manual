@@ -1851,6 +1851,7 @@ function UserTable({ users }: { users: User[] }) {
           {/* ======================================== */}
           <section>
             <CodingChallenge
+              preview={true}
               title="アクセシブルなテーブルを作る"
               description="以下の要件を満たすセマンティックな HTML テーブルを作成してください。(1) caption で「月別売上レポート」と表示、(2) thead のヘッダーに scope='col' を付与、(3) 各行の最初のセルを th にして scope='row' を付与、(4) カラムは「月」「売上」「目標」の3列。データは1月と2月の2行。"
               initialCode={`<!-- ここにテーブルを記述 -->
@@ -1893,6 +1894,7 @@ function UserTable({ users }: { users: User[] }) {
           {/* ======================================== */}
           <section>
             <CodingChallenge
+              preview={true}
               title="横スクロール + 固定カラムの CSS"
               description="以下の要件を満たす CSS を記述してください。(1) .table-wrapper に横スクロールを設定、(2) table に最小幅 900px を設定、(3) 最初のカラム（th:first-child, td:first-child）を position: sticky で左端に固定、(4) 固定カラムに背景色 white を設定（下のセルが透けないように）。border-collapse は separate、border-spacing は 0 にしてください。"
               initialCode={`.table-wrapper {
@@ -1940,6 +1942,7 @@ function UserTable({ users }: { users: User[] }) {
           {/* ======================================== */}
           <section>
             <CodingChallenge
+              preview={true}
               title="レスポンシブテーブルのカード化 CSS"
               description="モバイル幅（max-width: 768px）でテーブルをカード形式に変換する CSS を記述してください。(1) thead を非表示にする、(2) 各 tr を display: block にして margin-bottom, border, border-radius, padding を設定、(3) 各 td を display: flex, justify-content: space-between にする、(4) td::before で content: attr(data-label) を使いカラム名を表示する。"
               initialCode={`@media (max-width: 768px) {
