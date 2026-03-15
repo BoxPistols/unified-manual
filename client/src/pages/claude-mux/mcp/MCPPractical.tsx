@@ -1,4 +1,4 @@
-import { Figma, Globe, Code, BookOpen, Bug, Database, Terminal, Paintbrush } from 'lucide-react';
+import { Figma, Globe, Code, BookOpen, Bug, Database, Terminal, Paintbrush, Package, AtSign, Gauge } from 'lucide-react';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
 import PageNavigation from '@/components/PageNavigation';
@@ -211,6 +211,100 @@ $ claude mcp add serena -- uvx \\
             </p>
             <InfoBox type="info" title="セキュリティ">
               MCP経由の外部サービス呼び出しは、パーミッション設定の対象です。<code>settings.json</code> の <code>allow/deny</code> ルールで <code>mcp__サーバ名__*</code> パターンを使用して制御できます。
+            </InfoBox>
+          </section>
+
+          {/* /plugins によるインストール */}
+          <section>
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Package className="text-[var(--claude-primary)]" />
+              /plugins でMCPサーバをインストール
+            </h2>
+            <p className="leading-relaxed mb-4 text-muted-foreground">
+              <code>/plugins</code> コマンドで、MCPサーバのマーケットプレイスからサーバを検索・インストールできます。CLIコマンドを手動で入力する必要がありません。
+            </p>
+            <CodeBlock code={`# セッション内で /plugins を実行
+> /plugins
+
+# マーケットプレイスが表示される
+# カテゴリ別にサーバを検索
+# 選択するだけでインストール完了`} language="bash" />
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 text-xs text-muted-foreground">
+                <span className="font-bold block mb-1">カテゴリ検索</span>
+                デザイン、DB、モニタリング等のカテゴリからサーバを探せる
+              </div>
+              <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 text-xs text-muted-foreground">
+                <span className="font-bold block mb-1">ワンクリック設定</span>
+                サーバの追加・認証設定を自動で処理
+              </div>
+              <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 text-xs text-muted-foreground">
+                <span className="font-bold block mb-1">スコープ選択</span>
+                インストール時にlocal/project/userスコープを選択可能
+              </div>
+            </div>
+          </section>
+
+          {/* @ プレフィックスでリソース参照 */}
+          <section>
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <AtSign className="text-[var(--claude-primary)]" />
+              @ でMCPリソースを参照
+            </h2>
+            <p className="leading-relaxed mb-4 text-muted-foreground">
+              MCPサーバが公開するリソース（ドキュメント、スキーマ、設定ファイルなど）は、プロンプト内で <code>@</code> を入力するとオートコンプリートに表示されます。選択したリソースがコンテキストとして渡されます。
+            </p>
+            <div className="space-y-4">
+              <div className="p-5 bg-slate-900 rounded-xl border border-slate-700">
+                <p className="text-[10px] text-slate-500 mb-2 font-mono">リソース参照の例</p>
+                <div className="text-emerald-400 font-mono text-sm leading-relaxed">
+                  &gt; @ と入力 → オートコンプリートでリソース一覧が表示<br />
+                  &gt; @supabase/schema を参照して、usersテーブルにCRUDのAPIを作成して<br />
+                  &gt; @sentry/recent-errors の内容を確認して、対処方針を提案して
+                </div>
+              </div>
+              <InfoBox type="info" title="リソース対応の確認">
+                全てのMCPサーバがリソースを公開しているわけではありません。<code>/mcp</code> コマンドで各サーバの対応リソースを確認できます。
+              </InfoBox>
+            </div>
+          </section>
+
+          {/* 多数のMCPサーバの管理 */}
+          <section>
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Gauge className="text-[var(--claude-primary)]" />
+              多数のMCPサーバの管理
+            </h2>
+            <p className="leading-relaxed mb-4 text-muted-foreground">
+              MCPサーバを増やすほどツール定義がコンテキストウィンドウを消費します。以下の方法でバランスを取ります。
+            </p>
+            <div className="space-y-4">
+              <div className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+                <h4 className="font-bold mb-2">Tool Search（遅延ロード）を活用する</h4>
+                <p className="text-xs text-muted-foreground mb-3">
+                  ツール数が多い場合、Claude Codeは自動的にTool Searchを使用します。全ツールを事前にロードせず、必要なときだけオンデマンドで検索・取得するため、コンテキストを節約できます。
+                </p>
+                <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800 text-xs text-muted-foreground font-mono">
+                  例: 200以上のツールが登録されていても、実際に使う5-10個だけがロードされる
+                </div>
+              </div>
+              <div className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+                <h4 className="font-bold mb-2">スコープで使い分ける</h4>
+                <p className="text-xs text-muted-foreground">
+                  汎用ツール（Context7など）は <code>user</code> スコープ、プロジェクト固有のサーバは <code>project</code> または <code>local</code> スコープに分けると管理しやすくなります。不要なサーバはプロジェクトごとにロードされません。
+                </p>
+              </div>
+              <div className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+                <h4 className="font-bold mb-2">環境変数で調整する</h4>
+                <p className="text-xs text-muted-foreground">
+                  サーバ起動が遅い場合は <code>MCP_TIMEOUT</code>、大量データを返すツールがある場合は <code>MAX_MCP_OUTPUT_TOKENS</code> で調整します。
+                </p>
+                <CodeBlock code={`# タイムアウト延長 + 出力トークン上限の引き上げ
+$ MCP_TIMEOUT=15000 MAX_MCP_OUTPUT_TOKENS=50000 claude`} language="bash" />
+              </div>
+            </div>
+            <InfoBox type="warning" title="サーバ数の目安">
+              同時に接続するMCPサーバは10個程度までが実用的です。それ以上はTool Searchがあっても起動時間やメモリ使用量に影響します。不要なサーバは <code>claude mcp remove</code> で整理しましょう。
             </InfoBox>
           </section>
           <CodingChallenge

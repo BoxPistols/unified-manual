@@ -1,4 +1,4 @@
-import { Server, Globe, FolderTree, Terminal } from 'lucide-react';
+import { Server, Globe, FolderTree, Terminal, Search, AtSign, Settings } from 'lucide-react';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
 import PageNavigation from '@/components/PageNavigation';
@@ -138,6 +138,112 @@ $ claude mcp add -s user my-tool -- npx -y @mcp/my-tool`} language="bash" />
             <InfoBox type="info" title="初回承認">
               プロジェクトスコープのMCPサーバは、各チームメンバーが初回使用時に承認する必要があります。<code>claude mcp reset-project-choices</code> で承認をリセットできます。
             </InfoBox>
+          </section>
+
+          {/* 環境変数 */}
+          <section>
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Settings className="text-[var(--claude-primary)]" />
+              環境変数によるチューニング
+            </h2>
+            <p className="leading-relaxed mb-6 text-muted-foreground">
+              MCPサーバの起動やレスポンスに関する挙動を環境変数で制御できます。
+            </p>
+            <div className="space-y-4">
+              <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
+                <div className="flex items-baseline gap-3 mb-1">
+                  <code className="text-[var(--claude-primary)] font-bold text-sm">MCP_TIMEOUT</code>
+                </div>
+                <p className="text-xs text-muted-foreground mb-2">MCPサーバの起動タイムアウト（ミリ秒）。サーバの初期化が遅い場合に延長します。</p>
+                <CodeBlock code={`# デフォルトより長いタイムアウトで起動
+$ MCP_TIMEOUT=10000 claude
+
+# 重いサーバ（Docker起動など）向けに30秒に設定
+$ MCP_TIMEOUT=30000 claude`} language="bash" />
+              </div>
+              <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
+                <div className="flex items-baseline gap-3 mb-1">
+                  <code className="text-[var(--claude-primary)] font-bold text-sm">MAX_MCP_OUTPUT_TOKENS</code>
+                </div>
+                <p className="text-xs text-muted-foreground mb-2">MCPツールからの出力トークン上限。大量のデータを返すツール（DB検索結果、ログ取得など）で有効です。</p>
+                <CodeBlock code={`# 大きなレスポンスを許容する
+$ MAX_MCP_OUTPUT_TOKENS=50000 claude`} language="bash" />
+              </div>
+            </div>
+            <InfoBox type="warning" title="コンテキストウィンドウへの影響">
+              <code>MAX_MCP_OUTPUT_TOKENS</code> を大きくすると、MCPツールの出力がコンテキストウィンドウを圧迫します。必要な場合のみ調整してください。
+            </InfoBox>
+          </section>
+
+          {/* トランスポートプロトコル */}
+          <section>
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Globe className="text-[var(--claude-primary)]" />
+              トランスポートプロトコル
+            </h2>
+            <p className="leading-relaxed mb-6 text-muted-foreground">
+              MCPは2種類の通信方式をサポートしています。サーバの種類に応じて使い分けます。
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
+                <h4 className="font-bold mb-2">stdio（ローカル）</h4>
+                <p className="text-xs text-muted-foreground mb-3">ローカルプロセスとstdin/stdoutで通信。npxやuvxで起動するサーバ向け。認証不要で手軽に使えます。</p>
+                <CodeBlock code={`$ claude mcp add my-tool \\
+    -- npx -y @mcp/my-tool`} language="bash" />
+              </div>
+              <div className="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
+                <h4 className="font-bold mb-2">HTTP（リモート）</h4>
+                <p className="text-xs text-muted-foreground mb-3">HTTP/SSE経由でリモートサーバと通信。OAuth認証に対応し、Figma・Sentry等のSaaSサービスとの連携に使います。</p>
+                <CodeBlock code={`$ claude mcp add \\
+    --transport http \\
+    figma https://mcp.figma.com/mcp`} language="bash" />
+              </div>
+            </div>
+          </section>
+
+          {/* MCPリソースへのアクセス */}
+          <section>
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <AtSign className="text-[var(--claude-primary)]" />
+              MCPリソースへのアクセス
+            </h2>
+            <p className="leading-relaxed mb-4 text-muted-foreground">
+              MCPサーバが公開するリソース（ファイル、ドキュメント、データなど）には、プロンプト内で <code>@</code> プレフィックスを使ってアクセスできます。入力中にオートコンプリートでリソース一覧が表示されます。
+            </p>
+            <div className="p-5 bg-slate-900 rounded-xl border border-slate-700 mb-4">
+              <p className="text-[10px] text-slate-500 mb-2 font-mono">リソースの参照</p>
+              <div className="text-emerald-400 font-mono text-sm leading-relaxed">
+                &gt; @my-docs/api-reference を読んで、認証エンドポイントの仕様を教えて<br />
+                &gt; @figma/design-tokens のカラー変数を使ってテーマを作成して
+              </div>
+            </div>
+            <InfoBox type="info" title="リソースとツールの違い">
+              リソースはMCPサーバが公開する静的・動的データで、プロンプトのコンテキストとして渡されます。ツールはモデルが呼び出すアクション（API実行、ファイル操作など）です。
+            </InfoBox>
+          </section>
+
+          {/* MCP Tool Search */}
+          <section>
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Search className="text-[var(--claude-primary)]" />
+              MCP Tool Search（遅延ロード）
+            </h2>
+            <p className="leading-relaxed mb-4 text-muted-foreground">
+              MCPサーバを多数登録すると、全ツールの定義がコンテキストウィンドウを圧迫します。Tool Search機能は、全ツールを事前にロードせず、必要なときにオンデマンドで検索・ロードします。
+            </p>
+            <div className="space-y-4">
+              <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
+                <h4 className="font-bold mb-2 text-sm">仕組み</h4>
+                <ul className="text-xs text-muted-foreground space-y-2">
+                  <li>MCPサーバのツール数が多い場合、ツール定義はdeferredとして登録される</li>
+                  <li>モデルが必要と判断したタイミングで <code>ToolSearch</code> を呼び出し、ツールのスキーマを取得</li>
+                  <li>取得されたツールだけがコンテキストに追加され、その後通常どおり呼び出せる</li>
+                </ul>
+              </div>
+              <InfoBox type="success" title="コンテキスト節約効果">
+                10個のMCPサーバで計200以上のツールがある場合でも、実際に使うツールだけがロードされます。複雑なプロジェクトでのコンテキスト効率が大幅に向上します。
+              </InfoBox>
+            </div>
           </section>
         </div>
         <CodingChallenge

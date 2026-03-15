@@ -1,4 +1,4 @@
-import { Package, Blocks, Search, Settings, BookOpen, Plug } from 'lucide-react';
+import { Package, Blocks, Search, Settings, BookOpen, Plug, Download } from 'lucide-react';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
 import PageNavigation from '@/components/PageNavigation';
@@ -22,7 +22,7 @@ export default function PluginsEcosystem() {
             プラグインとエコシステム
           </h1>
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed font-medium">
-            Claude Code の機能を拡張するプラグインシステムと、コミュニティのエコシステムの活用方法。
+            Claude Code の機能を拡張するプラグインシステム。スラッシュコマンド、サブエージェント、MCP サーバー、Hooks をバンドルした軽量パッケージとして配布・管理できる。
           </p>
         </div>
 
@@ -34,15 +34,15 @@ export default function PluginsEcosystem() {
               プラグインの概要
             </h2>
             <p className="leading-relaxed mb-6 text-muted-foreground">
-              Claude Code のプラグインは、Hooks・Skills・カスタムスラッシュコマンド・MCP サーバーをバンドルした拡張パッケージです。npm レジストリからインストールでき、Claude Code の機能を大幅に拡張できます。
+              プラグインは、スラッシュコマンド・サブエージェント・MCP サーバー・Hooks をバンドルした軽量パッケージ。Agent Skills オープンスタンダードに準拠しており、CLI と VS Code 拡張の両方で管理できる。一方でインストールしたプラグインはもう一方でも自動的に利用可能になる。
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               {[
-                { label: 'Skills', desc: 'スラッシュコマンドとして呼び出せるカスタム機能。コード生成、レビュー、デプロイなどの定型処理をパッケージ化' },
-                { label: 'Hooks', desc: 'ライフサイクルイベントに応じた自動処理。セッション開始時の環境セットアップ、ツール実行前後のバリデーションなど' },
+                { label: 'スラッシュコマンド', desc: 'プラグインが提供するカスタムコマンド。/plugin-name:command の形式で呼び出し、定型処理を実行' },
+                { label: 'サブエージェント', desc: '特定ドメインに特化した AI エージェント。レビュー、テスト生成などの専門タスクを委譲できる' },
                 { label: 'MCP サーバー', desc: '外部サービスとの接続を提供。データベース、API、クラウドサービスへのアクセスを追加' },
-                { label: 'エージェント', desc: 'カスタムサブエージェントの定義。特定ドメインに特化した AI アシスタントをプラグインとして配布' },
+                { label: 'Hooks', desc: 'ライフサイクルイベントに応じた自動処理。セッション開始時のセットアップ、ツール実行前後のバリデーションなど' },
               ].map(item => (
                 <div key={item.label} className="p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
                   <h4 className="font-bold text-sm text-[var(--claude-primary)] mb-2">{item.label}</h4>
@@ -50,35 +50,64 @@ export default function PluginsEcosystem() {
                 </div>
               ))}
             </div>
+
+            <InfoBox type="info" title="Agent Skills オープンスタンダード">
+              プラグインは Agent Skills オープンスタンダードに従って構成される。これにより、Claude Code だけでなく対応する他のツールでもプラグインを再利用できる仕組みになっている。
+            </InfoBox>
           </section>
 
-          {/* プラグインの管理 */}
+          {/* プラグインのインストール */}
           <section>
             <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Settings className="text-[var(--claude-primary)]" />
-              プラグインの管理
+              <Download className="text-[var(--claude-primary)]" />
+              プラグインのインストール
             </h2>
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-bold mb-3">インストールと管理</h3>
-                <CodeBlock language="bash" code={`# プラグインのインストール
-/plugins install <plugin-name>
+                <h3 className="text-xl font-bold mb-3">CLI からインストール</h3>
+                <p className="leading-relaxed mb-4 text-muted-foreground">
+                  Claude Code のセッション中に <code className="text-sm bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">/plugins</code> コマンドを実行すると、プラグイン管理インターフェースが開く。
+                </p>
+                <CodeBlock language="bash" code={`/plugins
+# → "Manage plugins" インターフェースが開く
+# → "Plugins" タブ: インストール済みプラグインの管理
+# → "Marketplaces" タブ: 公開プラグインの検索・インストール
 
-# インストール済みプラグインの一覧
-/plugins list
-
-# プラグインのアンインストール
-/plugins uninstall <plugin-name>
-
-# プラグインの更新
-/plugins update <plugin-name>`} />
+# Marketplaces タブでプラグインを選択 → Install で完了`} />
               </div>
 
               <div>
-                <h3 className="text-xl font-bold mb-3">設定ファイルでの管理</h3>
+                <h3 className="text-xl font-bold mb-3">VS Code 拡張からインストール</h3>
                 <p className="leading-relaxed mb-4 text-muted-foreground">
-                  プラグインの有効/無効はグローバル設定ファイルで管理されます。
+                  VS Code の Claude Code 拡張にはグラフィカルなプラグイン管理画面がある。管理ダイアログは「Plugins」タブと「Marketplaces」タブで構成されている。
+                </p>
+                <div className="p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <p><span className="font-bold text-foreground">Plugins タブ:</span> インストール済みプラグインの一覧、有効/無効の切り替え、アンインストール</p>
+                    <p><span className="font-bold text-foreground">Marketplaces タブ:</span> 公開されているプラグインの検索、詳細確認、ワンクリックインストール</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <InfoBox type="info" title="CLI と VS Code の同期">
+              VS Code 拡張でインストールしたプラグインは CLI でも利用でき、逆も同様。プラグインの設定はグローバルに管理されるため、どちらの環境で操作しても同じ状態になる。
+            </InfoBox>
+          </section>
+
+          {/* プラグインの設定管理 */}
+          <section>
+            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+              <Settings className="text-[var(--claude-primary)]" />
+              プラグインの設定管理
+            </h2>
+
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-xl font-bold mb-3">設定ファイル</h3>
+                <p className="leading-relaxed mb-4 text-muted-foreground">
+                  プラグインの有効/無効はグローバル設定ファイルで管理される。
                 </p>
                 <CodeBlock language="json" code={`// ~/.claude/settings.json
 {
@@ -101,7 +130,7 @@ export default function PluginsEcosystem() {
             </div>
 
             <InfoBox type="info" title="プラグインのスコープ">
-              プラグインはグローバルにインストールされ、すべてのプロジェクトで利用可能です。特定のプロジェクトでのみ使用したい場合は、CLAUDE.md でプラグインの Skills を参照する運用が推奨されます。
+              プラグインはグローバルにインストールされ、すべてのプロジェクトで利用可能。特定のプロジェクトでのみ使用したい場合は、CLAUDE.md でプラグインの Skills を参照する運用が推奨される。
             </InfoBox>
           </section>
 
@@ -112,12 +141,12 @@ export default function PluginsEcosystem() {
               プラグインの発見
             </h2>
             <p className="leading-relaxed mb-6 text-muted-foreground">
-              公式・コミュニティ製のプラグインは npm レジストリで公開されています。
+              <code className="text-sm bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">/plugins</code> の Marketplaces タブ、または VS Code 拡張のプラグイン管理画面から公開プラグインを検索・インストールできる。
             </p>
 
             <div className="space-y-4">
               <div className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
-                <h3 className="text-lg font-bold mb-3">公式プラグインの例</h3>
+                <h3 className="text-lg font-bold mb-3">主なプラグインカテゴリ</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
@@ -128,10 +157,10 @@ export default function PluginsEcosystem() {
                     </thead>
                     <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                       {[
-                        ['コードレビュー', 'PR の差分分析、コーディング規約チェック、セキュリティスキャン'],
-                        ['ドキュメント生成', 'API ドキュメント、README、変更履歴の自動生成'],
-                        ['テスト支援', 'テストケース生成、カバレッジ分析、リグレッションテスト'],
-                        ['デプロイ', 'ステージング/本番デプロイ、ロールバック操作の自動化'],
+                        ['開発（Development）', 'コードレビュー、リファクタリング支援、コーディング規約チェック、セキュリティスキャン'],
+                        ['テスト（Testing）', 'テストケース生成、カバレッジ分析、リグレッションテスト、E2E テスト支援'],
+                        ['デプロイ（Deployment）', 'ステージング/本番デプロイ、ロールバック操作、CI/CD パイプライン連携'],
+                        ['ドキュメント（Documentation）', 'API ドキュメント生成、README 自動更新、変更履歴作成、コードコメント補完'],
                       ].map(([cat, usage]) => (
                         <tr key={cat} className="bg-white dark:bg-slate-900">
                           <td className="px-3 py-2 font-bold text-[var(--claude-primary)] whitespace-nowrap">{cat}</td>
@@ -268,42 +297,84 @@ $ARGUMENTS
               プラグイン開発の基本
             </h2>
             <p className="leading-relaxed mb-6 text-muted-foreground">
-              独自のプラグインを作成して npm に公開することで、チームやコミュニティと共有できます。
+              独自のプラグインを作成してチームやコミュニティと共有できる。プラグインは Agent Skills オープンスタンダードに準拠したディレクトリ構成で作る。
             </p>
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-bold mb-3">プラグインの構成</h3>
-                <CodeBlock language="text" code={`my-claude-plugin/
-├── package.json          # name, version, main
+                <h3 className="text-xl font-bold mb-3">プラグインのディレクトリ構成</h3>
+                <p className="leading-relaxed mb-4 text-muted-foreground">
+                  プラグインのルートに <code className="text-sm bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">PLUGIN.md</code> を配置し、メタデータを記述する。各機能は対応するサブディレクトリに配置する。
+                </p>
+                <CodeBlock language="text" code={`my-plugin/
+├── PLUGIN.md          # プラグインのメタデータ（名前、説明、バージョン）
 ├── skills/
-│   └── my-skill.md       # カスタムスラッシュコマンド
-├── hooks/
-│   └── pre-commit.sh     # ライフサイクルフック
-├── agents/
-│   └── reviewer.md       # カスタムエージェント定義
-└── mcp/
-    └── config.json       # MCP サーバー設定`} />
+│   └── my-skill/
+│       └── SKILL.md   # スキル定義（スラッシュコマンドとして公開される）
+├── subagents/
+│   └── my-agent.md    # サブエージェント定義
+└── hooks/
+    └── settings.json  # Hook の設定`} />
               </div>
 
               <div>
-                <h3 className="text-xl font-bold mb-3">package.json の設定</h3>
-                <CodeBlock language="json" code={`{
-  "name": "my-claude-plugin",
-  "version": "1.0.0",
-  "description": "Claude Code 用カスタムプラグイン",
-  "claude-code-plugin": {
-    "skills": ["skills/*.md"],
-    "hooks": {
-      "PreToolUse": ["hooks/pre-commit.sh"]
-    }
+                <h3 className="text-xl font-bold mb-3">PLUGIN.md の例</h3>
+                <CodeBlock language="markdown" code={`---
+name: my-review-plugin
+version: 1.0.0
+description: コードレビューを自動化するプラグイン
+---
+
+# My Review Plugin
+
+このプラグインはコードレビューのワークフローを自動化します。
+
+## 提供する機能
+
+- /my-review-plugin:review - 現在の差分をレビュー
+- review-agent サブエージェント - レビュー専門のエージェント`} />
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold mb-3">スキル定義の例</h3>
+                <CodeBlock language="markdown" code={`<!-- skills/review/SKILL.md -->
+---
+name: review
+description: 現在のブランチの差分をレビューする
+---
+
+現在のブランチの差分を取得し、以下の観点でレビューしてください:
+
+- コードの品質と可読性
+- 潜在的なバグやエッジケース
+- セキュリティ上の懸念
+- テストの充足度`} />
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold mb-3">Hook 設定の例</h3>
+                <CodeBlock language="json" code={`// hooks/settings.json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "command": "echo 'Tool execution starting...'"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "command": "echo 'Tool execution completed.'"
+      }
+    ]
   }
 }`} />
               </div>
             </div>
 
-            <InfoBox type="info" title="プラグインのセキュリティ">
-              プラグインはシェルコマンドの実行やファイルへのアクセスが可能です。信頼できるソースからのみインストールし、コードを確認してから有効化してください。
+            <InfoBox type="warning" title="プラグインのセキュリティ">
+              プラグインはシェルコマンドの実行やファイルへのアクセスが可能。信頼できるソースからのみインストールし、コードを確認してから有効化すること。Marketplaces に公開されているプラグインでも、内容を確認してから利用するのが安全。
             </InfoBox>
           </section>
         </div>
@@ -311,16 +382,16 @@ $ARGUMENTS
         <CodingChallenge
             preview
             previewType="config"
-            title="カスタムスラッシュコマンドとプラグイン設定を書こう"
-            description="プロジェクト固有のスラッシュコマンドの作成と、MCP サーバーの設定を JSON で書いてください。"
-            initialCode={`// カスタムコマンドの作成手順\n// mkdir -p .claude/commands\n\n// .claude/commands/review.md の内容:\n// （レビュー指示を書く）\n\n// MCP サーバーの設定\n// .claude/settings.json\n{\n  "mcpServers": {\n    // GitHub MCP サーバー:\n\n    // Filesystem MCP サーバー:\n  }\n}`}
-            answer={`// カスタムコマンドの作成手順\n// mkdir -p .claude/commands\n\n// .claude/commands/review.md の内容:\n// 現在のブランチの差分をレビューしてください。\n// 確認項目: コード品質、バグ、セキュリティ、テスト\n\n// MCP サーバーの設定\n// .claude/settings.json\n{\n  "mcpServers": {\n    "github": {\n      "command": "npx",\n      "args": ["-y", "@modelcontextprotocol/server-github"],\n      "env": {\n        "GITHUB_TOKEN": "ghp_..."\n      }\n    },\n    "filesystem": {\n      "command": "npx",\n      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/dir"]\n    }\n  }\n}`}
+            title="プラグインのディレクトリ構成と MCP 設定を書こう"
+            description="プラグインの PLUGIN.md とスキル定義の作成、および MCP サーバーの設定を書いてください。"
+            initialCode={`// プラグインのディレクトリ構成\n// my-plugin/\n//   PLUGIN.md        - メタデータ\n//   skills/review/\n//     SKILL.md       - （スキル定義を書く）\n\n// MCP サーバーの設定\n// .claude/settings.json\n{\n  "mcpServers": {\n    // GitHub MCP サーバー:\n\n    // Filesystem MCP サーバー:\n  }\n}`}
+            answer={`// プラグインのディレクトリ構成\n// my-plugin/\n//   PLUGIN.md        - name, version, description\n//   skills/review/\n//     SKILL.md       - レビュースキル定義\n//   subagents/\n//     reviewer.md    - サブエージェント定義\n//   hooks/\n//     settings.json  - Hook 設定\n\n// MCP サーバーの設定\n// .claude/settings.json\n{\n  "mcpServers": {\n    "github": {\n      "command": "npx",\n      "args": ["-y", "@modelcontextprotocol/server-github"],\n      "env": {\n        "GITHUB_TOKEN": "ghp_..."\n      }\n    },\n    "filesystem": {\n      "command": "npx",\n      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/dir"]\n    }\n  }\n}`}
             hints={[
-              '.claude/commands/ にマークダウンファイルを置くとスラッシュコマンドになります',
+              'PLUGIN.md にはプラグインの名前、バージョン、説明を記述します',
+              'skills/ ディレクトリ内のサブディレクトリに SKILL.md を配置するとスラッシュコマンドになります',
               'MCP サーバーは mcpServers キーに command と args を指定します',
-              '@modelcontextprotocol/server-github で GitHub API 連携が可能です',
             ]}
-            keywords={['mcpServers', 'command', 'args', '@modelcontextprotocol', '.claude/commands']}
+            keywords={['mcpServers', 'PLUGIN.md', 'SKILL.md', 'skills', 'subagents', 'hooks']}
           />
 
         <PageNavigation />
