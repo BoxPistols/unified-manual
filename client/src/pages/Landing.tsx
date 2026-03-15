@@ -40,19 +40,19 @@ const manualIcons: Record<ManualId, React.ReactNode> = {
 
 const manualDetails: Record<ManualId, { tagline: string; topics: string[] }> = {
   react: {
-    tagline: 'コンポーネント設計からデプロイまで、フロントエンド開発の全体像を掴む',
+    tagline: 'コンポーネントの基本から CSS・Next.js・デプロイまで一通り体験できる',
     topics: ['React 19 + TypeScript', 'Next.js 15 App Router', 'Tailwind / MUI / Storybook', 'デザインシステム構築'],
   },
   git: {
-    tagline: 'ひとりの開発からチーム開発へ、バージョン管理の実践力を身につける',
+    tagline: 'Git の基本操作からブランチ運用・チーム開発の流れを学べる',
     topics: ['Git の仕組みと基本操作', 'ブランチ戦略とマージ', 'GitHub PR / Issue 運用', 'AI エージェント連携'],
   },
   threejs: {
-    tagline: 'Web ブラウザで 3D 表現を実現する、インタラクティブ開発入門',
+    tagline: 'ブラウザ上で 3D グラフィックスを動かしながら学べる入門コース',
     topics: ['Three.js シーン構築', 'React Three Fiber', 'ライティング・マテリアル', '飛行シミュレーション'],
   },
   'claude-mux': {
-    tagline: 'AI を開発ワークフローに組み込み、生産性を飛躍的に向上させる',
+    tagline: 'AI ツールと tmux を使った開発ワークフローを試しながら学べる',
     topics: ['Claude Code CLI 活用', 'tmux マルチプレクサ', 'MCP サーバー / Hooks', 'CI/CD パイプライン'],
   },
 };
@@ -61,18 +61,18 @@ const manualDetails: Record<ManualId, { tagline: string; topics: string[] }> = {
 const audiences = [
   {
     icon: <Rocket size={24} />,
-    title: 'フロントエンド入門者',
-    description: 'HTML / CSS は書けるが、React やモダンな開発ツールに踏み出せていない方。環境構築からデプロイまで一気通貫で学べます。',
+    title: 'React がはじめての方',
+    description: 'HTML / CSS の基礎がある方向け。環境構築からデプロイまでの流れを、手を動かしながら一通り体験できます。',
   },
   {
     icon: <Users size={24} />,
-    title: 'チーム開発に参加する方',
-    description: 'Git のブランチ運用、PR レビュー、Storybook でのコンポーネント管理など、チームで働くための実践スキルを習得。',
+    title: 'チーム開発を体験したい方',
+    description: 'Git のブランチ運用、PR レビュー、Storybook でのコンポーネント管理など、チーム開発の基本的な流れを学べます。',
   },
   {
     icon: <Zap size={24} />,
-    title: 'AI で開発を加速したい方',
-    description: 'Claude Code や MCP を使い、コーディング・テスト・デプロイを AI と協働で進める次世代の開発手法を体験。',
+    title: 'AI ツールを試してみたい方',
+    description: 'Claude Code や MCP を使った開発の進め方を、実際のワークフローに沿って試しながら学べます。',
   },
 ];
 
@@ -102,10 +102,10 @@ const features = [
 
 /* ── 学習ロードマップ ── */
 const roadmap = [
-  { phase: '基礎', label: 'React + TypeScript', color: 'bg-indigo-500', description: 'コンポーネント・状態管理・Hooks の基本を固める' },
-  { phase: '応用', label: 'Next.js + CSS', color: 'bg-teal-500', description: 'SSR/SSG、ルーティング、スタイリングを実践' },
-  { phase: '品質', label: 'Storybook + Git', color: 'bg-rose-500', description: 'コンポーネント管理とチーム開発ワークフロー' },
-  { phase: '加速', label: 'AI + 3D', color: 'bg-violet-500', description: 'Claude Code で生産性向上、Three.js で表現力拡張' },
+  { phase: '基礎', label: 'React + TypeScript', color: 'bg-indigo-500', description: 'コンポーネント・状態管理・Hooks を手を動かして学ぶ' },
+  { phase: '応用', label: 'Next.js + CSS', color: 'bg-teal-500', description: 'ルーティング・スタイリング・デプロイを一通り体験する' },
+  { phase: '品質', label: 'Storybook + Git', color: 'bg-rose-500', description: 'コンポーネント管理とチーム開発の流れを知る' },
+  { phase: '加速', label: 'AI + 3D', color: 'bg-violet-500', description: 'Claude Code と Three.js の使い方を試してみる' },
 ];
 
 /* ── メイン ── */
@@ -123,12 +123,12 @@ export default function Landing() {
             <span className="text-sm font-medium tracking-wider uppercase opacity-80">Dev Album</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-heading font-extrabold mb-6 leading-[1.15]">
-            技術の学びを、<br />
-            <span className="text-blue-200">1冊のアルバムに</span>
+            手を動かして学ぶ、<br />
+            <span className="text-blue-200">実践チュートリアル</span>
           </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed mb-8">
-            React・Git・Three.js・Claude Code — 現場で求められる 4 つの技術領域を、
-            1ページずつ書き溜めていく開発アルバム。手を動かしながら、自分だけの記録が積み上がります。
+            React・Git・Three.js・Claude Code — 現場で使われる 4 つの技術を、
+            実際にコードを書きながら一通り体験できる学習サービスです。
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
@@ -153,14 +153,13 @@ export default function Landing() {
         <div className="max-w-3xl">
           <p className="text-sm font-semibold text-primary mb-3 tracking-wider uppercase">Why Dev Album?</p>
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 leading-snug">
-            断片的な情報では、<br className="hidden md:block" />開発力は身につかない
+            4 つの技術を繋げて、<br className="hidden md:block" />開発の全体像を体験
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            React のチュートリアルを終えても、Git でチーム開発する方法がわからない。
-            Next.js を学んでも、デプロイや CI/CD の繋げ方が見えない。
-            — 技術は単体ではなく<strong className="text-foreground">繋がりの中で</strong>初めて力になります。
-            Dev Album は 4 つの技術領域を 1 冊のアルバムに綴じ、
-            「環境構築からデプロイ・チーム開発」までの道筋を一本のラインで描きます。
+            環境構築からコンポーネント開発、Git でのチーム運用、デプロイまで
+            — 開発の流れを一通り体験できる学習サービスです。
+            4 つの技術領域を横断的にカバーしているので、
+            それぞれの知識がどう繋がるかを実感しながら進められます。
           </p>
         </div>
       </section>
@@ -187,9 +186,9 @@ export default function Landing() {
       {/* ═══ Learning Path ═══ */}
       <section className="max-w-5xl mx-auto px-6 py-16 md:py-20">
         <p className="text-sm font-semibold text-primary mb-3 tracking-wider uppercase">Learning Path</p>
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">4 つの教材がひとつの学習パスに</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">4 つの教材をひとつの流れで</h2>
         <p className="text-muted-foreground mb-10 max-w-2xl leading-relaxed">
-          それぞれの教材は独立して学べますが、組み合わせることで「実務で通用する開発力」が身につきます。
+          それぞれ独立して学ぶこともできますし、順番に進めれば開発の流れを一通り体験できます。
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {roadmap.map((r, i) => (
@@ -256,7 +255,7 @@ export default function Landing() {
       {/* ═══ Features ═══ */}
       <section className="max-w-5xl mx-auto px-6 py-16 md:py-20">
         <p className="text-sm font-semibold text-primary mb-3 tracking-wider uppercase">Features</p>
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-10">読むだけじゃない、書いて学ぶ</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-10">コードを書きながら学べる仕組み</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {features.map((f) => (
             <div key={f.title} className="flex gap-4">
@@ -276,17 +275,17 @@ export default function Landing() {
       <section className="bg-muted/30">
         <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
           <p className="text-sm font-semibold text-primary mb-3 tracking-wider uppercase">Outcomes</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-10">学習後にできること</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-10">一通り体験できること</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
             {[
-              'React + TypeScript でコンポーネントベースの UI を設計・実装できる',
-              'Next.js で SSR/SSG アプリをビルドし Vercel にデプロイできる',
-              'Git / GitHub でブランチ運用・PR レビューのチーム開発ができる',
-              'Storybook でコンポーネントカタログを構築・運用できる',
-              'Tailwind CSS / MUI でデザインシステムに沿った開発ができる',
-              'Claude Code + MCP で AI を活用した開発ワークフローを構築できる',
-              'Three.js / R3F で 3D コンテンツを Web に組み込める',
-              'ポートフォリオサイトを一から設計・制作・公開できる',
+              'React + TypeScript でコンポーネントを作って動かす',
+              'Next.js でアプリをビルドし Vercel にデプロイする',
+              'Git / GitHub でブランチ運用・PR レビューの流れを試す',
+              'Storybook でコンポーネントカタログを作ってみる',
+              'Tailwind CSS / MUI を使ったスタイリングを体験する',
+              'Claude Code + MCP を使った AI 開発の流れを知る',
+              'Three.js / R3F で 3D コンテンツをブラウザに表示する',
+              'ポートフォリオサイトを一から作って公開する',
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <PenTool size={16} className="text-primary flex-shrink-0 mt-0.5" />
