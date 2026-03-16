@@ -168,20 +168,6 @@ export default function Navigation() {
             })}
           </div>
 
-          {/* UI トレーニング */}
-          <Link
-            href="/training"
-            onClick={() => setIsOpen(false)}
-            className={`flex items-center gap-2 px-3 py-2 mb-4 rounded-xl text-sm font-semibold border transition-all ${
-              location === '/training'
-                ? 'border-amber-400 bg-amber-400/15 text-amber-600 dark:text-amber-300'
-                : 'border-border text-muted-foreground hover:bg-muted/50'
-            }`}
-          >
-            <Dumbbell size={14} />
-            UI トレーニング
-          </Link>
-
           {/* 検索 */}
           <div className="relative mb-4">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
@@ -369,6 +355,22 @@ export default function Navigation() {
               })}
             </div>
           )}
+
+          {/* UI トレーニング */}
+          <div className="mt-4 pt-4 border-t border-sidebar-border">
+            <Link
+              href="/training"
+              onClick={() => setIsOpen(false)}
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+                location === '/training'
+                  ? 'text-primary font-medium bg-primary/10'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-sidebar-accent/50'
+              }`}
+            >
+              <Dumbbell size={14} />
+              UI トレーニング
+            </Link>
+          </div>
         </div>
       </nav>
 

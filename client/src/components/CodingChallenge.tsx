@@ -167,6 +167,30 @@ function HighlightedEditor({
         value={code}
         onChange={(e) => onChange(e.target.value)}
         onScroll={handleScroll}
+        onKeyDown={(e) => {
+          if (e.key === 'Tab') {
+            e.preventDefault();
+            const ta = e.currentTarget;
+            const start = ta.selectionStart;
+            const end = ta.selectionEnd;
+            if (e.shiftKey) {
+              // Shift+Tab: 行頭のスペース2つを削除（逆インデント）
+              const before = code.substring(0, start);
+              const lineStart = before.lastIndexOf('\n') + 1;
+              const line = code.substring(lineStart, end);
+              if (line.startsWith('  ')) {
+                const next = code.substring(0, lineStart) + code.substring(lineStart).replace(/^ {2}/, '');
+                onChange(next);
+                requestAnimationFrame(() => { ta.selectionStart = Math.max(lineStart, start - 2); ta.selectionEnd = Math.max(lineStart, end - 2); });
+              }
+            } else {
+              // Tab: カーソル位置にスペース2つを挿入
+              const next = code.substring(0, start) + '  ' + code.substring(end);
+              onChange(next);
+              requestAnimationFrame(() => { ta.selectionStart = ta.selectionEnd = start + 2; });
+            }
+          }
+        }}
         spellCheck={false}
         wrap="off"
         className="absolute inset-0 w-full h-full py-4 px-5 font-mono text-sm leading-relaxed bg-transparent text-transparent caret-white resize-none focus:outline-none selection:bg-blue-500/30 overflow-auto z-10 whitespace-pre"
