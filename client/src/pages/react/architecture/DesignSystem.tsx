@@ -1037,7 +1037,87 @@ describe('Button', () => {
             </InfoBox>
           </section>
 
-          {/* セクション 7: まとめ */}
+          {/* セクション 7: AI-Ready デザインシステム */}
+          <section>
+            <h2 className="text-2xl font-bold text-foreground mb-4">AI-Ready なデザインシステム</h2>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              Claude Code や Cursor などの AI ツールがコードを生成する場面が増えている。
+              デザインシステムを「AI にも読める」形で設計すると、AI が生成する UI の一貫性を維持しやすくなる。
+            </p>
+
+            <h3 className="text-lg font-semibold text-foreground mb-3">CLAUDE.md をエントリーポイントにする</h3>
+            <p className="text-muted-foreground mb-4 leading-relaxed">
+              プロジェクトルートの <code>CLAUDE.md</code> に、デザインシステムの要約・トークン一覧・コンポーネント命名規則を記述する。
+              AI はこのファイルを最初に読むため、システム全体の制約を伝える最も効率的な方法になる。
+            </p>
+            <CodeBlock title="CLAUDE.md の例（デザインシステム抜粋）" language="markdown" code={`## デザインシステム
+
+### カラートークン
+- primary: #6366F1（アクション、リンク）
+- text-body: #3d4b5f（本文テキスト）
+- bg-page: #f8fafc（ページ背景）
+
+### 命名規則
+- コンポーネント: PascalCase（Button, TextInput）
+- トークン: kebab-case（text-body, bg-primary-50）
+- バリアント: size="sm|md|lg", variant="primary|secondary|danger"
+
+### 禁止パターン
+- text-black を使わない → text-slate-900（青みがかった黒）
+- shadow-lg をカードに使わない → shadow-sm で控えめに
+- 色だけで情報を伝えない → アイコンやテキストを併用
+- duration-500 以上のアニメーション → duration-150 で即応性`} />
+
+            <h3 className="text-lg font-semibold text-foreground mt-6 mb-3">禁止パターンの明示</h3>
+            <p className="text-muted-foreground mb-4 leading-relaxed">
+              「やるべきこと」だけでなく「やってはいけないこと」を明示する。
+              AI は指示がなければ自由に生成するため、禁止パターンの定義が一貫性維持に有効になる。
+            </p>
+            <div className="overflow-x-auto mb-6">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 px-3 text-foreground">禁止</th>
+                    <th className="text-left py-2 px-3 text-foreground">理由</th>
+                    <th className="text-left py-2 px-3 text-foreground">推奨</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 px-3"><code>text-black</code></td><td className="py-2 px-3">コントラスト過剰</td><td className="py-2 px-3"><code>text-slate-900</code></td></tr>
+                  <tr className="border-b border-border"><td className="py-2 px-3"><code>shadow-lg</code> on cards</td><td className="py-2 px-3">ノイズが多い</td><td className="py-2 px-3"><code>shadow-sm</code></td></tr>
+                  <tr className="border-b border-border"><td className="py-2 px-3">色だけで情報伝達</td><td className="py-2 px-3">色覚多様性</td><td className="py-2 px-3">アイコン + テキスト併用</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 px-3"><code>duration-500</code></td><td className="py-2 px-3">操作が鈍く感じる</td><td className="py-2 px-3"><code>duration-150</code></td></tr>
+                  <tr className="border-b border-border"><td className="py-2 px-3">1画面に4色以上</td><td className="py-2 px-3">AI生成UIの典型問題</td><td className="py-2 px-3">最大3色</td></tr>
+                  <tr><td className="py-2 px-3">ネイティブ <code>select</code> 矢印</td><td className="py-2 px-3">ブラウザ間差異</td><td className="py-2 px-3"><code>appearance-none</code> + SVG</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-lg font-semibold text-foreground mb-3">セマンティックな命名</h3>
+            <p className="text-muted-foreground mb-4 leading-relaxed">
+              トークンやクラス名に「意図」を持たせる命名を行う。
+              <code>blue-600</code> ではなく <code>text-body</code>、
+              <code>#333</code> ではなく <code>--color-heading</code> とすることで、
+              人間にも AI にも用途が明確になる。
+            </p>
+
+            <h3 className="text-lg font-semibold text-foreground mb-3">tokens.json による機械可読化</h3>
+            <p className="text-muted-foreground mb-4 leading-relaxed">
+              デザイントークンを JSON 形式で管理し、Style Dictionary で CSS / JS / iOS / Android 向けに変換する。
+              同じ JSON を AI が直接参照することで、トークンの値と意味を正確に把握できる。
+            </p>
+
+            <InfoBox type="info" title="参考: melta UI">
+              <p>
+                melta UI (<a href="https://melta.tsubotax.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">melta.tsubotax.com</a>) は、
+                AI と人間の両方が読めるデザインシステムの実践例。
+                CLAUDE.md をエントリーポイントとし、76 の禁止パターン、120+ のセマンティックトークン、
+                MCP サーバーによるトークン検証を備えている。
+              </p>
+            </InfoBox>
+          </section>
+
+          {/* セクション 8: まとめ */}
           <section>
             <h2 className="text-2xl font-bold text-foreground mb-4">まとめ</h2>
             <div className="rounded-lg border border-border p-6 bg-muted/30">
