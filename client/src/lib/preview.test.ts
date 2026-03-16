@@ -145,9 +145,7 @@ function App() {
     expect(html).toContain("react@18");
   });
 
-  it("componentName 検出で Badge と App が両方存在する場合、最初の PascalCase 名を返す", () => {
-    // detectComponentName は最初にマッチした PascalCase 関数名を返す
-    // Badge が先にあるので Badge が検出される...が、実際はレンダリングで使う
+  it("componentName 検出で Badge と App が両方存在する場合、App を優先する", () => {
     const code = `
 function Badge({ children }) {
   return <span>{children}</span>;
@@ -156,9 +154,8 @@ function App() {
   return <Badge>Hello</Badge>;
 }`;
     const html = buildPreviewHtml(code, "", false);
-    // 生成される HTML には componentName が使われる
-    // detectComponentName は最初の PascalCase 関数名 = Badge を返す
-    // しかし typeof Badge !== 'undefined' なのでレンダリングは行われる
+    // App が優先的にレンダリング対象になる
+    expect(html).toContain("React.createElement(App)");
     expect(html).toContain("Badge");
   });
 

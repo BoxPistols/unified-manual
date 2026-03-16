@@ -12,9 +12,11 @@ function stripModuleSyntax(code: string): string {
 }
 
 /**
- * コードから最初の PascalCase 関数コンポーネント名を検出する
+ * コードからレンダリング対象のコンポーネント名を検出する。
+ * App が定義されていれば優先。なければ最初の PascalCase 関数名。
  */
 function detectComponentName(code: string): string {
+  if (/function\s+App\b/.test(code) || /const\s+App\s*=/.test(code)) return 'App';
   const match = code.match(/function\s+([A-Z][A-Za-z0-9]*)/);
   return match?.[1] ?? 'App';
 }
@@ -76,6 +78,10 @@ ${needsThree ? '<script src="https://unpkg.com/three@0.160.1/build/three.min.js"
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Work Sans',system-ui,sans-serif;padding:20px;background:var(--bg);color:var(--text);line-height:1.6;}
+input,textarea,select,button{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:6px 10px;}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--text-accent);outline-offset:1px;}
+button{cursor:pointer;background:var(--bg-muted);border-color:var(--border);}
+button:hover{opacity:0.85;}
 ${cssCode}
 </style></head><body>
 <div id="root"></div>
