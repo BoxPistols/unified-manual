@@ -61,17 +61,17 @@ const manualDetails: Record<ManualId, { tagline: string; topics: string[] }> = {
 const audiences = [
   {
     icon: <Rocket size={24} />,
-    title: 'React がはじめての方',
-    description: 'HTML / CSS の基礎がある方向け。環境構築からデプロイまでの流れを、手を動かしながら一通り体験できます。',
+    title: 'Web 制作を正しく学びたい方',
+    description: 'HTML / CSS の基礎がある方向け。セマンティックな HTML、アクセシブルな UI、Web 標準に沿った開発を基礎から体験できます。',
   },
   {
     icon: <Users size={24} />,
-    title: 'チーム開発を体験したい方',
-    description: 'Git のブランチ運用、PR レビュー、Storybook でのコンポーネント管理など、チーム開発の基本的な流れを学べます。',
+    title: 'チーム開発の流れを知りたい方',
+    description: 'Git のブランチ運用、PR レビュー、Storybook、デザインシステムなど、チームで品質を保つワークフローを学べます。',
   },
   {
     icon: <Zap size={24} />,
-    title: 'AI ツールを試してみたい方',
+    title: 'AI ツールを取り入れたい方',
     description: 'Claude Code や MCP を使った開発の進め方を、実際のワークフローに沿って試しながら学べます。',
   },
 ];
@@ -90,13 +90,13 @@ const features = [
   },
   {
     icon: <Target size={20} />,
-    title: 'クイズ & FAQ',
-    description: '知識の定着を確認するクイズと、つまずきやすいポイントを FAQ で解消。',
+    title: 'Web 品質と a11y',
+    description: 'アクセシビリティ、セマンティック HTML、ダークパターン回避など、Web 標準に沿った品質指針を実践的に学べます。',
   },
   {
     icon: <Layers size={20} />,
     title: 'ステップバイステップ',
-    description: '全 154 ステップを段階的に進行。前のステップの知識が次で活きる構成です。',
+    description: 'コードの書き方だけでなく、設計・品質・チーム運用まで段階的にカバー。前のステップの知識が次で活きる構成です。',
   },
 ];
 
@@ -123,12 +123,12 @@ export default function Landing() {
             <span className="text-sm font-medium tracking-wider uppercase opacity-80">Dev Album</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-heading font-extrabold mb-6 leading-[1.15]">
-            手を動かして学ぶ、<br />
-            <span className="text-blue-200">実践チュートリアル</span>
+            正しい Web をつくれる人を、<br />
+            <span className="text-blue-200">ここから育てる</span>
           </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed mb-8">
-            React・Git・Three.js・Claude Code — Web 開発の基本から応用まで、
-            実際にコードを書きながら一通り体験できる学習サービスです。
+            コードが書けるだけでは足りない。Web 標準・アクセシビリティ・品質を理解し、
+            誰もが使える Web を設計・実装できる開発者を育てる実践チュートリアルです。
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
@@ -159,13 +159,12 @@ export default function Landing() {
         <div className="max-w-3xl">
           <p className="text-sm font-semibold text-primary mb-3 tracking-wider uppercase">Why Dev Album?</p>
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 leading-snug">
-            4 つの技術を繋げて、<br className="hidden md:block" />開発の全体像を体験
+            プログラミングだけでなく、<br className="hidden md:block" />Web の「つくり方」を学ぶ
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            環境構築からコンポーネント開発、Git でのチーム運用、デプロイまで
-            — 開発の流れを一通り体験できる学習サービスです。
-            4 つの技術領域を横断的にカバーしているので、
-            それぞれの知識がどう繋がるかを実感しながら進められます。
+            セマンティック HTML、アクセシビリティ、レスポンシブ設計、パフォーマンス
+            — Web 標準に沿った正しいつくり方を、コードを書きながら身につけられます。
+            4 つの技術領域を横断することで、環境構築からデプロイ、チーム開発までの流れも一通り体験できます。
           </p>
         </div>
       </section>
@@ -286,12 +285,12 @@ export default function Landing() {
             {[
               'React + TypeScript でコンポーネントを作って動かす',
               'Next.js でアプリをビルドし Vercel にデプロイする',
+              'セマンティック HTML と ARIA でアクセシブルな UI を設計する',
               'Git / GitHub でブランチ運用・PR レビューの流れを試す',
               'Storybook でコンポーネントカタログを作ってみる',
-              'Tailwind CSS / MUI を使ったスタイリングを体験する',
+              'Table / Dialog / Form の品質課題と対処法を知る',
               'Claude Code + MCP を使った AI 開発の流れを知る',
-              'Three.js / R3F で 3D コンテンツをブラウザに表示する',
-              'ポートフォリオサイトを一から作って公開する',
+              'ダークパターンを避け、ユーザーに誠実な UI を設計する',
             ].map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <PenTool size={16} className="text-primary flex-shrink-0 mt-0.5" />

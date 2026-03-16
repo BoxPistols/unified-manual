@@ -2,11 +2,17 @@
 
 ## プロジェクト概要
 
-Web ベースのフロントエンド学習教材。Git / React / Claude Code / Three.js の 4 領域をカバー。
+「正しい Web をつくれる人を育てる」実践チュートリアル。プログラミングスキルだけでなく、Web 標準・アクセシビリティ・品質設計を重視する。W3Schools のコンセプトを参考に、より実務寄り・品質寄りの人材育成を目指す。
 
 - URL: https://dev-album.vercel.app
 - リポジトリ: https://github.com/BoxPistols/unified-manual
 - スタック: React 19 + TypeScript + Vite + Tailwind CSS
+
+### コアバリュー
+1. **Web 標準**: セマンティック HTML、WCAG 準拠、正しいマークアップ
+2. **アクセシビリティ**: 色覚多様性、キーボード操作、スクリーンリーダー対応
+3. **品質設計**: ダークパターン回避、Table/Dialog/Form の正しい設計
+4. **実践**: コードを書いて結果を見る、読むだけで終わらない
 
 ## 技術スタック
 

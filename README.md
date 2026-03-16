@@ -1,6 +1,8 @@
 # Dev Album
 
-Web ベースのフロントエンド学習教材。Git / React / Claude Code / Three.js の 4 領域をカバーする。
+正しい Web をつくれる開発者を育てる実践チュートリアル。
+
+プログラミングスキルだけでなく、Web 標準・アクセシビリティ・品質設計を重視し、セマンティック HTML、ARIA、ダークパターン回避、Table/Dialog/Form の正しい設計まで、手を動かしながら学べる。
 
 https://dev-album.vercel.app
 
