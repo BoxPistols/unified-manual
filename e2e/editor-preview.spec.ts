@@ -115,7 +115,7 @@ test.describe('ナビゲーション', () => {
     await page.goto('/');
     await expect(page.locator('h1')).toBeVisible({ timeout: 10_000 });
     const text = await page.locator('h1').textContent();
-    expect(text).toContain('実践チュートリアル');
+    expect(text).toContain('実践リファレンス');
   });
 
   test('UI トレーニングリンクがサイドバーにある', async ({ page }) => {
@@ -167,18 +167,38 @@ test.describe('プレビューエラー検出', () => {
     await expect(error).toHaveCount(0);
   });
 
-  test('Training レベル2 #1: プレビューが正常表示される', async ({ page }) => {
+  test('Training: レベル1 の全プレビューに実行エラーがない', async ({ page }) => {
     await page.goto('/training');
-    // レベル2 タブをクリック
-    const level2Tab = page.locator('button:has-text("レベル2")');
-    if (await level2Tab.isVisible()) {
-      await level2Tab.click();
-      await page.waitForTimeout(1_000);
-    }
-    // CodingChallenge プレビュー iframe が存在する
+    await page.waitForTimeout(2_000);
     const iframes = page.locator('iframe[title="プレビュー"]');
     const count = await iframes.count();
     expect(count).toBeGreaterThanOrEqual(1);
+    // 最初の3つの iframe に JSON エラーがないことを確認
+    for (let i = 0; i < Math.min(count, 3); i++) {
+      const srcDoc = await iframes.nth(i).getAttribute('srcdoc') || '';
+      expect(srcDoc).not.toContain('is not valid JSON');
+    }
+  });
+
+  test('Training #3 CenterAbsolute: プレビューに JSON エラーが表示されない', async ({ page }) => {
+    await page.goto('/training');
+    await page.waitForTimeout(2_000);
+    // 全プレビュー iframe の srcDoc に "is not valid JSON" が含まれないこと
+    const iframes = page.locator('iframe[title="プレビュー"]');
+    const count = await iframes.count();
+    for (let i = 0; i < Math.min(count, 5); i++) {
+      const srcDoc = await iframes.nth(i).getAttribute('srcdoc') || '';
+      expect(srcDoc).not.toContain('is not valid JSON');
+      expect(srcDoc).not.toContain('Unexpected token');
+    }
+  });
+
+  test('Training: Unicode 文字が正しく表示される（\\u エスケープなし）', async ({ page }) => {
+    await page.goto('/training');
+    // ページ内に \\u2606 等のリテラル文字列が表示されていないこと
+    const body = await page.locator('body').textContent();
+    expect(body).not.toContain('\\u2606');
+    expect(body).not.toContain('\\u2605');
   });
 
   test('Flexbox ページ: CodePreview が表示されプレビューにコンテンツがある', async ({ page }) => {

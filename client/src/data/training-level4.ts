@@ -54,7 +54,7 @@ export const level4Challenges: TrainingChallenge[] = [
               cursor: 'pointer',
             }}
           >
-            {open ? '\\u2715' : '\\u2630'}
+            {open ? '✕' : '☰'}
           </button>
         ) : (
           <div style={{ display: 'flex', gap: 24 }}>
@@ -514,7 +514,7 @@ export const level4Challenges: TrainingChallenge[] = [
                 color: '#666',
               }}
             >
-              \\u2715
+              ✕
             </button>
             <h3 style={{ margin: '0 0 12px' }}>確認ダイアログ</h3>
             <p style={{ color: '#555', lineHeight: 1.6, marginBottom: 20 }}>
@@ -605,7 +605,7 @@ export const level4Challenges: TrainingChallenge[] = [
                   transition: 'background 0.3s, color 0.3s',
                 }}
               >
-                {i < step ? '\\u2713' : i + 1}
+                {i < step ? '✓' : i + 1}
               </div>
               <span
                 style={{
@@ -973,7 +973,7 @@ export const level4Challenges: TrainingChallenge[] = [
           cursor: 'pointer',
         }}
       >
-        <div style={{ fontSize: 40, marginBottom: 8 }}>{dragging ? '\\uD83D\\uDCE5' : '\\uD83D\\uDCC1'}</div>
+        <div style={{ fontSize: 40, marginBottom: 8 }}>{dragging ? '📥' : '📁'}</div>
         <p style={{ color: '#666', margin: 0 }}>
           {dragging ? 'ここにドロップしてください' : 'ファイルをドラッグ＆ドロップ'}
         </p>
@@ -1004,7 +1004,7 @@ export const level4Challenges: TrainingChallenge[] = [
                 onClick={() => removeFile(i)}
                 style={{ background: 'none', border: 'none', color: '#e94560', cursor: 'pointer', fontSize: 16 }}
               >
-                \\u2715
+                ✕
               </button>
             </div>
           ))}

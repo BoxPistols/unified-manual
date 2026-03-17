@@ -88,10 +88,16 @@ export function resolvePreviewType(code: string, previewType?: string): string {
   // JSON → config
   if (/^\s*[\[{]/.test(trimmed) && /[\]}]\s*$/.test(trimmed)) return 'config';
 
-  // YAML（--- で始まる or key: value パターンが支配的）
-  if (/^---\s*$/m.test(trimmed)) return 'config';
-  const yamlLines = codeLines.filter(l => /^\s*[\w-]+\s*:/.test(l));
-  if (yamlLines.length > 0 && yamlLines.length >= codeLines.length * 0.4) return 'config';
+  // JSX の兆候があれば早期に jsx を返す（YAML/CSS 誤判定防止）
+  const hasJsxSignals = /\b(function|const|return|=>)\b/.test(trimmed) && /<[A-Za-z]/.test(trimmed);
+  if (hasJsxSignals) return 'jsx';
+
+  // YAML（--- で始まる or key: value パターンが支配的、ただし function/return があれば除外）
+  if (/^---\s*$/m.test(trimmed) && !/\b(function|return)\b/.test(trimmed)) return 'config';
+  if (!/\b(function|return|const|=>)\b/.test(trimmed)) {
+    const yamlLines = codeLines.filter(l => /^\s*[\w-]+\s*:/.test(l));
+    if (yamlLines.length > 0 && yamlLines.length >= codeLines.length * 0.4) return 'config';
+  }
 
   // HTML（< で始まり JSX コンポーネントではない、または HTML コメント <!-- -->）
   if (/^\s*<!?(DOCTYPE|html|head|body|div|form|table|ul|ol|nav|header|main|footer|section|article|fieldset|input|label|select|textarea)\b/i.test(trimmed)) return 'terminal';

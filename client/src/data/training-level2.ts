@@ -734,7 +734,7 @@ export const level2Challenges: TrainingChallenge[] = [
                 color: 'var(--text-muted)',
               }}
             >
-              \\u00d7
+              ×
             </span>
           </span>
         ))}
@@ -787,7 +787,7 @@ export const level2Challenges: TrainingChallenge[] = [
     <div style={{ padding: 40, display: 'flex', justifyContent: 'center' }}>
       <div style={{ display: 'flex', gap: 4, fontSize: 28 }}>
         {[1, 2, 3, 4, 5].map((n) => (
-          <span key={n} style={{ cursor: 'pointer' }}>\\u2606</span>
+          <span key={n} style={{ cursor: 'pointer' }}>☆</span>
         ))}
       </div>
     </div>
@@ -813,7 +813,7 @@ export const level2Challenges: TrainingChallenge[] = [
               userSelect: 'none',
             }}
           >
-            {n <= (hover || rating) ? '\\u2605' : '\\u2606'}
+            {n <= (hover || rating) ? '★' : '☆'}
           </span>
         ))}
       </div>
