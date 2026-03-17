@@ -91,7 +91,7 @@ export const Secondary: Story = {
               各バリエーションがカタログのように一覧でき、デザイナーもコードを読まずに確認できます。
             </p>
 
-            <CodePreview
+            <CodePreview previewOnly previewOnly
   code={`function StoryOutputDemo() {
   const base = { padding: '10px 24px', borderRadius: '8px', fontSize: '14px', fontWeight: '600', cursor: 'pointer', border: 'none', transition: 'all 0.2s', fontFamily: 'system-ui, sans-serif' };
   return (
@@ -394,7 +394,7 @@ export const Danger: Story = {
               下のコードで <code>title</code> や <code>hasImage</code> を編集すると、カードの表示がリアルタイムに変化します。
             </p>
 
-            <CodePreview
+            <CodePreview previewOnly previewOnly
   code={`function ArgsVariationDemo() {
   const [activeTab, setActiveTab] = React.useState(0);
   const variants = [
@@ -524,7 +524,7 @@ await expect(mockFn).toHaveBeenCalledWith(arg);`}
               下のデモでは「テスト実行」を押すと、play 関数が何をするかをアニメーションで確認できます。
             </p>
 
-            <CodePreview
+            <CodePreview previewOnly previewOnly
   code={`function PlayFunctionDemo() {
   const [step, setStep] = React.useState(0);
   const [running, setRunning] = React.useState(false);
@@ -916,7 +916,7 @@ export const NoDescription: Story = {
               Storybook のサイドバーがどのようにグルーピングされるか視覚的に確認しましょう。
             </p>
 
-            <CodePreview
+            <CodePreview previewOnly previewOnly
   code={`function StoryGroupingDemo() {
   const [expanded, setExpanded] = React.useState({ Components: true, Form: true, Layout: false, Pages: false });
   const toggle = (key) => setExpanded(prev => ({ ...prev, [key]: !prev[key] }));

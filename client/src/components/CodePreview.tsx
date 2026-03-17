@@ -11,6 +11,8 @@ interface CodePreviewProps {
   css?: string;
   previewHeight?: number;
   layout?: 'horizontal' | 'vertical';
+  /** true にするとコードを隠し、プレビューのみ表示する（視覚デモ用） */
+  previewOnly?: boolean;
 }
 
 const languageMap: Record<string, Language> = {
@@ -29,11 +31,12 @@ export default function CodePreview({
   css = '',
   previewHeight = 320,
   layout = 'horizontal',
+  previewOnly = false,
 }: CodePreviewProps) {
   const [editableCode, setEditableCode] = useState(code);
   const [copied, setCopied] = useState(false);
   const [isExpanded, setIsExpanded] = useState(true);
-  const [viewMode, setViewMode] = useState<'both' | 'code' | 'preview'>('both');
+  const [viewMode, setViewMode] = useState<'both' | 'code' | 'preview'>(previewOnly ? 'preview' : 'both');
   const [splitRatio, setSplitRatio] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const highlightRef = useRef<HTMLDivElement>(null);
@@ -228,7 +231,7 @@ export default function CodePreview({
         )}
       </div>
       <div className="flex items-center gap-0.5">
-        {canPreview && (
+        {canPreview && !previewOnly && (
           <>
             <button
               onClick={() => setViewMode(viewMode === 'code' ? 'both' : 'code')}

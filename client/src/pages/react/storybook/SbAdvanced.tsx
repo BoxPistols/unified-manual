@@ -116,7 +116,7 @@ export default meta;`}
               リアルタイムに表示されます。以下はその出力イメージです。
             </p>
 
-            <CodePreview
+            <CodePreview previewOnly previewOnly
   code={`function A11yAddonPanel() {
   const violations = [
     { impact: 'critical', rule: 'color-contrast', desc: 'テキストのコントラスト比が 2.5:1 です（最低 4.5:1 が必要）', element: '<span class="light-text">', fix: 'テキスト色をより濃い色に変更するか、背景色を明るくしてください' },
@@ -440,7 +440,7 @@ export default create({
               左がデコレーターなし、右がテーマプロバイダーデコレーターを適用した結果です。
             </p>
 
-            <CodePreview
+            <CodePreview previewOnly previewOnly
   code={`function DecoratorComparison() {
   const cardStyle = {
     padding: '20px',
@@ -862,7 +862,7 @@ export default config;`}
               1つのページにまとめて表示できます。以下はその表示イメージです。
             </p>
 
-            <CodePreview
+            <CodePreview previewOnly previewOnly
   code={`function MdxDocPreview() {
   const btnStyle = { padding: '8px 20px', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer', fontSize: '14px' };
   return (
