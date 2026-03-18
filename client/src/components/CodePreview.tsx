@@ -125,9 +125,11 @@ export default function CodePreview({
   const showCode = viewMode !== 'preview';
   const showPreview = canPreview && viewMode !== 'code';
 
-  // プレビューパネルの高さ
+  // プレビューパネルの高さ（縮小時と拡大時で必ず差が出るようにする）
+  const previewCollapsed = Math.max(200, previewHeight);
+  const previewExpanded = Math.max(previewCollapsed + 300, 600);
   const previewPanelHeight = !showCode
-    ? (isExpanded ? Math.max(600, previewHeight * 2) : Math.max(200, previewHeight))
+    ? (isExpanded ? previewExpanded : previewCollapsed)
     : editorHeight;
   const showSplit = showCode && showPreview && isHorizontal;
 

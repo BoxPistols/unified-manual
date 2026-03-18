@@ -1,56 +1,9 @@
 /**
  * fuzzyCheck（合格判定ロジック）のユニットテスト
+ * CodingChallenge.tsx から export された実関数を直接テスト
  */
 import { describe, it, expect } from "vitest";
-
-// fuzzyCheck は CodingChallenge.tsx 内の非 export 関数なので、
-// ロジックを直接テストするためにここに複製する
-function fuzzyCheck(
-  code: string,
-  answer: string,
-  keywords?: string[],
-): boolean {
-  const normalize = (s: string) => s.replace(/\s+/g, " ").trim();
-  const normalizedCode = normalize(code);
-  const normalizedAnswer = normalize(answer);
-
-  if (normalizedCode === normalizedAnswer) return true;
-
-  if (keywords && keywords.length > 0) {
-    return keywords.every((kw) => normalizedCode.includes(kw));
-  }
-
-  const importantPatterns = [
-    /interface\s+\w+/g,
-    /type\s+\w+/g,
-    /:\s*(?:string|number|boolean|ReactNode)/g,
-    /\?\s*:/g,
-    /'\w+'\s*\|/g,
-    /\|\s*'\w+'/g,
-  ];
-
-  const tokens = new Set<string>();
-  for (const pattern of importantPatterns) {
-    const matches = answer.match(pattern);
-    if (matches) matches.forEach((m) => tokens.add(normalize(m)));
-  }
-
-  if (tokens.size === 0) {
-    const answerLines = normalizedAnswer
-      .split(/[;\n]/)
-      .map(normalize)
-      .filter(Boolean);
-    const matchCount = answerLines.filter((line) =>
-      normalizedCode.includes(line),
-    ).length;
-    return matchCount >= Math.ceil(answerLines.length * 0.5);
-  }
-
-  const matchCount = Array.from(tokens).filter((t) =>
-    normalizedCode.includes(t),
-  ).length;
-  return matchCount >= Math.ceil(tokens.size * 0.8);
-}
+import { fuzzyCheck } from "@/components/CodingChallenge";
 
 // ============================================================
 // keywords ベースの判定
@@ -76,8 +29,6 @@ describe("fuzzyCheck: keywords ベース", () => {
   });
 
   it("穴埋め式: ___ を正しい値に置換すれば正解", () => {
-    const initialCode =
-      "display: '___', alignItems: '___', justifyContent: 'center'";
     const userCode =
       "display: 'flex', alignItems: 'center', justifyContent: 'center'";
     expect(fuzzyCheck(userCode, answer, ["flex", "center"])).toBe(true);
@@ -126,8 +77,6 @@ describe("fuzzyCheck: TypeScript パターン", () => {
 
   it("interface がなければ不正解", () => {
     const code = "type Props = { name: string; }";
-    // answer の interface Props にマッチしないが、type Props は別パターンでマッチ
-    // tokens から 80% 一致を確認
     expect(fuzzyCheck(code, answer)).toBe(false);
   });
 });
@@ -136,7 +85,6 @@ describe("fuzzyCheck: TypeScript パターン", () => {
 // 行ベースの部分一致（keywords なし、パターンなし）
 // ============================================================
 describe("fuzzyCheck: 行ベース部分一致", () => {
-  // セミコロン区切りの answer（normalize 後に split される）
   const answer = "const a = 1; const b = 2; const c = 3; const d = 4;";
 
   it("50% 以上の行が一致すれば正解", () => {

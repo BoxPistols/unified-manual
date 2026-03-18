@@ -222,7 +222,7 @@ function App() {
                 {/* ランディング */}
                 <Route path="/" component={Landing} />
                 <Route path="/bug-report" component={BugReport} />
-                <Route path="/dev/components" component={DevComponents} />
+                {import.meta.env.DEV && <Route path="/dev/components" component={DevComponents} />}
                 <Route path="/training" component={Training} />
 
                 {/* === React マニュアル === */}

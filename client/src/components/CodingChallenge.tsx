@@ -29,7 +29,7 @@ interface CodingChallengeProps {
 /**
  * キーワードベースの緩い判定
  */
-function fuzzyCheck(code: string, answer: string, keywords?: string[]): boolean {
+export function fuzzyCheck(code: string, answer: string, keywords?: string[]): boolean {
   const normalize = (s: string) => s.replace(/\s+/g, ' ').trim();
   const normalizedCode = normalize(code);
   const normalizedAnswer = normalize(answer);
