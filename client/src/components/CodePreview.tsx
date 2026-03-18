@@ -249,30 +249,34 @@ export default function CodePreview({
             </button>
           </>
         )}
-        {isModified && (
-          <button
-            onClick={handleReset}
-            className="p-1.5 rounded hover:bg-[#313244] text-[#f9e2af] hover:text-[#f9e2af] transition-colors"
-            title="リセット"
-          >
-            <RotateCcw size={16} />
-          </button>
-        )}
-        <button
-          onClick={handleCopy}
-          className="p-1.5 rounded hover:bg-[#313244] transition-colors"
-          title="コピー"
-        >
-          {copied ? <Check size={16} className="text-[#a6e3a1]" /> : <Copy size={16} className="text-[#cdd6f4]/40" />}
-        </button>
-        {canPreview && (
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="p-1.5 rounded hover:bg-[#313244] text-[#cdd6f4]/40 hover:text-[#cdd6f4] transition-colors"
-            title={isExpanded ? '縮小' : '拡大'}
-          >
-            {isExpanded ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
-          </button>
+        {!previewOnly && (
+          <>
+            {isModified && (
+              <button
+                onClick={handleReset}
+                className="p-1.5 rounded hover:bg-[#313244] text-[#f9e2af] hover:text-[#f9e2af] transition-colors"
+                title="リセット"
+              >
+                <RotateCcw size={16} />
+              </button>
+            )}
+            <button
+              onClick={handleCopy}
+              className="p-1.5 rounded hover:bg-[#313244] transition-colors"
+              title="コピー"
+            >
+              {copied ? <Check size={16} className="text-[#a6e3a1]" /> : <Copy size={16} className="text-[#cdd6f4]/40" />}
+            </button>
+            {canPreview && (
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="p-1.5 rounded hover:bg-[#313244] text-[#cdd6f4]/40 hover:text-[#cdd6f4] transition-colors"
+                title={isExpanded ? '縮小' : '拡大'}
+              >
+                {isExpanded ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+              </button>
+            )}
+          </>
         )}
       </div>
     </div>
