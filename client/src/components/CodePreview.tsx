@@ -117,13 +117,18 @@ export default function CodePreview({
 
   // コード行数からエディタ高さを計算
   const lineCount = editableCode.split('\n').length;
-  const codeContentHeight = Math.max(lineCount * 20.8 + 32, 120); // line-height 1.6 * 13px + padding
+  const codeContentHeight = Math.max(lineCount * 20.8 + 32, 120);
   const editorHeight = isExpanded
     ? Math.max(codeContentHeight, 400)
     : Math.min(Math.max(codeContentHeight, previewHeight), isHorizontal ? previewHeight : 600);
 
   const showCode = viewMode !== 'preview';
   const showPreview = canPreview && viewMode !== 'code';
+
+  // プレビューパネルの高さ（プレビューのみ表示時は拡大で大きくする）
+  const previewPanelHeight = !showCode
+    ? (isExpanded ? Math.max(500, previewHeight) : previewHeight)
+    : editorHeight;
   const showSplit = showCode && showPreview && isHorizontal;
 
   // コードエディタパネル
@@ -200,7 +205,7 @@ export default function CodePreview({
         <Eye size={11} className="text-muted-foreground" />
         <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Result</span>
       </div>
-      <div className="bg-white dark:bg-[#1e1e2e] flex-1 relative" style={{ height: isExpanded ? Math.max(editorHeight, previewHeight) : previewHeight }}>
+      <div className="bg-white dark:bg-[#1e1e2e] flex-1 relative" style={{ height: previewPanelHeight }}>
         {previewHtml && (
           <iframe
             srcDoc={previewHtml}

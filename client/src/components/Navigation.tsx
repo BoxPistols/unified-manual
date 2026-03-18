@@ -370,7 +370,7 @@ export default function Navigation() {
               <Dumbbell size={14} />
               UI トレーニング
             </Link>
-            {location.hostname === 'localhost' || location.hostname === '127.0.0.1' ? (
+            {window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? (
               <Link
                 href="/dev/components"
                 onClick={() => setIsOpen(false)}
