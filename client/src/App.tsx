@@ -14,6 +14,7 @@ import { Toaster } from "sonner";
 // ── ランディング ──
 const Landing = lazy(() => import("./pages/Landing"));
 const BugReport = lazy(() => import("./pages/BugReport"));
+const DevComponents = lazy(() => import("./pages/DevComponents"));
 const Training = lazy(() => import("./pages/Training"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -221,6 +222,7 @@ function App() {
                 {/* ランディング */}
                 <Route path="/" component={Landing} />
                 <Route path="/bug-report" component={BugReport} />
+                <Route path="/dev/components" component={DevComponents} />
                 <Route path="/training" component={Training} />
 
                 {/* === React マニュアル === */}
