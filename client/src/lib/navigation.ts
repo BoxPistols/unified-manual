@@ -88,6 +88,7 @@ export const sections: SectionInfo[] = [
   { id: 'ui-patterns', title: 'UI コンポーネント設計', manualId: 'react', part: 'quality' },
   { id: 'accessibility', title: 'アクセシビリティ実践', manualId: 'react', part: 'quality' },
   { id: 'web-quality', title: 'Web 品質と技術倫理', manualId: 'react', part: 'quality' },
+  { id: 'cdd-flow', title: 'コンポーネント駆動開発', manualId: 'react', part: 'quality' },
 
   // === Git マニュアル ===
   { id: 'git-intro', title: 'はじめに', manualId: 'git' },
@@ -200,6 +201,9 @@ export const pages: PageInfo[] = [
   { step: 67, path: '/react/accessibility/table-design', title: 'Table 設計の全課題', sectionId: 'accessibility', manualId: 'react' },
   { step: 68, path: '/react/accessibility/form-a11y', title: 'Form のアクセシビリティ', sectionId: 'accessibility', manualId: 'react' },
   { step: 69, path: '/react/web-quality/ethics', title: 'ダークパターン回避と技術倫理', sectionId: 'web-quality', manualId: 'react' },
+  { step: 70, path: '/react/cdd-flow/component-driven', title: 'コンポーネント駆動開発（CDD）', sectionId: 'cdd-flow', manualId: 'react' },
+  { step: 71, path: '/react/cdd-flow/design-code-sync', title: 'デザインとコードの自動同期', sectionId: 'cdd-flow', manualId: 'react' },
+  { step: 72, path: '/react/cdd-flow/design-qa', title: 'デザイン QA の自動化', sectionId: 'cdd-flow', manualId: 'react' },
 
   // ===========================
   // Git マニュアル (27ページ)

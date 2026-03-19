@@ -88,6 +88,9 @@ const SemanticAria = lazy(() => import("./pages/react/accessibility/SemanticAria
 const TableDesign = lazy(() => import("./pages/react/accessibility/TableDesign"));
 const FormA11y = lazy(() => import("./pages/react/accessibility/FormA11y"));
 const WebEthics = lazy(() => import("./pages/react/web-quality/WebEthics"));
+const ComponentDriven = lazy(() => import("./pages/react/cdd-flow/ComponentDriven"));
+const DesignCodeSync = lazy(() => import("./pages/react/cdd-flow/DesignCodeSync"));
+const DesignQA = lazy(() => import("./pages/react/cdd-flow/DesignQA"));
 
 // ── Git マニュアル (27ページ) ──
 const GitHome = lazy(() => import("./pages/git/Home"));
@@ -295,6 +298,9 @@ function App() {
                 <Route path="/react/accessibility/table-design" component={TableDesign} />
                 <Route path="/react/accessibility/form-a11y" component={FormA11y} />
                 <Route path="/react/web-quality/ethics" component={WebEthics} />
+                <Route path="/react/cdd-flow/component-driven" component={ComponentDriven} />
+                <Route path="/react/cdd-flow/design-code-sync" component={DesignCodeSync} />
+                <Route path="/react/cdd-flow/design-qa" component={DesignQA} />
 
                 {/* === Git マニュアル === */}
                 <Route path="/git" component={GitHome} />
