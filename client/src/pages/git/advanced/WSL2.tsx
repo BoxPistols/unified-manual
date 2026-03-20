@@ -243,9 +243,9 @@ wsl --install -d Ubuntu`}
               <CodingChallenge
                 title="WSL2 のインストールと確認コマンドを書いてみよう"
                 description="WSL2 に Ubuntu をインストールし、正しくインストールされたか確認するコマンドを書いてください。"
-                initialCode={`# 1. WSL2 に Ubuntu をインストール\n\n# 2. インストールされた WSL のバージョンを確認\n`}
+                initialCode={`# 1. WSL2 に Ubuntu をインストール\nwsl ___ -d Ubuntu  # ← ここを埋める\n\n# 2. インストールされた WSL のバージョンを確認\nwsl ___ --verbose  # ← ここを埋める`}
                 answer={`# 1. WSL2 に Ubuntu をインストール\nwsl --install -d Ubuntu\n\n# 2. インストールされた WSL のバージョンを確認\nwsl --list --verbose`}
-                keywords={['wsl', '--install', '--list', '--verbose']}
+                keywords={['--install', '--list']}
                 hints={[
                   'wsl --install -d でディストリビューションを指定してインストールします',
                   'wsl --list --verbose でインストール済みのディストリビューションとバージョンを確認できます',

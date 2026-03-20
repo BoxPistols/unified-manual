@@ -321,9 +321,9 @@ gemini`}
           <CodingChallenge
             title="Gemini CLI のインストールと起動コマンドを書いてみよう"
             description="Gemini CLI をインストールして起動するまでのコマンドを書いてください。"
-            initialCode={`# 1. Gemini CLI をグローバルインストール\n\n# 2. Gemini CLI を起動\n`}
+            initialCode={`# 1. Gemini CLI をグローバルインストール\nnpm ___ -g @google/gemini-cli  # ← ここを埋める\n\n# 2. Gemini CLI を起動\n___  # ← ここを埋める`}
             answer={`# 1. Gemini CLI をグローバルインストール\nnpm install -g @google/gemini-cli\n\n# 2. Gemini CLI を起動\ngemini`}
-            keywords={['npm install -g', 'gemini-cli', 'gemini']}
+            keywords={['install', 'gemini']}
             hints={[
               'npm install -g @google/gemini-cli でグローバルインストールします',
               'gemini コマンドで起動します（初回はブラウザで Google 認証）',

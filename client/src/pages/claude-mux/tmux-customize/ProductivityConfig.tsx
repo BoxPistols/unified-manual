@@ -152,14 +152,14 @@ bind r source-file ~/.tmux.conf \\; display "Reloaded!"`}
             previewType="terminal"
             title="tmux.conf のキーバインドを設定しよう"
             description="~/.tmux.conf に追加する生産性向上のキーバインド設定を書いてください。ペイン分割の直感的なキーと設定リロードを含めましょう。"
-            initialCode={`# ~/.tmux.conf キーバインド設定\n\n# 1. | で左右にペイン分割\n\n# 2. - で上下にペイン分割\n\n# 3. Vim風のペイン移動 (h/j/k/l)\n\n# 4. Prefix + r で設定リロード`}
+            initialCode={`# ~/.tmux.conf キーバインド設定\n\n# 1. | で左右にペイン分割\n___ | split-window -h  # ← ここを埋める\n\n# 2. - で上下にペイン分割\n___ - split-window -v  # ← ここを埋める\n\n# 3. Vim風のペイン移動 (h/j/k/l)\nbind h ___ -L  # ← ここを埋める\nbind j ___ -D\nbind k ___ -U\nbind l ___ -R\n\n# 4. Prefix + r で設定リロード\nbind r ___ ~/.tmux.conf \\; display "Reloaded!"  # ← ここを埋める`}
             answer={`# ~/.tmux.conf キーバインド設定\n\n# 1. | で左右にペイン分割\nbind | split-window -h\n\n# 2. - で上下にペイン分割\nbind - split-window -v\n\n# 3. Vim風のペイン移動 (h/j/k/l)\nbind h select-pane -L\nbind j select-pane -D\nbind k select-pane -U\nbind l select-pane -R\n\n# 4. Prefix + r で設定リロード\nbind r source-file ~/.tmux.conf \\; display "Reloaded!"`}
             hints={[
               'bind コマンドでキーバインドを設定します',
               'split-window -h は水平方向（左右）、-v は垂直方向（上下）の分割です',
               'select-pane -L/-D/-U/-R でペイン移動の方向を指定します',
             ]}
-            keywords={['bind', 'split-window', 'select-pane', 'source-file']}
+            keywords={['bind', 'select-pane', 'source-file']}
           />
         </div>
 

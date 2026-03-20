@@ -317,14 +317,14 @@ $ cd ../migration-settings && claude
             previewType="markdown"
             title="セキュリティレビュー用のカスタムエージェントを作ろう"
             description=".claude/agents/ に配置するセキュリティレビュー専用のカスタムエージェント定義を書いてください。チェック項目と出力形式を明確に定義しましょう。"
-            initialCode={`# .claude/agents/security-reviewer.md\n\n---\ntools:\n  # 読み取り用ツールのみ指定\nmodel:\n  # コスト効率の良いモデル\n---\n\n# エージェントの役割と手順を書いてください`}
+            initialCode={`# .claude/agents/security-reviewer.md\n\n---\ntools:\n  - ___  # ← ここを埋める（ファイル読み取りツール）\n  - Glob\n  - Grep\nmodel: sonnet\n---\n\nセキュリティ観点でコードをレビューするエージェントです。\n\n## チェック項目\n1. 入力バリデーションの漏れ\n2. SQLインジェクション/XSSの可能性\n3. 認証・認可の不備\n4. 機密情報のハードコーディング\n5. 依存パッケージの既知の脆弱性\n\n## 出力形式\n- ___（Critical/High/Medium/Low）  # ← ここを埋める\n- 対象ファイルと行番号\n- 問題の説明\n- 修正案`}
             answer={`# .claude/agents/security-reviewer.md\n\n---\ntools:\n  - Read\n  - Glob\n  - Grep\nmodel: sonnet\n---\n\nセキュリティ観点でコードをレビューするエージェントです。\n\n## チェック項目\n1. 入力バリデーションの漏れ\n2. SQLインジェクション/XSSの可能性\n3. 認証・認可の不備\n4. 機密情報のハードコーディング\n5. 依存パッケージの既知の脆弱性\n\n## 出力形式\n- 重要度（Critical/High/Medium/Low）\n- 対象ファイルと行番号\n- 問題の説明\n- 修正案`}
             hints={[
               'レビュー用エージェントは Read, Glob, Grep のみで十分です',
               'チェック項目を具体的にリストアップすると精度が向上します',
               '出力形式を定義しておくとレビュー結果が統一されます',
             ]}
-            keywords={['tools', 'Read', 'セキュリティ', '重要度']}
+            keywords={['Read', '重要度']}
           />
         </div>
         <PageNavigation />

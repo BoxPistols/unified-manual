@@ -210,14 +210,14 @@ export default function ClaudeCheatsheet() {
             previewType="terminal"
             title="Claude Code の日常コマンドを書こう"
             description="開発中によく使う Claude Code のスラッシュコマンドと CLI オプションを組み合わせたワークフローを書いてください。"
-            initialCode={`# Claude Code 日常ワークフロー\n\n# 1. プロジェクトで Claude を起動\n\n# 2. コンテキスト使用量を確認\n\n# 3. コンテキストが多い場合に圧縮\n\n# 4. コストを確認\n\n# 5. PRのコードレビュー`}
+            initialCode={`# Claude Code 日常ワークフロー\n\n# 1. プロジェクトで Claude を起動\ncd ~/projects/my-app && claude\n\n# 2. コンテキスト使用量を確認\n/___  # ← ここを埋める\n\n# 3. コンテキストが多い場合に圧縮\n/___ auth関連の変更に集中  # ← ここを埋める\n\n# 4. コストを確認\n/___  # ← ここを埋める\n\n# 5. PRのコードレビュー\n/___  # ← ここを埋める`}
             answer={`# Claude Code 日常ワークフロー\n\n# 1. プロジェクトで Claude を起動\ncd ~/projects/my-app && claude\n\n# 2. コンテキスト使用量を確認\n/context\n\n# 3. コンテキストが多い場合に圧縮\n/compact auth関連の変更に集中\n\n# 4. コストを確認\n/cost\n\n# 5. PRのコードレビュー\n/review`}
             hints={[
               '/context でコンテキストウィンドウの使用量をビジュアル表示します',
               '/compact にフォーカス指示を添えると重要な文脈を保持できます',
               '/review は現在のブランチの差分を自動でレビューします',
             ]}
-            keywords={['/context', '/compact', '/cost', '/review']}
+            keywords={['context', 'compact', 'cost', 'review']}
           />
         </div>
 

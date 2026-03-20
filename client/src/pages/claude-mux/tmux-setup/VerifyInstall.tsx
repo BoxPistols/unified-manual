@@ -105,14 +105,14 @@ test: 1 windows (created Fri Feb 21 12:00:00 2026)`}
             previewType="terminal"
             title="tmux セッションの基本操作を練習しよう"
             description="tmux セッションの作成、確認、デタッチ、再接続、終了の一連の操作を書いてください。"
-            initialCode={`# tmux の基本操作\n\n# 1. test という名前のセッションを作成\n\n# 2. セッションからデタッチ\n\n# 3. セッション一覧を確認\n\n# 4. セッションに再接続\n\n# 5. セッションを終了`}
+            initialCode={`# tmux の基本操作\n\n# 1. test という名前のセッションを作成\ntmux ___ -s test  # ← ここを埋める\n\n# 2. セッションからデタッチ\nCtrl+B D\n\n# 3. セッション一覧を確認\ntmux ___  # ← ここを埋める\n\n# 4. セッションに再接続\ntmux ___ -t test  # ← ここを埋める\n\n# 5. セッションを終了\ntmux ___ -t test  # ← ここを埋める`}
             answer={`# tmux の基本操作\n\n# 1. test という名前のセッションを作成\ntmux new-session -s test\n\n# 2. セッションからデタッチ\nCtrl+B D\n\n# 3. セッション一覧を確認\ntmux list-sessions\n\n# 4. セッションに再接続\ntmux attach -t test\n\n# 5. セッションを終了\ntmux kill-session -t test`}
             hints={[
               'デタッチは Ctrl+B を押した後に D を押す2ステップ操作です',
               'list-sessions（または ls）でセッション一覧を表示できます',
               'kill-session -t でセッションを名前指定で終了できます',
             ]}
-            keywords={['new-session', 'Ctrl+B', 'list-sessions', 'kill-session']}
+            keywords={['new-session', 'list-sessions', 'attach', 'kill-session']}
           />
         </div>
 

@@ -133,14 +133,14 @@ set -g default-terminal "screen-256color"`}
             previewType="terminal"
             title="tmux.conf を書いてみよう"
             description="プリフィックスキーを Ctrl+a に変更し、マウス操作を有効にし、ウィンドウ番号を1から始める設定を書いてください。"
-            initialCode={`# tmux.conf を完成させてください\n\n# プリフィックスキーを Ctrl+a に変更\n\n# マウス操作を有効にする\n\n# ウィンドウ番号を1から始める`}
+            initialCode={`# プリフィックスキーを Ctrl+a に変更\nunbind C-b\nset -g ___ C-a  # ← ここを埋める\nbind C-a send-prefix\n\n# マウス操作を有効にする\nset -g ___ on  # ← ここを埋める\n\n# ウィンドウ番号を1から始める\nset -g ___ 1  # ← ここを埋める\nsetw -g pane-base-index 1`}
             answer={`# プリフィックスキーを Ctrl+a に変更\nunbind C-b\nset -g prefix C-a\nbind C-a send-prefix\n\n# マウス操作を有効にする\nset -g mouse on\n\n# ウィンドウ番号を1から始める\nset -g base-index 1\nsetw -g pane-base-index 1`}
             hints={[
               'プリフィックスキーの変更には unbind と set -g prefix を使います',
               'マウス有効化は set -g mouse on です',
               'ウィンドウ番号は base-index、ペイン番号は pane-base-index で設定します',
             ]}
-            keywords={['prefix', 'C-a', 'mouse on', 'base-index 1']}
+            keywords={['prefix', 'mouse', 'base-index']}
           />
         </div>
 

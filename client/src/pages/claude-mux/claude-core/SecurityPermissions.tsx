@@ -177,14 +177,14 @@ export default function SecurityPermissions() {
           previewType="config"
           title="パーミッション設定を書いてみよう"
           description=".claude/settings.json に、npm/git の基本コマンドを許可し、.env ファイルの読み取りと curl の実行を拒否するパーミッションルールを書いてください。"
-          initialCode={`{\n  "permissions": {\n    "allow": [\n      // npm と git の基本コマンドを許可\n    ],\n    "deny": [\n      // .env の読み取りと curl を拒否\n    ]\n  }\n}`}
+          initialCode={`{\n  "permissions": {\n    "___": [  // ← ここを埋める（許可リスト）\n      "Bash(npm run *)",\n      "Bash(git status)",\n      "Bash(git diff *)",\n      "Read"\n    ],\n    "___": [  // ← ここを埋める（拒否リスト）\n      "Bash(curl *)",\n      "Read(./.env)",\n      "Read(./secrets/*)"\n    ]\n  }\n}`}
           answer={`{\n  "permissions": {\n    "allow": [\n      "Bash(npm run *)",\n      "Bash(git status)",\n      "Bash(git diff *)",\n      "Read"\n    ],\n    "deny": [\n      "Bash(curl *)",\n      "Read(./.env)",\n      "Read(./secrets/*)"\n    ]\n  }\n}`}
           hints={[
             'allow/deny にはツール名とパターンを "Tool(pattern)" 形式で指定します',
             'Bash コマンドは "Bash(npm run *)" のようにワイルドカードが使えます',
             'ファイル操作は "Read(./.env)" のようにパスを指定します',
           ]}
-          keywords={['permissions', 'allow', 'deny', 'Bash(', 'Read(']}
+          keywords={['allow', 'deny']}
         />
 
         <PageNavigation />

@@ -348,9 +348,9 @@ git commit -m "Initial commit: Add README"`}
           <CodingChallenge
             title="プロジェクト作成から Git 管理までの流れを書いてみよう"
             description="フォルダ作成、Git 初期化、ファイル作成、コミットまでの一連のコマンドを書いてください。"
-            initialCode={`# 1. プロジェクトフォルダを作成して移動\n\n# 2. Git リポジトリを初期化\n\n# 3. README.md を作成して内容を書き込む\n\n# 4. ファイルをステージングしてコミット\n`}
+            initialCode={`# 1. プロジェクトフォルダを作成して移動\nmkdir my-first-project\ncd my-first-project\n\n# 2. Git リポジトリを初期化\ngit ___  # ← ここを埋める\n\n# 3. README.md を作成して内容を書き込む\ntouch README.md\necho "# My First Project" > README.md\n\n# 4. ファイルをステージングしてコミット\ngit ___ README.md  # ← ここを埋める\ngit ___ -m "Initial commit: Add README"  # ← ここを埋める`}
             answer={`# 1. プロジェクトフォルダを作成して移動\nmkdir my-first-project\ncd my-first-project\n\n# 2. Git リポジトリを初期化\ngit init\n\n# 3. README.md を作成して内容を書き込む\ntouch README.md\necho "# My First Project" > README.md\n\n# 4. ファイルをステージングしてコミット\ngit add README.md\ngit commit -m "Initial commit: Add README"`}
-            keywords={['mkdir', 'git init', 'touch', 'git add', 'git commit']}
+            keywords={['init', 'add', 'commit']}
             hints={[
               'mkdir でフォルダ作成、cd で移動します',
               'git init でリポジトリを初期化します',

@@ -711,14 +711,14 @@ export default function MarkdownGuide() {
           <CodingChallenge
             title="Markdown で自己紹介を書いてみよう"
             description="以下の要素を含む Markdown を書いてください：見出し（# または ##）、箇条書きリスト（- で始まる項目を2つ以上）、太字（**テキスト**）。内容は自由です。"
-            initialCode={`# \n\n- \n- `}
+            initialCode={`___ 自己紹介  # ← ここを埋める（見出し記号）\n\n___名前___: テスト太郎  # ← ここを埋める（太字記号）\n\n___ Git を学習中  # ← ここを埋める（箇条書き記号）\n- Markdown が書けるようになった`}
             answer={`# 自己紹介\n\n**名前**: テスト太郎\n\n- Git を学習中\n- Markdown が書けるようになった`}
             hints={[
               '見出しは # の後にスペースを入れて書きます',
               '箇条書きは - の後にスペースを入れて書きます',
               '太字は **テキスト** のように、アスタリスク2つで囲みます',
             ]}
-            keywords={['#', '-', '**']}
+            keywords={['#', '**', '-']}
             preview
             previewType="markdown"
           />

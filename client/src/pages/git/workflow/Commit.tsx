@@ -334,14 +334,14 @@ export default function CommitWorkflow() {
           <CodingChallenge
             title="コミットメッセージを書いてみよう"
             description="ナビゲーションバーの色をダークブルーに変更した場合の、適切なコミットメッセージを git commit コマンドとして書いてください。"
-            initialCode={`git commit -m ""`}
+            initialCode={`git ___ -m "Update navbar color to dark blue"  # ← ここを埋める`}
             answer={`git commit -m "Update navbar color to dark blue"`}
             hints={[
               'git commit -m "メッセージ" の形式で書きます',
               '何を変更したか（navbar color）を具体的に書きましょう',
               '「Update」「Fix」「Add」などの動詞で始めると読みやすくなります',
             ]}
-            keywords={['git commit', '-m', '"']}
+            keywords={['commit']}
             preview
           />
         </section>

@@ -185,14 +185,14 @@ secrets/`}
           previewType="markdown"
           title="CLAUDE.md を設計してみよう"
           description="プロジェクトルートの CLAUDE.md に、コンテキスト階層・@import・.claudeignore のルールをまとめたガイドを書いてください。"
-          initialCode={`# CLAUDE.md\n\n## プロジェクト概要\n\n## コンテキスト管理\n\n## 除外設定`}
+          initialCode={`# CLAUDE.md\n\n## プロジェクト概要\nReact + TypeScript のWebアプリケーション。\n\n## コンテキスト管理\n- チーム共有ルール: ./CLAUDE.md\n- 個人設定: ~/.claude/CLAUDE.md\n- トピック別: .claude/rules/*.md\n\n___docs/api-guide.md  # ← ここを埋める（インポート記号）\n___.claude/rules/testing.md\n\n## 除外設定\n___ に以下を追加:  # ← ここを埋める（除外設定ファイル名）\n- node_modules/\n- dist/\n- .env\n- *.log`}
           answer={`# CLAUDE.md\n\n## プロジェクト概要\nReact + TypeScript のWebアプリケーション。\n\n## コンテキスト管理\n- チーム共有ルール: ./CLAUDE.md\n- 個人設定: ~/.claude/CLAUDE.md\n- トピック別: .claude/rules/*.md\n\n@docs/api-guide.md\n@.claude/rules/testing.md\n\n## 除外設定\n.claudeignore に以下を追加:\n- node_modules/\n- dist/\n- .env\n- *.log`}
           hints={[
             'CLAUDE.md はプロジェクトの技術スタックと基本ルールを定義します',
             '@import で外部ファイルを参照できます（@path/to/file.md）',
             '.claudeignore で不要なファイルをスキャン対象外にしましょう',
           ]}
-          keywords={['CLAUDE.md', '@', '.claudeignore', 'node_modules']}
+          keywords={['@', '.claudeignore']}
         />
 
         <PageNavigation />

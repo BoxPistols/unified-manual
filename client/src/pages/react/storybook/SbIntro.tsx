@@ -102,7 +102,7 @@ export const Loading = {
               デザイナーは <strong>コードを読まなくても</strong>、ブラウザ上でバリエーションを確認できます。
             </p>
 
-            <CodePreview previewOnly previewOnly
+            <CodePreview previewOnly
   code={`function ButtonShowcase() {
   const base = { padding: '8px 20px', borderRadius: '6px', fontSize: '14px', fontWeight: '600', cursor: 'pointer', border: 'none', transition: 'opacity 0.2s' };
   return (
@@ -441,7 +441,7 @@ export const SubmitForm: Story = {
               左が Figma のワイヤーフレーム、右が実装後の Storybook プレビューです。
             </p>
 
-            <CodePreview previewOnly previewOnly
+            <CodePreview previewOnly
   code={`function FigmaToStorybook() {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', padding: '20px' }}>
@@ -625,7 +625,7 @@ export default meta;
               右側に Props を変更できるフォームが表示されます。実際に操作してみてください。
             </p>
 
-            <CodePreview previewOnly previewOnly
+            <CodePreview previewOnly
   code={`function ControlsPanel() {
   const [variant, setVariant] = useState('primary');
   const [size, setSize] = useState('medium');

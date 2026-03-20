@@ -139,14 +139,14 @@ $ claude --model claude-sonnet-4-6`} language="bash" />
             previewType="markdown"
             title="CLAUDE.md を作成してみよう"
             description="プロジェクトの CLAUDE.md に記載する内容を書いてください。技術スタック、ビルドコマンド、コーディング規約を含めてください。"
-            initialCode={`# CLAUDE.md\n\n## 技術スタック\n# ここに使用技術を書いてください\n\n## コマンド\n# ビルド・テスト・lint のコマンドを書いてください\n\n## コーディング規約\n# プロジェクトのルールを書いてください`}
+            initialCode={`# CLAUDE.md\n\n## 技術スタック\n- ___ + React 18  # ← ここを埋める\n- Vite でビルド\n- Tailwind CSS でスタイリング\n\n## コマンド\n- ビルド: npm run ___  # ← ここを埋める\n- テスト: npm ___  # ← ここを埋める\n- lint: npm run lint\n- 開発サーバー: npm run dev\n\n## コーディング規約\n- 関数コンポーネントと hooks を使用\n- 命名規則: camelCase（変数・関数）、PascalCase（コンポーネント）\n- コミットメッセージは日本語で簡潔に`}
             answer={`# CLAUDE.md\n\n## 技術スタック\n- TypeScript + React 18\n- Vite でビルド\n- Tailwind CSS でスタイリング\n\n## コマンド\n- ビルド: npm run build\n- テスト: npm test\n- lint: npm run lint\n- 開発サーバー: npm run dev\n\n## コーディング規約\n- 関数コンポーネントと hooks を使用\n- 命名規則: camelCase（変数・関数）、PascalCase（コンポーネント）\n- コミットメッセージは日本語で簡潔に`}
             hints={[
               'CLAUDE.md はエージェントへのシステムプロンプトとして機能します',
               'よく使うコマンド（ビルド、テスト、lint）を明記しましょう',
               'コーディング規約を記載するとコード生成の品質が向上します',
             ]}
-            keywords={['TypeScript', 'npm', 'ビルド', 'テスト']}
+            keywords={['TypeScript', 'build', 'test']}
           />
         </div>
 

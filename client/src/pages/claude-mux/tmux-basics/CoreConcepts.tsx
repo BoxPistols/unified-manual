@@ -163,14 +163,14 @@ Ctrl+B " (横分割)`}
             previewType="terminal"
             title="tmux のウィンドウとペイン操作を書こう"
             description="tmux でウィンドウの作成、ペインの分割、ペイン間の移動のコマンドを書いてください。プリフィックスキー（Ctrl+B）を使います。"
-            initialCode={`# tmux の基本操作（プリフィックス = Ctrl+B）\n\n# 1. 新しいウィンドウを作成\n\n# 2. 次のウィンドウに切り替え\n\n# 3. ペインを左右に分割\n\n# 4. ペインを上下に分割\n\n# 5. 次のペインに移動`}
+            initialCode={`# tmux の基本操作（プリフィックス = Ctrl+B）\n\n# 1. 新しいウィンドウを作成\nCtrl+B ___  # ← ここを埋める\n\n# 2. 次のウィンドウに切り替え\nCtrl+B ___  # ← ここを埋める\n\n# 3. ペインを左右に分割\nCtrl+B ___  # ← ここを埋める\n\n# 4. ペインを上下に分割\nCtrl+B "\n\n# 5. 次のペインに移動\nCtrl+B O`}
             answer={`# tmux の基本操作（プリフィックス = Ctrl+B）\n\n# 1. 新しいウィンドウを作成\nCtrl+B C\n\n# 2. 次のウィンドウに切り替え\nCtrl+B N\n\n# 3. ペインを左右に分割\nCtrl+B %\n\n# 4. ペインを上下に分割\nCtrl+B "\n\n# 5. 次のペインに移動\nCtrl+B O`}
             hints={[
               'C は Create（作成）の頭文字です',
               'N は Next（次）の頭文字です',
               '% は縦の分割線に見立てた記号です',
             ]}
-            keywords={['Ctrl+B', 'C', 'N', '%']}
+            keywords={['C', 'N', '%']}
           />
         </div>
 

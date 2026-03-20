@@ -232,14 +232,14 @@ export default function SlashCommands() {
             previewType="terminal"
             title="カスタムコマンドを作成しよう"
             description="プロジェクトの .claude/commands/ ディレクトリに配置するカスタムスラッシュコマンドのMarkdownファイルを書いてください。コードレビューを実行するコマンドで、セキュリティとパフォーマンスの観点からレビューを行い、結果をマークダウンで出力するものです。"
-            initialCode={`# review.md - /project:review で呼び出されるコマンド\n\n# ここにプロンプトを書いてください`}
+            initialCode={`# review.md - /project:review で呼び出されるコマンド\n\n___ HEAD~1 の変更をレビューしてください。  # ← ここを埋める（差分取得コマンド）\n\n## レビュー観点\n1. ___: 入力バリデーション、認証・認可の不備  # ← ここを埋める\n2. ___: N+1クエリ、不要な再レンダリング  # ← ここを埋める\n\n## 出力形式\n- 重要度（High/Medium/Low）\n- 対象ファイルと行番号\n- 問題の説明と修正案`}
             answer={`# review.md - /project:review で呼び出されるコマンド\n\ngit diff HEAD~1 の変更をレビューしてください。\n\n## レビュー観点\n1. セキュリティ: 入力バリデーション、認証・認可の不備\n2. パフォーマンス: N+1クエリ、不要な再レンダリング\n\n## 出力形式\n- 重要度（High/Medium/Low）\n- 対象ファイルと行番号\n- 問題の説明と修正案`}
             hints={[
               'カスタムコマンドはMarkdownファイルで、内容がそのままプロンプトとして送信されます',
               'git diff を使って変更差分を参照するよう指示しましょう',
               'レビュー観点と出力形式を明確に定義すると効果的です',
             ]}
-            keywords={['git diff', 'セキュリティ', 'パフォーマンス', 'レビュー']}
+            keywords={['git diff', 'セキュリティ', 'パフォーマンス']}
           />
         </div>
         <PageNavigation />

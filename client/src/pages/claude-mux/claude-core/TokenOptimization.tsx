@@ -152,14 +152,14 @@ $ export CLAUDE_CODE_EFFORT_LEVEL=medium
             previewType="terminal"
             title=".claudeignore を設定しよう"
             description="トークン消費を削減するための .claudeignore ファイルを作成してください。node_modules、ビルド出力、ロックファイル、画像ファイルなどを除外しましょう。"
-            initialCode={`# .claudeignore\n# 不要なファイルを除外してトークン消費を削減\n\n# ここに除外パターンを追加してください`}
+            initialCode={`# .claudeignore\n# 不要なファイルを除外してトークン消費を削減\n\n___  # ← ここを埋める（依存パッケージフォルダ）\n___  # ← ここを埋める（ビルド出力フォルダ）\nbuild/\n.next/\n\n# ロックファイル\npackage-lock.json\nyarn.lock\npnpm-lock.yaml\n\n# 画像・バイナリ\n*.png\n*.jpg\n*.gif\n*.ico\n*.woff2\n\n# その他\n.git/\ncoverage/\n*.map`}
             answer={`# .claudeignore\n# 不要なファイルを除外してトークン消費を削減\n\nnode_modules/\ndist/\nbuild/\n.next/\n\n# ロックファイル\npackage-lock.json\nyarn.lock\npnpm-lock.yaml\n\n# 画像・バイナリ\n*.png\n*.jpg\n*.gif\n*.ico\n*.woff2\n\n# その他\n.git/\ncoverage/\n*.map`}
             hints={[
               'node_modules や dist などの生成ファイルは最優先で除外しましょう',
               'ロックファイルはトークンを大量消費しますが情報価値が低いです',
               '画像やバイナリファイルもコンテキストに不要です',
             ]}
-            keywords={['node_modules', 'dist', 'package-lock', '*.png']}
+            keywords={['node_modules/', 'dist/']}
           />
         </div>
         <PageNavigation />

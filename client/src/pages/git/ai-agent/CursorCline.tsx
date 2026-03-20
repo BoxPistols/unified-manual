@@ -308,9 +308,9 @@ index.html の内容を確認して`}
           <CodingChallenge
             title="Cursor のショートカットキーを確認しよう"
             description="Cursor で AI を活用するためのショートカットキー操作を書いてください（Mac の場合）。"
-            initialCode={`# Cursor で AI を使うショートカット（Mac の場合）\n\n# 1. AI チャットパネルを開くキー\n\n# 2. インラインで AI に指示するキー\n\n# 3. 拡張機能パネルを開くキー\n`}
+            initialCode={`# Cursor で AI を使うショートカット（Mac の場合）\n\n# 1. AI チャットパネルを開くキー\n# Cmd + ___  # ← ここを埋める\n\n# 2. インラインで AI に指示するキー\n# Cmd + ___  # ← ここを埋める\n\n# 3. 拡張機能パネルを開くキー\n# Cmd + Shift + X`}
             answer={`# Cursor で AI を使うショートカット（Mac の場合）\n\n# 1. AI チャットパネルを開くキー\n# Cmd + L\n\n# 2. インラインで AI に指示するキー\n# Cmd + K\n\n# 3. 拡張機能パネルを開くキー\n# Cmd + Shift + X`}
-            keywords={['Cmd + L', 'Cmd + K', 'Cmd + Shift + X']}
+            keywords={['L', 'K']}
             hints={[
               'チャットパネルは Cmd + L で開きます',
               'インライン指示は Cmd + K で入力できます',

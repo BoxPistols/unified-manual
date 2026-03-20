@@ -207,14 +207,14 @@ export default function WhyTmux() {
             previewType="terminal"
             title="tmux の基本コマンドを確認しよう"
             description="tmux のセッション作成、デタッチ、再接続の基本的なコマンドを書いてください。プロジェクト名 my-project で作業する想定です。"
-            initialCode={`# tmux の基本コマンド\n\n# 1. 名前付きセッションを作成\n\n# 2. セッションからデタッチ（キー操作）\n\n# 3. セッション一覧を表示\n\n# 4. セッションに再接続`}
+            initialCode={`# tmux の基本コマンド\n\n# 1. 名前付きセッションを作成\ntmux ___ -s my-project  # ← ここを埋める\n\n# 2. セッションからデタッチ（キー操作）\nCtrl+B D\n\n# 3. セッション一覧を表示\ntmux ___  # ← ここを埋める\n\n# 4. セッションに再接続\ntmux ___ -t my-project  # ← ここを埋める`}
             answer={`# tmux の基本コマンド\n\n# 1. 名前付きセッションを作成\ntmux new-session -s my-project\n\n# 2. セッションからデタッチ（キー操作）\nCtrl+B D\n\n# 3. セッション一覧を表示\ntmux list-sessions\n\n# 4. セッションに再接続\ntmux attach -t my-project`}
             hints={[
               '-s オプションでセッション名を指定します',
               'デタッチは Ctrl+B を押した後 D を押します',
               '-t オプションで接続先のセッションを指定します',
             ]}
-            keywords={['new-session', 'Ctrl+B', 'list-sessions', 'attach']}
+            keywords={['new-session', 'list-sessions', 'attach']}
           />
         </div>
 

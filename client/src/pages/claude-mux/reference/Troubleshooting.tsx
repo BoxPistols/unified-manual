@@ -115,14 +115,14 @@ $ tmux kill-server`}
             previewType="terminal"
             title="tmux のトラブルシューティングを練習しよう"
             description="よくある tmux の問題に対する解決コマンドを書いてください。色の問題、マウス有効化、tmux のリセットを含めましょう。"
-            initialCode={`# tmux トラブルシューティング\n\n# 1. 256色対応の設定\n\n# 2. マウスモードを有効化\n\n# 3. tmux サーバーを強制終了\n\n# 4. 設定ファイルをリロード`}
+            initialCode={`# tmux トラブルシューティング\n\n# 1. 256色対応の設定（~/.tmux.conf に追加）\nset -g ___ "screen-256color"  # ← ここを埋める\n\n# 2. マウスモードを有効化（~/.tmux.conf に追加）\nset -g ___ on  # ← ここを埋める\n\n# 3. tmux サーバーを強制終了（全セッション消去）\ntmux ___  # ← ここを埋める\n\n# 4. 設定ファイルをリロード\ntmux ___ ~/.tmux.conf  # ← ここを埋める`}
             answer={`# tmux トラブルシューティング\n\n# 1. 256色対応の設定（~/.tmux.conf に追加）\nset -g default-terminal "screen-256color"\n\n# 2. マウスモードを有効化（~/.tmux.conf に追加）\nset -g mouse on\n\n# 3. tmux サーバーを強制終了（全セッション消去）\ntmux kill-server\n\n# 4. 設定ファイルをリロード\ntmux source ~/.tmux.conf`}
             hints={[
               '色の問題は default-terminal の設定で解決することが多いです',
               'mouse on でクリック、スクロール、ペインリサイズが有効になります',
               'kill-server は最終手段です。全セッションが終了します',
             ]}
-            keywords={['default-terminal', 'mouse on', 'kill-server', 'source']}
+            keywords={['default-terminal', 'mouse', 'kill-server', 'source']}
           />
 
           <section className="text-center text-muted-foreground text-sm pb-8">

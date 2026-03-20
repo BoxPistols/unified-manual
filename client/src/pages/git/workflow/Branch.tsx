@@ -443,14 +443,14 @@ export default function BranchWorkflow() {
           <CodingChallenge
             title="ブランチ操作を書いてみよう"
             description="「feature/dark-mode」という名前の新しいブランチを作成して、そのブランチに切り替えるコマンドを1行で書いてください。"
-            initialCode={`git `}
+            initialCode={`git ___ ___ feature/dark-mode  # ← ここを埋める（コマンドとオプション）`}
             answer={`git checkout -b feature/dark-mode`}
             hints={[
               'ブランチの作成と切り替えを同時に行うオプションがあります',
               'git checkout に -b オプションを付けると、作成と切り替えを同時にできます',
               'git switch -c でも同じことができます',
             ]}
-            keywords={['feature/dark-mode', '-b']}
+            keywords={['checkout', '-b']}
             preview
           />
         </section>

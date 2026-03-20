@@ -354,9 +354,9 @@ node app.js`}
           <CodingChallenge
             title="VSCode の統合ターミナルでコマンドを実行してみよう"
             description="VSCode のターミナルで Git の状態確認と開発サーバーの起動コマンドを書いてください。"
-            initialCode={`# 1. Git の状態を確認\n\n# 2. 開発サーバーを起動\n\n# 3. VSCode でプロジェクトを開く\n`}
+            initialCode={`# 1. Git の状態を確認\ngit ___  # ← ここを埋める\n\n# 2. 開発サーバーを起動\nnpm run ___  # ← ここを埋める\n\n# 3. VSCode でプロジェクトを開く\n___ .  # ← ここを埋める`}
             answer={`# 1. Git の状態を確認\ngit status\n\n# 2. 開発サーバーを起動\nnpm run dev\n\n# 3. VSCode でプロジェクトを開く\ncode .`}
-            keywords={['git status', 'npm run dev', 'code .']}
+            keywords={['status', 'dev', 'code']}
             hints={[
               'git status で変更ファイルの状態を確認します',
               'npm run dev で開発サーバーを起動します',

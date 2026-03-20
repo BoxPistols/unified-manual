@@ -437,9 +437,9 @@ export default function ModifyReact() {
           <CodingChallenge
             title="React プロジェクトの Git ワークフローを書いてみよう"
             description="ブランチを作成し、ファイルをステージング・コミットして、GitHub に Push するまでの一連のコマンドを書いてください。"
-            initialCode={`# 1. 新しいブランチを作成して切り替え\n\n# 2. 変更したファイルをステージング\n\n# 3. コミット\n\n# 4. GitHub に Push\n`}
+            initialCode={`# 1. 新しいブランチを作成して切り替え\ngit ___ -b feature/update-welcome-message  # ← ここを埋める\n\n# 2. 変更したファイルをステージング\ngit ___ src/App.js  # ← ここを埋める\n\n# 3. コミット\ngit ___ -m "Update welcome message and styling"  # ← ここを埋める\n\n# 4. GitHub に Push\ngit push -u origin feature/update-welcome-message`}
             answer={`# 1. 新しいブランチを作成して切り替え\ngit checkout -b feature/update-welcome-message\n\n# 2. 変更したファイルをステージング\ngit add src/App.js\n\n# 3. コミット\ngit commit -m "Update welcome message and styling"\n\n# 4. GitHub に Push\ngit push -u origin feature/update-welcome-message`}
-            keywords={['git checkout -b', 'git add', 'git commit', 'git push']}
+            keywords={['checkout', 'add', 'commit']}
             hints={[
               'git checkout -b でブランチ作成と切り替えを同時に行います',
               'git add でファイルをステージング、git commit -m でコミットします',

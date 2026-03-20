@@ -156,14 +156,14 @@ $ tmux attach -t work  # 作業状態を完全に復元`}
             previewType="terminal"
             title="SSH 切断後のセッション復帰を練習しよう"
             description="リモートサーバーで tmux セッションを作成し、SSH 接続が切れた後に再接続する手順を書いてください。"
-            initialCode={`# SSH + tmux のワークフロー\n\n# 1. リモートサーバーに SSH 接続\n\n# 2. tmux セッションを作成して作業開始\n\n# 3. (接続が切れた後) 再度 SSH 接続\n\n# 4. tmux セッションに再アタッチ`}
+            initialCode={`# SSH + tmux のワークフロー\n\n# 1. リモートサーバーに SSH 接続\nssh user@remote-server\n\n# 2. tmux セッションを作成して作業開始\ntmux ___ -s work  # ← ここを埋める\n\n# 3. (接続が切れた後) 再度 SSH 接続\nssh user@remote-server\n\n# 4. tmux セッションに再アタッチ\ntmux ___ -t work  # ← ここを埋める`}
             answer={`# SSH + tmux のワークフロー\n\n# 1. リモートサーバーに SSH 接続\nssh user@remote-server\n\n# 2. tmux セッションを作成して作業開始\ntmux new-session -s work\n\n# 3. (接続が切れた後) 再度 SSH 接続\nssh user@remote-server\n\n# 4. tmux セッションに再アタッチ\ntmux attach -t work`}
             hints={[
               'tmux セッション内で作業すれば、SSH 切断後もプロセスが継続します',
               'attach -t でセッション名を指定して再接続します',
               'tmux ls で既存のセッションを確認できます',
             ]}
-            keywords={['ssh', 'new-session', 'attach', 'tmux']}
+            keywords={['new-session', 'attach']}
           />
         </div>
 

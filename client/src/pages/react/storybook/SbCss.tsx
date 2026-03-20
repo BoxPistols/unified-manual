@@ -254,7 +254,7 @@ export const Secondary: Story = {
               CSS Modules でスコープされたクラス名がどのように適用されるか、実際のカードコンポーネントで確認します。
               各クラスは <code>.module.css</code> によって自動的にユニークな名前に変換されます。
             </p>
-            <CodePreview previewOnly previewOnly
+            <CodePreview previewOnly
               title="CSS Modules でスタイリングされたコンポーネント"
               code={`function CardCssModules() {
   /* CSS Modules ではスコープされたクラス名が自動生成される
@@ -518,7 +518,7 @@ export default preview;`}
               同じカードコンポーネントを Tailwind CSS のユーティリティクラスで構築した場合のイメージです。
               クラス名を見るだけでスタイルが把握できるのが Tailwind の特徴です。
             </p>
-            <CodePreview previewOnly previewOnly
+            <CodePreview previewOnly
               title="Tailwind CSS コンポーネント"
               code={`function CardTailwind() {
   /* Tailwind ではユーティリティクラスで直接スタイルを適用する
@@ -994,7 +994,7 @@ export default preview;`}
               CSS-in-JS アプローチでは、スタイルが JavaScript の中に埋め込まれます。
               テーマの値を props 経由で参照し、動的なスタイリングが可能です。
             </p>
-            <CodePreview previewOnly previewOnly
+            <CodePreview previewOnly
               title="styled-components スタイル"
               code={`function CardStyledComponents() {
   /* styled-components / Emotion では JS の中にスタイルを書く
@@ -1156,7 +1156,7 @@ export default preview;`}
               Storybook の decorator でダークモードを切り替えると、コンポーネントの見た目がどう変わるかを確認します。
               ライトモードとダークモードを並べて比較することで、テーマ設計の品質を検証できます。
             </p>
-            <CodePreview previewOnly previewOnly
+            <CodePreview previewOnly
               title="ダークモード対応の比較"
               previewHeight={420}
               code={`function DarkModeComparison() {

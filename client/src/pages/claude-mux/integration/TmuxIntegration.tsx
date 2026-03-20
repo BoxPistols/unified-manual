@@ -168,14 +168,14 @@ $ claude`}
             previewType="terminal"
             title="AI Cockpit のペインレイアウトを作ろう"
             description="tmux で Claude Code の AI Cockpit レイアウトを手動で構築するコマンドを書いてください。メインペインに Claude Code、右側にサーバーログとシェルを配置します。"
-            initialCode={`# AI Cockpit レイアウトの構築\n\n# 1. セッションを作成\n\n# 2. 左右にペインを分割（Claude Code | 監視エリア）\n\n# 3. 右側ペインを上下に分割（ログ / シェル）\n\n# 4. 左ペインで Claude Code を起動\n\n# 5. 右上ペインで開発サーバーを起動`}
+            initialCode={`# AI Cockpit レイアウトの構築\n\n# 1. セッションを作成\ntmux new-session -s dev\n\n# 2. 左右にペインを分割（Claude Code | 監視エリア）\ntmux ___ -h  # ← ここを埋める\n\n# 3. 右側ペインを上下に分割（ログ / シェル）\ntmux ___ -v  # ← ここを埋める\n\n# 4. 左ペインで Claude Code を起動\ntmux ___ -t 0  # ← ここを埋める\nclaude\n\n# 5. 右上ペインで開発サーバーを起動\ntmux select-pane -t 1\nnpm run dev`}
             answer={`# AI Cockpit レイアウトの構築\n\n# 1. セッションを作成\ntmux new-session -s dev\n\n# 2. 左右にペインを分割（Claude Code | 監視エリア）\ntmux split-window -h\n\n# 3. 右側ペインを上下に分割（ログ / シェル）\ntmux split-window -v\n\n# 4. 左ペインで Claude Code を起動\ntmux select-pane -t 0\nclaude\n\n# 5. 右上ペインで開発サーバーを起動\ntmux select-pane -t 1\nnpm run dev`}
             hints={[
               'split-window -h で左右分割、-v で上下分割です',
               'select-pane -t でペイン番号を指定して移動します',
               'ペイン番号は 0 から始まります',
             ]}
-            keywords={['split-window', 'select-pane', 'claude', 'npm run dev']}
+            keywords={['split-window', 'select-pane']}
           />
         </div>
 

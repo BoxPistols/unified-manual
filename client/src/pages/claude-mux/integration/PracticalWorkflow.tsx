@@ -256,9 +256,9 @@ $ tmuxp load .
           previewType="terminal"
           title="tmuxp の設定ファイルを書いてみよう"
           description="Claude Code + dev server + shell の3ペイン構成を tmuxp の YAML で定義してください。"
-          initialCode={`# .tmuxp.yaml\nsession_name: my-project\n# ウィンドウとペインを定義してください\n`}
+          initialCode={`# .tmuxp.yaml\nsession_name: my-project\n___:  # ← ここを埋める\n  - window_name: main\n    layout: main-vertical\n    ___:  # ← ここを埋める\n      - ___:  # ← ここを埋める\n          - claude\n      - shell_command:\n          - npm run dev\n      - shell_command:\n          - echo "ready"`}
           answer={`# .tmuxp.yaml\nsession_name: my-project\nwindows:\n  - window_name: main\n    layout: main-vertical\n    panes:\n      - shell_command:\n          - claude\n      - shell_command:\n          - npm run dev\n      - shell_command:\n          - echo "ready"`}
-          keywords={['session_name', 'windows', 'panes', 'shell_command']}
+          keywords={['windows', 'panes', 'shell_command']}
           hints={[
             'tmuxp は session_name, windows, panes の階層構造で定義します',
             'layout には main-vertical, main-horizontal, tiled 等が使えます',

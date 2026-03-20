@@ -421,9 +421,9 @@ export default function FirstRepo() {
           <CodingChallenge
             title="リポジトリのクローンと初回コミットを書いてみよう"
             description="GitHub からリポジトリをクローンし、フォルダに移動して初回コミットするまでの流れを書いてください。"
-            initialCode={`# 1. リポジトリをクローン\n\n# 2. クローンしたフォルダに移動\n\n# 3. ファイルをステージング\n\n# 4. 初回コミット\n`}
+            initialCode={`# 1. リポジトリをクローン\ngit ___ git@github.com:username/my-first-project.git  # ← ここを埋める\n\n# 2. クローンしたフォルダに移動\ncd my-first-project\n\n# 3. ファイルをステージング\ngit ___ .  # ← ここを埋める\n\n# 4. 初回コミット\ngit ___ -m "Initial commit"  # ← ここを埋める`}
             answer={`# 1. リポジトリをクローン\ngit clone git@github.com:username/my-first-project.git\n\n# 2. クローンしたフォルダに移動\ncd my-first-project\n\n# 3. ファイルをステージング\ngit add .\n\n# 4. 初回コミット\ngit commit -m "Initial commit"`}
-            keywords={['git clone', 'cd', 'git add', 'git commit']}
+            keywords={['clone', 'add', 'commit']}
             hints={[
               'git clone でリモートリポジトリをコピーします',
               'cd でフォルダに移動、git add でステージング、git commit でコミット',

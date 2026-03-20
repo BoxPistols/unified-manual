@@ -422,7 +422,7 @@ export default preview;`}
 # 初回起動時はオンボーディングガイドが表示される`}
             />
 
-            <CodePreview previewOnly previewOnly
+            <CodePreview previewOnly
   code={`function StorybookUI() {
   const sidebarItems = [
     { label: 'Configure', indent: 0, active: false, icon: '📄' },
@@ -597,7 +597,7 @@ export const Small: Story = {
               Storybook 上ではそれぞれ独立したストーリーとして描画されます。
             </p>
 
-            <CodePreview previewOnly previewOnly
+            <CodePreview previewOnly
   code={`function ButtonStoryResult() {
   const variants = [
     { name: 'Primary', bg: '#ff4785', color: '#fff', size: '14px', pad: '10px 20px' },

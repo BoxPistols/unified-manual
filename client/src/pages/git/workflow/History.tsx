@@ -413,9 +413,9 @@ export default function HistoryWorkflow() {
           <CodingChallenge
             title="履歴と差分の確認コマンドを書いてみよう"
             description="コミット履歴を1行形式で表示するコマンドと、現在の変更内容を確認するコマンドを書いてください。"
-            initialCode={`# 1. 履歴を1行形式で表示\n\n# 2. 変更内容を確認\n`}
+            initialCode={`# 1. 履歴を1行形式で表示\ngit ___ --oneline  # ← ここを埋める\n\n# 2. 変更内容を確認\ngit ___  # ← ここを埋める`}
             answer={`# 1. 履歴を1行形式で表示\ngit log --oneline\n\n# 2. 変更内容を確認\ngit diff`}
-            keywords={['git log', '--oneline', 'git diff']}
+            keywords={['log', 'diff']}
             hints={[
               'git log に --oneline オプションを付けると簡潔に表示できます',
               'git diff で未ステージングの変更内容を確認できます',

@@ -311,14 +311,14 @@ $ claude --continue        # 最後のセッションを即座に継続`}
             previewType="markdown"
             title="CLAUDE.md を書いてみよう"
             description="プロジェクトルートに配置する CLAUDE.md を作成してください。TypeScript + React プロジェクトで、テストは Vitest、コミットメッセージは日本語、という基本ルールを定義してください。"
-            initialCode={`# CLAUDE.md\n\n## プロジェクト概要\n\n## 技術スタック\n\n## コーディング規約\n\n## テスト\n\n## Git ルール`}
+            initialCode={`# CLAUDE.md\n\n## プロジェクト概要\nこのプロジェクトは___ + ___で構築されたWebアプリケーションです。  # ← ここを埋める\n\n## 技術スタック\n- 言語: ___  # ← ここを埋める\n- フレームワーク: ___  # ← ここを埋める\n- テスト: Vitest\n- パッケージマネージャ: npm\n\n## コーディング規約\n- 関数コンポーネントを使用する\n- 型定義を明示的に記述する\n- コメントは日本語で記述する\n\n## テスト\n- テストフレームワーク: Vitest\n- テスト実行: npm run test\n- 変更後は必ず関連テストを実行する\n\n## Git ルール\n- コミットメッセージは日本語で簡潔に記述する\n- 1コミット1機能を原則とする`}
             answer={`# CLAUDE.md\n\n## プロジェクト概要\nこのプロジェクトはTypeScript + Reactで構築されたWebアプリケーションです。\n\n## 技術スタック\n- 言語: TypeScript\n- フレームワーク: React\n- テスト: Vitest\n- パッケージマネージャ: npm\n\n## コーディング規約\n- 関数コンポーネントを使用する\n- 型定義を明示的に記述する\n- コメントは日本語で記述する\n\n## テスト\n- テストフレームワーク: Vitest\n- テスト実行: npm run test\n- 変更後は必ず関連テストを実行する\n\n## Git ルール\n- コミットメッセージは日本語で簡潔に記述する\n- 1コミット1機能を原則とする`}
             hints={[
               'CLAUDE.md はプロジェクトのルールブックです。Claude Code が毎回参照します',
               '技術スタック（TypeScript, React, Vitest）を明記しましょう',
               'コミットメッセージの言語とテスト実行コマンドを具体的に指定しましょう',
             ]}
-            keywords={['TypeScript', 'React', 'Vitest', '日本語', 'コミット']}
+            keywords={['TypeScript', 'React']}
           />
 
           {/* ベストプラクティスまとめ */}

@@ -174,14 +174,14 @@ $ claude`} language="bash" />
             previewType="terminal"
             title="タスク別のモデル設定を書こう"
             description="異なるタスクに適したモデルと Effort Level の設定コマンドを書いてください。簡単なタスク、通常タスク、複雑なタスクの3パターンを設定しましょう。"
-            initialCode={`# タスク別のモデル・Effort Level 設定\n\n# 1. 簡単なタスク（ドキュメント生成）向け\n\n# 2. 通常タスク（機能実装）向け\n\n# 3. 複雑なタスク（アーキテクチャ設計）向け`}
+            initialCode={`# タスク別のモデル・Effort Level 設定\n\n# 1. 簡単なタスク（ドキュメント生成）向け\nclaude --model claude-___-4-5-20251001  # ← ここを埋める\nexport CLAUDE_CODE_EFFORT_LEVEL=low\n\n# 2. 通常タスク（機能実装）向け\nclaude --model claude-___-4-6  # ← ここを埋める\nexport CLAUDE_CODE_EFFORT_LEVEL=medium\n\n# 3. 複雑なタスク（アーキテクチャ設計）向け\nclaude --model claude-___-4-6  # ← ここを埋める\nexport CLAUDE_CODE_EFFORT_LEVEL=high`}
             answer={`# タスク別のモデル・Effort Level 設定\n\n# 1. 簡単なタスク（ドキュメント生成）向け\nclaude --model claude-haiku-4-5-20251001\nexport CLAUDE_CODE_EFFORT_LEVEL=low\n\n# 2. 通常タスク（機能実装）向け\nclaude --model claude-sonnet-4-6\nexport CLAUDE_CODE_EFFORT_LEVEL=medium\n\n# 3. 複雑なタスク（アーキテクチャ設計）向け\nclaude --model claude-opus-4-6\nexport CLAUDE_CODE_EFFORT_LEVEL=high`}
             hints={[
               '軽量タスクには haiku + low の組み合わせが最もコスト効率が良いです',
               'Sonnet + medium がデフォルトのバランス型設定です',
               '複雑な推論が必要な場合は Opus + high を使います',
             ]}
-            keywords={['haiku', 'sonnet', 'opus', 'EFFORT_LEVEL']}
+            keywords={['haiku', 'sonnet', 'opus']}
           />
         </div>
 

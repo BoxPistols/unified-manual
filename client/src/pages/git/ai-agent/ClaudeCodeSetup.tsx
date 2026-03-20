@@ -342,9 +342,9 @@ claude`}
           <CodingChallenge
             title="Claude Code のインストールと起動コマンドを書いてみよう"
             description="Node.js のバージョン確認、Claude Code のインストール、バージョン確認、起動までのコマンドを書いてください。"
-            initialCode={`# 1. Node.js のバージョンを確認\n\n# 2. Claude Code をグローバルインストール\n\n# 3. Claude Code のバージョンを確認\n\n# 4. Claude Code を起動\n`}
+            initialCode={`# 1. Node.js のバージョンを確認\nnode --version\n\n# 2. Claude Code をグローバルインストール\nnpm ___ -g @anthropic-ai/claude-code  # ← ここを埋める\n\n# 3. Claude Code のバージョンを確認\n___ --version  # ← ここを埋める\n\n# 4. Claude Code を起動\n___  # ← ここを埋める`}
             answer={`# 1. Node.js のバージョンを確認\nnode --version\n\n# 2. Claude Code をグローバルインストール\nnpm install -g @anthropic-ai/claude-code\n\n# 3. Claude Code のバージョンを確認\nclaude --version\n\n# 4. Claude Code を起動\nclaude`}
-            keywords={['node --version', 'npm install -g', 'claude-code', 'claude --version', 'claude']}
+            keywords={['install', 'claude']}
             hints={[
               'node --version で Node.js のバージョンを確認します',
               'npm install -g @anthropic-ai/claude-code でグローバルインストールします',

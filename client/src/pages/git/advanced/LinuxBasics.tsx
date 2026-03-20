@@ -303,9 +303,9 @@ chmod 755 file.txt      # 権限を数値で指定`}
           <CodingChallenge
             title="Linux 基本コマンドで プロジェクトを作成してみよう"
             description="フォルダを作成し、ファイルを追加して内容を確認するまでのコマンドを書いてください。"
-            initialCode={`# 1. my-project フォルダを作成\n\n# 2. my-project フォルダに移動\n\n# 3. README.md ファイルを作成\n\n# 4. README.md にテキストを書き込む\n\n# 5. README.md の内容を表示\n`}
+            initialCode={`# 1. my-project フォルダを作成\n___ my-project  # ← ここを埋める\n\n# 2. my-project フォルダに移動\n___ my-project  # ← ここを埋める\n\n# 3. README.md ファイルを作成\n___ README.md  # ← ここを埋める\n\n# 4. README.md にテキストを書き込む\necho "# My Project" > README.md\n\n# 5. README.md の内容を表示\n___ README.md  # ← ここを埋める`}
             answer={`# 1. my-project フォルダを作成\nmkdir my-project\n\n# 2. my-project フォルダに移動\ncd my-project\n\n# 3. README.md ファイルを作成\ntouch README.md\n\n# 4. README.md にテキストを書き込む\necho "# My Project" > README.md\n\n# 5. README.md の内容を表示\ncat README.md`}
-            keywords={['mkdir', 'cd', 'touch', 'echo', 'cat']}
+            keywords={['mkdir', 'cd', 'touch', 'cat']}
             hints={[
               'mkdir でフォルダ作成、cd で移動します',
               'touch で空ファイル作成、echo "テキスト" > ファイル名 で書き込みます',

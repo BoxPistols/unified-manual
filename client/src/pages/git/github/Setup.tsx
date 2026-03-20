@@ -261,9 +261,9 @@ export default function GitSetup() {
           <CodingChallenge
             title="SSH キー生成と接続確認のコマンドを書いてみよう"
             description="SSH キーを生成するコマンドと、GitHub への接続を確認するコマンドを書いてください。メールアドレスは「taro@example.com」とします。"
-            initialCode={`# 1. SSH キーを生成\n\n# 2. GitHub への接続確認\n`}
+            initialCode={`# 1. SSH キーを生成\n___ -t ed25519 -C "taro@example.com"  # ← ここを埋める\n\n# 2. GitHub への接続確認\nssh ___ git@github.com  # ← ここを埋める`}
             answer={`# 1. SSH キーを生成\nssh-keygen -t ed25519 -C "taro@example.com"\n\n# 2. GitHub への接続確認\nssh -T git@github.com`}
-            keywords={['ssh-keygen', 'ed25519', 'ssh -T', 'git@github.com']}
+            keywords={['ssh-keygen', '-T']}
             hints={[
               'ssh-keygen コマンドで鍵を生成します。-t で鍵の種類を指定します',
               'ssh -T git@github.com で GitHub への接続をテストできます',

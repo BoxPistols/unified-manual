@@ -248,14 +248,14 @@ export default function TmuxCheatsheet() {
             previewType="terminal"
             title="tmux のよく使う操作を復習しよう"
             description="tmux でセッション管理、ウィンドウ操作、ペイン操作の主要コマンドを書いてください。シェルコマンドとプリフィックスキー操作の両方を含めましょう。"
-            initialCode={`# tmux 主要操作の復習\n\n# セッション操作\n# 名前付きセッション作成:\n# セッション一覧:\n# セッション再接続:\n\n# ウィンドウ操作（Prefix +）\n# 新規作成:\n# 次へ移動:\n# 名前変更:\n\n# ペイン操作（Prefix +）\n# 左右分割:\n# 上下分割:\n# ズーム切替:`}
+            initialCode={`# tmux 主要操作の復習\n\n# セッション操作\n# 名前付きセッション作成:\ntmux ___ -s dev  # ← ここを埋める\n# セッション一覧:\ntmux ___  # ← ここを埋める\n# セッション再接続:\ntmux ___ -t dev  # ← ここを埋める\n\n# ウィンドウ操作（Prefix +）\n# 新規作成: Ctrl+B C\n# 次へ移動: Ctrl+B N\n# 名前変更: Ctrl+B ,\n\n# ペイン操作（Prefix +）\n# 左右分割: Ctrl+B %\n# 上下分割: Ctrl+B "\n# ズーム切替: Ctrl+B Z`}
             answer={`# tmux 主要操作の復習\n\n# セッション操作\n# 名前付きセッション作成:\ntmux new -s dev\n# セッション一覧:\ntmux ls\n# セッション再接続:\ntmux attach -t dev\n\n# ウィンドウ操作（Prefix +）\n# 新規作成: Ctrl+B C\n# 次へ移動: Ctrl+B N\n# 名前変更: Ctrl+B ,\n\n# ペイン操作（Prefix +）\n# 左右分割: Ctrl+B %\n# 上下分割: Ctrl+B "\n# ズーム切替: Ctrl+B Z`}
             hints={[
               'tmux new -s は new-session -s の省略形です',
               'tmux ls は list-sessions の省略形です',
               'Ctrl+B Z でペインのズーム（全画面）を切り替えられます',
             ]}
-            keywords={['tmux new', 'tmux ls', 'attach', 'Ctrl+B']}
+            keywords={['new', 'ls', 'attach']}
           />
         </div>
 

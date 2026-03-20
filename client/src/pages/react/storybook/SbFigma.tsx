@@ -165,7 +165,7 @@ export const Secondary: Story = {
 };`}
             />
 
-            <CodePreview previewOnly previewOnly
+            <CodePreview previewOnly
               title="Figma Variant → Story Variant"
               code={`function VariantMapping() {
   const variants = ['Primary', 'Secondary', 'Ghost'];
@@ -448,7 +448,7 @@ export const BorderRadiusFull = '9999px';`}
               />
             </div>
 
-            <CodePreview previewOnly previewOnly
+            <CodePreview previewOnly
               title="デザイントークンの対応表"
               code={`function DesignTokenMap() {
   const tokens = [
@@ -685,7 +685,7 @@ jobs:
   → レビュアーに「この変更は意図したものですか？」と確認`}
             />
 
-            <CodePreview previewOnly previewOnly
+            <CodePreview previewOnly
               title="Visual Regression テスト"
               code={`function VisualRegressionDemo() {
   const [showDiff, setShowDiff] = React.useState(true);
@@ -796,7 +796,7 @@ jobs:
               </div>
             </div>
 
-            <CodePreview previewOnly previewOnly
+            <CodePreview previewOnly
               title="デザインシステムのコンポーネント一覧"
               code={`function ComponentCatalog() {
   const Avatar = ({ name, color }) => (
@@ -967,7 +967,7 @@ jobs:
               Figma でデザイン → コードに変換 → Storybook で確認・テスト、という流れが基本です。
             </p>
 
-            <CodePreview previewOnly previewOnly
+            <CodePreview previewOnly
               title="Figma → Code → Storybook ワークフロー"
               code={`function WorkflowDiagram() {
   const steps = [

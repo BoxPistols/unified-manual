@@ -249,9 +249,9 @@ export default function GitInstall() {
           <CodingChallenge
             title="Git の初期設定コマンドを書いてみよう"
             description="Git をインストールした後に実行する、ユーザー名とメールアドレスの設定コマンドを書いてください。名前は「Taro」、メールは「taro@example.com」とします。"
-            initialCode={`# ユーザー名を設定\n\n# メールアドレスを設定\n`}
+            initialCode={`# ユーザー名を設定\ngit ___ --global user.name "Taro"  # ← ここを埋める\n\n# メールアドレスを設定\ngit ___ --global user.email "taro@example.com"  # ← ここを埋める`}
             answer={`# ユーザー名を設定\ngit config --global user.name "Taro"\n\n# メールアドレスを設定\ngit config --global user.email "taro@example.com"`}
-            keywords={['git config', '--global', 'user.name', 'user.email']}
+            keywords={['config']}
             hints={[
               'git config --global でグローバル設定ができます',
               'user.name と user.email をそれぞれ設定します',

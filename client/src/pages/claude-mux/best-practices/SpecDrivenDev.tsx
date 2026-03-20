@@ -268,14 +268,14 @@ export default function SpecDrivenDev() {
             previewType="markdown"
             title="機能仕様書を書いてみよう"
             description="SDD の手法に従って、ログイン機能の仕様書を Markdown で書いてください。概要、入力、処理フロー、エッジケース、出力を含めましょう。"
-            initialCode={`# specs/login.md\n\n## 概要\n# ログイン機能の仕様を書いてください\n\n## 入力\n# 必要な入力フィールドを定義\n\n## 処理フロー\n# 処理の手順を番号付きリストで記述\n\n## エッジケース\n# 異常系のケースを列挙\n\n## 出力\n# 成功時のレスポンスを定義`}
+            initialCode={`# specs/login.md\n\n## 概要\nユーザーログイン機能の仕様。メールアドレスとパスワードで認証する。\n\n## 入力\n- ___: string（必須、RFC 5322準拠）  # ← ここを埋める\n- ___: string（必須、8文字以上）  # ← ここを埋める\n\n## 処理フロー\n1. 入力バリデーション\n2. メールアドレスでユーザーを検索\n3. パスワードのハッシュ照合（bcrypt）\n4. ___ アクセストークンとリフレッシュトークンを生成  # ← ここを埋める\n5. ログイン履歴を記録\n\n## エッジケース\n- 存在しないメールアドレス → 401 Unauthorized\n- パスワード不一致 → 401 Unauthorized\n- アカウントロック（5回連続失敗）→ 423 Locked\n\n## 出力\n- 200 OK: { accessToken, refreshToken, expiresIn: 3600 }`}
             answer={`# specs/login.md\n\n## 概要\nユーザーログイン機能の仕様。メールアドレスとパスワードで認証する。\n\n## 入力\n- email: string（必須、RFC 5322準拠）\n- password: string（必須、8文字以上）\n\n## 処理フロー\n1. 入力バリデーション\n2. メールアドレスでユーザーを検索\n3. パスワードのハッシュ照合（bcrypt）\n4. JWT アクセストークンとリフレッシュトークンを生成\n5. ログイン履歴を記録\n\n## エッジケース\n- 存在しないメールアドレス → 401 Unauthorized\n- パスワード不一致 → 401 Unauthorized\n- アカウントロック（5回連続失敗）→ 423 Locked\n\n## 出力\n- 200 OK: { accessToken, refreshToken, expiresIn: 3600 }`}
             hints={[
               '入力にはフィールド名、型、バリデーション条件を明記しましょう',
               '処理フローは順番通りに番号付きリストで書きます',
               'エッジケースには HTTP ステータスコードを含めると実装時に便利です',
             ]}
-            keywords={['email', 'password', 'バリデーション', 'JWT', '401']}
+            keywords={['email', 'password', 'JWT']}
           />
         </div>
         <PageNavigation />

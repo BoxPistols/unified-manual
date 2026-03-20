@@ -224,9 +224,9 @@ $ tmux new-session -s myproject`}
           previewType="terminal"
           title="tmux セッション管理コマンドを書いてみよう"
           description="新しいセッション作成、一覧表示、アタッチの基本コマンドを書いてください。"
-          initialCode={`# セッション管理の基本コマンド\n# 1. 新しいセッションを "dev" という名前で作成\n\n# 2. セッション一覧を表示\n\n# 3. "dev" セッションにアタッチ\n`}
+          initialCode={`# セッション管理の基本コマンド\n# 1. 新しいセッションを "dev" という名前で作成\ntmux ___ -s dev  # ← ここを埋める\n\n# 2. セッション一覧を表示\ntmux ___  # ← ここを埋める\n\n# 3. "dev" セッションにアタッチ\ntmux ___ -t dev  # ← ここを埋める`}
           answer={`# セッション管理の基本コマンド\n# 1. 新しいセッションを "dev" という名前で作成\ntmux new-session -s dev\n\n# 2. セッション一覧を表示\ntmux list-sessions\n\n# 3. "dev" セッションにアタッチ\ntmux attach -t dev`}
-          keywords={['new-session', 'list-sessions', 'attach -t']}
+          keywords={['new-session', 'list-sessions', 'attach']}
           hints={['tmux new-session -s <名前> で名前付きセッション作成', 'tmux list-sessions で一覧、tmux attach -t <名前> でアタッチ']}
         />
 

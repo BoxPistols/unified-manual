@@ -390,7 +390,7 @@ export function ThemeToggle() {
                 純黒の背景に純白のテキストはコントラスト比が 21:1
                 になり、長時間の閲覧で目が疲れる（ハレーション）。 推奨は背景{" "}
                 <code>#151D2B</code>、テキスト <code>#CDD5E0</code>
-                （コントラスト比 9.5:1）のように、
+                （コントラスト比 11.4:1）のように、
                 少し彩度を加えた暗色と、やや抑えた明色の組み合わせ。
               </p>
             </InfoBox>
@@ -723,7 +723,7 @@ export function contrastRatio(fg: string, bg: string): number {
 
 // 使用例
 const ratio = contrastRatio('#CDD5E0', '#151D2B');
-console.log(ratio.toFixed(1)); // → "9.5"
+console.log(ratio.toFixed(1)); // → "11.4"
 // WCAG AA: 4.5:1 以上 → 合格
 // WCAG AAA: 7:1 以上 → 合格`}
             />
@@ -839,7 +839,7 @@ grep -rn 'text-\\[#' src/`}
   return (
     <iframe
       srcDoc={srcDoc}
-      sandbox="allow-scripts"
+      sandbox="allow-scripts allow-same-origin"
       className="w-full h-full border-0"
     />
   );

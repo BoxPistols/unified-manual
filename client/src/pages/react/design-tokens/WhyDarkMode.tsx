@@ -250,7 +250,7 @@ mediaQuery.addEventListener('change', (e) => {
             </p>
 
             <div className="space-y-4 mb-6">
-              <div className="p-4 rounded-r-lg border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-950/30">
+              <div className="p-4 rounded-lg border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/30">
                 <h3 className="font-bold text-foreground mb-2">目の疲労軽減</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   暗い環境で明るい画面を見ると、瞳孔が収縮し、毛様体筋に負荷がかかります。
@@ -262,7 +262,7 @@ mediaQuery.addEventListener('change', (e) => {
                 </p>
               </div>
 
-              <div className="p-4 rounded-r-lg border-l-4 border-green-500 bg-green-50 dark:bg-green-950/30">
+              <div className="p-4 rounded-lg border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950/30">
                 <h3 className="font-bold text-foreground mb-2">
                   アクセシビリティ
                 </h3>
@@ -274,7 +274,7 @@ mediaQuery.addEventListener('change', (e) => {
                 </p>
               </div>
 
-              <div className="p-4 rounded-r-lg border-l-4 border-amber-500 bg-amber-50 dark:bg-amber-950/30">
+              <div className="p-4 rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/30">
                 <h3 className="font-bold text-foreground mb-2">
                   バッテリー消費
                 </h3>
@@ -289,7 +289,7 @@ mediaQuery.addEventListener('change', (e) => {
                 </p>
               </div>
 
-              <div className="p-4 rounded-r-lg border-l-4 border-violet-500 bg-violet-50 dark:bg-violet-950/30">
+              <div className="p-4 rounded-lg border border-violet-200 dark:border-violet-800 bg-violet-50 dark:bg-violet-950/30">
                 <h3 className="font-bold text-foreground mb-2">
                   ユーザーの選択権
                 </h3>
@@ -461,7 +461,7 @@ mediaQuery.addEventListener('change', (e) => {
             </p>
 
             <div className="space-y-4 mb-6">
-              <div className="p-4 rounded-r-lg border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-950/30">
+              <div className="p-4 rounded-lg border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/30">
                 <h3 className="font-bold text-foreground mb-2">
                   Material Design 3
                 </h3>
@@ -491,7 +491,7 @@ mediaQuery.addEventListener('change', (e) => {
                 </ul>
               </div>
 
-              <div className="p-4 rounded-r-lg border-l-4 border-gray-500 bg-gray-50 dark:bg-gray-950/30">
+              <div className="p-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950/30">
                 <h3 className="font-bold text-foreground mb-2">
                   Apple Human Interface Guidelines
                 </h3>
@@ -646,7 +646,7 @@ mediaQuery.addEventListener('change', (e) => {
                       通常テキスト
                     </th>
                     <th className="text-left p-3 font-semibold text-foreground">
-                      大きなテキスト (18px bold / 24px)
+                      大きなテキスト (14pt bold / 18pt)
                     </th>
                   </tr>
                 </thead>
@@ -692,7 +692,7 @@ mediaQuery.addEventListener('change', (e) => {
       label: '推奨: 適度なコントラスト',
       fg: '#CDD5E0',
       bg: '#151D2B',
-      ratio: '9.5:1',
+      ratio: '11.4:1',
       verdict: 'AAA',
       note: '十分なコントラストを保ちつつ、目に負担が少ない',
       verdictColor: '#22C55E',
@@ -701,7 +701,7 @@ mediaQuery.addEventListener('change', (e) => {
       label: 'NG: コントラスト不足',
       fg: '#6B7280',
       bg: '#1F2937',
-      ratio: '3.2:1',
+      ratio: '3.0:1',
       verdict: 'FAIL',
       note: '通常テキストの AA 基準 (4.5:1) を下回る',
       verdictColor: '#EF4444',
@@ -775,7 +775,7 @@ mediaQuery.addEventListener('change', (e) => {
             <div className="space-y-4 mb-6">
               <div className="p-4 rounded-lg border border-border bg-card">
                 <h3 className="font-bold text-foreground mb-2">
-                  コントラスト比 9.5:1
+                  コントラスト比 11.4:1
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   WCAG AAA
@@ -818,10 +818,10 @@ mediaQuery.addEventListener('change', (e) => {
     --color-bg: #151d2b;
 
     /* テキスト階層: 高コントラスト → 低コントラスト */
-    --color-text-primary: #cdd5e0;     /* 9.5:1 - 見出し、本文 */
-    --color-text-secondary: #94a3b8;   /* 5.4:1 - 補助テキスト (AA) */
-    --color-text-tertiary: #64748b;    /* 3.4:1 - ラベル (大文字のみ AA) */
-    --color-text-disabled: #475569;    /* 2.1:1 - 非活性 (装飾的要素) */
+    --color-text-primary: #cdd5e0;     /* 11.4:1 - 見出し、本文 */
+    --color-text-secondary: #94a3b8;   /* 6.6:1 - 補助テキスト (AA) */
+    --color-text-tertiary: #64748b;    /* 3.6:1 - ラベル (大文字のみ AA) */
+    --color-text-disabled: #475569;    /* 2.2:1 - 非活性 (装飾的要素) */
 
     /* 注意: tertiary 以下は通常テキストの AA を満たさない */
     /* → 小さい文字には使わない。アイコンや装飾要素に限定する */
@@ -1026,7 +1026,7 @@ mediaQuery.addEventListener('change', (e) => {
                 },
                 {
                   title: "Material Design 3: Dark theme",
-                  url: "https://m3.material.io/styles/color/dynamic/choosing-a-source",
+                  url: "https://m3.material.io/styles/color/dark-theme",
                   description:
                     "Material Design 3 のダークテーマ設計ガイドライン",
                 },

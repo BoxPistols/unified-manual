@@ -115,14 +115,14 @@ set -g @continuum-restore 'on'`}
             previewType="terminal"
             title="セッション永続化の設定を書こう"
             description="tmux-resurrect と tmux-continuum をセットアップする tmux.conf の設定を書いてください。自動保存と自動復元を有効にしましょう。"
-            initialCode={`# ~/.tmux.conf セッション永続化設定\n\n# 1. tmux-resurrect プラグインを追加\n\n# 2. tmux-continuum プラグインを追加\n\n# 3. 自動復元を有効にする`}
+            initialCode={`# ~/.tmux.conf セッション永続化設定\n\n# 1. tmux-resurrect プラグインを追加\nset -g @plugin 'tmux-plugins/___'  # ← ここを埋める\n\n# 2. tmux-continuum プラグインを追加\nset -g @plugin 'tmux-plugins/___'  # ← ここを埋める\n\n# 3. 自動復元を有効にする\nset -g ___ 'on'  # ← ここを埋める`}
             answer={`# ~/.tmux.conf セッション永続化設定\n\n# 1. tmux-resurrect プラグインを追加\nset -g @plugin 'tmux-plugins/tmux-resurrect'\n\n# 2. tmux-continuum プラグインを追加\nset -g @plugin 'tmux-plugins/tmux-continuum'\n\n# 3. 自動復元を有効にする\nset -g @continuum-restore 'on'`}
             hints={[
               'TPM のプラグイン登録は set -g @plugin で行います',
               'tmux-continuum は 15分ごとに自動保存してくれます',
               'Prefix + Ctrl-s で手動保存、Prefix + Ctrl-r で手動復元です',
             ]}
-            keywords={['tmux-resurrect', 'tmux-continuum', '@continuum-restore', '@plugin']}
+            keywords={['tmux-resurrect', 'tmux-continuum', '@continuum-restore']}
           />
         </div>
 

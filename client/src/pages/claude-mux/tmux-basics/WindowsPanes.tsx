@@ -162,9 +162,9 @@ export default function WindowsPanes() {
           previewType="terminal"
           title="ウィンドウとペインのコマンドを書いてみよう"
           description="tmux コマンドラインから、ウィンドウの作成・名前変更、ペインの分割を行うコマンドを書いてください。"
-          initialCode={`# ウィンドウとペインの操作コマンド\n# 1. "editor" という名前の新しいウィンドウを作成\n\n# 2. 現在のペインを左右に分割\n\n# 3. 現在のペインを上下に分割\n`}
+          initialCode={`# ウィンドウとペインの操作コマンド\n# 1. "editor" という名前の新しいウィンドウを作成\ntmux ___ -n editor  # ← ここを埋める\n\n# 2. 現在のペインを左右に分割\ntmux ___ -h  # ← ここを埋める\n\n# 3. 現在のペインを上下に分割\ntmux ___ -v  # ← ここを埋める`}
           answer={`# ウィンドウとペインの操作コマンド\n# 1. "editor" という名前の新しいウィンドウを作成\ntmux new-window -n editor\n\n# 2. 現在のペインを左右に分割\ntmux split-window -h\n\n# 3. 現在のペインを上下に分割\ntmux split-window -v`}
-          keywords={['new-window', 'split-window -h', 'split-window -v']}
+          keywords={['new-window', 'split-window']}
           hints={[
             'tmux new-window -n <名前> で名前付きウィンドウを作成します',
             'split-window に -h（水平=左右）または -v（垂直=上下）を指定します',

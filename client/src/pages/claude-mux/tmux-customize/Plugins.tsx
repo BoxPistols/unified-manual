@@ -135,14 +135,14 @@ set -g @dracula-show-left-icon session`}
             previewType="terminal"
             title="TPM プラグイン設定を書こう"
             description="~/.tmux.conf に TPM（Tmux Plugin Manager）とプラグインの設定を書いてください。TPM 本体、tmux-sensible、Dracula テーマを含めましょう。"
-            initialCode={`# ~/.tmux.conf プラグイン設定\n\n# プラグインリスト\n# TPM 本体\n\n# tmux-sensible（推奨設定セット）\n\n# Dracula テーマ\n\n# TPM の初期化（ファイルの最後に記述）`}
+            initialCode={`# ~/.tmux.conf プラグイン設定\n\n# プラグインリスト\n# TPM 本体\nset -g ___ 'tmux-plugins/tpm'  # ← ここを埋める\n\n# tmux-sensible（推奨設定セット）\nset -g ___ 'tmux-plugins/tmux-sensible'  # ← ここを埋める\n\n# Dracula テーマ\nset -g @plugin 'dracula/tmux'\nset -g @dracula-plugins "battery cpu-usage ram-usage time"\n\n# TPM の初期化（ファイルの最後に記述）\n___ '~/.tmux/plugins/tpm/tpm'  # ← ここを埋める`}
             answer={`# ~/.tmux.conf プラグイン設定\n\n# プラグインリスト\n# TPM 本体\nset -g @plugin 'tmux-plugins/tpm'\n\n# tmux-sensible（推奨設定セット）\nset -g @plugin 'tmux-plugins/tmux-sensible'\n\n# Dracula テーマ\nset -g @plugin 'dracula/tmux'\nset -g @dracula-plugins "battery cpu-usage ram-usage time"\n\n# TPM の初期化（ファイルの最後に記述）\nrun '~/.tmux/plugins/tpm/tpm'`}
             hints={[
               'set -g @plugin でプラグインを登録します',
               'Dracula テーマは dracula/tmux として指定します',
               'TPM の初期化行は必ずファイルの最後に置いてください',
             ]}
-            keywords={['@plugin', 'tpm', 'dracula', 'run']}
+            keywords={['@plugin', 'run']}
           />
         </div>
 

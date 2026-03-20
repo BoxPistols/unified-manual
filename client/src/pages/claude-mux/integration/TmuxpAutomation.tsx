@@ -102,14 +102,14 @@ $ claude mcp add -s project postgres \\
             previewType="terminal"
             title="tmuxp の YAML 設定を書こう"
             description="tmuxp で AI 開発環境を定義する .tmuxp.yaml を書いてください。Claude Code、開発サーバー、テスト実行の3ペインレイアウトを定義しましょう。"
-            initialCode={`# .tmuxp.yaml\nsession_name: my-project\nwindows:\n  - window_name: main\n    layout: main-vertical\n    panes:\n      # ここにペイン設定を書いてください`}
+            initialCode={`# .tmuxp.yaml\nsession_name: my-project\nwindows:\n  - window_name: main\n    layout: main-vertical\n    options:\n      main-pane-width: 60%\n    panes:\n      - ___:  # ← ここを埋める（コマンド指定キー）\n          - cd ~/projects/my-app && claude\n      - ___:\n          - cd ~/projects/my-app && npm run dev\n      - ___:\n          - cd ~/projects/my-app && npm test -- --watch`}
             answer={`# .tmuxp.yaml\nsession_name: my-project\nwindows:\n  - window_name: main\n    layout: main-vertical\n    options:\n      main-pane-width: 60%\n    panes:\n      - shell_command:\n          - cd ~/projects/my-app && claude\n      - shell_command:\n          - cd ~/projects/my-app && npm run dev\n      - shell_command:\n          - cd ~/projects/my-app && npm test -- --watch`}
             hints={[
               'panes の各項目に shell_command でコマンドを指定します',
               'options の main-pane-width でメインペインの幅を設定できます',
               'tmuxp load . でこの設定ファイルからセッションを起動します',
             ]}
-            keywords={['session_name', 'panes', 'shell_command', 'claude']}
+            keywords={['shell_command']}
           />
         </div>
 

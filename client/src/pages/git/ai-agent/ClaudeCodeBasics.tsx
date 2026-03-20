@@ -344,14 +344,14 @@ pnpm dev`}
           <CodingChallenge
             title="CLAUDE.md を書いてみよう"
             description="Claude Code がプロジェクトのルールを認識するための CLAUDE.md ファイルを書いてください。プロジェクト名、使用言語、コミットメッセージのルールを含めましょう。"
-            initialCode={`# プロジェクト名\n\n## 基本方針\n\n`}
+            initialCode={`# My Project\n\n___ 基本方針  # ← ここを埋める（セクション見出し記号）\n\n___ 言語: 日本語でコミュニケーション  # ← ここを埋める（箇条書き記号）\n- TypeScript を使用\n\n## Git ワークフロー\n\n- コミットメッセージは日本語で簡潔に\n- push 前に必ずビルド確認`}
             answer={`# My Project\n\n## 基本方針\n\n- 言語: 日本語でコミュニケーション\n- TypeScript を使用\n\n## Git ワークフロー\n\n- コミットメッセージは日本語で簡潔に\n- push 前に必ずビルド確認`}
             hints={[
               'CLAUDE.md は Markdown 形式で書きます',
               '見出し（##）でセクションを分けましょう',
               '箇条書き（-）でルールを列挙すると Claude が理解しやすくなります',
             ]}
-            keywords={['#', '##', '-']}
+            keywords={['##', '-']}
             preview
             previewType="markdown"
           />

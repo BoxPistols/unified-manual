@@ -158,12 +158,11 @@ export default function DevComponents() {
           <Quiz
             question="React のコンポーネントはどれですか？"
             options={[
-              "<div>",
-              "function App() {}",
-              "document.getElementById",
-              "console.log",
+              { label: "<div>" },
+              { label: "function App() {}", correct: true },
+              { label: "document.getElementById" },
+              { label: "console.log" },
             ]}
-            correctIndex={1}
             explanation="function で定義された PascalCase の関数がコンポーネントです。"
           />
         </Section>

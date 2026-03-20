@@ -340,9 +340,9 @@ export default function PushPull() {
           <CodingChallenge
             title="Push と Pull の基本フローを書いてみよう"
             description="ファイルを編集した後、ステージング・コミット・Push までの一連のコマンドと、別の環境で最新を取得する Pull コマンドを書いてください。"
-            initialCode={`# 1. 変更をステージング\n\n# 2. コミット\n\n# 3. GitHub に Push\n\n# 4. 別の環境で最新を Pull\n`}
+            initialCode={`# 1. 変更をステージング\ngit ___ .  # ← ここを埋める\n\n# 2. コミット\ngit ___ -m "Update content"  # ← ここを埋める\n\n# 3. GitHub に Push\ngit ___ origin main  # ← ここを埋める\n\n# 4. 別の環境で最新を Pull\ngit ___ origin main  # ← ここを埋める`}
             answer={`# 1. 変更をステージング\ngit add .\n\n# 2. コミット\ngit commit -m "Update content"\n\n# 3. GitHub に Push\ngit push origin main\n\n# 4. 別の環境で最新を Pull\ngit pull origin main`}
-            keywords={['git add', 'git commit', 'git push', 'git pull']}
+            keywords={['add', 'commit', 'push', 'pull']}
             hints={[
               'git add でステージング、git commit -m でコミットします',
               'git push origin main で GitHub に送信、git pull origin main で取得します',

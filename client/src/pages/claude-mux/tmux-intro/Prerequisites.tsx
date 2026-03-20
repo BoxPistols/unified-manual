@@ -178,14 +178,14 @@ Release:        22.04`}
             previewType="terminal"
             title="ターミナルの基本を確認しよう"
             description="tmux を学ぶ前に必要な基本的なターミナルコマンドを書いてください。カレントディレクトリの表示、ファイル一覧、環境変数の確認を行いましょう。"
-            initialCode={`# ターミナルの基本確認\n\n# 1. 現在のディレクトリを表示\n\n# 2. ホームディレクトリのファイル一覧\n\n# 3. PATH 環境変数を表示\n\n# 4. シェルの種類を確認`}
+            initialCode={`# ターミナルの基本確認\n\n# 1. 現在のディレクトリを表示\n___  # ← ここを埋める\n\n# 2. ホームディレクトリのファイル一覧\n___ ~  # ← ここを埋める\n\n# 3. PATH 環境変数を表示\necho $PATH\n\n# 4. シェルの種類を確認\necho $SHELL`}
             answer={`# ターミナルの基本確認\n\n# 1. 現在のディレクトリを表示\npwd\n\n# 2. ホームディレクトリのファイル一覧\nls ~\n\n# 3. PATH 環境変数を表示\necho $PATH\n\n# 4. シェルの種類を確認\necho $SHELL`}
             hints={[
               'pwd は Print Working Directory の略です',
               '~ はホームディレクトリを表します',
               '$変数名 で環境変数の値を参照できます',
             ]}
-            keywords={['pwd', 'ls', 'echo', 'PATH']}
+            keywords={['pwd', 'ls']}
           />
         </div>
 

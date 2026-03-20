@@ -374,14 +374,14 @@ export default function PromptEngineering() {
           <CodingChallenge
             title="構造化されたプロンプトを書いてみよう"
             description="以下の要素を含む AI への指示を Markdown で書いてください：見出し（## で状況・質問などのセクション分け）、箇条書き（条件や要件の列挙）、コードブロック（エラーメッセージやコードの引用）。テーマは自由です。"
-            initialCode={`## 状況\n\n\n## 質問\n\n`}
+            initialCode={`## 状況\n___ React プロジェクトを開発中  # ← ここを埋める（箇条書き記号）\n- git push を実行したらエラーが発生した\n\n## エラーメッセージ\n___\nfatal: Authentication failed\n___  # ← ここを埋める（コードブロック記号）\n\n## 質問\nこのエラーの原因と対処方法を教えてください。`}
             answer={`## 状況\n- React プロジェクトを開発中\n- git push を実行したらエラーが発生した\n\n## エラーメッセージ\n\`\`\`\nfatal: Authentication failed\n\`\`\`\n\n## 質問\nこのエラーの原因と対処方法を教えてください。`}
             hints={[
               '## で見出しを作ってセクションを分けましょう',
               '箇条書き（-）で状況や条件を整理しましょう',
               'コードブロック（```）でエラーメッセージを囲みましょう',
             ]}
-            keywords={['##', '-', '```']}
+            keywords={['-', '```']}
             preview
             previewType="markdown"
           />

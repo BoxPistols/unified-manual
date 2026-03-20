@@ -383,9 +383,9 @@ systemBlue              #007AFF      #0A84FF      アクション/リンク`}
   /* Surface の明度で Elevation を補完 */
   --surface-elevation-0: #121212;
   --surface-elevation-1: #1E1E1E;  /* +5% white overlay */
-  --surface-elevation-2: #232323;  /* +7% white overlay */
-  --surface-elevation-3: #282828;  /* +8% white overlay */
-  --surface-elevation-4: #2C2C2C;  /* +9% white overlay */
+  --surface-elevation-2: #232323;  /* +8% white overlay */
+  --surface-elevation-3: #2C2C2C;  /* +11% white overlay */
+  --surface-elevation-4: #313131;  /* +12% white overlay */
 }`}
               />
               <InfoBox type="warning" title="ダークモードの Elevation">
@@ -884,14 +884,15 @@ Dark                          .dark { ... }`}
               question="Material Design 3 のトークン階層で、コンポーネントが直接参照するのはどのレベルのトークンですか？"
               options={[
                 { label: "Reference Tokens（生の値）" },
-                { label: "System Tokens（テーマ全体の共通値）", correct: true },
+                { label: "System Tokens（テーマ全体の共通値）" },
                 {
                   label:
-                    "Component Tokens は存在せず、直接 Reference を参照する",
+                    "Component Tokens（コンポーネント固有の値）",
+                  correct: true,
                 },
                 { label: "CSS 変数を介さず、値をハードコードする" },
               ]}
-              explanation="Material Design 3 では、コンポーネントは System Tokens（例: sys.color.primary）を参照します。System Tokens は内部で Reference Tokens を参照しますが、コンポーネントはその詳細を知る必要がありません。この間接参照により、テーマの切り替えやリブランディングが容易になります。"
+              explanation="Material Design 3 では、コンポーネントは Component Tokens（例: --md-filled-button-container-color）を直接参照します。Component Tokens は内部で System Tokens を参照し、System Tokens は Reference Tokens を参照します。この 3 層の間接参照により、テーマの切り替えやリブランディングが容易になります。"
             />
           </section>
 

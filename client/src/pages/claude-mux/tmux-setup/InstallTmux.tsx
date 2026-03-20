@@ -148,14 +148,14 @@ tmux 3.x.x`}
             previewType="terminal"
             title="tmux のインストールコマンドを書こう"
             description="macOS と Linux の両方で tmux をインストールするコマンドを書いてください。インストール後の確認コマンドも含めましょう。"
-            initialCode={`# tmux のインストール\n\n# macOS (Homebrew)\n\n# Linux (apt)\n\n# インストール確認`}
+            initialCode={`# tmux のインストール\n\n# macOS (Homebrew)\nbrew ___ tmux  # ← ここを埋める\n\n# Linux (apt)\nsudo apt update && sudo apt ___ tmux  # ← ここを埋める\n\n# インストール確認\ntmux ___  # ← ここを埋める`}
             answer={`# tmux のインストール\n\n# macOS (Homebrew)\nbrew install tmux\n\n# Linux (apt)\nsudo apt update && sudo apt install tmux\n\n# インストール確認\ntmux -V`}
             hints={[
               'macOS では Homebrew を使います（brew install）',
               'Linux では apt パッケージマネージャーを使います',
               '-V（大文字）でバージョンを確認できます',
             ]}
-            keywords={['brew install', 'apt install', 'tmux -V']}
+            keywords={['install', '-V']}
           />
         </div>
 

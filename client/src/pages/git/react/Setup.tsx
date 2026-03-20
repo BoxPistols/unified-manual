@@ -278,9 +278,9 @@ export default function ReactSetup() {
           <CodingChallenge
             title="React プロジェクトの作成と起動コマンドを書いてみよう"
             description="React プロジェクトを作成し、フォルダに移動して開発サーバーを起動するまでのコマンドを書いてください。"
-            initialCode={`# 1. React プロジェクトを作成\n\n# 2. プロジェクトフォルダに移動\n\n# 3. 開発サーバーを起動\n`}
+            initialCode={`# 1. React プロジェクトを作成\nnpm ___ vite@latest my-react-app -- --template react  # ← ここを埋める\n\n# 2. プロジェクトフォルダに移動\ncd my-react-app\n\n# 3. 開発サーバーを起動\nnpm run ___  # ← ここを埋める`}
             answer={`# 1. React プロジェクトを作成\nnpm create vite@latest my-react-app -- --template react\n\n# 2. プロジェクトフォルダに移動\ncd my-react-app\n\n# 3. 開発サーバーを起動\nnpm run dev`}
-            keywords={['create vite@latest', '--template react', 'cd', 'npm run dev']}
+            keywords={['create', 'dev']}
             hints={[
               'npm create vite@latest でプロジェクトを作成します',
               'cd でフォルダに移動してから npm run dev で起動します',
