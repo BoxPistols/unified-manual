@@ -497,7 +497,7 @@ export default function Home() {
         <section id="curriculum" className="mb-20">
           <h2 className="text-3xl font-bold text-foreground mb-2">カリキュラム</h2>
           <p className="text-muted-foreground mb-10 leading-relaxed">
-            全69ステップを5部構成で進めます。
+            5部構成で進めます。
           </p>
 
           {/* 第1部 */}

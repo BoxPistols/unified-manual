@@ -887,7 +887,7 @@ export const Error: Story = {
                 },
                 {
                   title: "Style Dictionary - Amazon",
-                  url: "https://amzn.github.io/style-dictionary/",
+                  url: "https://styledictionary.com/",
                   description:
                     "デザイントークンを複数プラットフォームの形式に変換する OSS",
                 },

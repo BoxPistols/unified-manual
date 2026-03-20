@@ -34,7 +34,7 @@ export default function AgentOrchestration() {
               Agent Teams とは
             </h2>
             <p className="leading-relaxed mb-6 text-muted-foreground">
-              Agent Teams は、複数の Claude Code インスタンスを協調動作させる公式機能。2026年2月5日に Opus 4.6 と同時にリリースされた。Claude Code v2.1.32 以降で利用できる。
+              Agent Teams は、複数の Claude Code インスタンスを協調動作させる公式機能。2026年2月5日に Opus 4.6 と同時にリリースされた。最新版の Claude Code で利用できる。
             </p>
             <p className="leading-relaxed mb-6 text-muted-foreground">
               1つのセッションが<strong>チームリード</strong>として機能し、他のセッション（チームメイト）にタスクを割り当てる。チームメイトはそれぞれ独立したコンテキストウィンドウを持ち、互いに直接通信しながら作業を進める。
@@ -55,7 +55,7 @@ export default function AgentOrchestration() {
             </div>
 
             <InfoBox type="info" title="要件">
-              Agent Teams を使うには Claude Code v2.1.32 以降が必要。<code>claude --version</code> でバージョンを確認し、古い場合は <code>npm update -g @anthropic-ai/claude-code</code> でアップデートする。
+              Agent Teams を使うには 最新版の Claude Code が必要。<code>claude --version</code> でバージョンを確認し、古い場合は <code>npm update -g @anthropic-ai/claude-code</code> でアップデートする。
             </InfoBox>
           </section>
 

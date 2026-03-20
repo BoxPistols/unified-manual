@@ -104,7 +104,7 @@ export default function Flexbox() {
               <p>
                 <code>flex-direction: column</code> と <code>flex-wrap: wrap</code> を組み合わせると、
                 縦方向に並べた後に横に折り返しますが、Container に明示的な高さを設定しないと折り返しが発生しません。
-                横並びの折り返し（<code>row wrap</code>）の方が直感的で、実務でも圧倒的に多用されます。
+                横並びの折り返し（<code>row wrap</code>）の方が直感的で、実務でもよく使われます。
               </p>
             </InfoBox>
           </section>

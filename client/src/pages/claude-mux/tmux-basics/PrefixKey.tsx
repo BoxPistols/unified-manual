@@ -23,7 +23,7 @@ export default function PrefixKey() {
           </h1>
 
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-            tmux操作の要となる「魔法の鍵」を使いこなしましょう。
+            tmux操作の起点となるプリフィックスキーの仕組みを扱います。
           </p>
         </div>
 

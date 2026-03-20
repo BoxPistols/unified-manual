@@ -151,7 +151,7 @@ export default theme;`}
           <section>
             <h2 className="text-2xl font-bold text-foreground mb-4">タイポグラフィのカスタマイズ</h2>
             <p className="text-muted-foreground mb-4 leading-relaxed">
-              日本語プロジェクトではフォントの変更が必須です。
+              日本語プロジェクトではフォントの変更が必要です。
               各バリアント（h1〜h6、body1、body2 など）のスタイルも個別にカスタマイズできます。
             </p>
 

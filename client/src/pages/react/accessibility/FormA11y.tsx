@@ -820,7 +820,7 @@ export default function FormA11y() {
               </div>
             </div>
 
-            <InfoBox type="success" title="テストの習慣を身につける">
+            <InfoBox type="success" title="テストを習慣にする">
               <p>
                 フォームのアクセシビリティは「実装して終わり」ではありません。
                 (1) キーボードだけで全操作を完了できるか試す、

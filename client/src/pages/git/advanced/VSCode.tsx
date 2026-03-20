@@ -267,7 +267,7 @@ export default function VSCodeSetup() {
 
               <div className="border-l-4 border-primary pl-4">
                 <h3 className="text-xl font-semibold text-foreground mb-2">Remote - WSL (Windows のみ)</h3>
-                <p className="text-lg text-muted-foreground">WSL2 内のプロジェクトを VSCode で直接編集できます。Windows ユーザー必須です。</p>
+                <p className="text-lg text-muted-foreground">WSL2 内のプロジェクトを VSCode で直接編集できます。Windows ユーザーにおすすめです。</p>
               </div>
             </div>
 

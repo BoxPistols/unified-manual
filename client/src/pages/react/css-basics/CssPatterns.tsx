@@ -351,7 +351,7 @@ function Card({ title, description }: { title: string; description: string }) {
             <InfoBox type="info" title="自作 vs Tailwind CSS">
               <p>
                 自前でユーティリティクラスを作ることで「仕組み」は理解できますが、
-                実際のプロジェクトでは Tailwind CSS を使う方が圧倒的に効率的です。
+                実際のプロジェクトでは Tailwind CSS を使う方が効率的です。
                 Tailwind は何千ものユーティリティを提供し、未使用クラスの自動除去、
                 レスポンシブバリアント、カスタマイズなど、自前で再現するのは困難な機能を備えています。
               </p>

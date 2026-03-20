@@ -21,7 +21,7 @@ export default function ArchOverview() {
 
         <WhyNowBox tags={['アーキテクチャ', 'ディレクトリ構成', '状態管理', 'Next.js設計', 'CSSライブラリ選定']}>
           <p>
-            ここまでの52ステップで、React の基礎、Hooks、CSS、Next.js、Storybook と幅広く学んできました。
+            ここまでの学習で、React の基礎、Hooks、CSS、Next.js、Storybook と幅広く学んできました。
             個々の技術は使えるようになったけれど、「プロジェクト全体をどう設計するか？」という問いにはまだ答えられないかもしれません。
             この章では、パーツを組み合わせて「全体の設計図」を描く方法を扱います。
           </p>

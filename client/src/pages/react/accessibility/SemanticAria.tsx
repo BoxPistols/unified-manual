@@ -1118,7 +1118,7 @@ function StatusBadge({ status }: { status: 'active' | 'inactive' | 'pending' }) 
           <section>
             <h2 className="text-2xl font-bold text-foreground mb-4">スクリーンリーダーのテスト方法</h2>
             <p className="text-foreground/80 mb-4 leading-relaxed">
-              アクセシビリティの品質を確保するためには、実際にスクリーンリーダーでテストすることが不可欠です。
+              アクセシビリティの品質を確保するためには、実際にスクリーンリーダーでテストすることが重要です。
               自動テストツールだけでは検出できない問題（読み上げ順序の不自然さ、冗長な情報など）は
               手動でしか確認できません。
             </p>

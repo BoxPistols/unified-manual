@@ -260,7 +260,7 @@ function EthicalCheckout() {
           <section>
             <h2 className="text-2xl font-bold text-foreground mb-4">Cookie バナーのダークパターン</h2>
             <p className="text-foreground/80 mb-4 leading-relaxed">
-              GDPR の施行以降、Cookie 同意バナーは Web サイトに不可欠な要素となりましたが、
+              GDPR の施行以降、Cookie 同意バナーは Web サイトに広く使われるようになりましたが、
               多くのサイトでダークパターンが使われています。
               「全て受け入れる」ボタンだけを目立つ色で大きく表示し、
               「拒否」を小さなテキストリンクにしたり、拒否するために何段階もの設定画面を操作させるケースが典型です。

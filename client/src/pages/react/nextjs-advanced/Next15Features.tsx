@@ -34,7 +34,7 @@ export default function Next15Features() {
             <h2 className="text-2xl font-bold text-foreground mb-4">Turbopack の安定化</h2>
             <p className="text-foreground/80 mb-4 leading-relaxed">
               Next.js 15 で、開発サーバー向けの <code className="text-sm bg-muted px-1.5 py-0.5 rounded">Turbopack</code> が
-              安定版としてリリースされました。Turbopack は Rust ベースの次世代バンドラーで、webpack に比べて圧倒的な速度を実現します。
+              安定版としてリリースされました。Turbopack は Rust ベースのバンドラーで、webpack より高速に動作します。
             </p>
 
             <div className="grid gap-4 md:grid-cols-2 mb-6">

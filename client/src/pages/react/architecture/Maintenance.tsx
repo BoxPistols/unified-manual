@@ -17,15 +17,15 @@ export default function Maintenance() {
         <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
           デザインシステムは「作って終わり」ではありません。
           長期的に価値を生み続けるためには、運用の仕組み、テスト戦略、チーム開発のルール、
-          そしてパフォーマンスへの意識が不可欠です。このマニュアルの最終章として、
+          そしてパフォーマンスへの意識が重要です。このマニュアルの最終章として、
           「実装者」から「設計者」へのステップアップを完成させましょう。
         </p>
 
         <WhyNowBox tags={['長期運用', 'チーム開発', 'テスト', 'パフォーマンス', '学習の次のステップ']}>
           <p>
-            55ステップの最後にたどり着きました。
+            最終ステップにたどり着きました。
             技術を「学ぶ」段階から「維持する」段階へ。コードを「書く」だけでなく「守る」方法を学びます。
-            ここで身につける知識は、チームの一員として、そしてプロダクトの品質の番人として、
+            ここで扱う知識は、チームの一員として、そしてプロダクトの品質の番人として、
             長く活きるスキルになるはずです。
           </p>
         </WhyNowBox>
@@ -728,8 +728,8 @@ onCLS(console.log);   // CLS の計測結果`}
           <section>
             <h2 className="text-2xl font-bold text-foreground mb-4">学習の次のステップ</h2>
             <p className="text-foreground/80 mb-6 leading-relaxed">
-              55ステップの学習を終えたあなたは、フロントエンド開発の基礎から応用まで、
-              幅広い知識を身につけています。ここからは、さらに深く学び、実践する段階です。
+              ここまでの学習を終えた段階で、フロントエンド開発の基礎から応用まで、
+              幅広い知識を扱ってきました。ここからは、さらに深く学び、実践する段階です。
             </p>
 
             <h3 className="text-lg font-semibold text-foreground mb-3">推奨する学習リソース</h3>
@@ -820,9 +820,9 @@ onCLS(console.log);   // CLS の計測結果`}
             </InfoBox>
           </section>
 
-          {/* セクション 6: 55ステップの振り返り */}
+          {/* セクション 6: 全ステップの振り返り */}
           <section>
-            <h2 className="text-2xl font-bold text-foreground mb-4">55ステップの振り返り</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-4">全ステップの振り返り</h2>
             <p className="text-foreground/80 mb-6 leading-relaxed">
               ここで、このマニュアル全体で学んだことを振り返りましょう。
               あなたが歩んできた道のりを整理することで、知識が定着します。
@@ -919,7 +919,7 @@ onCLS(console.log);   // CLS の計測結果`}
 
               <div className="space-y-4 text-foreground/80 leading-relaxed">
                 <p>
-                  55ステップの学習、お疲れさまでした。
+                  ここまでの学習、お疲れさまでした。
                 </p>
 
                 <p>
@@ -1013,13 +1013,13 @@ onCLS(console.log);   // CLS の計測結果`}
                 </div>
                 <div className="flex gap-3 items-start">
                   <span className="flex-shrink-0 text-primary font-bold">6.</span>
-                  <p><strong>55ステップの知識は土台</strong> ― フレームワークが変わっても、考え方は活き続ける</p>
+                  <p><strong>ここまでの知識は土台</strong> ― フレームワークが変わっても、考え方は活き続ける</p>
                 </div>
               </div>
             </div>
 
             <p className="text-foreground/80 mt-6 leading-relaxed text-center font-semibold text-lg">
-              全55ステップ、完走おめでとうございます。
+              全ステップ完走、お疲れさまでした。
             </p>
           </section>
         </div>

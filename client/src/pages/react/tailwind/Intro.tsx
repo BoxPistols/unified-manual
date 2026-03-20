@@ -70,7 +70,7 @@ export default function TailwindIntro() {
               <p>
                 Tailwind のクラス名は CSS プロパティと1対1で対応しています。
                 <code>p-6</code> は <code>padding: 1.5rem</code>、<code>text-xl</code> は <code>font-size: 1.25rem</code> のように、
-                覚えてしまえば CSS を書くよりも圧倒的に速くスタイリングできます。
+                覚えてしまえば CSS を直接書くより速くスタイリングできます。
               </p>
             </InfoBox>
           </section>
@@ -268,7 +268,7 @@ export default defineConfig({
           <section>
             <h2 className="text-2xl font-bold text-foreground mb-4">Flexbox と Grid</h2>
             <p className="text-muted-foreground mb-4 leading-relaxed">
-              レイアウトに不可欠な Flexbox と Grid も、Tailwind ならクラス名だけで表現できます。
+              レイアウトでよく使う Flexbox と Grid も、Tailwind ならクラス名だけで表現できます。
             </p>
 
             <CodePreview

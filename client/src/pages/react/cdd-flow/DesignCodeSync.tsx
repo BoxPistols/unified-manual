@@ -369,7 +369,7 @@ export default function DesignCodeSync() {
             </h3>
             <p className="text-foreground/80 mb-4 leading-relaxed">
               <a
-                href="https://amzn.github.io/style-dictionary/"
+                href="https://styledictionary.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"
@@ -1286,7 +1286,7 @@ await Promise.all([
             links={[
               {
                 title: "Style Dictionary - Amazon",
-                url: "https://amzn.github.io/style-dictionary/",
+                url: "https://styledictionary.com/",
                 description:
                   "Design Tokens の変換ツール。tokens.json から CSS、JS、iOS、Android 向けの出力を生成する。",
               },

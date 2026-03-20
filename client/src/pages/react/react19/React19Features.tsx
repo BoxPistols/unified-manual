@@ -426,7 +426,7 @@ function ProductCard({ product, onSort }: CardProps) {
 npm install -D babel-plugin-react-compiler
 
 # ESLint プラグイン（推奨）
-npm install -D eslint-plugin-react-compiler`}
+npm install -D eslint-plugin-react-hooks@latest`}
             />
 
             <CodeBlock
@@ -456,7 +456,7 @@ export default defineConfig({
               <InfoBox type="warning" title="React Compiler の現状">
                 <p>
                   React Compiler は React 19 とともにリリースされましたが、
-                  まだ成熟途上のツールです。小規模なプロジェクトから段階的に導入し、
+                  v1.0 安定版がリリースされています。小規模なプロジェクトから段階的に導入し、
                   動作を検証しながら範囲を広げることを推奨します。
                   既存の useMemo / useCallback はそのまま残しても問題なく、
                   コンパイラが自動的に最適化します。

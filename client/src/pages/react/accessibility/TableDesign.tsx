@@ -18,7 +18,7 @@ export default function TableDesign() {
         <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-6">Table 設計の全課題</h1>
         <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
           テーブルは最も古くからある HTML 要素のひとつですが、
-          正しく設計するのは驚くほど難しいコンポーネントです。
+          正しく設計するのが難しいコンポーネントです。
           セマンティクス、アクセシビリティ、レスポンシブ対応、テキストの溢れ、
           横スクロール、操作 UI まで、テーブル設計で直面するすべての課題と解決策を網羅します。
         </p>

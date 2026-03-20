@@ -704,9 +704,9 @@ export async function addProduct(formData: FormData) {
             />
           </section>
 
-          {/* セクション 6: Next.js 16 プレビュー */}
+          {/* セクション 6: Next.js 16 の主な変更点 */}
           <section>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Next.js 16 プレビュー</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-4">Next.js 16 の主な変更点</h2>
             <p className="text-foreground/80 mb-4 leading-relaxed">
               Next.js 16 は、React Compiler のデフォルト有効化や Node.js ランタイムの改善など、
               パフォーマンスと開発者体験のさらなる向上が予定されています。主な変更点をプレビューしましょう。

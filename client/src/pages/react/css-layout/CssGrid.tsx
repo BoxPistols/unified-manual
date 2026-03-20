@@ -585,7 +585,7 @@ export default function CssGrid() {
             <h3 className="text-xl font-semibold text-foreground mb-3 mt-8">Holy Grail Layout</h3>
             <p className="text-muted-foreground mb-4 leading-relaxed">
               ヘッダー、フッター、メインコンテンツ、左右サイドバーを持つ古典的なWebページレイアウトです。
-              CSS Grid を使えば驚くほどシンプルに実装できます。
+              CSS Grid を使えばシンプルに実装できます。
             </p>
 
             <CodePreview

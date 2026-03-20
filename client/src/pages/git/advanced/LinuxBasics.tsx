@@ -293,7 +293,7 @@ chmod 755 file.txt      # 権限を数値で指定`}
               </li>
             </ol>
             <InfoBox type="success">
-              これらのコマンドが使えるようになれば、Linux の基本操作はマスターです！
+              これらのコマンドが使えるようになれば、Linux の基本操作は一通り確認できました。
             </InfoBox>
           </div>
         </section>

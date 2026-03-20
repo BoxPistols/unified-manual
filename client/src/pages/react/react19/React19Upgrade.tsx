@@ -62,7 +62,7 @@ npm install -D eslint-plugin-react-hooks@latest
 
 # React Compiler（任意）
 npm install -D babel-plugin-react-compiler
-npm install -D eslint-plugin-react-compiler
+npm install -D eslint-plugin-react-hooks@latest
 
 # テストライブラリの更新
 npm install -D @testing-library/react@latest`}

@@ -480,7 +480,7 @@ const preview: Preview = {
     theme: {
       name: 'テーマ',
       description: 'ライト / ダークモードの切替',
-      defaultValue: 'light',
+      
       toolbar: {
         icon: 'mirror',
         items: [
@@ -678,7 +678,7 @@ const preview: Preview = {
     theme: {
       name: 'テーマ',
       description: 'MUI テーマの切替',
-      defaultValue: 'light',
+      
       toolbar: {
         icon: 'paintbrush',
         items: [
@@ -901,7 +901,7 @@ const preview: Preview = {
   globalTypes: {
     theme: {
       name: 'テーマ',
-      defaultValue: 'light',
+      
       toolbar: {
         icon: 'paintbrush',
         items: [
@@ -965,7 +965,7 @@ const preview: Preview = {
   globalTypes: {
     theme: {
       name: 'テーマ',
-      defaultValue: 'light',
+      
       toolbar: {
         icon: 'paintbrush',
         items: [
@@ -1505,7 +1505,7 @@ const preview: Preview = {
   globalTypes: {
     theme: {
       name: 'テーマ',
-      defaultValue: 'light',
+      
       toolbar: {
         icon: 'paintbrush',
         items: [
