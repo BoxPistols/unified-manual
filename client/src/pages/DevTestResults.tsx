@@ -131,6 +131,7 @@ export default function DevTestResults() {
   const [filterStatus, setFilterStatus] = useState<"all" | "pass" | "fail">(
     "all",
   );
+  const [selectedResult, setSelectedResult] = useState<TestResult | null>(null);
 
   const runAllTests = useCallback(() => {
     const registry = buildRegistry();
@@ -258,8 +259,8 @@ export default function DevTestResults() {
             ))}
           </div>
           <button
-            onClick={runAllTests}
-            className="ml-auto px-4 py-1.5 rounded text-sm font-medium bg-primary text-white hover:bg-primary/90 transition-colors"
+            onClick={() => { setResults([]); setTimeout(runAllTests, 50); }}
+            className="ml-auto px-4 py-1.5 rounded text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
           >
             再テスト実行
           </button>
@@ -304,7 +305,8 @@ export default function DevTestResults() {
                   return (
                     <tr
                       key={`${r.entry.source}-${r.entry.index}`}
-                      className={`border-t border-border transition-colors ${
+                      onClick={() => setSelectedResult(r)}
+                      className={`border-t border-border transition-colors cursor-pointer hover:bg-primary/5 ${
                         i % 2 === 0 ? "bg-background" : "bg-muted/30"
                       } ${!isRowPass ? "bg-red-50/50 dark:bg-red-950/10" : ""}`}
                     >
@@ -374,6 +376,69 @@ export default function DevTestResults() {
             テストをスキップ
           </p>
         </div>
+        {/* ── 詳細モーダル ── */}
+        {selectedResult && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setSelectedResult(null)}>
+            <div className="bg-card border border-border rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6" onClick={(e) => e.stopPropagation()}>
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <span className="text-xs font-medium bg-muted text-muted-foreground px-2 py-0.5 rounded">{selectedResult.entry.source}</span>
+                  <h3 className="text-lg font-bold text-foreground mt-1">{selectedResult.entry.title}</h3>
+                </div>
+                <button onClick={() => setSelectedResult(null)} className="text-muted-foreground hover:text-foreground text-xl">✕</button>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <p className="text-xs font-semibold text-muted-foreground uppercase mb-1">Keywords（判定基準）</p>
+                  <div className="flex flex-wrap gap-1">
+                    {selectedResult.entry.keywords.map((kw, i) => (
+                      <code key={i} className="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded text-xs">{kw}</code>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-xs font-semibold text-muted-foreground uppercase mb-1">判定結果</p>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="p-3 rounded-lg bg-muted/50">
+                      <p className="text-xs text-muted-foreground mb-1">answer=answer（正解→正解判定）</p>
+                      <PassBadge pass={selectedResult.answerPass} />
+                    </div>
+                    <div className="p-3 rounded-lg bg-muted/50">
+                      <p className="text-xs text-muted-foreground mb-1">initial=fail（未変更→不正解判定）</p>
+                      {selectedResult.initialFail !== null ? <PassBadge pass={selectedResult.initialFail} /> : <SkipBadge />}
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-xs font-semibold text-muted-foreground uppercase mb-1">initialCode（設問）</p>
+                  <pre className="p-3 bg-[#1e1e2e] text-[#cdd6f4] rounded-lg text-xs overflow-x-auto max-h-48">{selectedResult.entry.initialCode}</pre>
+                </div>
+
+                <div>
+                  <p className="text-xs font-semibold text-muted-foreground uppercase mb-1">answer（模範解答）</p>
+                  <pre className="p-3 bg-[#1e1e2e] text-[#a6e3a1] rounded-lg text-xs overflow-x-auto max-h-48">{selectedResult.entry.answer}</pre>
+                </div>
+
+                <div>
+                  <p className="text-xs font-semibold text-muted-foreground uppercase mb-1">差分（ユーザーが変更すべき箇所）</p>
+                  <div className="p-3 bg-muted/50 rounded-lg text-xs space-y-1">
+                    {(() => {
+                      const initLines = selectedResult.entry.initialCode.split('\n').map(l => l.trim());
+                      const ansLines = selectedResult.entry.answer.split('\n').map(l => l.trim());
+                      const diffs = ansLines.filter(l => l && !initLines.includes(l));
+                      return diffs.length > 0
+                        ? diffs.map((d, i) => <p key={i} className="text-green-600 dark:text-green-400 font-mono">+ {d}</p>)
+                        : <p className="text-muted-foreground">差分なし（完全一致で判定）</p>;
+                    })()}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

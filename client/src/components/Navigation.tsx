@@ -414,13 +414,22 @@ export default function Navigation() {
               UI トレーニング
             </Link>
             {window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? (
-              <Link
-                href="/dev/components"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-muted-foreground/50 hover:text-muted-foreground transition-colors"
-              >
-                UI カタログ (dev)
-              </Link>
+              <>
+                <Link
+                  href="/dev/components"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-muted-foreground/50 hover:text-muted-foreground transition-colors"
+                >
+                  UI カタログ (dev)
+                </Link>
+                <Link
+                  href="/dev/test-results"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-muted-foreground/50 hover:text-muted-foreground transition-colors"
+                >
+                  テスト結果 (dev)
+                </Link>
+              </>
             ) : null}
           </div>
         </div>
