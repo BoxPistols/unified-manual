@@ -154,34 +154,35 @@ const liveEditorDemoCode = `function Greeting() {
 const challengeDemoCode = `function App() {
   return (
     <div style={{
-      display: "___",
+      display: "___", // ← "flex" に変えてみよう
       gap: "1rem",
       padding: "1.5rem",
       fontFamily: "system-ui, sans-serif",
+      color: "var(--text)",
     }}>
       <div style={{
         padding: "1rem",
-        background: "#eff6ff",
+        background: "var(--bg-accent)",
         borderRadius: "0.5rem",
-        border: "1px solid #bfdbfe",
+        border: "1px solid var(--border)",
         flex: 1,
       }}>
         <strong>Card A</strong>
       </div>
       <div style={{
         padding: "1rem",
-        background: "#f0fdf4",
+        background: "var(--bg-accent)",
         borderRadius: "0.5rem",
-        border: "1px solid #bbf7d0",
+        border: "1px solid var(--border)",
         flex: 1,
       }}>
         <strong>Card B</strong>
       </div>
       <div style={{
         padding: "1rem",
-        background: "#fef3c7",
+        background: "var(--bg-accent)",
         borderRadius: "0.5rem",
-        border: "1px solid #fde68a",
+        border: "1px solid var(--border)",
         flex: 1,
       }}>
         <strong>Card C</strong>
@@ -197,30 +198,31 @@ const challengeDemoAnswer = `function App() {
       gap: "1rem",
       padding: "1.5rem",
       fontFamily: "system-ui, sans-serif",
+      color: "var(--text)",
     }}>
       <div style={{
         padding: "1rem",
-        background: "#eff6ff",
+        background: "var(--bg-accent)",
         borderRadius: "0.5rem",
-        border: "1px solid #bfdbfe",
+        border: "1px solid var(--border)",
         flex: 1,
       }}>
         <strong>Card A</strong>
       </div>
       <div style={{
         padding: "1rem",
-        background: "#f0fdf4",
+        background: "var(--bg-accent)",
         borderRadius: "0.5rem",
-        border: "1px solid #bbf7d0",
+        border: "1px solid var(--border)",
         flex: 1,
       }}>
         <strong>Card B</strong>
       </div>
       <div style={{
         padding: "1rem",
-        background: "#fef3c7",
+        background: "var(--bg-accent)",
         borderRadius: "0.5rem",
-        border: "1px solid #fde68a",
+        border: "1px solid var(--border)",
         flex: 1,
       }}>
         <strong>Card C</strong>
@@ -455,7 +457,7 @@ export default function Landing() {
             description={`display: "___" を埋めて、3 つのカードを横並びにしてください。`}
             initialCode={challengeDemoCode}
             answer={challengeDemoAnswer}
-            keywords={['flex']}
+            keywords={['display: "flex"']}
             hints={[
               'CSS の Flexbox を使います。display に指定する値を考えてみましょう。',
               '答えは "flex" です。display: "flex" と書くと子要素が横並びになります。',

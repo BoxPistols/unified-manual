@@ -401,7 +401,7 @@ export default function CodingChallenge({
           {isCorrect ? (
             <>
               <CheckCircle2 size={18} />
-              <span className="text-sm font-semibold">正解！素晴らしい！</span>
+              <span className="text-sm font-semibold">正解</span>
             </>
           ) : (
             <>
