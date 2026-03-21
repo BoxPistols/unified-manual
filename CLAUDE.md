@@ -38,11 +38,11 @@ client/src/
 ├── hooks/          useBookmarks, useProgress 等
 ├── lib/            navigation.ts, preview.ts, searchIndex.ts
 └── pages/
-    ├── react/      React マニュアル（69 ステップ）
-    ├── git/        Git マニュアル（27 ステップ）
-    ├── threejs/    Three.js マニュアル（23 ステップ）
-    ├── claude-mux/ Claude Code マニュアル（44 ステップ）
-    ├── Training.tsx  UI トレーニング（40 問）
+    ├── react/      React マニュアル
+    ├── git/        Git マニュアル
+    ├── threejs/    Three.js マニュアル
+    ├── claude-mux/ Claude Code マニュアル
+    ├── Training.tsx  UI トレーニング
     ├── Landing.tsx   LP
     └── BugReport.tsx バグ報告
 ```
@@ -135,8 +135,8 @@ client/src/
 
 ## テスト
 
-- Unit: `npx vitest run`（176 テスト）
-- E2E: `npx playwright test`（14 テスト、要 dev サーバー）
+- Unit: `npx vitest run`
+- E2E: `npx playwright test`（要 dev サーバー）
 - 全チャレンジコードのトランスパイル検証: `editor-validation.test.ts`
 
 ## Git ワークフロー
