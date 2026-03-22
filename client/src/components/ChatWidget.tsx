@@ -7,6 +7,10 @@ import {
   Settings,
   Eye,
   EyeOff,
+  Zap,
+  Loader2,
+  CheckCircle2,
+  XCircle,
 } from "lucide-react";
 import Markdown from "react-markdown";
 import { useChatApi } from "@/hooks/useChatApi";
@@ -14,12 +18,20 @@ import { MODEL_OPTIONS } from "@/hooks/useChatSettings";
 import { getPageContext } from "@/lib/chatContext";
 import { useLocation } from "wouter";
 
+const IS_MAC =
+  typeof navigator !== "undefined" && /Mac/.test(navigator.userAgent);
+const MOD_LABEL = IS_MAC ? "⌘" : "Ctrl";
+
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [confirmClear, setConfirmClear] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showApiKey, setShowApiKey] = useState(false);
+  const [testStatus, setTestStatus] = useState<
+    "idle" | "testing" | "ok" | "error"
+  >("idle");
+  const [testError, setTestError] = useState("");
   const [location] = useLocation();
   const {
     messages,
@@ -31,7 +43,7 @@ export default function ChatWidget() {
     chatSettings,
   } = useChatApi();
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
   const pageContext = getPageContext(location);
@@ -41,13 +53,21 @@ export default function ChatWidget() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // パネルを開いたときにinputにフォーカス
+  // パネルを開いたときにフォーカス
   useEffect(() => {
     if (open && !showSettings) {
-      const timer = setTimeout(() => inputRef.current?.focus(), 250);
+      const timer = setTimeout(() => textareaRef.current?.focus(), 250);
       return () => clearTimeout(timer);
     }
   }, [open, showSettings]);
+
+  // textarea 高さ自動調整
+  useEffect(() => {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${Math.min(el.scrollHeight, 120)}px`;
+  }, [input]);
 
   // Escape でパネルを閉じる
   useEffect(() => {
@@ -65,16 +85,14 @@ export default function ChatWidget() {
     return () => document.removeEventListener("keydown", handler);
   }, [open, showSettings]);
 
-  // Cmd/Ctrl+Shift+C でトグル
+  // Cmd/Ctrl+Shift+K でトグル
   useEffect(() => {
     function handler(e: KeyboardEvent) {
       if (
         (e.metaKey || e.ctrlKey) &&
         e.shiftKey &&
-        (e.key === "c" || e.key === "C")
+        (e.key === "k" || e.key === "K")
       ) {
-        const selection = window.getSelection();
-        if (selection && selection.toString().length > 0) return;
         e.preventDefault();
         setOpen((v) => !v);
       }
@@ -91,10 +109,11 @@ export default function ChatWidget() {
     sendMessage(text);
   }, [input, isStreaming, sendMessage]);
 
-  // Enter で送信
+  // Cmd/Ctrl+Enter で送信（IME 変換中は無視）
   const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === "Enter" && !e.shiftKey) {
+    (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (e.nativeEvent.isComposing) return;
+      if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         handleSend();
       }
@@ -116,6 +135,43 @@ export default function ChatWidget() {
       setTimeout(() => setConfirmClear(false), 3000);
     }
   }, [confirmClear, clearHistory, isStreaming, cancelStream]);
+
+  // API 接続テスト
+  const handleTestConnection = useCallback(async () => {
+    setTestStatus("testing");
+    setTestError("");
+    try {
+      const { selectedModel, userApiKey } = chatSettings;
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [{ role: "user", content: "ping" }],
+          systemPrompt: "1文字だけ返してください。",
+          model: selectedModel.id,
+          provider: selectedModel.provider,
+          ...(userApiKey ? { userApiKey } : {}),
+        }),
+      });
+      if (!res.ok) {
+        const data = await res
+          .json()
+          .catch(() => ({ error: `HTTP ${res.status}` }));
+        throw new Error(data.error || `HTTP ${res.status}`);
+      }
+      // ストリーム先頭だけ読んで閉じる
+      const reader = res.body?.getReader();
+      if (reader) {
+        await reader.read();
+        reader.cancel();
+      }
+      setTestStatus("ok");
+    } catch (err) {
+      setTestStatus("error");
+      setTestError(err instanceof Error ? err.message : "接続失敗");
+    }
+    setTimeout(() => setTestStatus("idle"), 4000);
+  }, [chatSettings]);
 
   return (
     <>
@@ -216,7 +272,7 @@ export default function ChatWidget() {
               {/* API キー入力 */}
               <div>
                 <label className="text-[11px] text-muted-foreground block mb-1">
-                  API キー（GPT-5.4 Mini 利用時）
+                  API キー（任意 / GPT-5.4 Mini は必須）
                 </label>
                 <div className="flex gap-1">
                   <input
@@ -238,6 +294,35 @@ export default function ChatWidget() {
                   キーはブラウザにのみ保存されます
                 </p>
               </div>
+
+              {/* 接続テスト */}
+              <button
+                onClick={handleTestConnection}
+                disabled={testStatus === "testing"}
+                className="w-full flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background text-foreground text-xs hover:bg-muted transition-colors disabled:opacity-50"
+              >
+                {testStatus === "testing" ? (
+                  <>
+                    <Loader2 size={12} className="animate-spin" />
+                    テスト中...
+                  </>
+                ) : testStatus === "ok" ? (
+                  <>
+                    <CheckCircle2 size={12} className="text-green-500" />
+                    接続成功
+                  </>
+                ) : testStatus === "error" ? (
+                  <>
+                    <XCircle size={12} className="text-red-500" />
+                    {testError || "接続失敗"}
+                  </>
+                ) : (
+                  <>
+                    <Zap size={12} />
+                    接続テスト
+                  </>
+                )}
+              </button>
             </div>
           )}
 
@@ -326,22 +411,23 @@ export default function ChatWidget() {
           </div>
 
           {/* 入力エリア */}
-          <div className="px-4 py-3 border-t border-border flex gap-2">
-            <input
-              ref={inputRef}
-              type="text"
+          <div className="px-4 py-3 border-t border-border flex gap-2 items-end">
+            <textarea
+              ref={textareaRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="質問を入力..."
-              className="flex-1 px-3 py-2 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+              placeholder={`質問を入力... (${MOD_LABEL}+Enter で送信)`}
+              rows={1}
+              className="flex-1 px-3 py-2 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary text-sm resize-none leading-normal"
               disabled={isStreaming}
             />
             <button
               onClick={handleSend}
               disabled={!input.trim() || isStreaming}
-              className="p-2 rounded-xl bg-primary text-primary-foreground disabled:opacity-50 transition-colors"
-              aria-label="送信"
+              className="p-2 rounded-xl bg-primary text-primary-foreground disabled:opacity-50 transition-colors shrink-0"
+              aria-label={`送信 (${MOD_LABEL}+Enter)`}
+              title={`${MOD_LABEL}+Enter`}
             >
               <Send size={16} />
             </button>

@@ -10,7 +10,7 @@ interface ChatRequestBody {
 }
 
 // ユーザーキー必須のモデル
-const PREMIUM_MODELS = ["gpt-5.4-mini", "gpt-5.4"];
+const PREMIUM_MODELS = ["gpt-5.4-mini"];
 
 // プロバイダー別設定
 function getClient(
@@ -72,9 +72,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader("Connection", "keep-alive");
 
   try {
+    const maxTokens = resolvedModel.includes("nano") ? 2048 : 4096;
+
     const stream = await config.client.chat.completions.create({
       model: resolvedModel,
-      max_completion_tokens: 1024,
+      max_completion_tokens: maxTokens,
       stream: true,
       messages: [
         { role: "system", content: systemPrompt || "" },

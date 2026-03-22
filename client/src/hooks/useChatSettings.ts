@@ -13,12 +13,6 @@ export interface ChatModelOption {
 
 export const MODEL_OPTIONS: ChatModelOption[] = [
   {
-    id: "gpt-5.4-nano",
-    label: "GPT-5.4 Nano",
-    provider: "openai",
-    requiresUserKey: false,
-  },
-  {
     id: "gemini-2.5-flash",
     label: "Gemini 2.5 Flash",
     provider: "gemini",
@@ -38,7 +32,7 @@ interface ChatSettings {
 }
 
 const DEFAULT_SETTINGS: ChatSettings = {
-  modelId: "gpt-5.4-nano",
+  modelId: "gemini-2.5-flash",
   userApiKey: "",
 };
 
