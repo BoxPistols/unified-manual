@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Markdown from "react-markdown";
 import { useChatApi } from "@/hooks/useChatApi";
+import { useChatResize } from "@/hooks/useChatResize";
 import { MODEL_OPTIONS } from "@/hooks/useChatSettings";
 import { getPageContext } from "@/lib/chatContext";
 import { useLocation } from "wouter";
@@ -42,6 +43,7 @@ export default function ChatWidget() {
     mode,
     chatSettings,
   } = useChatApi();
+  const { size, isResizing, handleResizeStart } = useChatResize();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -181,8 +183,27 @@ export default function ChatWidget() {
           ref={panelRef}
           role="dialog"
           aria-label="AI チャットサポート"
-          className="fixed bottom-20 right-6 z-40 w-80 md:w-96 max-h-[60vh] max-sm:left-4 max-sm:right-4 max-sm:w-auto bg-card border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-chat-panel-in"
+          className="fixed bottom-20 right-6 z-40 max-sm:left-4 max-sm:right-4 max-sm:w-auto max-sm:h-[60vh] bg-card border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-chat-panel-in"
+          style={{
+            width: `${size.width}px`,
+            height: `${size.height}px`,
+            ...(isResizing ? { transition: "none", userSelect: "none" } : {}),
+          }}
         >
+          {/* リサイズハンドル（左上角） */}
+          <div
+            onMouseDown={handleResizeStart}
+            onTouchStart={handleResizeStart}
+            className="absolute top-0 left-0 w-4 h-4 cursor-nw-resize z-10 group max-sm:hidden"
+            aria-label="パネルをリサイズ"
+          >
+            <svg
+              viewBox="0 0 16 16"
+              className="w-3 h-3 m-0.5 text-muted-foreground/40 group-hover:text-muted-foreground transition-colors"
+            >
+              <path d="M14 2L2 14M10 2L2 10M6 2L2 6" stroke="currentColor" strokeWidth="1.5" fill="none" />
+            </svg>
+          </div>
           {/* ヘッダー */}
           <div className="px-4 py-3 border-b border-border bg-card flex items-center justify-between gap-2">
             <div className="flex items-center gap-2 min-w-0">
