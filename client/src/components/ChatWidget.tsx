@@ -43,7 +43,7 @@ export default function ChatWidget() {
     mode,
     chatSettings,
   } = useChatApi();
-  const { size, isResizing, handleResizeStart } = useChatResize();
+  const { size, handleResizeStart } = useChatResize();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -187,23 +187,28 @@ export default function ChatWidget() {
           style={{
             width: `${size.width}px`,
             height: `${size.height}px`,
-            ...(isResizing ? { transition: "none", userSelect: "none" } : {}),
           }}
         >
-          {/* リサイズハンドル（左上角） */}
+          {/* リサイズハンドル — 上辺 */}
           <div
-            onMouseDown={handleResizeStart}
-            onTouchStart={handleResizeStart}
-            className="absolute top-0 left-0 w-4 h-4 cursor-nw-resize z-10 group max-sm:hidden"
-            aria-label="パネルをリサイズ"
-          >
-            <svg
-              viewBox="0 0 16 16"
-              className="w-3 h-3 m-0.5 text-muted-foreground/40 group-hover:text-muted-foreground transition-colors"
-            >
-              <path d="M14 2L2 14M10 2L2 10M6 2L2 6" stroke="currentColor" strokeWidth="1.5" fill="none" />
-            </svg>
-          </div>
+            onMouseDown={handleResizeStart("top")}
+            className="absolute top-0 left-4 right-4 h-1.5 cursor-n-resize z-10 max-sm:hidden"
+          />
+          {/* リサイズハンドル — 左辺 */}
+          <div
+            onMouseDown={handleResizeStart("left")}
+            className="absolute left-0 top-4 bottom-0 w-1.5 cursor-ew-resize z-10 max-sm:hidden"
+          />
+          {/* リサイズハンドル — 左上角 */}
+          <div
+            onMouseDown={handleResizeStart("top-left")}
+            className="absolute top-0 left-0 w-4 h-4 cursor-nw-resize z-[11] max-sm:hidden"
+          />
+          {/* 上部中央グリップ（視覚的ヒント） */}
+          <div
+            onMouseDown={handleResizeStart("top")}
+            className="absolute top-1.5 left-1/2 -translate-x-1/2 w-8 h-1 rounded-full bg-muted-foreground/20 hover:bg-muted-foreground/40 cursor-n-resize z-[12] transition-colors max-sm:hidden"
+          />
           {/* ヘッダー */}
           <div className="px-4 py-3 border-b border-border bg-card flex items-center justify-between gap-2">
             <div className="flex items-center gap-2 min-w-0">

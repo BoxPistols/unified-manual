@@ -32,76 +32,71 @@ function saveSize(size: PanelSize) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(size));
 }
 
+type ResizeDirection = "top" | "left" | "top-left";
+
 export function useChatResize() {
   const [size, setSize] = useState<PanelSize>(loadSize);
-  const [isResizing, setIsResizing] = useState(false);
-  const startRef = useRef<{
-    x: number;
-    y: number;
-    w: number;
-    h: number;
-  } | null>(null);
+  const cleanupRef = useRef<(() => void) | null>(null);
+
+  // アンマウント時にリスナーをクリーンアップ
+  useEffect(() => {
+    return () => {
+      cleanupRef.current?.();
+    };
+  }, []);
 
   const handleResizeStart = useCallback(
-    (e: React.MouseEvent | React.TouchEvent) => {
+    (direction: ResizeDirection) => (e: React.MouseEvent) => {
       e.preventDefault();
-      const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-      const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
-      startRef.current = {
-        x: clientX,
-        y: clientY,
-        w: size.width,
-        h: size.height,
+      e.stopPropagation();
+      cleanupRef.current?.();
+
+      const startX = e.clientX;
+      const startY = e.clientY;
+      const startW = size.width;
+      const startH = size.height;
+
+      const onMove = (ev: MouseEvent) => {
+        // 右下固定 → 左上方向にドラッグで拡大
+        const dx = startX - ev.clientX;
+        const dy = startY - ev.clientY;
+
+        setSize({
+          width: direction.includes("left")
+            ? Math.max(MIN_SIZE.width, Math.min(MAX_SIZE.width, startW + dx))
+            : startW,
+          height: direction.includes("top")
+            ? Math.max(MIN_SIZE.height, Math.min(MAX_SIZE.height, startH + dy))
+            : startH,
+        });
       };
-      setIsResizing(true);
+
+      const onUp = () => {
+        document.removeEventListener("mousemove", onMove);
+        document.removeEventListener("mouseup", onUp);
+        document.body.style.cursor = "";
+        document.body.style.userSelect = "";
+        cleanupRef.current = null;
+        // リサイズ確定時に保存
+        setSize((s) => {
+          saveSize(s);
+          return s;
+        });
+      };
+
+      cleanupRef.current = onUp;
+      document.body.style.cursor =
+        direction === "top-left"
+          ? "nw-resize"
+          : direction === "top"
+            ? "n-resize"
+            : "ew-resize";
+      document.body.style.userSelect = "none";
+      document.addEventListener("mousemove", onMove);
+      document.addEventListener("mouseup", onUp);
     },
     [size],
   );
 
-  useEffect(() => {
-    if (!isResizing) return;
-
-    function onMove(e: MouseEvent | TouchEvent) {
-      if (!startRef.current) return;
-      const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-      const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
-
-      // 右下固定 → 左上方向にドラッグで拡大
-      const dx = startRef.current.x - clientX;
-      const dy = startRef.current.y - clientY;
-
-      const newWidth = Math.max(
-        MIN_SIZE.width,
-        Math.min(MAX_SIZE.width, startRef.current.w + dx),
-      );
-      const newHeight = Math.max(
-        MIN_SIZE.height,
-        Math.min(MAX_SIZE.height, startRef.current.h + dy),
-      );
-
-      setSize({ width: newWidth, height: newHeight });
-    }
-
-    function onEnd() {
-      setIsResizing(false);
-      setSize((s) => {
-        saveSize(s);
-        return s;
-      });
-      startRef.current = null;
-    }
-
-    document.addEventListener("mousemove", onMove);
-    document.addEventListener("mouseup", onEnd);
-    document.addEventListener("touchmove", onMove);
-    document.addEventListener("touchend", onEnd);
-    return () => {
-      document.removeEventListener("mousemove", onMove);
-      document.removeEventListener("mouseup", onEnd);
-      document.removeEventListener("touchmove", onMove);
-      document.removeEventListener("touchend", onEnd);
-    };
-  }, [isResizing]);
-
-  return { size, isResizing, handleResizeStart };
+  return { size, handleResizeStart };
 }
