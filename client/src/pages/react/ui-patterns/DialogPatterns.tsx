@@ -1680,15 +1680,8 @@ function App() {
               description="handleMouseDown と handleClick の ___ を埋めてください。mousedown と click の両方が backdrop 上であることを確認して閉じる安全な実装です。"
               initialCode={`function App() {
   const [open, setOpen] = useState(false);
-  const dialogRef = useRef(null);
+  const backdropRef = useRef(null);
   const mouseDownTarget = useRef(null);
-
-  useEffect(() => {
-    const d = dialogRef.current;
-    if (!d) return;
-    if (open && !d.open) d.showModal();
-    else if (!open && d.open) d.close();
-  }, [open]);
 
   const handleMouseDown = (e) => {
     mouseDownTarget.current = e.___; // ← クリック開始位置の要素
@@ -1696,45 +1689,50 @@ function App() {
 
   const handleClick = (e) => {
     if (
-      e.target === dialogRef.current &&
+      e.target === backdropRef.current &&
       mouseDownTarget.current === ___.___ // ← backdrop の参照
     ) {
       setOpen(false);
     }
   };
 
+  if (!open) {
+    return (
+      <div style={{ padding: 24 }}>
+        <button onClick={() => setOpen(true)}>ダイアログを開く</button>
+      </div>
+    );
+  }
+
   return (
-    <div style={{ padding: 24 }}>
-      <button onClick={() => setOpen(true)}>ダイアログを開く</button>
-      <dialog
-        ref={dialogRef}
-        onMouseDown={handleMouseDown}
-        onClick={handleClick}
-        style={{ padding: 0, borderRadius: 8, border: "1px solid #ccc" }}
-      >
-        <div style={{ padding: 24 }}>
-          <h2 style={{ margin: "0 0 12px" }}>backdrop で閉じるダイアログ</h2>
-          <p style={{ margin: "0 0 16px", color: "#666" }}>
-            backdrop（外側の暗い部分）をクリックすると閉じます。
-            コンテンツ内でドラッグしても誤閉じしません。
-          </p>
-          <button onClick={() => setOpen(false)}>閉じる</button>
-        </div>
-      </dialog>
+    <div
+      ref={backdropRef}
+      onMouseDown={handleMouseDown}
+      onClick={handleClick}
+      style={{
+        position: "fixed", inset: 0,
+        background: "rgba(0,0,0,0.4)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+      }}
+    >
+      <div style={{
+        background: "#fff", padding: 24, borderRadius: 8,
+        minWidth: 280, maxWidth: 400,
+      }}>
+        <h2 style={{ margin: "0 0 12px" }}>backdrop で閉じるダイアログ</h2>
+        <p style={{ margin: "0 0 16px", color: "#666" }}>
+          背景をクリックすると閉じます。
+          コンテンツ内でドラッグしても誤閉じしません。
+        </p>
+        <button onClick={() => setOpen(false)}>閉じる</button>
+      </div>
     </div>
   );
 }`}
               answer={`function App() {
   const [open, setOpen] = useState(false);
-  const dialogRef = useRef(null);
+  const backdropRef = useRef(null);
   const mouseDownTarget = useRef(null);
-
-  useEffect(() => {
-    const d = dialogRef.current;
-    if (!d) return;
-    if (open && !d.open) d.showModal();
-    else if (!open && d.open) d.close();
-  }, [open]);
 
   const handleMouseDown = (e) => {
     mouseDownTarget.current = e.target;
@@ -1742,31 +1740,43 @@ function App() {
 
   const handleClick = (e) => {
     if (
-      e.target === dialogRef.current &&
-      mouseDownTarget.current === dialogRef.current
+      e.target === backdropRef.current &&
+      mouseDownTarget.current === backdropRef.current
     ) {
       setOpen(false);
     }
   };
 
+  if (!open) {
+    return (
+      <div style={{ padding: 24 }}>
+        <button onClick={() => setOpen(true)}>ダイアログを開く</button>
+      </div>
+    );
+  }
+
   return (
-    <div style={{ padding: 24 }}>
-      <button onClick={() => setOpen(true)}>ダイアログを開く</button>
-      <dialog
-        ref={dialogRef}
-        onMouseDown={handleMouseDown}
-        onClick={handleClick}
-        style={{ padding: 0, borderRadius: 8, border: "1px solid #ccc" }}
-      >
-        <div style={{ padding: 24 }}>
-          <h2 style={{ margin: "0 0 12px" }}>backdrop で閉じるダイアログ</h2>
-          <p style={{ margin: "0 0 16px", color: "#666" }}>
-            backdrop（外側の暗い部分）をクリックすると閉じます。
-            コンテンツ内でドラッグしても誤閉じしません。
-          </p>
-          <button onClick={() => setOpen(false)}>閉じる</button>
-        </div>
-      </dialog>
+    <div
+      ref={backdropRef}
+      onMouseDown={handleMouseDown}
+      onClick={handleClick}
+      style={{
+        position: "fixed", inset: 0,
+        background: "rgba(0,0,0,0.4)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+      }}
+    >
+      <div style={{
+        background: "#fff", padding: 24, borderRadius: 8,
+        minWidth: 280, maxWidth: 400,
+      }}>
+        <h2 style={{ margin: "0 0 12px" }}>backdrop で閉じるダイアログ</h2>
+        <p style={{ margin: "0 0 16px", color: "#666" }}>
+          背景をクリックすると閉じます。
+          コンテンツ内でドラッグしても誤閉じしません。
+        </p>
+        <button onClick={() => setOpen(false)}>閉じる</button>
+      </div>
     </div>
   );
 }`}
@@ -1774,7 +1784,7 @@ function App() {
                 'イベントが発生した要素は e.target で取得できます',
                 'backdrop は dialog 要素自体なので dialogRef.current と比較します',
               ]}
-              keywords={['e.target', 'dialogRef.current']}
+              keywords={['e.target', 'backdropRef.current']}
             />
           </section>
 
