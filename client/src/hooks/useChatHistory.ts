@@ -44,10 +44,23 @@ export function useChatHistory() {
     [],
   );
 
+  const updateLastMessage = useCallback((content: string) => {
+    setMessages((prev) => {
+      if (prev.length === 0) return prev;
+      const updated = [...prev];
+      updated[updated.length - 1] = {
+        ...updated[updated.length - 1],
+        content,
+      };
+      saveMessages(updated);
+      return updated;
+    });
+  }, []);
+
   const clearHistory = useCallback(() => {
     setMessages([]);
     localStorage.removeItem(STORAGE_KEY);
   }, []);
 
-  return { messages, addMessage, clearHistory };
+  return { messages, addMessage, updateLastMessage, clearHistory };
 }
