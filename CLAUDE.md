@@ -5,7 +5,7 @@
 Web 開発の実践リファレンス。Git・React・Claude Code・Three.js の 4 領域を、Web 標準とアクセシビリティの観点を含めて解説する技術マニュアル。W3Schools の構成を参考にしつつ、品質設計・a11y をより深く扱う。
 
 - URL: https://dev-album.vercel.app
-- リポジトリ: https://github.com/BoxPistols/unified-manual
+- リポジトリ: https://github.com/BoxPistols/dev-album
 - スタック: React 19 + TypeScript + Vite + Tailwind CSS
 
 ### コアバリュー
@@ -145,3 +145,33 @@ client/src/
 - `Co-Authored-By` / 絵文字 / `Generated with Claude Code` を含めない
 - `git add .` より対象ファイル明示を優先
 - push 前にビルド + テスト通過を確認
+<!-- claude-memory-sync: auto-generated -->
+
+## グローバル設計方針
+
+# グローバル設計方針
+
+## コンポーネント設計
+- 単一責任。1コンポーネント1責務
+- Props は必ず型定義。any 禁止
+- 副作用は hooks に分離する
+
+## 命名規則
+- コンポーネント: PascalCase
+- hooks: use プレフィックス
+- 定数: UPPER_SNAKE_CASE
+
+## Claude への指示スタイル
+- 差分だけ返す。ファイル全体を返さない
+- 変更理由を1行コメントで添える
+- 選択肢がある場合は推奨を1つ明示してから提示する
+
+## 禁止パターン
+- any の使用
+- console.log の commit
+- ハードコードされた文字列（i18n対象はすべて定数化）
+
+---
+<!-- このファイルは claude-memory-sync が管理します -->
+<!-- 自由に編集してください。cm コマンドで同期されます -->
+

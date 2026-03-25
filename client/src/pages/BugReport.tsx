@@ -1,7 +1,7 @@
 import { Link } from 'wouter';
 import { Bug, Camera, ExternalLink, MessageSquare, ArrowLeft } from 'lucide-react';
 
-const GITHUB_REPO = 'BoxPistols/unified-manual';
+const GITHUB_REPO = 'BoxPistols/dev-album';
 const BUG_URL = `https://github.com/${GITHUB_REPO}/issues/new?template=bug_report.yml`;
 const FEATURE_URL = `https://github.com/${GITHUB_REPO}/issues/new?template=feature_request.yml`;
 

@@ -173,7 +173,7 @@ https://dev-album.vercel.app/bug-report
 
 ソースコードは GitHub で公開しています。
 
-https://github.com/BoxPistols/unified-manual
+https://github.com/BoxPistols/dev-album
 
 ![ダークモード対応](スクショURL_6)
 
