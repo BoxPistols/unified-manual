@@ -588,6 +588,11 @@ export const searchIndex: Record<string, string[]> = {
     'NumPy', 'Pandas', 'Matplotlib', 'ndarray', 'DataFrame',
     'CSV', 'グラフ', '散布図', 'ヒストグラム', 'データ前処理',
   ],
+  '/ai-ml/python-ml/python-practice': [
+    'Python 実践', 'ユースケース', 'CSV', 'Pandas', 'requests', 'API',
+    'スクレイピング', 'BeautifulSoup', 'Pillow', '画像処理', 'JSON', 'YAML',
+    'テキスト前処理', '正規表現', 'pathlib', 'CodingChallenge',
+  ],
   '/ai-ml/ml-fundamentals/supervised': [
     '教師あり学習', 'scikit-learn', '分類', '回帰', '決定木',
     'ランダムフォレスト', 'SVM', '過学習', 'train_test_split', 'Iris',

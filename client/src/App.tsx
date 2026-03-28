@@ -210,6 +210,7 @@ const AiMlConcepts = lazy(() => import("./pages/ai-ml/ai-overview/MlConcepts"));
 const AiPythonSetup = lazy(() => import("./pages/ai-ml/python-ml/PythonSetup"));
 const AiPythonBasics = lazy(() => import("./pages/ai-ml/python-ml/PythonBasics"));
 const AiDataLibraries = lazy(() => import("./pages/ai-ml/python-ml/DataLibraries"));
+const AiPythonPractice = lazy(() => import("./pages/ai-ml/python-ml/PythonPractice"));
 const AiSupervised = lazy(() => import("./pages/ai-ml/ml-fundamentals/Supervised"));
 const AiDeepLearning = lazy(() => import("./pages/ai-ml/ml-fundamentals/DeepLearning"));
 const AiLlmBasics = lazy(() => import("./pages/ai-ml/lmops/LlmBasics"));
@@ -439,6 +440,7 @@ function App() {
                 <Route path="/ai-ml/python-ml/python-setup" component={AiPythonSetup} />
                 <Route path="/ai-ml/python-ml/python-basics" component={AiPythonBasics} />
                 <Route path="/ai-ml/python-ml/data-libraries" component={AiDataLibraries} />
+                <Route path="/ai-ml/python-ml/python-practice" component={AiPythonPractice} />
                 <Route path="/ai-ml/ml-fundamentals/supervised" component={AiSupervised} />
                 <Route path="/ai-ml/ml-fundamentals/deep-learning" component={AiDeepLearning} />
                 <Route path="/ai-ml/lmops/llm-basics" component={AiLlmBasics} />

@@ -345,10 +345,11 @@ export const pages: PageInfo[] = [
   { step: 4, path: '/ai-ml/python-ml/python-setup', title: 'Python 環境構築', sectionId: 'python-ml', manualId: 'ai-ml' },
   { step: 5, path: '/ai-ml/python-ml/python-basics', title: 'Python 基本文法', sectionId: 'python-ml', manualId: 'ai-ml' },
   { step: 6, path: '/ai-ml/python-ml/data-libraries', title: 'NumPy・Pandas・Matplotlib', sectionId: 'python-ml', manualId: 'ai-ml' },
-  { step: 7, path: '/ai-ml/ml-fundamentals/supervised', title: '教師あり学習の実践', sectionId: 'ml-fundamentals', manualId: 'ai-ml' },
-  { step: 8, path: '/ai-ml/ml-fundamentals/deep-learning', title: 'ディープラーニング入門', sectionId: 'ml-fundamentals', manualId: 'ai-ml' },
-  { step: 9, path: '/ai-ml/lmops/llm-basics', title: 'LLM の仕組みと活用', sectionId: 'lmops', manualId: 'ai-ml' },
-  { step: 10, path: '/ai-ml/lmops/lmops-workflow', title: 'LMOps ワークフロー', sectionId: 'lmops', manualId: 'ai-ml' },
+  { step: 7, path: '/ai-ml/python-ml/python-practice', title: 'Python 実践ユースケース', sectionId: 'python-ml', manualId: 'ai-ml' },
+  { step: 8, path: '/ai-ml/ml-fundamentals/supervised', title: '教師あり学習の実践', sectionId: 'ml-fundamentals', manualId: 'ai-ml' },
+  { step: 9, path: '/ai-ml/ml-fundamentals/deep-learning', title: 'ディープラーニング入門', sectionId: 'ml-fundamentals', manualId: 'ai-ml' },
+  { step: 10, path: '/ai-ml/lmops/llm-basics', title: 'LLM の仕組みと活用', sectionId: 'lmops', manualId: 'ai-ml' },
+  { step: 11, path: '/ai-ml/lmops/lmops-workflow', title: 'LMOps ワークフロー', sectionId: 'lmops', manualId: 'ai-ml' },
 ];
 
 // ── ヘルパー関数 ──

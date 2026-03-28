@@ -8,7 +8,7 @@ import ReferenceLinks from '@/components/ReferenceLinks';
 
 /**
  * LMOps ワークフロー
- * STEP 10: LMOps セクション
+ * STEP 11: LMOps セクション
  * - LMOps の概念と MLOps との比較
  * - プロンプト管理・評価・ガードレール・コスト最適化
  * - RAG パイプラインの実装例
@@ -25,7 +25,7 @@ export default function LmopsWorkflow() {
         {/* STEP バッジ */}
         <div className="mb-4">
           <span className="step-badge">
-            STEP 10
+            STEP 11
           </span>
         </div>
 

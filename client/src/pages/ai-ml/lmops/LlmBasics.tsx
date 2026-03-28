@@ -8,7 +8,7 @@ import ReferenceLinks from '@/components/ReferenceLinks';
 
 /**
  * LLM の仕組みと活用
- * STEP 9: LMOps セクション
+ * STEP 10: LMOps セクション
  * - Transformer / トークン化の概要
  * - 主要 LLM の比較
  * - API 活用 (Anthropic API)
@@ -24,7 +24,7 @@ export default function LlmBasics() {
         {/* STEP バッジ */}
         <div className="mb-4">
           <span className="step-badge">
-            STEP 9
+            STEP 10
           </span>
         </div>
 
