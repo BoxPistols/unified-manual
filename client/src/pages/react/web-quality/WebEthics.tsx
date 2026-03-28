@@ -10,7 +10,7 @@ export default function WebEthics() {
     <div className="min-h-screen bg-background">
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
         <div className="mb-4">
-          <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">STEP 69</span>
+          <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">STEP 71</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-6">ダークパターン回避と技術倫理</h1>
         <p className="text-xl text-muted-foreground mb-8 leading-relaxed">

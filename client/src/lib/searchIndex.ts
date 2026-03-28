@@ -132,6 +132,17 @@ export const searchIndex: Record<string, string[]> = {
     'ポートフォリオ', 'プロジェクト設計', '型定義', 'レイアウト', 'ヘッダー',
     'ヒーロー', 'スキル', 'プロジェクトギャラリー', 'お問い合わせフォーム', 'レスポンシブ', 'デプロイ',
   ],
+  '/react/api-design/graphql': [
+    'GraphQL', 'Query', 'Mutation', 'Subscription', 'Apollo Client', 'urql',
+    'スキーマ', 'SDL', 'GraphQL Code Generator', '型生成', 'useQuery', 'useMutation',
+    'REST 比較', 'オーバーフェッチ', 'アンダーフェッチ', 'キャッシュ',
+  ],
+  '/react/api-design/openapi-swagger': [
+    'OpenAPI', 'Swagger', 'Swagger UI', 'API 設計', 'REST API', 'YAML',
+    'スキーマ定義', 'コード生成', 'orval', 'openapi-typescript', 'openapi-fetch',
+    'モックサーバー', 'Prism', 'MSW', 'API ファースト', 'ステータスコード',
+    'ページネーション', 'バージョニング',
+  ],
   '/react/nextjs-basics/what-is-nextjs': [
     'Next.js', 'レンダリング方式', 'SSR', 'SSG', 'ISR',
     'ファイルベースルーティング', 'Server Components', 'RSC', 'React Vite 比較',

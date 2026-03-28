@@ -13,7 +13,7 @@ export default function TableDesign() {
     <div className="min-h-screen bg-background page-enter">
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
         <div className="mb-4">
-          <span className="step-badge">STEP 67</span>
+          <span className="step-badge">STEP 69</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-6">Table 設計の全課題</h1>
         <p className="text-xl text-muted-foreground mb-8 leading-relaxed">

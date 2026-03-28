@@ -21,7 +21,7 @@ const DevTestResults = lazy(() => import("./pages/DevTestResults"));
 const Training = lazy(() => import("./pages/Training"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-// ── React マニュアル (69ページ) ──
+// ── React マニュアル (77ページ) ──
 const ReactHome = lazy(() => import("./pages/react/Home"));
 const ReactSetup = lazy(() => import("./pages/react/intro/Setup"));
 const HelloReact = lazy(() => import("./pages/react/react-basics/HelloReact"));
@@ -55,6 +55,8 @@ const MuiCustomization = lazy(() => import("./pages/react/mui/MuiCustomization")
 const Api = lazy(() => import("./pages/react/practice-app/Api"));
 const Routing = lazy(() => import("./pages/react/practice-app/Routing"));
 const Portfolio = lazy(() => import("./pages/react/practice-app/Portfolio"));
+const GraphQL = lazy(() => import("./pages/react/api-design/GraphQL"));
+const OpenApiSwagger = lazy(() => import("./pages/react/api-design/OpenApiSwagger"));
 const WhatIsNextjs = lazy(() => import("./pages/react/nextjs-basics/WhatIsNextjs"));
 const ProjectSetup = lazy(() => import("./pages/react/nextjs-basics/ProjectSetup"));
 const NextRouting = lazy(() => import("./pages/react/nextjs-basics/NextRouting"));
@@ -271,6 +273,8 @@ function App() {
                 <Route path="/react/practice-app/api" component={Api} />
                 <Route path="/react/practice-app/routing" component={Routing} />
                 <Route path="/react/practice-app/portfolio" component={Portfolio} />
+                <Route path="/react/api-design/graphql" component={GraphQL} />
+                <Route path="/react/api-design/openapi-swagger" component={OpenApiSwagger} />
                 <Route path="/react/nextjs-basics/what-is-nextjs" component={WhatIsNextjs} />
                 <Route path="/react/nextjs-basics/project-setup" component={ProjectSetup} />
                 <Route path="/react/nextjs-basics/routing" component={NextRouting} />

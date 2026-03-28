@@ -67,48 +67,55 @@ const curriculumPart1 = [
     description: 'API 連携、ルーティング、ポートフォリオ',
     color: 'bg-purple-600',
   },
+  {
+    icon: <Server size={20} />,
+    title: '本格 API 連携',
+    steps: 'STEP 34-35',
+    description: 'REST API 設計、エラーハンドリング、認証',
+    color: 'bg-purple-700',
+  },
 ];
 
 const curriculumPart2 = [
   {
     icon: <Server size={20} />,
     title: 'Next.js 基礎',
-    steps: 'STEP 34-37',
+    steps: 'STEP 36-39',
     description: 'プロジェクト作成、ルーティング、レイアウト',
     color: 'bg-emerald-500',
   },
   {
     icon: <Server size={20} />,
     title: 'Server / Client',
-    steps: 'STEP 38-41',
+    steps: 'STEP 40-43',
     description: 'RSC、データフェッチング、Loading UI',
     color: 'bg-emerald-600',
   },
   {
     icon: <Code2 size={20} />,
     title: 'Next.js 実践',
-    steps: 'STEP 42-45',
+    steps: 'STEP 44-47',
     description: 'Server Actions、ミドルウェア、最適化',
     color: 'bg-primary',
   },
   {
     icon: <Zap size={20} />,
     title: 'Next.js 15 新機能',
-    steps: 'STEP 46-47',
+    steps: 'STEP 48-49',
     description: 'Turbopack、PPR、非同期API',
     color: 'bg-primary',
   },
   {
     icon: <Palette size={20} />,
     title: 'Next.js + CSS',
-    steps: 'STEP 48-49',
+    steps: 'STEP 50-51',
     description: 'Tailwind / MUI / CSS Modules 統合',
     color: 'bg-sky-500',
   },
   {
     icon: <Rocket size={20} />,
     title: 'デプロイと総まとめ',
-    steps: 'STEP 50-51',
+    steps: 'STEP 52-53',
     description: 'Vercel デプロイ、学習の次のステップ',
     color: 'bg-sky-600',
   },
@@ -118,7 +125,7 @@ const curriculumPart3 = [
   {
     icon: <Layers size={20} />,
     title: 'Storybook',
-    steps: 'STEP 52-57',
+    steps: 'STEP 54-59',
     description: '導入・構造・CSS・Figma連携・応用',
     color: 'bg-pink-500',
   },
@@ -128,7 +135,7 @@ const curriculumPart4 = [
   {
     icon: <Zap size={20} />,
     title: 'アーキテクチャ',
-    steps: 'STEP 58-60',
+    steps: 'STEP 60-62',
     description: '設計・デザインシステム・保守運用',
     color: 'bg-emerald-600',
   },
@@ -138,28 +145,28 @@ const curriculumPart5 = [
   {
     icon: <Layout size={20} />,
     title: 'CSS レイアウト実践',
-    steps: 'STEP 61-62',
+    steps: 'STEP 63-64',
     description: 'Flexbox・CSS Grid の完全ガイド',
     color: 'bg-amber-500',
   },
   {
     icon: <Layers size={20} />,
     title: 'UI コンポーネント設計',
-    steps: 'STEP 63-65',
+    steps: 'STEP 65-67',
     description: 'Dialog・Snackbar・Form の設計パターン',
     color: 'bg-amber-600',
   },
   {
     icon: <Shield size={20} />,
     title: 'アクセシビリティ実践',
-    steps: 'STEP 66-68',
+    steps: 'STEP 68-70',
     description: 'ARIA・Table設計・Form a11y',
     color: 'bg-orange-500',
   },
   {
     icon: <BookOpen size={20} />,
     title: 'Web 品質と技術倫理',
-    steps: 'STEP 69',
+    steps: 'STEP 71',
     description: 'ダークパターン回避・公共性・倫理',
     color: 'bg-orange-600',
   },
@@ -211,7 +218,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 md:px-8 py-20 md:py-28 relative z-10">
           <div className="mb-6 flex items-center gap-3 flex-wrap">
             <span className="text-xs font-semibold text-white/90 bg-white/15 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
-              全69ステップ
+              全77ステップ
             </span>
             <span className="text-xs font-semibold text-cyan-200/90 bg-cyan-400/10 backdrop-blur-sm px-3 py-1 rounded-full border border-cyan-300/10">
               React + Next.js + Storybook
@@ -503,7 +510,7 @@ export default function Home() {
           {/* 第1部 */}
           <CurriculumPart
             partLabel="第1部"
-            partTitle="React + Vite + TypeScript（STEP 1-33）"
+            partTitle="React + Vite + TypeScript（STEP 1-35）"
             partColor="bg-primary/10 text-primary"
             items={curriculumPart1}
           />
@@ -511,7 +518,7 @@ export default function Home() {
           {/* 第2部 */}
           <CurriculumPart
             partLabel="第2部"
-            partTitle="Next.js（STEP 34-51）"
+            partTitle="Next.js（STEP 36-53）"
             partColor="bg-accent/10 text-accent"
             items={curriculumPart2}
           />
@@ -519,7 +526,7 @@ export default function Home() {
           {/* 第3部 */}
           <CurriculumPart
             partLabel="第3部"
-            partTitle="Storybook（STEP 52-57）"
+            partTitle="Storybook（STEP 54-59）"
             partColor="bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400"
             items={curriculumPart3}
           />
@@ -527,7 +534,7 @@ export default function Home() {
           {/* 第4部 */}
           <CurriculumPart
             partLabel="第4部"
-            partTitle="アーキテクチャ（STEP 58-60）"
+            partTitle="アーキテクチャ（STEP 60-62）"
             partColor="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400"
             items={curriculumPart4}
           />
@@ -535,7 +542,7 @@ export default function Home() {
           {/* 第5部 */}
           <CurriculumPart
             partLabel="第5部"
-            partTitle="実務品質とアクセシビリティ（STEP 61-69）"
+            partTitle="実務品質とアクセシビリティ（STEP 63-71）"
             partColor="bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400"
             items={curriculumPart5}
           />

@@ -12,7 +12,7 @@ export default function DarkModeImpl() {
     <div className="min-h-screen bg-background page-enter">
       <div className="max-w-4xl mx-auto px-4 md:px-8 py-12">
         <div className="mb-4">
-          <span className="step-badge">STEP 72</span>
+          <span className="step-badge">STEP 74</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-6">
           ダークモードの実装
@@ -33,7 +33,7 @@ export default function DarkModeImpl() {
           ]}
         >
           <p>
-            STEP 70 でダークモードの必要性を、STEP 71
+            STEP 72 でダークモードの必要性を、STEP 73
             でデザイントークンの設計を学んだ。
             このステップでは、それらの知識を統合して「動くダークモード」を実装する。
             CSS 変数の定義だけでは不十分で、JavaScript
