@@ -216,6 +216,20 @@ const AiDeepLearning = lazy(() => import("./pages/ai-ml/ml-fundamentals/DeepLear
 const AiLlmBasics = lazy(() => import("./pages/ai-ml/lmops/LlmBasics"));
 const AiLmopsWorkflow = lazy(() => import("./pages/ai-ml/lmops/LmopsWorkflow"));
 
+// ── UX デザインマニュアル (12ページ) ──
+const UxHome = lazy(() => import("./pages/ux-design/Home"));
+const UxWhatIsUx = lazy(() => import("./pages/ux-design/ux-foundations/WhatIsUx"));
+const UxDesignProcess = lazy(() => import("./pages/ux-design/ux-foundations/DesignProcess"));
+const UxDesignThinking = lazy(() => import("./pages/ux-design/ux-foundations/DesignThinking"));
+const UxUserResearch = lazy(() => import("./pages/ux-design/research/UserResearch"));
+const UxPersonaJourney = lazy(() => import("./pages/ux-design/research/PersonaJourney"));
+const UxIA = lazy(() => import("./pages/ux-design/ia-wireframe/InformationArchitecture"));
+const UxWireframe = lazy(() => import("./pages/ux-design/ia-wireframe/Wireframe"));
+const UxVisualDesign = lazy(() => import("./pages/ux-design/ui-design/VisualDesign"));
+const UxDesignSystem = lazy(() => import("./pages/ux-design/ui-design/DesignSystem"));
+const UxFigmaPrototype = lazy(() => import("./pages/ux-design/prototyping/FigmaPrototype"));
+const UxUsabilityTesting = lazy(() => import("./pages/ux-design/evaluation/UsabilityTesting"));
+
 function Loading() {
   return (
     <div className="flex items-center justify-center min-h-[50vh]">
@@ -445,6 +459,20 @@ function App() {
                 <Route path="/ai-ml/ml-fundamentals/deep-learning" component={AiDeepLearning} />
                 <Route path="/ai-ml/lmops/llm-basics" component={AiLlmBasics} />
                 <Route path="/ai-ml/lmops/lmops-workflow" component={AiLmopsWorkflow} />
+
+                {/* === UX デザインマニュアル === */}
+                <Route path="/ux-design" component={UxHome} />
+                <Route path="/ux-design/ux-foundations/what-is-ux" component={UxWhatIsUx} />
+                <Route path="/ux-design/ux-foundations/design-process" component={UxDesignProcess} />
+                <Route path="/ux-design/ux-foundations/design-thinking" component={UxDesignThinking} />
+                <Route path="/ux-design/research/user-research" component={UxUserResearch} />
+                <Route path="/ux-design/research/persona-journey" component={UxPersonaJourney} />
+                <Route path="/ux-design/ia-wireframe/information-architecture" component={UxIA} />
+                <Route path="/ux-design/ia-wireframe/wireframe" component={UxWireframe} />
+                <Route path="/ux-design/ui-design/visual-design" component={UxVisualDesign} />
+                <Route path="/ux-design/ui-design/design-system" component={UxDesignSystem} />
+                <Route path="/ux-design/prototyping/figma-prototype" component={UxFigmaPrototype} />
+                <Route path="/ux-design/evaluation/usability-testing" component={UxUsabilityTesting} />
 
                 {/* 404 */}
                 <Route component={NotFound} />

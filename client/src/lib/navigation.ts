@@ -1,4 +1,4 @@
-export type ManualId = 'react' | 'git' | 'threejs' | 'claude-mux' | 'ai-ml';
+export type ManualId = 'react' | 'git' | 'threejs' | 'claude-mux' | 'ai-ml' | 'ux-design';
 
 export interface ManualInfo {
   id: ManualId;
@@ -68,6 +68,14 @@ export const manuals: ManualInfo[] = [
     description: 'Python・機械学習・LLM・LMOps の基礎',
     icon: 'A',
     color: '#F59E0B',
+  },
+  {
+    id: 'ux-design',
+    title: 'UX デザイン入門',
+    shortTitle: 'UX Design',
+    description: 'ユーザーリサーチからプロトタイピング・評価まで',
+    icon: 'U',
+    color: '#EC4899',
   },
 ];
 
@@ -142,6 +150,15 @@ export const sections: SectionInfo[] = [
   { id: 'python-ml', title: 'Python for ML', manualId: 'ai-ml' },
   { id: 'ml-fundamentals', title: '機械学習の基礎', manualId: 'ai-ml' },
   { id: 'lmops', title: 'LMOps', manualId: 'ai-ml' },
+
+  // === UX デザインマニュアル ===
+  { id: 'ux-intro', title: 'はじめに', manualId: 'ux-design' },
+  { id: 'ux-foundations', title: 'UX の基礎', manualId: 'ux-design' },
+  { id: 'research', title: 'ユーザーリサーチ', manualId: 'ux-design' },
+  { id: 'ia-wireframe', title: 'IA とワイヤーフレーム', manualId: 'ux-design' },
+  { id: 'ui-design', title: 'UI デザイン', manualId: 'ux-design' },
+  { id: 'prototyping', title: 'プロトタイピング', manualId: 'ux-design' },
+  { id: 'evaluation', title: '評価と改善', manualId: 'ux-design' },
 ];
 
 // ── ページ定義 ──
@@ -350,6 +367,22 @@ export const pages: PageInfo[] = [
   { step: 9, path: '/ai-ml/ml-fundamentals/deep-learning', title: 'ディープラーニング入門', sectionId: 'ml-fundamentals', manualId: 'ai-ml' },
   { step: 10, path: '/ai-ml/lmops/llm-basics', title: 'LLM の仕組みと活用', sectionId: 'lmops', manualId: 'ai-ml' },
   { step: 11, path: '/ai-ml/lmops/lmops-workflow', title: 'LMOps ワークフロー', sectionId: 'lmops', manualId: 'ai-ml' },
+
+  // ===========================
+  // UX デザインマニュアル (12ページ)
+  // ===========================
+  { step: 1, path: '/ux-design', title: 'このマニュアルについて', sectionId: 'ux-intro', manualId: 'ux-design' },
+  { step: 2, path: '/ux-design/ux-foundations/what-is-ux', title: 'UX デザインとは', sectionId: 'ux-foundations', manualId: 'ux-design' },
+  { step: 3, path: '/ux-design/ux-foundations/design-process', title: 'デザインプロセスの全体像', sectionId: 'ux-foundations', manualId: 'ux-design' },
+  { step: 4, path: '/ux-design/ux-foundations/design-thinking', title: 'デザイン思考', sectionId: 'ux-foundations', manualId: 'ux-design' },
+  { step: 5, path: '/ux-design/research/user-research', title: 'ユーザーリサーチ手法', sectionId: 'research', manualId: 'ux-design' },
+  { step: 6, path: '/ux-design/research/persona-journey', title: 'ペルソナとジャーニーマップ', sectionId: 'research', manualId: 'ux-design' },
+  { step: 7, path: '/ux-design/ia-wireframe/information-architecture', title: '情報アーキテクチャ', sectionId: 'ia-wireframe', manualId: 'ux-design' },
+  { step: 8, path: '/ux-design/ia-wireframe/wireframe', title: 'ワイヤーフレーム設計', sectionId: 'ia-wireframe', manualId: 'ux-design' },
+  { step: 9, path: '/ux-design/ui-design/visual-design', title: 'ビジュアルデザインの原則', sectionId: 'ui-design', manualId: 'ux-design' },
+  { step: 10, path: '/ux-design/ui-design/design-system', title: 'デザインシステム構築', sectionId: 'ui-design', manualId: 'ux-design' },
+  { step: 11, path: '/ux-design/prototyping/figma-prototype', title: 'Figma プロトタイピング', sectionId: 'prototyping', manualId: 'ux-design' },
+  { step: 12, path: '/ux-design/evaluation/usability-testing', title: 'ユーザビリティテストと改善', sectionId: 'evaluation', manualId: 'ux-design' },
 ];
 
 // ── ヘルパー関数 ──
@@ -391,7 +424,7 @@ export function getSectionPages(sectionId: string): PageInfo[] {
 }
 
 export function getManualIdFromPath(path: string): ManualId | undefined {
-  const match = path.match(/^\/(react|git|threejs|claude-mux|ai-ml)/);
+  const match = path.match(/^\/(react|git|threejs|claude-mux|ai-ml|ux-design)/);
   return match ? (match[1] as ManualId) : undefined;
 }
 

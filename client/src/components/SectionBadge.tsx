@@ -7,6 +7,7 @@ const manualColors: Record<ManualId, string> = {
   threejs: 'bg-cyan-50 dark:bg-cyan-900/20 text-cyan-700 dark:text-cyan-400 border-cyan-200 dark:border-cyan-800',
   'claude-mux': 'bg-slate-100 dark:bg-slate-800 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800',
   'ai-ml': 'bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800',
+  'ux-design': 'bg-pink-50 dark:bg-pink-900/20 text-pink-700 dark:text-pink-400 border-pink-200 dark:border-pink-800',
 };
 
 export default function SectionBadge() {

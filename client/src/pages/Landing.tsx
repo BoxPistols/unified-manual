@@ -6,7 +6,7 @@ import {
   pages,
   type ManualId,
 } from "@/lib/navigation";
-import { ArrowRight, Code2, GitBranch, Box, Terminal, Brain } from "lucide-react";
+import { ArrowRight, Code2, GitBranch, Box, Terminal, Brain, Palette } from "lucide-react";
 import CodePreview from "@/components/CodePreview";
 import CodingChallenge from "@/components/CodingChallenge";
 
@@ -17,6 +17,7 @@ const manualIcons: Record<ManualId, React.ReactNode> = {
   threejs: <Box size={20} />,
   "claude-mux": <Terminal size={20} />,
   "ai-ml": <Brain size={20} />,
+  "ux-design": <Palette size={20} />,
 };
 
 const manualDetails: Record<ManualId, { tagline: string; topics: string[] }> = {
@@ -64,6 +65,15 @@ const manualDetails: Record<ManualId, { tagline: string; topics: string[] }> = {
       "scikit-learn / PyTorch",
       "LLM API / RAG / ベクトル検索",
       "LMOps ワークフロー",
+    ],
+  },
+  "ux-design": {
+    tagline: "ユーザーリサーチからプロトタイピング・評価まで体系的に学べる",
+    topics: [
+      "デザイン思考 / UX プロセス",
+      "ペルソナ / ジャーニーマップ",
+      "IA / ワイヤーフレーム / Figma",
+      "ユーザビリティテスト",
     ],
   },
 };

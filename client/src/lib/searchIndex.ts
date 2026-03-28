@@ -611,4 +611,53 @@ export const searchIndex: Record<string, string[]> = {
     'ファインチューニング', 'トークン', 'コスト最適化', 'ガードレール',
     '評価', 'Langfuse', 'ハルシネーション', 'AI 倫理',
   ],
+
+  // ===== ux-design-manual =====
+  '/ux-design': [
+    'UX デザイン', 'ユーザー体験', 'UI', 'リサーチ', 'プロトタイプ',
+  ],
+  '/ux-design/ux-foundations/what-is-ux': [
+    'UX', 'UI', 'ユーザー体験', 'ユーザー体験の5要素', 'Garrett',
+    '戦略', '要件', '構造', '骨格', '表層',
+  ],
+  '/ux-design/ux-foundations/design-process': [
+    'ダブルダイヤモンド', 'デザインプロセス', 'アジャイル UX', 'リーン UX',
+    'Discover', 'Define', 'Develop', 'Deliver',
+  ],
+  '/ux-design/ux-foundations/design-thinking': [
+    'デザイン思考', 'd.school', '共感', '問題定義', 'Ideate',
+    'プロトタイプ', 'テスト', 'How Might We', 'ブレインストーミング',
+  ],
+  '/ux-design/research/user-research': [
+    'ユーザーリサーチ', 'インタビュー', 'アンケート', 'A/B テスト',
+    '行動観察', 'アナリティクス', '定性', '定量', 'Hotjar',
+  ],
+  '/ux-design/research/persona-journey': [
+    'ペルソナ', 'ジャーニーマップ', 'エンパシーマップ', 'タッチポイント',
+    'カスタマージャーニー', '感情曲線',
+  ],
+  '/ux-design/ia-wireframe/information-architecture': [
+    '情報アーキテクチャ', 'IA', 'サイトマップ', 'ナビゲーション',
+    'カードソーティング', 'ラベリング', 'ブレッドクラム',
+  ],
+  '/ux-design/ia-wireframe/wireframe': [
+    'ワイヤーフレーム', 'Lo-fi', 'Hi-fi', 'レイアウト',
+    'F パターン', 'Z パターン', 'モバイルファースト', 'レスポンシブ',
+  ],
+  '/ux-design/ui-design/visual-design': [
+    'ビジュアルデザイン', '近接', '整列', '反復', 'コントラスト',
+    '色彩理論', 'タイポグラフィ', 'WCAG', 'ゲシュタルト', '余白',
+  ],
+  '/ux-design/ui-design/design-system': [
+    'デザインシステム', 'デザイントークン', 'Atomic Design',
+    'Material Design', 'Figma', 'コンポーネントライブラリ', 'バリアント',
+  ],
+  '/ux-design/prototyping/figma-prototype': [
+    'Figma', 'プロトタイプ', 'オートレイアウト', 'Dev Mode',
+    'スマートアニメート', 'インタラクション', 'v0', 'Figma AI',
+  ],
+  '/ux-design/evaluation/usability-testing': [
+    'ユーザビリティテスト', 'ヒューリスティック評価', 'Nielsen',
+    'SUS', 'タスク完了率', 'NPS', '改善サイクル', 'A/B テスト',
+  ],
 };
