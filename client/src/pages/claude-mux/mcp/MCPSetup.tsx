@@ -211,7 +211,7 @@ $ MAX_MCP_OUTPUT_TOKENS=50000 claude`} language="bash" />
               MCPサーバが公開するリソース（ファイル、ドキュメント、データなど）には、プロンプト内で <code>@</code> プレフィックスを使ってアクセスできます。入力中にオートコンプリートでリソース一覧が表示されます。
             </p>
             <div className="p-5 bg-slate-900 rounded-xl border border-slate-700 mb-4">
-              <p className="text-[10px] text-slate-500 mb-2 font-mono">リソースの参照</p>
+              <p className="text-[12px] text-slate-500 mb-2 font-mono">リソースの参照</p>
               <div className="text-emerald-400 font-mono text-sm leading-relaxed">
                 &gt; @my-docs/api-reference を読んで、認証エンドポイントの仕様を教えて<br />
                 &gt; @figma/design-tokens のカラー変数を使ってテーマを作成して

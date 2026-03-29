@@ -101,7 +101,7 @@ export default function AchievementToastContainer() {
               <Icon size={20} />
             </div>
             <div>
-              <p className="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">
+              <p className="text-[12px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">
                 実績解除
               </p>
               <p className="text-sm font-bold text-foreground">

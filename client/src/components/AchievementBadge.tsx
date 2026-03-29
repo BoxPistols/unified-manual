@@ -64,11 +64,11 @@ export default function AchievementBadge({
       </div>
       <div className="min-w-0">
         <p className="text-xs font-bold truncate">{achievement.name}</p>
-        <p className="text-[10px] text-muted-foreground truncate">
+        <p className="text-[12px] text-muted-foreground truncate">
           {achievement.description}
         </p>
         {unlocked && unlockDate && (
-          <p className="text-[9px] text-muted-foreground/70 mt-0.5">
+          <p className="text-[12px] text-muted-foreground/70 mt-0.5">
             {unlockDate.toLocaleDateString("ja-JP")} 解除
           </p>
         )}

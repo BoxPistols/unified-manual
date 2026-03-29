@@ -205,7 +205,7 @@ export default function CodePreview({
     >
       <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#f8fafc] dark:bg-[#1e1e2e] border-b border-border dark:border-[#313244] shrink-0">
         <Eye size={11} className="text-muted-foreground" />
-        <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Result</span>
+        <span className="text-[12px] font-medium text-muted-foreground uppercase tracking-wider">Result</span>
       </div>
       <div className="bg-white dark:bg-[#1e1e2e] relative" style={{ height: previewPanelHeight }}>
         {previewHtml && (
@@ -234,7 +234,7 @@ export default function CodePreview({
           <span className="text-xs font-medium text-[#cdd6f4] ml-2">{title}</span>
         )}
         {language && (
-          <span className="text-[10px] font-mono text-[#cdd6f4]/40 uppercase">{language}</span>
+          <span className="text-[12px] font-mono text-[#cdd6f4]/40 uppercase">{language}</span>
         )}
       </div>
       <div className="flex items-center gap-0.5">

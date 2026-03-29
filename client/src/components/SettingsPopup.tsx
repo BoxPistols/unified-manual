@@ -208,7 +208,7 @@ export default function SettingsPopup() {
                 進捗をリセット
               </button>
             </div>
-            <p className="mt-3 text-[10px] text-muted-foreground leading-relaxed px-1">
+            <p className="mt-3 text-[12px] text-muted-foreground leading-relaxed px-1">
               ※ 進捗、ブックマーク、メモはブラウザの LocalStorage に保存されています。別のブラウザやシークレットモードでは共有されません。
             </p>
           </section>
@@ -217,7 +217,7 @@ export default function SettingsPopup() {
         {/* フッター */}
         <div className="px-6 py-4 bg-muted/30 border-t border-border text-center">
           <p className="text-xs text-muted-foreground">
-            <kbd className="px-1.5 py-0.5 rounded bg-background border border-border text-[10px] font-mono shadow-sm">{mod}+,</kbd> で設定を開く / <kbd className="px-1.5 py-0.5 rounded bg-background border border-border text-[10px] font-mono shadow-sm">Esc</kbd> で閉じる
+            <kbd className="px-1.5 py-0.5 rounded bg-background border border-border text-[12px] font-mono shadow-sm">{mod}+,</kbd> で設定を開く / <kbd className="px-1.5 py-0.5 rounded bg-background border border-border text-[12px] font-mono shadow-sm">Esc</kbd> で閉じる
           </p>
         </div>
       </div>

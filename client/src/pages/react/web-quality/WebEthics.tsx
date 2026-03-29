@@ -214,7 +214,7 @@ function EthicalCheckout() {
           <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '16px' }}>今だけの特別オファーです</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center' }}>
             <button style={{ padding: '12px 32px', background: 'var(--text-accent)', color: 'white', border: 'none', borderRadius: '8px', fontSize: '15px', fontWeight: 'bold', cursor: 'pointer', width: '100%', maxWidth: '300px' }}>はい、お得に買い物したいです!</button>
-            <button style={{ padding: '6px 12px', background: 'transparent', color: 'var(--text-muted)', border: 'none', fontSize: '11px', cursor: 'pointer', textDecoration: 'underline', opacity: 0.6 }}>いいえ、定価で損してもいいです...</button>
+            <button style={{ padding: '6px 12px', background: 'transparent', color: 'var(--text-muted)', border: 'none', fontSize: '12px', cursor: 'pointer', textDecoration: 'underline', opacity: 0.6 }}>いいえ、定価で損してもいいです...</button>
           </div>
         </div>
       </div>
@@ -318,7 +318,7 @@ function EthicalCookieBanner() {
           <p style={{ marginBottom: '12px' }}>Cookie を使用しています</p>
           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
             <button style={{ padding: '10px 24px', background: 'var(--text-accent)', color: 'white', border: 'none', borderRadius: '6px', fontWeight: 'bold', cursor: 'pointer', fontSize: '14px' }}>すべて受け入れる</button>
-            <button style={{ padding: '10px 12px', background: 'transparent', color: 'var(--text-muted)', border: 'none', fontSize: '11px', cursor: 'pointer', textDecoration: 'underline' }}>設定</button>
+            <button style={{ padding: '10px 12px', background: 'transparent', color: 'var(--text-muted)', border: 'none', fontSize: '12px', cursor: 'pointer', textDecoration: 'underline' }}>設定</button>
           </div>
         </div>
       </div>
@@ -623,12 +623,12 @@ function OptimizedImage({ src, alt }: { src: string; alt: string }) {
             <div style={{ padding: '10px 14px', background: 'var(--bg)', borderRadius: '6px', fontSize: '14px', border: '1px solid var(--border)' }}>プロフィール編集</div>
             <div style={{ padding: '10px 14px', background: 'var(--bg)', borderRadius: '6px', fontSize: '14px', border: '1px solid var(--border)' }}>通知設定</div>
             <div style={{ padding: '10px 14px', background: 'var(--bg)', borderRadius: '6px', fontSize: '14px', border: '1px solid var(--border)' }}>支払い情報</div>
-            <details style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '8px' }}>
+            <details style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '8px' }}>
               <summary style={{ cursor: 'pointer' }}>その他のオプション...</summary>
               <div style={{ marginTop: '8px', paddingLeft: '12px' }}>
-                <details style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
+                <details style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
                   <summary style={{ cursor: 'pointer' }}>アカウントについて</summary>
-                  <p style={{ marginTop: '6px', fontSize: '10px', color: 'var(--text-muted)', opacity: 0.5 }}>解約はお電話のみ受付: 0120-XXX-XXX（平日10-17時）</p>
+                  <p style={{ marginTop: '6px', fontSize: '12px', color: 'var(--text-muted)', opacity: 0.5 }}>解約はお電話のみ受付: 0120-XXX-XXX（平日10-17時）</p>
                 </details>
               </div>
             </details>

@@ -457,7 +457,7 @@ export default preview;`}
               cursor: 'pointer',
               display: 'flex', alignItems: 'center', gap: '6px',
             }}>
-              <span style={{ fontSize: '10px', opacity: 0.7 }}>{item.icon}</span>
+              <span style={{ fontSize: '12px', opacity: 0.7 }}>{item.icon}</span>
               {item.label}
             </div>
           ))}
@@ -470,7 +470,7 @@ export default preview;`}
           <span style={{ padding: '4px 10px', background: 'rgba(255,71,133,0.1)', color: '#ff4785', borderRadius: '4px', fontWeight: 600 }}>Canvas</span>
           <span style={{ padding: '4px 10px', color: 'var(--text-muted, #888)', cursor: 'pointer' }}>Docs</span>
           <div style={{ flex: 1 }} />
-          <span style={{ color: 'var(--text-muted, #888)', fontSize: '11px' }}>Example / Button / Primary</span>
+          <span style={{ color: 'var(--text-muted, #888)', fontSize: '12px' }}>Example / Button / Primary</span>
         </div>
         {/* Canvas */}
         <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -489,7 +489,7 @@ export default preview;`}
             <span style={{ fontWeight: 500 }}>label</span>
             <input value="Button" readOnly style={{ padding: '3px 8px', border: '1px solid var(--border, #ddd)', borderRadius: '4px', fontSize: '12px', background: 'var(--bg, #f8f8f8)', color: 'var(--text, #333)' }} />
             <span style={{ fontWeight: 500 }}>primary</span>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '14px', height: '14px', borderRadius: '3px', background: '#ff4785' }} /><span style={{ fontSize: '11px' }}>true</span></div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '14px', height: '14px', borderRadius: '3px', background: '#ff4785' }} /><span style={{ fontSize: '12px' }}>true</span></div>
           </div>
         </div>
       </div>
@@ -612,7 +612,7 @@ export const Small: Story = {
         {variants.map((v, i) => (
           <div key={i} style={{ border: '1px solid var(--border, #e0e0e0)', borderRadius: '8px', overflow: 'hidden' }}>
             <div style={{ padding: '6px 12px', background: 'var(--bg, #f5f5f5)', borderBottom: '1px solid var(--border, #e0e0e0)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span style={{ fontSize: '10px', color: '#ff4785' }}>▶</span>
+              <span style={{ fontSize: '12px', color: '#ff4785' }}>▶</span>
               <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text, #333)' }}>{v.name}</span>
             </div>
             <div style={{ padding: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-accent, #fff)' }}>

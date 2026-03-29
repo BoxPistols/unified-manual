@@ -99,7 +99,7 @@ $ claude`}
               {/* Left: Claude (Control) */}
               <div className="w-3/5 bg-slate-900 rounded-xl flex flex-col border border-slate-700 overflow-hidden ring-4 ring-[var(--claude-primary)] ring-opacity-20">
                 <div className="bg-slate-800 px-4 py-2 border-b border-slate-700">
-                  <span className="text-[10px] text-slate-400 font-mono">claude-code (primary)</span>
+                  <span className="text-[12px] text-slate-400 font-mono">claude-code (primary)</span>
                 </div>
                 <div className="flex-1 p-4 font-mono text-xs space-y-3">
                   <div className="text-emerald-400">&gt; Fix unit tests in /src/auth</div>
@@ -111,19 +111,19 @@ $ claude`}
               {/* Right: Monitoring */}
               <div className="w-2/5 flex flex-col gap-4">
                 <div className="h-1/2 bg-slate-800 rounded-xl flex flex-col border border-slate-700 overflow-hidden">
-                  <div className="bg-slate-700 px-3 py-1 border-b border-slate-600 text-[9px] text-slate-400 font-mono">
+                  <div className="bg-slate-700 px-3 py-1 border-b border-slate-600 text-[12px] text-slate-400 font-mono">
                     Dev Server Logs
                   </div>
-                  <div className="flex-1 p-3 font-mono text-[9px] text-slate-500">
+                  <div className="flex-1 p-3 font-mono text-[12px] text-slate-500">
                     [VITE] HMR update: src/auth/service.ts<br/>
                     [DB] Connection pool established
                   </div>
                 </div>
                 <div className="h-1/2 bg-slate-800 rounded-xl flex flex-col border border-slate-700 overflow-hidden">
-                  <div className="bg-slate-700 px-3 py-1 border-b border-slate-600 text-[9px] text-slate-400 font-mono">
+                  <div className="bg-slate-700 px-3 py-1 border-b border-slate-600 text-[12px] text-slate-400 font-mono">
                     System Shell / Git
                   </div>
-                  <div className="flex-1 p-3 font-mono text-[9px] text-slate-500">
+                  <div className="flex-1 p-3 font-mono text-[12px] text-slate-500">
                     $ git diff --stat<br/>
                     $ _
                   </div>

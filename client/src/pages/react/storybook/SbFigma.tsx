@@ -178,14 +178,14 @@ export const Secondary: Story = {
   return (
     <div style={{ padding: '20px', fontFamily: 'system-ui, sans-serif' }}>
       <div style={{ display: 'flex', gap: '6px', marginBottom: '16px' }}>
-        <span style={{ fontSize: '10px', background: '#dbeafe', color: '#1e40af', padding: '2px 8px', borderRadius: 99, fontWeight: 600 }}>Figma Variants</span>
-        <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>=</span>
-        <span style={{ fontSize: '10px', background: '#fae8ff', color: '#86198f', padding: '2px 8px', borderRadius: 99, fontWeight: 600 }}>Storybook Stories</span>
+        <span style={{ fontSize: '12px', background: '#dbeafe', color: '#1e40af', padding: '2px 8px', borderRadius: 99, fontWeight: 600 }}>Figma Variants</span>
+        <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>=</span>
+        <span style={{ fontSize: '12px', background: '#fae8ff', color: '#86198f', padding: '2px 8px', borderRadius: 99, fontWeight: 600 }}>Storybook Stories</span>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '80px repeat(3, 1fr)', gap: '3px' }}>
         <div />
         {states.map(s => (
-          <div key={s} style={{ fontSize: '10px', textAlign: 'center', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', paddingBottom: 6 }}>{s}</div>
+          <div key={s} style={{ fontSize: '12px', textAlign: 'center', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', paddingBottom: 6 }}>{s}</div>
         ))}
         {variants.map(v => {
           const c = colors[v];
@@ -205,11 +205,11 @@ export const Secondary: Story = {
         })}
       </div>
       <div style={{ marginTop: '14px', padding: '10px 12px', background: 'var(--bg-muted)', borderRadius: 8, display: 'flex', gap: '8px', alignItems: 'center' }}>
-        <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>Figma:</span>
-        <code style={{ fontSize: '10px', color: '#7c3aed', background: '#f5f3ff', padding: '2px 6px', borderRadius: 3 }}>variant=Primary, state=Hover</code>
+        <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Figma:</span>
+        <code style={{ fontSize: '12px', color: '#7c3aed', background: '#f5f3ff', padding: '2px 6px', borderRadius: 3 }}>variant=Primary, state=Hover</code>
         <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{'→'}</span>
-        <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>Story:</span>
-        <code style={{ fontSize: '10px', color: '#0369a1', background: '#f0f9ff', padding: '2px 6px', borderRadius: 3 }}>PrimaryHover</code>
+        <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Story:</span>
+        <code style={{ fontSize: '12px', color: '#0369a1', background: '#f0f9ff', padding: '2px 6px', borderRadius: 3 }}>PrimaryHover</code>
       </div>
     </div>
   );
@@ -473,37 +473,37 @@ export const BorderRadiusFull = '9999px';`}
   return (
     <div style={{ padding: '20px', fontFamily: 'system-ui, sans-serif', display: 'flex', flexDirection: 'column', gap: '24px' }}>
       <div>
-        <h3 style={{ margin: '0 0 12px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', fontWeight: 700 }}>Color Tokens</h3>
+        <h3 style={{ margin: '0 0 12px', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', fontWeight: 700 }}>Color Tokens</h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
           {tokens.map((t, i) => (
             <div key={i} style={{ display: 'grid', gridTemplateColumns: '120px 28px 1fr auto', alignItems: 'center', gap: '10px', padding: '6px 10px', borderRadius: '6px', background: 'var(--bg-muted)' }}>
               <span style={{ fontSize: '12px', color: '#475569', fontWeight: 500 }}>Figma: {t.figma}</span>
               <div style={{ width: 22, height: 22, borderRadius: 4, background: t.value, border: '1px solid var(--border)' }} />
-              <code style={{ fontSize: '11px', color: '#3b82f6', background: 'var(--bg-accent)', padding: '2px 6px', borderRadius: 3 }}>{t.css}</code>
-              <code style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{t.value}</code>
+              <code style={{ fontSize: '12px', color: '#3b82f6', background: 'var(--bg-accent)', padding: '2px 6px', borderRadius: 3 }}>{t.css}</code>
+              <code style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{t.value}</code>
             </div>
           ))}
         </div>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
         <div>
-          <h3 style={{ margin: '0 0 10px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', fontWeight: 700 }}>Spacing Scale</h3>
+          <h3 style={{ margin: '0 0 10px', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', fontWeight: 700 }}>Spacing Scale</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
             {spacings.map((s, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span style={{ fontSize: '11px', width: 24, color: 'var(--text-muted)', fontWeight: 600 }}>{s.label}</span>
+                <span style={{ fontSize: '12px', width: 24, color: 'var(--text-muted)', fontWeight: 600 }}>{s.label}</span>
                 <div style={{ height: 14, width: parseInt(s.value) * 3, background: 'linear-gradient(90deg, #3b82f6, #8b5cf6)', borderRadius: 3, transition: 'width 0.3s' }} />
-                <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>{s.value}</span>
+                <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{s.value}</span>
               </div>
             ))}
           </div>
         </div>
         <div>
-          <h3 style={{ margin: '0 0 10px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', fontWeight: 700 }}>Typography Scale</h3>
+          <h3 style={{ margin: '0 0 10px', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-muted)', fontWeight: 700 }}>Typography Scale</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
             {typo.map((t, i) => (
               <div key={i} style={{ fontSize: t.size, fontWeight: t.weight, color: '#1e293b', lineHeight: 1.4 }}>
-                {t.name} <span style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: 400 }}>({t.size} / {t.weight})</span>
+                {t.name} <span style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 400 }}>({t.size} / {t.weight})</span>
               </div>
             ))}
           </div>
@@ -698,7 +698,7 @@ jobs:
         )}
       </div>
       {changed && showDiff && (
-        <span style={{ fontSize: '9px', color: '#ef4444', fontWeight: 700, textTransform: 'uppercase' }}>Changed</span>
+        <span style={{ fontSize: '12px', color: '#ef4444', fontWeight: 700, textTransform: 'uppercase' }}>Changed</span>
       )}
     </div>
   );
@@ -706,13 +706,13 @@ jobs:
     <div style={{ padding: '20px', fontFamily: 'system-ui, sans-serif' }}>
       <style>{'@keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: 0.5 } }'}</style>
       <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '12px' }}>
-        <button onClick={() => setShowDiff(!showDiff)} style={{ fontSize: '11px', padding: '4px 10px', borderRadius: 6, border: '1px solid var(--border)', background: showDiff ? '#fef2f2' : '#f0fdf4', color: showDiff ? '#dc2626' : '#16a34a', cursor: 'pointer', fontWeight: 600 }}>
+        <button onClick={() => setShowDiff(!showDiff)} style={{ fontSize: '12px', padding: '4px 10px', borderRadius: 6, border: '1px solid var(--border)', background: showDiff ? '#fef2f2' : '#f0fdf4', color: showDiff ? '#dc2626' : '#16a34a', cursor: 'pointer', fontWeight: 600 }}>
           {showDiff ? 'Diff ハイライト ON' : 'Diff ハイライト OFF'}
         </button>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '16px', alignItems: 'start' }}>
         <div>
-          <div style={{ fontSize: '10px', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '10px', textAlign: 'center' }}>Baseline (前回)</div>
+          <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '10px', textAlign: 'center' }}>Baseline (前回)</div>
           <div style={{ border: '1px solid var(--border)', borderRadius: 10, padding: '16px', background: 'var(--bg)', display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
             <Btn label="Primary" bg="#3b82f6" radius={6} />
             <Btn label="Secondary" bg="#8b5cf6" radius={6} />
@@ -721,10 +721,10 @@ jobs:
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: '28px', gap: '4px' }}>
           <span style={{ fontSize: '18px', color: 'var(--text-muted)' }}>{'→'}</span>
-          <span style={{ fontSize: '9px', color: 'var(--text-muted)', fontWeight: 600 }}>DIFF</span>
+          <span style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 600 }}>DIFF</span>
         </div>
         <div>
-          <div style={{ fontSize: '10px', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '10px', textAlign: 'center' }}>New Build (今回)</div>
+          <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '10px', textAlign: 'center' }}>New Build (今回)</div>
           <div style={{ border: '1px solid var(--border)', borderRadius: 10, padding: '16px', background: 'var(--bg)', display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
             <Btn label="Primary" bg="#3b82f6" radius={6} />
             <Btn label="Secondary" bg="#7c3aed" radius={6} changed />
@@ -733,8 +733,8 @@ jobs:
         </div>
       </div>
       <div style={{ marginTop: '14px', padding: '10px 12px', background: '#fef2f2', borderRadius: 8, border: '1px solid #fecaca' }}>
-        <div style={{ fontSize: '11px', fontWeight: 700, color: '#dc2626', marginBottom: '4px' }}>Chromatic が検出した変更:</div>
-        <div style={{ fontSize: '11px', color: '#7f1d1d' }}>
+        <div style={{ fontSize: '12px', fontWeight: 700, color: '#dc2626', marginBottom: '4px' }}>Chromatic が検出した変更:</div>
+        <div style={{ fontSize: '12px', color: '#7f1d1d' }}>
           <div>{'・'} Secondary ボタン: 色が #8b5cf6 {'→'} #7c3aed に変化</div>
           <div>{'・'} Danger ボタン: border-radius が 6px {'→'} 12px に変化</div>
         </div>
@@ -805,7 +805,7 @@ jobs:
     </div>
   );
   const Badge = ({ label, color }) => (
-    <span style={{ fontSize: '11px', fontWeight: 600, padding: '2px 10px', borderRadius: 99, background: color + '18', color: color, border: '1px solid ' + color + '40' }}>{label}</span>
+    <span style={{ fontSize: '12px', fontWeight: 600, padding: '2px 10px', borderRadius: 99, background: color + '18', color: color, border: '1px solid ' + color + '40' }}>{label}</span>
   );
   const BtnComp = ({ label, bg }) => (
     <button style={{ padding: '6px 16px', borderRadius: 6, background: bg, color: '#fff', border: 'none', fontSize: '12px', fontWeight: 600, cursor: 'pointer' }}>{label}</button>
@@ -814,7 +814,7 @@ jobs:
     <div style={{ border: '1px solid var(--border)', borderRadius: 10, padding: '14px', background: 'var(--bg)' }}>
       <div style={{ width: '100%', height: 48, borderRadius: 6, background: 'linear-gradient(135deg, #dbeafe, #ede9fe)', marginBottom: 10 }} />
       <div style={{ fontSize: '12px', fontWeight: 600, color: '#1e293b' }}>{title}</div>
-      <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: 2 }}>説明テキスト</div>
+      <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: 2 }}>説明テキスト</div>
     </div>
   );
   const Input = ({ placeholder }) => (
@@ -824,12 +824,12 @@ jobs:
     <div style={{ padding: '20px', fontFamily: 'system-ui, sans-serif' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
         <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e' }} />
-        <span style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Design System / Components</span>
-        <span style={{ fontSize: '10px', color: 'var(--text-muted)', marginLeft: 'auto' }}>5 components</span>
+        <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Design System / Components</span>
+        <span style={{ fontSize: '12px', color: 'var(--text-muted)', marginLeft: 'auto' }}>5 components</span>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
         <div style={{ border: '1px solid var(--border)', borderRadius: 10, padding: '14px', background: 'var(--bg-muted)' }}>
-          <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 10, textTransform: 'uppercase' }}>Avatar</div>
+          <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 10, textTransform: 'uppercase' }}>Avatar</div>
           <div style={{ display: 'flex', gap: '6px' }}>
             <Avatar name="Alice" color="#3b82f6" />
             <Avatar name="Bob" color="#8b5cf6" />
@@ -837,7 +837,7 @@ jobs:
           </div>
         </div>
         <div style={{ border: '1px solid var(--border)', borderRadius: 10, padding: '14px', background: 'var(--bg-muted)' }}>
-          <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 10, textTransform: 'uppercase' }}>Badge</div>
+          <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 10, textTransform: 'uppercase' }}>Badge</div>
           <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
             <Badge label="新着" color="#3b82f6" />
             <Badge label="人気" color="#f59e0b" />
@@ -845,21 +845,21 @@ jobs:
           </div>
         </div>
         <div style={{ border: '1px solid var(--border)', borderRadius: 10, padding: '14px', background: 'var(--bg-muted)' }}>
-          <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 10, textTransform: 'uppercase' }}>Button</div>
+          <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 10, textTransform: 'uppercase' }}>Button</div>
           <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
             <BtnComp label="Primary" bg="#3b82f6" />
             <BtnComp label="Danger" bg="#ef4444" />
           </div>
         </div>
         <div style={{ border: '1px solid var(--border)', borderRadius: 10, padding: '14px', background: 'var(--bg-muted)', gridColumn: 'span 2' }}>
-          <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 10, textTransform: 'uppercase' }}>Card</div>
+          <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 10, textTransform: 'uppercase' }}>Card</div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
             <Card title="ダッシュボード" />
             <Card title="プロフィール" />
           </div>
         </div>
         <div style={{ border: '1px solid var(--border)', borderRadius: 10, padding: '14px', background: 'var(--bg-muted)' }}>
-          <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 10, textTransform: 'uppercase' }}>Input</div>
+          <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 600, marginBottom: 10, textTransform: 'uppercase' }}>Input</div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
             <Input placeholder="メールアドレス" />
             <Input placeholder="パスワード" />
@@ -985,12 +985,12 @@ jobs:
                 <span style={{ fontSize: '20px' }}>{s.icon}</span>
                 <div>
                   <div style={{ fontSize: '14px', fontWeight: 700, color: s.color }}>{s.title}</div>
-                  <div style={{ fontSize: '10px', color: 'var(--text-muted)' }}>{s.sub}</div>
+                  <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{s.sub}</div>
                 </div>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 {s.items.map((item, j) => (
-                  <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: '#475569' }}>
+                  <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#475569' }}>
                     <div style={{ width: 5, height: 5, borderRadius: '50%', background: s.color, flexShrink: 0 }} />
                     {item}
                   </div>
@@ -1010,7 +1010,7 @@ jobs:
       </div>
       <div style={{ marginTop: '16px', padding: '10px 14px', borderRadius: 8, background: 'var(--bg-muted)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', gap: '8px' }}>
         <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" stroke="#22c55e" strokeWidth="1.5" fill="none"/><path d="M5 8l2 2 4-4" stroke="#22c55e" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        <span style={{ fontSize: '11px', color: '#475569' }}>Chromatic CI が各 PR で自動実行 → デザイナーがレビュー → マージ</span>
+        <span style={{ fontSize: '12px', color: '#475569' }}>Chromatic CI が各 PR で自動実行 → デザイナーがレビュー → マージ</span>
       </div>
     </div>
   );
@@ -1046,8 +1046,8 @@ jobs:
         {colors.map((c, i) => (
           <div key={i} style={{ textAlign: 'center' }}>
             <div style={{ width: 56, height: 56, borderRadius: 10, background: c.value, boxShadow: '0 2px 8px ' + c.value + '40' }} />
-            <div style={{ fontSize: '10px', marginTop: 4, color: '#475569', fontWeight: 600 }}>{c.name}</div>
-            <div style={{ fontSize: '9px', color: 'var(--text-muted)' }}>{c.value}</div>
+            <div style={{ fontSize: '12px', marginTop: 4, color: '#475569', fontWeight: 600 }}>{c.name}</div>
+            <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{c.value}</div>
           </div>
         ))}
       </div>
@@ -1059,7 +1059,7 @@ jobs:
         {typography.map((t, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: '12px' }}>
             <span style={{ fontSize: t.size, fontWeight: t.weight, color: '#1e293b' }}>{t.name}</span>
-            <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>{t.size} / {t.weight}</span>
+            <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{t.size} / {t.weight}</span>
           </div>
         ))}
       </div>
@@ -1091,8 +1091,8 @@ jobs:
         {colors.map((c, i) => (
           <div key={i} style={{ textAlign: 'center' }}>
             <div style={{ width: 56, height: 56, borderRadius: 10, background: c.value, boxShadow: '0 2px 8px ' + c.value + '40' }} />
-            <div style={{ fontSize: '10px', marginTop: 4, color: '#475569', fontWeight: 600 }}>{c.name}</div>
-            <div style={{ fontSize: '9px', color: 'var(--text-muted)' }}>{c.value}</div>
+            <div style={{ fontSize: '12px', marginTop: 4, color: '#475569', fontWeight: 600 }}>{c.name}</div>
+            <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{c.value}</div>
           </div>
         ))}
       </div>
@@ -1104,7 +1104,7 @@ jobs:
         {typography.map((t, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: '12px' }}>
             <span style={{ fontSize: t.size, fontWeight: t.weight, color: '#1e293b' }}>{t.name}</span>
-            <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>{t.size} / {t.weight}</span>
+            <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{t.size} / {t.weight}</span>
           </div>
         ))}
       </div>

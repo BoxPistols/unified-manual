@@ -156,7 +156,7 @@ export default function DesignThinking() {
                       </div>
                       <div>
                         <p className="text-xs font-bold leading-none">{step.label}</p>
-                        <p className="text-[10px] opacity-70">{step.title}</p>
+                        <p className="text-[12px] opacity-70">{step.title}</p>
                       </div>
                     </div>
                     {i < steps.length - 1 && (

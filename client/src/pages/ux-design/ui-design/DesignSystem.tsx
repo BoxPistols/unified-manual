@@ -163,7 +163,7 @@ export default function DesignSystem() {
                   </div>
                   <div className="flex-1 rounded-lg bg-muted/50 border border-border px-4 py-2">
                     <p className="text-sm font-mono text-foreground/80">blue-600 = #2563EB</p>
-                    <p className="text-[10px] text-muted-foreground mt-1">生の色値。ブランドに依存しない</p>
+                    <p className="text-[12px] text-muted-foreground mt-1">生の色値。ブランドに依存しない</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -180,7 +180,7 @@ export default function DesignSystem() {
                   </div>
                   <div className="flex-1 rounded-lg bg-primary/5 border border-primary/20 px-4 py-2">
                     <p className="text-sm font-mono text-foreground/80">--color-primary = blue-600</p>
-                    <p className="text-[10px] text-primary mt-1">意味を持つ名前に変換。テーマごとに切り替え可能</p>
+                    <p className="text-[12px] text-primary mt-1">意味を持つ名前に変換。テーマごとに切り替え可能</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -197,7 +197,7 @@ export default function DesignSystem() {
                   </div>
                   <div className="flex-1 rounded-lg bg-primary/10 border border-primary/30 px-4 py-2">
                     <p className="text-sm font-mono text-foreground/80">--button-bg = var(--color-primary)</p>
-                    <p className="text-[10px] text-primary mt-1">コンポーネント固有のトークン。用途を限定</p>
+                    <p className="text-[12px] text-primary mt-1">コンポーネント固有のトークン。用途を限定</p>
                   </div>
                 </div>
               </div>
@@ -231,7 +231,7 @@ export default function DesignSystem() {
                   <div className="flex-1 rounded-lg bg-muted/30 border border-border p-4">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-bold text-foreground">Atoms（原子）</h4>
-                      <span className="text-[10px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">最小単位</span>
+                      <span className="text-[12px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">最小単位</span>
                     </div>
                     <p className="text-sm text-foreground/80 mb-3 leading-relaxed">
                       これ以上分解できない最小の UI 要素。単独では機能を持たない。
@@ -266,7 +266,7 @@ export default function DesignSystem() {
                   <div className="flex-1 rounded-lg bg-muted/30 border border-border p-4">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-bold text-foreground">Molecules（分子）</h4>
-                      <span className="text-[10px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">Atoms の組み合わせ</span>
+                      <span className="text-[12px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">Atoms の組み合わせ</span>
                     </div>
                     <p className="text-sm text-foreground/80 mb-3 leading-relaxed">
                       複数の Atoms を組み合わせた、単一の機能を持つグループ。
@@ -275,7 +275,7 @@ export default function DesignSystem() {
                       <span className="px-3 py-1 rounded border border-border text-xs text-muted-foreground">検索ワードを入力</span>
                       <span className="px-3 py-1 rounded bg-primary text-xs font-medium" style={{ color: 'var(--background)' }}>検索</span>
                     </div>
-                    <p className="text-[10px] text-muted-foreground mt-2">例: 検索フォーム = 入力欄 + ボタン</p>
+                    <p className="text-[12px] text-muted-foreground mt-2">例: 検索フォーム = 入力欄 + ボタン</p>
                   </div>
                 </div>
 
@@ -297,7 +297,7 @@ export default function DesignSystem() {
                   <div className="flex-1 rounded-lg bg-muted/30 border border-border p-4">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-bold text-foreground">Organisms（有機体）</h4>
-                      <span className="text-[10px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">Molecules の組み合わせ</span>
+                      <span className="text-[12px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">Molecules の組み合わせ</span>
                     </div>
                     <p className="text-sm text-foreground/80 mb-3 leading-relaxed">
                       複数の Molecules を組み合わせた、独立した UI セクション。ページ内で明確な役割を持つ。
@@ -311,12 +311,12 @@ export default function DesignSystem() {
                           <span>お問い合わせ</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="px-2 py-0.5 rounded border border-border text-[10px] text-muted-foreground">検索</span>
-                          <span className="px-2 py-0.5 rounded bg-primary text-[10px]" style={{ color: 'var(--background)' }}>ログイン</span>
+                          <span className="px-2 py-0.5 rounded border border-border text-[12px] text-muted-foreground">検索</span>
+                          <span className="px-2 py-0.5 rounded bg-primary text-[12px]" style={{ color: 'var(--background)' }}>ログイン</span>
                         </div>
                       </div>
                     </div>
-                    <p className="text-[10px] text-muted-foreground mt-2">例: ヘッダー = ロゴ + ナビゲーション + 検索フォーム + ボタン</p>
+                    <p className="text-[12px] text-muted-foreground mt-2">例: ヘッダー = ロゴ + ナビゲーション + 検索フォーム + ボタン</p>
                   </div>
                 </div>
 
@@ -338,7 +338,7 @@ export default function DesignSystem() {
                   <div className="flex-1 rounded-lg bg-muted/30 border border-border p-4">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-bold text-foreground">Templates（テンプレート）</h4>
-                      <span className="text-[10px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">レイアウト構造</span>
+                      <span className="text-[12px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">レイアウト構造</span>
                     </div>
                     <p className="text-sm text-foreground/80 leading-relaxed">
                       Organisms を配置したページのレイアウト骨格。
@@ -365,7 +365,7 @@ export default function DesignSystem() {
                   <div className="flex-1 rounded-lg bg-muted/30 border border-border p-4">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-bold text-foreground">Pages（ページ）</h4>
-                      <span className="text-[10px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">実データ適用</span>
+                      <span className="text-[12px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">実データ適用</span>
                     </div>
                     <p className="text-sm text-foreground/80 leading-relaxed">
                       Templates に実際のデータを流し込んだ最終形。

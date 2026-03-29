@@ -1313,7 +1313,7 @@ function SortableHeader({
               <th key={col.key} scope="col" aria-sort={sortKey === col.key ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'} style={{ textAlign: col.align, padding: '8px 12px', color: 'var(--text)', fontWeight: 600 }}>
                 <button onClick={() => handleSort(col.key)} style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', color: sortKey === col.key ? 'var(--text-primary, #3b82f6)' : 'inherit', fontWeight: 'inherit', display: 'inline-flex', alignItems: 'center', gap: '4px', padding: 0 }}>
                   {col.label}
-                  <span aria-hidden="true" style={{ fontSize: '10px', opacity: sortKey === col.key ? 1 : 0.4 }}>{arrow(col.key)}</span>
+                  <span aria-hidden="true" style={{ fontSize: '12px', opacity: sortKey === col.key ? 1 : 0.4 }}>{arrow(col.key)}</span>
                 </button>
               </th>
             ))}

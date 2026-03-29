@@ -195,7 +195,7 @@ export default function Home() {
                 <Keyboard className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
                 <p className="text-xs text-blue-700 dark:text-blue-300">
                   <span className="font-medium">エディタ内ショートカット:</span>{" "}
-                  <kbd className="px-1 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 font-mono text-[11px]">Tab</kbd>{" "}
+                  <kbd className="px-1 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 font-mono text-[12px]">Tab</kbd>{" "}
                   でインデント挿入。コードは横スクロール対応。
                 </p>
               </div>

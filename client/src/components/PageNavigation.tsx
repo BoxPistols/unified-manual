@@ -114,7 +114,7 @@ export default function PageNavigation() {
         <div className="mb-8 p-4 rounded-2xl bg-muted/30 border border-border">
           <div className="flex justify-between items-end mb-3">
             <div>
-              <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">
+              <p className="text-[12px] text-muted-foreground uppercase tracking-widest font-bold">
                 Progress
               </p>
               <h4 className="text-sm font-bold text-foreground">
@@ -149,7 +149,7 @@ export default function PageNavigation() {
               className="text-muted-foreground group-hover:text-primary group-hover:-translate-x-1 transition-all flex-shrink-0"
             />
             <div className="text-left min-w-0">
-              <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-0.5">
+              <p className="text-[12px] text-muted-foreground uppercase tracking-wider font-bold mb-0.5">
                 PREVIOUS
               </p>
               <p className="text-sm font-bold text-foreground truncate group-hover:text-primary transition-colors">
@@ -171,7 +171,7 @@ export default function PageNavigation() {
             }`}
           >
             <div className="min-w-0">
-              <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-0.5">
+              <p className="text-[12px] text-muted-foreground uppercase tracking-wider font-bold mb-0.5">
                 NEXT STEP
               </p>
               <p className="text-sm font-bold text-foreground truncate group-hover:text-primary transition-colors">

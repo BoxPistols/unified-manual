@@ -84,7 +84,7 @@ function Badge({ label, variant = 'default', size = 'md' }) {
     danger:  { bg: '#fee2e2', text: '#991b1b' },
   };
   const sizes = {
-    sm: { padding: '2px 8px', fontSize: '11px' },
+    sm: { padding: '2px 8px', fontSize: '12px' },
     md: { padding: '4px 12px', fontSize: '13px' },
     lg: { padding: '6px 16px', fontSize: '15px' },
   };
@@ -214,7 +214,7 @@ interface ButtonProps {
       <div style={{ padding: '16px' }}>
         {tag && (
           <span style={{
-            fontSize: '11px', fontWeight: 600, color: '#2563eb',
+            fontSize: '12px', fontWeight: 600, color: '#2563eb',
             backgroundColor: '#dbeafe', padding: '2px 8px', borderRadius: '9999px',
           }}>{tag}</span>
         )}

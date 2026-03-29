@@ -643,23 +643,23 @@ export default meta;
       <div style={{ background: 'var(--bg)', padding: '16px' }}>
         <p style={{ fontWeight: 700, marginBottom: '12px', color: 'var(--text)', fontSize: '12px', textTransform: 'uppercase' }}>Controls</p>
         <div style={{ marginBottom: '10px' }}>
-          <label style={{ display: 'block', fontSize: '11px', color: 'var(--text-muted)', marginBottom: '4px' }}>variant</label>
+          <label style={{ display: 'block', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>variant</label>
           <select value={variant} onChange={e => setVariant(e.target.value)} style={{ width: '100%', padding: '4px 8px', border: '1px solid var(--border)', borderRadius: '4px', fontSize: '13px', background: 'var(--bg)', color: 'var(--text)' }}>
             <option value="primary">primary</option><option value="secondary">secondary</option><option value="danger">danger</option>
           </select>
         </div>
         <div style={{ marginBottom: '10px' }}>
-          <label style={{ display: 'block', fontSize: '11px', color: 'var(--text-muted)', marginBottom: '4px' }}>size</label>
+          <label style={{ display: 'block', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>size</label>
           <select value={size} onChange={e => setSize(e.target.value)} style={{ width: '100%', padding: '4px 8px', border: '1px solid var(--border)', borderRadius: '4px', fontSize: '13px', background: 'var(--bg)', color: 'var(--text)' }}>
             <option value="small">small</option><option value="medium">medium</option><option value="large">large</option>
           </select>
         </div>
         <div style={{ marginBottom: '10px' }}>
-          <label style={{ display: 'block', fontSize: '11px', color: 'var(--text-muted)', marginBottom: '4px' }}>label</label>
+          <label style={{ display: 'block', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>label</label>
           <input value={label} onChange={e => setLabel(e.target.value)} style={{ width: '100%', padding: '4px 8px', border: '1px solid var(--border)', borderRadius: '4px', fontSize: '13px', background: 'var(--bg)', color: 'var(--text)' }} />
         </div>
         <div>
-          <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: 'var(--text-muted)' }}>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: 'var(--text-muted)' }}>
             <input type="checkbox" checked={disabled} onChange={e => setDisabled(e.target.checked)} /> disabled
           </label>
         </div>

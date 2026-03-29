@@ -105,7 +105,7 @@ function App() {
           right: '-4px',
           backgroundColor: '#EF4444',
           color: 'white',
-          fontSize: '11px',
+          fontSize: '12px',
           width: '20px',
           height: '20px',
           borderRadius: '50%',
@@ -537,7 +537,7 @@ function App() {
           </div>
           <div style={{ padding: '10px' }}>
             <span style={{
-              fontSize: '11px',
+              fontSize: '12px',
               color: '#6B7280',
               backgroundColor: '#F3F4F6',
               padding: '1px 6px',
@@ -864,7 +864,7 @@ function App() {
             <span style={{
               padding: '2px 8px',
               borderRadius: '4px',
-              fontSize: '11px',
+              fontSize: '12px',
               fontWeight: 'bold',
               backgroundColor: priorityColors[task.priority].bg,
               color: priorityColors[task.priority].color,
@@ -1106,7 +1106,7 @@ function DesignGallery() {
                       right: '4px',
                       backgroundColor: '#FBBF24',
                       color: '#78350F',
-                      fontSize: '10px',
+                      fontSize: '12px',
                       fontWeight: 'bold',
                       padding: '1px 6px',
                       borderRadius: '999px',
@@ -1116,7 +1116,7 @@ function DesignGallery() {
                   )}
                 </div>
                 <div style={{ padding: '8px' }}>
-                  <span style={{ fontSize: '10px', color: '#6B7280', textTransform: 'uppercase' }}>
+                  <span style={{ fontSize: '12px', color: '#6B7280', textTransform: 'uppercase' }}>
                     {CATEGORIES.find((c) => c.value === work.category)?.label}
                   </span>
                   <h3 style={{ fontWeight: 'bold', fontSize: '12px', marginTop: '2px' }}>{work.title}</h3>

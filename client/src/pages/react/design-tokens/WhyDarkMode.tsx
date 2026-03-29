@@ -744,14 +744,14 @@ mediaQuery.addEventListener('change', (e) => {
               display: 'inline-block',
               padding: '2px 10px',
               borderRadius: '999px',
-              fontSize: '11px',
+              fontSize: '12px',
               fontWeight: 700,
               color: 'white',
               background: ex.verdictColor,
             }}>
               {ex.verdict}
             </div>
-            <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '4px', lineHeight: 1.3 }}>
+            <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px', lineHeight: 1.3 }}>
               {ex.note}
             </div>
           </div>
@@ -901,7 +901,7 @@ mediaQuery.addEventListener('change', (e) => {
     display: 'inline-block',
     padding: '2px 10px',
     borderRadius: '999px',
-    fontSize: '11px',
+    fontSize: '12px',
     fontWeight: 600,
     background: isDark ? '#1e1b4b' : '#eef2ff',
     color: isDark ? '#a5b4fc' : '#4338ca',
@@ -909,7 +909,7 @@ mediaQuery.addEventListener('change', (e) => {
   });
 
   const label = (isDark) => ({
-    fontSize: '11px',
+    fontSize: '12px',
     fontWeight: 700,
     textTransform: 'uppercase',
     letterSpacing: '0.08em',

@@ -66,7 +66,7 @@ export default function Flexbox() {
               title="flex-direction の4方向"
               code={`function DirectionDemo() {
   const boxStyle = { background: 'var(--bg-accent)', padding: '8px 16px', borderRadius: '6px', textAlign: 'center', color: 'var(--text)', fontSize: '13px', fontWeight: 600 };
-  const labelStyle = { fontSize: '11px', color: 'var(--text)', opacity: 0.6, marginBottom: '4px', fontFamily: 'monospace' };
+  const labelStyle = { fontSize: '12px', color: 'var(--text)', opacity: 0.6, marginBottom: '4px', fontFamily: 'monospace' };
   const containerStyle = { display: 'flex', gap: '8px', padding: '12px', background: 'var(--bg)', borderRadius: '8px', border: '1px dashed var(--border)' };
 
   return (
@@ -118,7 +118,7 @@ export default function Flexbox() {
               title="justify-content（主軸方向の配置）"
               code={`function JustifyContentDemo() {
   const boxStyle = { background: 'var(--bg-accent)', padding: '6px 14px', borderRadius: '6px', textAlign: 'center', color: 'var(--text)', fontSize: '12px', fontWeight: 600 };
-  const labelStyle = { fontSize: '11px', color: 'var(--text)', opacity: 0.6, fontFamily: 'monospace', marginBottom: '2px' };
+  const labelStyle = { fontSize: '12px', color: 'var(--text)', opacity: 0.6, fontFamily: 'monospace', marginBottom: '2px' };
   const rowStyle = { display: 'flex', padding: '8px', background: 'var(--bg)', borderRadius: '6px', border: '1px dashed var(--border)' };
 
   const values = ['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly'];
@@ -154,7 +154,7 @@ export default function Flexbox() {
               title="align-items（交差軸方向の配置）"
               code={`function AlignItemsDemo() {
   const boxStyle = (h) => ({ background: 'var(--bg-accent)', padding: '6px 14px', borderRadius: '6px', textAlign: 'center', color: 'var(--text)', fontSize: '12px', fontWeight: 600, height: h });
-  const labelStyle = { fontSize: '11px', color: 'var(--text)', opacity: 0.6, fontFamily: 'monospace', marginBottom: '2px' };
+  const labelStyle = { fontSize: '12px', color: 'var(--text)', opacity: 0.6, fontFamily: 'monospace', marginBottom: '2px' };
   const rowStyle = { display: 'flex', gap: '8px', padding: '8px', background: 'var(--bg)', borderRadius: '6px', border: '1px dashed var(--border)', height: '80px' };
 
   const values = ['stretch', 'flex-start', 'flex-end', 'center', 'baseline'];
@@ -183,7 +183,7 @@ export default function Flexbox() {
               title="よくある組み合わせパターン"
               code={`function CombinationDemo() {
   const boxStyle = { background: 'var(--bg-accent)', padding: '8px 16px', borderRadius: '6px', color: 'var(--text)', fontSize: '12px', fontWeight: 600 };
-  const labelStyle = { fontSize: '11px', color: 'var(--text)', opacity: 0.6, fontFamily: 'monospace', marginBottom: '4px' };
+  const labelStyle = { fontSize: '12px', color: 'var(--text)', opacity: 0.6, fontFamily: 'monospace', marginBottom: '4px' };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -254,7 +254,7 @@ export default function Flexbox() {
     fontSize: '13px',
     fontWeight: 600,
   });
-  const labelStyle = { fontSize: '11px', color: 'var(--text)', opacity: 0.6, fontFamily: 'monospace', marginBottom: '4px' };
+  const labelStyle = { fontSize: '12px', color: 'var(--text)', opacity: 0.6, fontFamily: 'monospace', marginBottom: '4px' };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -484,12 +484,12 @@ export default function Flexbox() {
             <div key={item} style={{ padding: '6px 10px', borderRadius: '4px', background: 'var(--bg)', color: 'var(--text)', fontSize: '12px' }}>{item}</div>
           ))}
         </div>
-        <p style={{ fontSize: '10px', color: 'var(--text)', opacity: 0.5, marginTop: '8px', fontFamily: 'monospace' }}>flex: 0 0 160px</p>
+        <p style={{ fontSize: '12px', color: 'var(--text)', opacity: 0.5, marginTop: '8px', fontFamily: 'monospace' }}>flex: 0 0 160px</p>
       </aside>
       <main style={{ flex: 1, minWidth: 0, padding: '16px', background: 'var(--bg)' }}>
         <p style={{ fontWeight: 700, fontSize: '14px', color: 'var(--text)', marginBottom: '8px' }}>Main Content</p>
         <p style={{ color: 'var(--text)', opacity: 0.7, fontSize: '12px', lineHeight: 1.6 }}>flex: 1 で残りの幅をすべて使う。min-width: 0 で長いテキストのはみ出しを防止。</p>
-        <p style={{ fontSize: '10px', color: 'var(--text)', opacity: 0.5, marginTop: '8px', fontFamily: 'monospace' }}>flex: 1; min-width: 0;</p>
+        <p style={{ fontSize: '12px', color: 'var(--text)', opacity: 0.5, marginTop: '8px', fontFamily: 'monospace' }}>flex: 1; min-width: 0;</p>
       </main>
     </div>
   );

@@ -40,11 +40,11 @@ export default function Subagents() {
               <h4 className="font-bold mb-4">並列化の構造</h4>
               <ul className="space-y-4 text-sm text-muted-foreground">
                 <li className="flex gap-3">
-                  <div className="w-6 h-6 rounded bg-slate-200 dark:bg-slate-800 text-[var(--claude-primary)] font-bold flex-shrink-0 flex items-center justify-center text-[10px]">Main</div>
+                  <div className="w-6 h-6 rounded bg-slate-200 dark:bg-slate-800 text-[var(--claude-primary)] font-bold flex-shrink-0 flex items-center justify-center text-[12px]">Main</div>
                   <p>エンジニアとの対話、全体計画の立案、サブエージェントの管理。</p>
                 </li>
                 <li className="flex gap-3 ml-8">
-                  <div className="w-6 h-6 rounded bg-emerald-600 text-white flex-shrink-0 flex items-center justify-center text-[10px]">Sub</div>
+                  <div className="w-6 h-6 rounded bg-emerald-600 text-white flex-shrink-0 flex items-center justify-center text-[12px]">Sub</div>
                   <p>分離されたコンテキストでサブタスクを実行。結果のみメインに返される。</p>
                 </li>
               </ul>

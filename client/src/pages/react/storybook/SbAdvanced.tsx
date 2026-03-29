@@ -140,26 +140,26 @@ export default meta;`}
         {/* Violations */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
           <span style={{ fontSize: '13px', fontWeight: 700, color: '#dc2626' }}>Violations</span>
-          <span style={{ background: '#fef2f2', color: '#dc2626', fontSize: '11px', fontWeight: 600, padding: '2px 8px', borderRadius: '10px' }}>{violations.length}</span>
+          <span style={{ background: '#fef2f2', color: '#dc2626', fontSize: '12px', fontWeight: 600, padding: '2px 8px', borderRadius: '10px' }}>{violations.length}</span>
         </div>
         {violations.map((v, i) => {
           const c = impactColors[v.impact];
           return (
             <div key={i} style={{ background: c.bg, border: '1px solid ' + c.border, borderRadius: '6px', padding: '12px', marginBottom: '8px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-                <span style={{ background: c.badge, color: '#fff', fontSize: '10px', fontWeight: 600, padding: '2px 6px', borderRadius: '3px', textTransform: 'uppercase' }}>{v.impact}</span>
+                <span style={{ background: c.badge, color: '#fff', fontSize: '12px', fontWeight: 600, padding: '2px 6px', borderRadius: '3px', textTransform: 'uppercase' }}>{v.impact}</span>
                 <span style={{ fontWeight: 600, fontSize: '13px', color: c.text }}>{v.rule}</span>
               </div>
               <p style={{ fontSize: '12px', color: 'var(--text, #444)', margin: '0 0 6px', lineHeight: 1.5 }}>{v.desc}</p>
-              <div style={{ fontSize: '11px', color: 'var(--text-muted, #888)', fontFamily: 'monospace', background: 'rgba(0,0,0,0.05)', padding: '4px 8px', borderRadius: '4px', marginBottom: '6px' }}>{v.element}</div>
-              <p style={{ fontSize: '11px', color: c.text, margin: 0 }}>修正方法: {v.fix}</p>
+              <div style={{ fontSize: '12px', color: 'var(--text-muted, #888)', fontFamily: 'monospace', background: 'rgba(0,0,0,0.05)', padding: '4px 8px', borderRadius: '4px', marginBottom: '6px' }}>{v.element}</div>
+              <p style={{ fontSize: '12px', color: c.text, margin: 0 }}>修正方法: {v.fix}</p>
             </div>
           );
         })}
         {/* Passes */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', margin: '16px 0 8px' }}>
           <span style={{ fontSize: '13px', fontWeight: 700, color: '#16a34a' }}>Passes</span>
-          <span style={{ background: '#f0fdf4', color: '#16a34a', fontSize: '11px', fontWeight: 600, padding: '2px 8px', borderRadius: '10px' }}>{passes.length}</span>
+          <span style={{ background: '#f0fdf4', color: '#16a34a', fontSize: '12px', fontWeight: 600, padding: '2px 8px', borderRadius: '10px' }}>{passes.length}</span>
         </div>
         {passes.map((p, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 12px', background: '#f0fdf4', borderRadius: '6px', marginBottom: '4px' }}>
@@ -453,7 +453,7 @@ export default create({
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', padding: '20px' }}>
       {/* デコレーターなし */}
       <div>
-        <div style={{ fontSize: '11px', color: 'var(--text-muted, #888)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>デコレーターなし</div>
+        <div style={{ fontSize: '12px', color: 'var(--text-muted, #888)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>デコレーターなし</div>
         <div style={{ ...cardStyle, background: 'var(--bg-accent, #fff)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             <button style={{ ...btnBase, background: '#ddd', color: 'var(--text)' }}>Primary</button>
@@ -464,8 +464,8 @@ export default create({
       </div>
       {/* デコレーターあり */}
       <div>
-        <div style={{ fontSize: '11px', color: 'var(--text-muted, #888)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <span style={{ background: '#a6e3a1', color: '#1e1e2e', borderRadius: '3px', padding: '1px 6px', fontSize: '10px' }}>Decorator</span>
+        <div style={{ fontSize: '12px', color: 'var(--text-muted, #888)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span style={{ background: '#a6e3a1', color: '#1e1e2e', borderRadius: '3px', padding: '1px 6px', fontSize: '12px' }}>Decorator</span>
           テーマプロバイダー適用
         </div>
         <div style={{ ...cardStyle, background: '#1e293b', borderColor: '#334155' }}>
@@ -867,7 +867,7 @@ export default config;`}
   const btnStyle = { padding: '8px 20px', border: 'none', borderRadius: '6px', fontWeight: 600, cursor: 'pointer', fontSize: '14px' };
   return (
     <div style={{ padding: '32px', fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif', maxWidth: '640px', color: 'var(--text, #333)' }}>
-      <div style={{ fontSize: '11px', color: '#ff4785', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>Docs / Components / Button</div>
+      <div style={{ fontSize: '12px', color: '#ff4785', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>Docs / Components / Button</div>
       <h1 style={{ fontSize: '28px', fontWeight: 800, margin: '0 0 8px', color: 'var(--text, #1a1a1a)' }}>Button</h1>
       <p style={{ fontSize: '15px', color: 'var(--text-muted, #666)', lineHeight: 1.7, margin: '0 0 20px' }}>
         アプリケーション全体で使用する汎用ボタンコンポーネントです。
@@ -883,7 +883,7 @@ export default config;`}
           <button style={{ ...btnStyle, background: 'transparent', color: 'var(--text, #333)', border: '1px solid var(--border, #ccc)' }}>Secondary</button>
           <button style={{ ...btnStyle, background: '#ef4444', color: '#fff' }}>Danger</button>
         </div>
-        <div style={{ borderTop: '1px solid var(--border, #e0e0e0)', padding: '8px 12px', background: 'var(--bg, #f8f8f8)', fontSize: '11px', color: 'var(--text-muted, #888)' }}>
+        <div style={{ borderTop: '1px solid var(--border, #e0e0e0)', padding: '8px 12px', background: 'var(--bg, #f8f8f8)', fontSize: '12px', color: 'var(--text-muted, #888)' }}>
           <span style={{ fontFamily: 'monospace' }}>{'<Button variant="primary" />'}</span>
         </div>
       </div>

@@ -61,7 +61,7 @@ export default function VisualDesign() {
                       <div className="bg-foreground/10 rounded px-2 py-1">説明文</div>
                       <div className="bg-foreground/10 rounded px-2 py-1">価格</div>
                     </div>
-                    <p className="text-[10px] text-muted-foreground mt-2">等間隔 = 関係が不明</p>
+                    <p className="text-[12px] text-muted-foreground mt-2">等間隔 = 関係が不明</p>
                   </div>
                   <div className="rounded-lg bg-primary/5 p-3 border border-primary/20">
                     <p className="text-xs font-bold text-primary mb-2">After</p>
@@ -73,7 +73,7 @@ export default function VisualDesign() {
                       <div className="bg-primary/10 rounded px-2 py-1">説明文</div>
                       <div className="bg-primary/10 rounded px-2 py-1">価格</div>
                     </div>
-                    <p className="text-[10px] text-primary mt-2">グループ化 = 意味が明確</p>
+                    <p className="text-[12px] text-primary mt-2">グループ化 = 意味が明確</p>
                   </div>
                 </div>
               </div>
@@ -100,7 +100,7 @@ export default function VisualDesign() {
                       <div className="bg-foreground/10 rounded px-2 py-1 w-full ml-2">テキスト</div>
                       <div className="bg-foreground/10 rounded px-2 py-1 w-2/3 ml-4">ボタン</div>
                     </div>
-                    <p className="text-[10px] text-muted-foreground mt-2">バラバラの配置</p>
+                    <p className="text-[12px] text-muted-foreground mt-2">バラバラの配置</p>
                   </div>
                   <div className="rounded-lg bg-primary/5 p-3 border border-primary/20">
                     <p className="text-xs font-bold text-primary mb-2">After</p>
@@ -109,7 +109,7 @@ export default function VisualDesign() {
                       <div className="bg-primary/10 rounded px-2 py-1 w-full">テキスト</div>
                       <div className="bg-primary/10 rounded px-2 py-1 w-2/3">ボタン</div>
                     </div>
-                    <p className="text-[10px] text-primary mt-2">左揃えで統一</p>
+                    <p className="text-[12px] text-primary mt-2">左揃えで統一</p>
                   </div>
                 </div>
               </div>
@@ -136,7 +136,7 @@ export default function VisualDesign() {
                       <div className="bg-blue-200 dark:bg-blue-900/40 rounded px-2 py-1 text-foreground/70 font-bold">項目 B</div>
                       <div className="bg-green-200 dark:bg-green-900/40 rounded px-2 py-1 text-foreground/70 italic">項目 C</div>
                     </div>
-                    <p className="text-[10px] text-muted-foreground mt-2">毎回異なるスタイル</p>
+                    <p className="text-[12px] text-muted-foreground mt-2">毎回異なるスタイル</p>
                   </div>
                   <div className="rounded-lg bg-primary/5 p-3 border border-primary/20">
                     <p className="text-xs font-bold text-primary mb-2">After</p>
@@ -145,7 +145,7 @@ export default function VisualDesign() {
                       <div className="bg-primary/10 rounded px-2 py-1 border-l-2 border-primary">項目 B</div>
                       <div className="bg-primary/10 rounded px-2 py-1 border-l-2 border-primary">項目 C</div>
                     </div>
-                    <p className="text-[10px] text-primary mt-2">同じパターンで統一</p>
+                    <p className="text-[12px] text-primary mt-2">同じパターンで統一</p>
                   </div>
                 </div>
               </div>
@@ -171,7 +171,7 @@ export default function VisualDesign() {
                       <p className="text-sm">見出し</p>
                       <p className="text-[13px]">本文テキスト</p>
                     </div>
-                    <p className="text-[10px] text-muted-foreground mt-2">差が小さく曖昧</p>
+                    <p className="text-[12px] text-muted-foreground mt-2">差が小さく曖昧</p>
                   </div>
                   <div className="rounded-lg bg-primary/5 p-3 border border-primary/20">
                     <p className="text-xs font-bold text-primary mb-2">After</p>
@@ -179,7 +179,7 @@ export default function VisualDesign() {
                       <p className="text-lg font-bold">見出し</p>
                       <p className="text-xs">本文テキスト</p>
                     </div>
-                    <p className="text-[10px] text-primary mt-2">サイズ・太さで明確な差</p>
+                    <p className="text-[12px] text-primary mt-2">サイズ・太さで明確な差</p>
                   </div>
                 </div>
               </div>
@@ -331,17 +331,17 @@ export default function VisualDesign() {
                 <div className="rounded-lg bg-muted/50 p-4 border border-border text-center">
                   <p className="text-2xl font-bold text-foreground mb-1">4.5 : 1</p>
                   <p className="text-xs text-muted-foreground">通常テキスト（AA）</p>
-                  <p className="text-[10px] text-muted-foreground mt-1">18px 未満のテキスト</p>
+                  <p className="text-[12px] text-muted-foreground mt-1">18px 未満のテキスト</p>
                 </div>
                 <div className="rounded-lg bg-muted/50 p-4 border border-border text-center">
                   <p className="text-2xl font-bold text-foreground mb-1">3 : 1</p>
                   <p className="text-xs text-muted-foreground">大きなテキスト（AA）</p>
-                  <p className="text-[10px] text-muted-foreground mt-1">18px 以上 or 14px 太字</p>
+                  <p className="text-[12px] text-muted-foreground mt-1">18px 以上 or 14px 太字</p>
                 </div>
                 <div className="rounded-lg bg-muted/50 p-4 border border-border text-center">
                   <p className="text-2xl font-bold text-foreground mb-1">7 : 1</p>
                   <p className="text-xs text-muted-foreground">通常テキスト（AAA）</p>
-                  <p className="text-[10px] text-muted-foreground mt-1">最も厳格な基準</p>
+                  <p className="text-[12px] text-muted-foreground mt-1">最も厳格な基準</p>
                 </div>
               </div>
             </div>
@@ -493,7 +493,7 @@ export default function VisualDesign() {
                   <p className="font-bold">レビュー</p>
                   <p>星4.5 - 128件のレビュー</p>
                 </div>
-                <p className="text-[10px] text-muted-foreground mt-2">情報の区切りが曖昧で読みにくい</p>
+                <p className="text-[12px] text-muted-foreground mt-2">情報の区切りが曖昧で読みにくい</p>
               </div>
 
               {/* 適切な余白 */}
@@ -513,7 +513,7 @@ export default function VisualDesign() {
                     <p className="mt-1">星4.5 - 128件のレビュー</p>
                   </div>
                 </div>
-                <p className="text-[10px] text-primary mt-2">セクション間に余白があり構造が明確</p>
+                <p className="text-[12px] text-primary mt-2">セクション間に余白があり構造が明確</p>
               </div>
             </div>
 

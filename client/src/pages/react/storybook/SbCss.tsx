@@ -288,7 +288,7 @@ export const Secondary: Story = {
       display: 'inline-block',
       background: '#eef2ff',
       color: '#4f46e5',
-      fontSize: '11px',
+      fontSize: '12px',
       fontWeight: '600',
       padding: '2px 8px',
       borderRadius: '9999px',
@@ -328,7 +328,7 @@ export const Secondary: Story = {
       border: '1px dashed #cbd5e1',
     },
     scopeText: {
-      fontSize: '10px',
+      fontSize: '12px',
       color: 'var(--text-muted)',
       fontFamily: 'monospace',
       margin: 0,
@@ -553,7 +553,7 @@ export default preview;`}
             display: 'inline-block',
             background: '#ecfeff',
             color: '#0891b2',
-            fontSize: '11px',
+            fontSize: '12px',
             fontWeight: '600',
             padding: '2px 8px',
             borderRadius: '9999px',
@@ -593,10 +593,10 @@ export default preview;`}
             borderRadius: '6px',
             border: '1px dashed #99f6e4',
           }}>
-            <p style={{ fontSize: '10px', color: '#5eead4', fontFamily: 'monospace', margin: '0 0 2px 0' }}>
+            <p style={{ fontSize: '12px', color: '#5eead4', fontFamily: 'monospace', margin: '0 0 2px 0' }}>
               className="rounded-xl shadow-md overflow-hidden"
             </p>
-            <p style={{ fontSize: '10px', color: '#5eead4', fontFamily: 'monospace', margin: 0 }}>
+            <p style={{ fontSize: '12px', color: '#5eead4', fontFamily: 'monospace', margin: 0 }}>
               className="bg-cyan-600 text-white px-4 py-2 rounded-lg"
             </p>
           </div>
@@ -1039,7 +1039,7 @@ export default preview;`}
             display: 'inline-block',
             background: theme.primaryLight,
             color: theme.primary,
-            fontSize: '11px',
+            fontSize: '12px',
             fontWeight: '600',
             padding: '2px 8px',
             borderRadius: '9999px',
@@ -1074,10 +1074,10 @@ export default preview;`}
             borderRadius: '6px',
             border: '1px dashed #c4b5fd',
           }}>
-            <p style={{ fontSize: '10px', color: '#a78bfa', fontFamily: 'monospace', margin: '0 0 2px 0' }}>
+            <p style={{ fontSize: '12px', color: '#a78bfa', fontFamily: 'monospace', margin: '0 0 2px 0' }}>
               background: theme.primary
             </p>
-            <p style={{ fontSize: '10px', color: '#a78bfa', fontFamily: 'monospace', margin: 0 }}>
+            <p style={{ fontSize: '12px', color: '#a78bfa', fontFamily: 'monospace', margin: 0 }}>
               color: theme.text
             </p>
           </div>
@@ -1205,11 +1205,11 @@ export default preview;`}
           alignItems: 'center',
           justifyContent: 'space-between',
         }}>
-          <span style={{ fontSize: '11px', fontWeight: '700', color: theme.textMuted, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <span style={{ fontSize: '12px', fontWeight: '700', color: theme.textMuted, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             {mode === 'light' ? '☀ ライトモード' : '☾ ダークモード'}
           </span>
           <span style={{
-            fontSize: '10px',
+            fontSize: '12px',
             color: theme.tagText,
             background: theme.tag,
             padding: '2px 6px',
@@ -1269,8 +1269,8 @@ export default preview;`}
               flexShrink: 0,
             }}>A</div>
             <div>
-              <p style={{ fontSize: '11px', fontWeight: '600', color: theme.text, margin: 0 }}>Alice</p>
-              <p style={{ fontSize: '10px', color: theme.textMuted, margin: 0 }}>デザインレビューをお願いします</p>
+              <p style={{ fontSize: '12px', fontWeight: '600', color: theme.text, margin: 0 }}>Alice</p>
+              <p style={{ fontSize: '12px', color: theme.textMuted, margin: 0 }}>デザインレビューをお願いします</p>
             </div>
           </div>
         </div>

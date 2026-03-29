@@ -194,7 +194,7 @@ function HudOverlay({
     <div className="absolute inset-0 pointer-events-none">
       {/* 左上: 速度 */}
       <div className="absolute top-3 left-3 bg-black/50 backdrop-blur-sm rounded-lg px-3 py-2">
-        <div className="text-[10px] text-emerald-400 font-medium uppercase tracking-wider">
+        <div className="text-[12px] text-emerald-400 font-medium uppercase tracking-wider">
           Speed
         </div>
         <div className="text-lg font-bold text-white font-mono">
@@ -205,7 +205,7 @@ function HudOverlay({
 
       {/* 右上: 高度 */}
       <div className="absolute top-3 right-3 bg-black/50 backdrop-blur-sm rounded-lg px-3 py-2">
-        <div className="text-[10px] text-blue-400 font-medium uppercase tracking-wider">
+        <div className="text-[12px] text-blue-400 font-medium uppercase tracking-wider">
           Altitude
         </div>
         <div className="text-lg font-bold text-white font-mono">
@@ -216,7 +216,7 @@ function HudOverlay({
 
       {/* 下部中央: スコア */}
       <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm rounded-lg px-4 py-2">
-        <div className="text-[10px] text-amber-400 font-medium uppercase tracking-wider text-center">
+        <div className="text-[12px] text-amber-400 font-medium uppercase tracking-wider text-center">
           Score
         </div>
         <div className="text-xl font-bold text-white font-mono text-center">

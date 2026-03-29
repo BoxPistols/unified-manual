@@ -107,7 +107,7 @@ export default function Setup() {
                 </p>
                 <div className="bg-indigo-950 rounded-lg p-4 mb-4 border border-indigo-900 shadow-inner">
                   <div className="flex justify-between items-center mb-3 border-b border-indigo-900 pb-2">
-                    <span className="text-[10px] text-indigo-300 font-mono">Windows PowerShell</span>
+                    <span className="text-[12px] text-indigo-300 font-mono">Windows PowerShell</span>
                     <div className="flex gap-3">
                       <div className="w-2 h-0.5 bg-indigo-300" />
                       <div className="w-2.5 h-2.5 border border-indigo-300" />

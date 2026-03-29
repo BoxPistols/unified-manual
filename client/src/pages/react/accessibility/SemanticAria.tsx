@@ -238,7 +238,7 @@ export default function SemanticAria() {
       fontWeight: n <= 2 ? 'bold' : '600',
       color: 'var(--text)',
     }}>
-      <span style={{ opacity: 0.5, fontSize: '11px', marginRight: '8px' }}>h{n}</span>
+      <span style={{ opacity: 0.5, fontSize: '12px', marginRight: '8px' }}>h{n}</span>
       {label}
     </div>
   );
@@ -591,7 +591,7 @@ function SearchResults({ results }: { results: Item[] }) {
               {link.current && (
                 <span style={{
                   display: 'block',
-                  fontSize: '10px',
+                  fontSize: '12px',
                   opacity: 0.8,
                   fontWeight: 'normal',
                   marginTop: '2px',
@@ -1093,7 +1093,7 @@ function StatusBadge({ status }: { status: 'active' | 'inactive' | 'pending' }) 
           )}
         </div>
       ))}
-      <p style={{ marginTop: '12px', fontSize: '11px', color: 'var(--text-muted)', padding: '0 16px' }}>
+      <p style={{ marginTop: '12px', fontSize: '12px', color: 'var(--text-muted)', padding: '0 16px' }}>
         Tab / Enter / Space でキーボード操作できます
       </p>
     </div>

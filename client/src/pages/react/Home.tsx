@@ -284,7 +284,7 @@ export default function Home() {
                   <div className="w-2.5 h-2.5 rounded-full bg-[#a6e3a1]" />
                 </div>
                 <span className="text-xs text-[#cdd6f4]/50 ml-1">タイトル</span>
-                <span className="text-[10px] font-mono text-[#cdd6f4]/30 uppercase">tsx</span>
+                <span className="text-[12px] font-mono text-[#cdd6f4]/30 uppercase">tsx</span>
               </div>
               <div className="flex items-center gap-1.5 text-[#cdd6f4]/40">
                 <Code2 size={14} />

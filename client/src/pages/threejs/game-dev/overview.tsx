@@ -127,7 +127,7 @@ export default function OverviewPage() {
                 className={`${system.color} border rounded-lg p-2.5 text-center`}
               >
                 <div className="font-semibold text-foreground text-xs">{system.name}</div>
-                <div className="text-[10px] text-muted-foreground mt-0.5">{system.desc}</div>
+                <div className="text-[12px] text-muted-foreground mt-0.5">{system.desc}</div>
               </div>
             ))}
           </div>

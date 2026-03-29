@@ -235,7 +235,7 @@ export default function UserResearch() {
                     <div className="flex items-center gap-2 flex-wrap">
                       <h4 className="font-bold text-foreground text-sm">{method.title}</h4>
                       <span
-                        className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                        className={`text-[12px] font-bold px-2 py-0.5 rounded-full ${
                           method.category === '定性'
                             ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400'
                             : 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'

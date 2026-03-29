@@ -151,7 +151,7 @@ export default function Navigation() {
               <span className="text-primary-foreground font-heading font-bold text-sm">DA</span>
             </div>
             <span className="font-heading font-bold text-lg text-foreground">Dev Album</span>
-            <span className="text-[9px] font-semibold text-muted-foreground bg-muted px-1.5 py-0.5 rounded ml-1 self-start mt-1">v0.9 beta</span>
+            <span className="text-[12px] font-semibold text-muted-foreground bg-muted px-1.5 py-0.5 rounded ml-1 self-start mt-1">v0.9 beta</span>
           </Link>
 
           {/* マニュアルタブ + プログレス */}
@@ -265,7 +265,7 @@ export default function Navigation() {
                   return (
                     <div key={bPath} className="group flex items-center">
                       <Link href={bPath} onClick={() => setIsOpen(false)} className={`flex-1 min-w-0 px-4 py-1.5 text-sm transition-colors ${location === bPath ? 'text-primary font-medium' : 'text-muted-foreground hover:text-foreground hover:bg-sidebar-accent/50'} rounded-lg truncate`}>
-                        <span className={`text-[10px] mr-1 ${manualColors[p.manualId]}`}>{p.manualId.toUpperCase()}</span>
+                        <span className={`text-[12px] mr-1 ${manualColors[p.manualId]}`}>{p.manualId.toUpperCase()}</span>
                         {p.title}
                       </Link>
                       <button
@@ -389,8 +389,8 @@ export default function Navigation() {
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-foreground">{m.shortTitle}</p>
                         <div className="flex items-center justify-between mt-0.5">
-                          <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{getManualPages(m.id).length}ステップ</p>
-                          <p className={`text-[10px] font-bold ${manualColors[m.id]}`}>{percentage}%</p>
+                          <p className="text-[12px] text-muted-foreground uppercase tracking-wider">{getManualPages(m.id).length}ステップ</p>
+                          <p className={`text-[12px] font-bold ${manualColors[m.id]}`}>{percentage}%</p>
                         </div>
                       </div>
                     </div>

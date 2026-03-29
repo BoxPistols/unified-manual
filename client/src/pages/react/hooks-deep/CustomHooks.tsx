@@ -182,7 +182,7 @@ function Settings() {
           ダークモード
         </label>
       </div>
-      <p style={{ fontSize: '11px', color: '#9CA3AF', marginTop: '12px' }}>localStorage に自動保存されます</p>
+      <p style={{ fontSize: '12px', color: '#9CA3AF', marginTop: '12px' }}>localStorage に自動保存されます</p>
     </div>
   )
 }

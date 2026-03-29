@@ -116,7 +116,7 @@ export default function HelpModal() {
             </div>
             <div className="mt-2 p-2.5 rounded-lg bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
               <p className="text-xs text-blue-700 dark:text-blue-300">
-                <kbd className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900 text-[10px] font-mono border border-blue-300 dark:border-blue-700">Tab</kbd> でインデント挿入。コードは横スクロール対応。
+                <kbd className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900 text-[12px] font-mono border border-blue-300 dark:border-blue-700">Tab</kbd> でインデント挿入。コードは横スクロール対応。
               </p>
             </div>
           </section>
@@ -151,7 +151,7 @@ export default function HelpModal() {
         {/* フッター */}
         <div className="px-6 py-3 border-t border-border text-center">
           <p className="text-xs text-muted-foreground">
-            <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border text-[10px] font-mono">?</kbd> でこのヘルプを表示 / <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border text-[10px] font-mono">Esc</kbd> で閉じる
+            <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border text-[12px] font-mono">?</kbd> でこのヘルプを表示 / <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border text-[12px] font-mono">Esc</kbd> で閉じる
           </p>
         </div>
       </div>

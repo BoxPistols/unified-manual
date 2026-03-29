@@ -136,7 +136,7 @@ export default function KeyboardNav() {
         <div className="h-4 w-px bg-border mx-1" />
 
         {/* ショートカット一覧 */}
-        <div className="flex items-center gap-2 text-[10px] text-muted-foreground/60">
+        <div className="flex items-center gap-2 text-[12px] text-muted-foreground/60">
           <span className="flex items-center gap-0.5">
             <kbd className="px-1 py-0.5 rounded bg-muted/60 border border-border/50 font-mono">{mod}+←→</kbd>
             <span className="ml-0.5">ページ</span>

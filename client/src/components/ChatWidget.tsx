@@ -220,7 +220,7 @@ export default function ChatWidget() {
                 title={mode === "ai" ? "AI 接続中" : "FAQ モード"}
               />
               {pageContext.title && (
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground truncate max-w-[140px]">
+                <span className="text-[12px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground truncate max-w-[140px]">
                   {pageContext.title}
                 </span>
               )}
@@ -274,7 +274,7 @@ export default function ChatWidget() {
             <div className="px-4 py-3 border-b border-border bg-muted/50 space-y-3">
               {/* モデル選択 */}
               <div>
-                <label className="text-[11px] text-muted-foreground block mb-1">
+                <label className="text-[12px] text-muted-foreground block mb-1">
                   モデル
                 </label>
                 <select
@@ -297,7 +297,7 @@ export default function ChatWidget() {
 
               {/* API キー入力 */}
               <div>
-                <label className="text-[11px] text-muted-foreground block mb-1">
+                <label className="text-[12px] text-muted-foreground block mb-1">
                   API キー（任意 / GPT-5.4 Mini は必須）
                 </label>
                 <div className="flex gap-1">
@@ -316,7 +316,7 @@ export default function ChatWidget() {
                     {showApiKey ? <EyeOff size={14} /> : <Eye size={14} />}
                   </button>
                 </div>
-                <p className="text-[10px] text-muted-foreground mt-1">
+                <p className="text-[12px] text-muted-foreground mt-1">
                   キーはブラウザにのみ保存されます
                 </p>
               </div>

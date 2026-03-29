@@ -39,8 +39,8 @@ export default function MCPPractical() {
               <div className="flex items-center gap-3 mb-3">
                 <Figma className="w-6 h-6 text-[#F24E1E]" />
                 <h3 className="font-bold text-lg">Figma MCP</h3>
-                <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">公式</span>
-                <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">HTTP</span>
+                <span className="text-[12px] font-medium px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">公式</span>
+                <span className="text-[12px] font-medium px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">HTTP</span>
               </div>
               <p className="text-sm text-muted-foreground mb-4">
                 FigmaのデザインファイルからコードやUIコンポーネントを生成します。デザイン変数、レイアウト情報、Code Connect連携に対応。OAuth認証で接続。
@@ -74,7 +74,7 @@ $ claude mcp add --transport http figma https://mcp.figma.com/mcp
               <div className="flex items-center gap-3 mb-3">
                 <Globe className="w-6 h-6 text-blue-500" />
                 <h3 className="font-bold text-lg">Context7</h3>
-                <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400">@upstash/context7-mcp</span>
+                <span className="text-[12px] font-medium px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400">@upstash/context7-mcp</span>
               </div>
               <p className="text-sm text-muted-foreground mb-4">
                 ライブラリのバージョン固有ドキュメントとコード例をソースから直接取得します。LLMの学習データが古くなる問題を解決し、最新APIのハルシネーションを防止します。
@@ -102,7 +102,7 @@ $ claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp
               <div className="flex items-center gap-3 mb-3">
                 <Code className="w-6 h-6 text-emerald-500" />
                 <h3 className="font-bold text-lg">Serena</h3>
-                <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">LSPベース</span>
+                <span className="text-[12px] font-medium px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">LSPベース</span>
               </div>
               <p className="text-sm text-muted-foreground mb-4">
                 Language Server Protocol（LSP）を活用し、30+言語に対してシンボルレベルのコード理解を提供します。ファイル全体を読まずにシンボル単位で精密にコードを操作可能。
@@ -140,7 +140,7 @@ $ claude mcp add serena -- uvx \\
               <div className="flex items-center gap-3 mb-3">
                 <Terminal className="w-6 h-6 text-green-500" />
                 <h3 className="font-bold text-lg">Playwright MCP</h3>
-                <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">Microsoft公式</span>
+                <span className="text-[12px] font-medium px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">Microsoft公式</span>
               </div>
               <p className="text-sm text-muted-foreground mb-4">
                 アクセシビリティツリーを活用したブラウザ自動化。スクリーンショットベースではなく構造化データで動作するため、ビジョンモデル不要で高速・確定的に動作します。Chromium / Firefox / WebKit対応。
@@ -160,19 +160,19 @@ $ claude mcp add serena -- uvx \\
                 <div className="flex items-center gap-2 mb-2">
                   <Bug className="w-5 h-5 text-[#362D59]" />
                   <h4 className="font-bold">Sentry MCP</h4>
-                  <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">HTTP</span>
+                  <span className="text-[12px] px-1.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">HTTP</span>
                 </div>
                 <p className="text-xs text-muted-foreground mb-3">エラー・イシュー検索、Seer AI分析、リリース管理にLLMから直接アクセス。</p>
-                <code className="text-[10px] text-muted-foreground font-mono block bg-slate-50 dark:bg-slate-800 p-2 rounded">claude mcp add --transport http sentry https://mcp.sentry.dev/mcp</code>
+                <code className="text-[12px] text-muted-foreground font-mono block bg-slate-50 dark:bg-slate-800 p-2 rounded">claude mcp add --transport http sentry https://mcp.sentry.dev/mcp</code>
               </div>
               <div className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
                 <div className="flex items-center gap-2 mb-2">
                   <Database className="w-5 h-5 text-emerald-500" />
                   <h4 className="font-bold">Supabase MCP</h4>
-                  <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">HTTP</span>
+                  <span className="text-[12px] px-1.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">HTTP</span>
                 </div>
                 <p className="text-xs text-muted-foreground mb-3">DB操作、マイグレーション、Edge Functions、ログ解析をAIから直接実行。</p>
-                <code className="text-[10px] text-muted-foreground font-mono block bg-slate-50 dark:bg-slate-800 p-2 rounded">claude mcp add --transport http supabase https://mcp.supabase.com/mcp</code>
+                <code className="text-[12px] text-muted-foreground font-mono block bg-slate-50 dark:bg-slate-800 p-2 rounded">claude mcp add --transport http supabase https://mcp.supabase.com/mcp</code>
               </div>
             </div>
           </section>
@@ -182,20 +182,20 @@ $ claude mcp add serena -- uvx \\
             <h2 className="text-3xl font-bold mb-6">実践的なプロンプト例</h2>
             <div className="space-y-4">
               <div className="p-5 bg-slate-900 rounded-xl border border-slate-700">
-                <p className="text-[10px] text-slate-500 mb-2 font-mono">Figma MCP + Context7</p>
+                <p className="text-[12px] text-slate-500 mb-2 font-mono">Figma MCP + Context7</p>
                 <div className="text-emerald-400 font-mono text-sm leading-relaxed">
                   &gt; この Figma URL のデザインを React コンポーネントとして実装して (use context7)<br/>
                   &gt; https://figma.com/design/xxxxx?node-id=1-2
                 </div>
               </div>
               <div className="p-5 bg-slate-900 rounded-xl border border-slate-700">
-                <p className="text-[10px] text-slate-500 mb-2 font-mono">Sentry MCP</p>
+                <p className="text-[12px] text-slate-500 mb-2 font-mono">Sentry MCP</p>
                 <div className="text-emerald-400 font-mono text-sm leading-relaxed">
                   &gt; Sentry の未解決エラーを確認して、最も発生頻度の高い問題を修正して
                 </div>
               </div>
               <div className="p-5 bg-slate-900 rounded-xl border border-slate-700">
-                <p className="text-[10px] text-slate-500 mb-2 font-mono">Playwright MCP</p>
+                <p className="text-[12px] text-slate-500 mb-2 font-mono">Playwright MCP</p>
                 <div className="text-emerald-400 font-mono text-sm leading-relaxed">
                   &gt; localhost:3000 のログインフォームをテストして、バリデーションが正しく動くか確認して
                 </div>
@@ -256,7 +256,7 @@ $ claude mcp add serena -- uvx \\
             </p>
             <div className="space-y-4">
               <div className="p-5 bg-slate-900 rounded-xl border border-slate-700">
-                <p className="text-[10px] text-slate-500 mb-2 font-mono">リソース参照の例</p>
+                <p className="text-[12px] text-slate-500 mb-2 font-mono">リソース参照の例</p>
                 <div className="text-emerald-400 font-mono text-sm leading-relaxed">
                   &gt; @ と入力 → オートコンプリートでリソース一覧が表示<br />
                   &gt; @supabase/schema を参照して、usersテーブルにCRUDのAPIを作成して<br />

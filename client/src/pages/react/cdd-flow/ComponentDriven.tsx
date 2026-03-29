@@ -109,16 +109,16 @@ export default function ComponentDriven() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {levels.map((l, i) => (
           <div key={l.name} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ width: 40 + i * 24, height: '36px', borderRadius: '6px', background: l.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '11px', fontWeight: 700, flexShrink: 0 }}>{l.name}</div>
+            <div style={{ width: 40 + i * 24, height: '36px', borderRadius: '6px', background: l.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '12px', fontWeight: 700, flexShrink: 0 }}>{l.name}</div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text)' }}>{l.desc}</span>
-              <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{l.example}</span>
+              <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{l.example}</span>
             </div>
           </div>
         ))}
       </div>
       <div style={{ marginTop: '16px', padding: '10px 14px', borderRadius: '6px', background: 'var(--bg-muted)', border: '1px solid var(--border)' }}>
-        <span style={{ fontSize: '11px', color: '#475569' }}>CDD では下から上へ（Atom → Page）順番に構築する</span>
+        <span style={{ fontSize: '12px', color: '#475569' }}>CDD では下から上へ（Atom → Page）順番に構築する</span>
       </div>
     </div>
   );
@@ -206,8 +206,8 @@ export default function ComponentDriven() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <div style={{ padding: '12px 16px', borderRadius: '8px', border: '2px solid #6366F1', background: '#EEF2FF' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '11px', fontWeight: 700, color: '#6366F1', textTransform: 'uppercase' }}>Atom</span>
-            <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>Figma: Component + Variant</span>
+            <span style={{ fontSize: '12px', fontWeight: 700, color: '#6366F1', textTransform: 'uppercase' }}>Atom</span>
+            <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Figma: Component + Variant</span>
           </div>
           <div style={{ display: 'flex', gap: '8px' }}>
             <button style={{ padding: '6px 14px', borderRadius: '6px', background: '#6366F1', color: 'white', border: 'none', fontSize: '12px', fontWeight: 600 }}>Primary</button>
@@ -220,8 +220,8 @@ export default function ComponentDriven() {
         </div>
         <div style={{ padding: '12px 16px', borderRadius: '8px', border: '2px solid #8B5CF6', background: '#F5F3FF' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '11px', fontWeight: 700, color: '#8B5CF6', textTransform: 'uppercase' }}>Molecule</span>
-            <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>Figma: Component (Instance x2)</span>
+            <span style={{ fontSize: '12px', fontWeight: 700, color: '#8B5CF6', textTransform: 'uppercase' }}>Molecule</span>
+            <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Figma: Component (Instance x2)</span>
           </div>
           <div style={{ display: 'flex', gap: '4px' }}>
             <input placeholder="検索..." style={{ padding: '6px 12px', borderRadius: '6px 0 0 6px', border: '1px solid #CBD5E1', fontSize: '12px', flex: 1, background: 'white', color: 'var(--text)' }} readOnly />
@@ -233,16 +233,16 @@ export default function ComponentDriven() {
         </div>
         <div style={{ padding: '12px 16px', borderRadius: '8px', border: '2px solid #A855F7', background: '#FAF5FF' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '11px', fontWeight: 700, color: '#A855F7', textTransform: 'uppercase' }}>Organism</span>
-            <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>Figma: Component (Molecule + Atom Instance)</span>
+            <span style={{ fontSize: '12px', fontWeight: 700, color: '#A855F7', textTransform: 'uppercase' }}>Organism</span>
+            <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Figma: Component (Molecule + Atom Instance)</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 12px', background: 'var(--bg)', borderRadius: '6px', border: '1px solid var(--border)' }}>
             <span style={{ fontWeight: 700, fontSize: '14px', color: 'var(--text)' }}>Logo</span>
             <div style={{ display: 'flex', gap: '4px', flex: 1, maxWidth: '200px', margin: '0 16px' }}>
-              <input placeholder="検索..." style={{ padding: '4px 8px', borderRadius: '4px 0 0 4px', border: '1px solid #CBD5E1', fontSize: '11px', flex: 1, background: 'white', color: 'var(--text)' }} readOnly />
-              <button style={{ padding: '4px 10px', borderRadius: '0 4px 4px 0', background: '#6366F1', color: 'white', border: 'none', fontSize: '11px', fontWeight: 600 }}>検索</button>
+              <input placeholder="検索..." style={{ padding: '4px 8px', borderRadius: '4px 0 0 4px', border: '1px solid #CBD5E1', fontSize: '12px', flex: 1, background: 'white', color: 'var(--text)' }} readOnly />
+              <button style={{ padding: '4px 10px', borderRadius: '0 4px 4px 0', background: '#6366F1', color: 'white', border: 'none', fontSize: '12px', fontWeight: 600 }}>検索</button>
             </div>
-            <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', color: 'var(--text-muted)', fontWeight: 600 }}>U</div>
+            <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', color: 'var(--text-muted)', fontWeight: 600 }}>U</div>
           </div>
         </div>
       </div>

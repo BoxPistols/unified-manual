@@ -138,7 +138,7 @@ export default function CssGrid() {
           {items.map(function(n) { return <div key={n} style={boxStyle}>Item {n}</div> })}
         </div>
       </div>
-      <div style={{ fontSize: '11px', color: 'var(--text)', opacity: 0.7, padding: '0 4px' }}>
+      <div style={{ fontSize: '12px', color: 'var(--text)', opacity: 0.7, padding: '0 4px' }}>
         ※ アイテムが少ない場合の違いに注目。auto-fit はアイテムが残りの空間を埋めます。
       </div>
     </div>
@@ -572,7 +572,7 @@ export default function CssGrid() {
             <div style={{ height: '60px', background: color, opacity: 0.8 }} />
             <div style={{ padding: '10px' }}>
               <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text)', marginBottom: '4px' }}>Card {i + 1}</div>
-              <div style={{ fontSize: '11px', color: 'var(--text)', opacity: 0.6 }}>auto-fill + minmax</div>
+              <div style={{ fontSize: '12px', color: 'var(--text)', opacity: 0.6 }}>auto-fill + minmax</div>
             </div>
           </div>
         );

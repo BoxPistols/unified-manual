@@ -99,7 +99,7 @@ export const Secondary: Story = {
       <div style={{ background: 'var(--bg-muted)', borderRadius: '12px', border: '1px solid var(--border)', overflow: 'hidden' }}>
         {/* Storybook ヘッダー風 */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 16px', background: 'var(--bg)', borderBottom: '1px solid var(--border)' }}>
-          <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Components / Button</span>
+          <span style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Components / Button</span>
         </div>
         {/* Story 一覧 */}
         <div style={{ padding: '24px' }}>
@@ -423,7 +423,7 @@ export const Danger: Story = {
       </div>
       {/* 現在の args 表示 */}
       <div style={{ marginTop: '16px', padding: '12px', background: 'var(--bg-muted)', borderRadius: '8px', border: '1px solid var(--border)' }}>
-        <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '4px' }}>現在の args</div>
+        <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '4px' }}>現在の args</div>
         <code style={{ fontSize: '12px', color: '#6366f1' }}>{'{ title: "' + v.title.substring(0, 30) + (v.title.length > 30 ? '...' : '') + '", hasImage: ' + v.hasImage + ' }'}</code>
       </div>
     </div>
@@ -575,7 +575,7 @@ await expect(mockFn).toHaveBeenCalledWith(arg);`}
         </div>
         {/* ログパネル */}
         <div style={{ flex: 1, minWidth: '240px' }}>
-          <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>Interactions ログ</div>
+          <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>Interactions ログ</div>
           <div style={{ background: '#1e1e2e', borderRadius: '8px', padding: '12px', minHeight: '160px' }}>
             {log.length === 0 && <div style={{ color: '#585b70', fontSize: '13px', fontStyle: 'italic' }}>テスト実行を押すと、play 関数の動作を確認できます</div>}
             {log.map((l, i) => (
@@ -923,7 +923,7 @@ export const NoDescription: Story = {
   const Folder = ({ name, open, onClick, children, depth = 0 }) => (
     <div>
       <div onClick={onClick} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '6px 12px', paddingLeft: 12 + depth * 16, cursor: 'pointer', fontSize: '13px', fontWeight: 600, color: 'var(--text)', borderRadius: '6px', background: 'transparent', transition: 'background 0.15s' }} onMouseEnter={e => e.currentTarget.style.background='var(--bg-muted)'} onMouseLeave={e => e.currentTarget.style.background='transparent'}>
-        <span style={{ fontSize: '10px', transition: 'transform 0.2s', transform: open ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block' }}>▶</span>
+        <span style={{ fontSize: '12px', transition: 'transform 0.2s', transform: open ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block' }}>▶</span>
         <span style={{ fontSize: '14px' }}>{open ? '📂' : '📁'}</span>
         {name}
       </div>
@@ -941,7 +941,7 @@ export const NoDescription: Story = {
       <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
         {/* サイドバー風ツリー */}
         <div style={{ width: '240px', background: 'white', borderRadius: '12px', border: '1px solid var(--border)', padding: '12px 8px', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
-          <div style={{ fontSize: '10px', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', padding: '4px 12px', marginBottom: '4px' }}>Storybook Sidebar</div>
+          <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', padding: '4px 12px', marginBottom: '4px' }}>Storybook Sidebar</div>
           <Folder name="Components" open={expanded.Components} onClick={() => toggle('Components')} depth={0}>
             <Story name="Button" depth={1} />
             <Folder name="Form" open={expanded.Form} onClick={() => toggle('Form')} depth={1}>

@@ -271,7 +271,7 @@ export default function UsabilityTesting() {
                       className={`w-full ${item.color} rounded-t-md`}
                       style={{ height: item.height }}
                     />
-                    <span className="text-[10px] text-muted-foreground mt-1">{item.label}</span>
+                    <span className="text-[12px] text-muted-foreground mt-1">{item.label}</span>
                   </div>
                 ))}
               </div>

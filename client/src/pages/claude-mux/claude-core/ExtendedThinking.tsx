@@ -41,7 +41,7 @@ export default function ExtendedThinking() {
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-3 h-3 rounded-full bg-[var(--claude-primary)]" />
                   <h4 className="font-bold">Opus 4.6</h4>
-                  <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400">最高性能</span>
+                  <span className="text-[12px] font-medium px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400">最高性能</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-2">
                   最も高い推論能力。複雑なアーキテクチャ設計、大規模リファクタリング、難解なバグの調査に適する。
@@ -52,7 +52,7 @@ export default function ExtendedThinking() {
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-3 h-3 rounded-full bg-blue-500" />
                   <h4 className="font-bold">Sonnet 4.6</h4>
-                  <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">バランス型</span>
+                  <span className="text-[12px] font-medium px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">バランス型</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-2">
                   速度とコストのバランスに優れる。日常的なコーディング、機能追加、テスト作成に最適。Claude Code のデフォルトモデル。
@@ -63,7 +63,7 @@ export default function ExtendedThinking() {
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-3 h-3 rounded-full bg-emerald-500" />
                   <h4 className="font-bold">Haiku 4.5</h4>
-                  <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">高速・低コスト</span>
+                  <span className="text-[12px] font-medium px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">高速・低コスト</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-2">
                   最も高速かつ低コスト。コード補完、簡単な質問、フォーマット変換などの軽量タスクに適する。
@@ -119,7 +119,7 @@ $ claude`} language="bash" />
               Effort Level が <code>high</code> の場合、Claude は応答前に内部で「思考プロセス」を実行します。この拡張思考により、より深い推論と正確な回答が可能になります。
             </p>
             <div className="p-5 bg-slate-900 rounded-xl border border-slate-700 mb-6">
-              <p className="text-[10px] text-slate-500 mb-2 font-mono">拡張思考の動作イメージ</p>
+              <p className="text-[12px] text-slate-500 mb-2 font-mono">拡張思考の動作イメージ</p>
               <div className="font-mono text-sm space-y-2">
                 <div className="text-slate-500">{'>'} このバグの原因を特定して修正して</div>
                 <div className="text-amber-400/70 text-xs pl-4">
