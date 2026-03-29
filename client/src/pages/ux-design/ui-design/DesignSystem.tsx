@@ -225,7 +225,7 @@ export default function DesignSystem() {
               <div className="flex flex-col gap-4">
                 {/* Atoms */}
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg flex-shrink-0">
+                  <div className="text-2xl font-light text-primary/40 w-8 text-center shrink-0">
                     1
                   </div>
                   <div className="flex-1 rounded-lg bg-muted/30 border border-border p-4">
@@ -260,7 +260,7 @@ export default function DesignSystem() {
 
                 {/* Molecules */}
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg flex-shrink-0">
+                  <div className="text-2xl font-light text-primary/40 w-8 text-center shrink-0">
                     2
                   </div>
                   <div className="flex-1 rounded-lg bg-muted/30 border border-border p-4">
@@ -291,7 +291,7 @@ export default function DesignSystem() {
 
                 {/* Organisms */}
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg flex-shrink-0">
+                  <div className="text-2xl font-light text-primary/40 w-8 text-center shrink-0">
                     3
                   </div>
                   <div className="flex-1 rounded-lg bg-muted/30 border border-border p-4">
@@ -332,7 +332,7 @@ export default function DesignSystem() {
 
                 {/* Templates */}
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg flex-shrink-0">
+                  <div className="text-2xl font-light text-primary/40 w-8 text-center shrink-0">
                     4
                   </div>
                   <div className="flex-1 rounded-lg bg-muted/30 border border-border p-4">
@@ -359,7 +359,7 @@ export default function DesignSystem() {
 
                 {/* Pages */}
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg flex-shrink-0">
+                  <div className="text-2xl font-light text-primary/40 w-8 text-center shrink-0">
                     5
                   </div>
                   <div className="flex-1 rounded-lg bg-muted/30 border border-border p-4">

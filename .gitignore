@@ -7,3 +7,7 @@ dist
 test-results/
 storybook-static/
 .claude/worktrees/
+
+# Claude Code のみ
+.claude/skills/ui-ux-pro-max/
+

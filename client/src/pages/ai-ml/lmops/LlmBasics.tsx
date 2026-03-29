@@ -401,7 +401,7 @@ print(message.content[0].text)`}
                   { step: '5', label: '回答生成', desc: 'LLM が文書に基づいて回答を生成' },
                 ].map((item, i) => (
                   <div key={item.step} className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="text-xl font-light text-primary/40 w-6 text-center shrink-0 mt-0.5">
                       <span className="text-primary font-bold text-sm">{item.step}</span>
                     </div>
                     <div className="flex-1">

@@ -305,10 +305,7 @@ export default function Landscape() {
                   className="flex gap-4 items-start rounded-xl border border-border bg-card p-4"
                 >
                   <div className="flex-shrink-0 flex flex-col items-center gap-1">
-                    <span
-                      className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground font-bold"
-                      style={{ fontSize: 13 }}
-                    >
+                    <span className="text-2xl font-light text-primary/40 w-8 text-center">
                       {index + 1}
                     </span>
                     <span className="text-sm font-bold text-primary bg-primary/10 px-2 py-0.5 rounded">
