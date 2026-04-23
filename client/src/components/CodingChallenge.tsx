@@ -108,6 +108,16 @@ export function resolvePreviewType(code: string, previewType?: string): string {
   // JSON → config
   if (/^\s*[\[{]/.test(trimmed) && /[\]}]\s*$/.test(trimmed)) return 'config';
 
+  // Python 固有 syntax (def / from import / print + # コメント) → terminal 扱いで JSX トランスパイルを避ける
+  if (/\bdef\s+\w+\s*\([^)]*\)\s*:\s*$/m.test(trimmed)) return 'terminal';
+  if (/^from\s+\w+(\.\w+)*\s+import\s+/m.test(trimmed)) return 'terminal';
+  const hasPython =
+    /\bprint\s*\(/.test(trimmed) &&
+    /^\s*#\s+[^!]/m.test(trimmed) &&
+    !/\/\//.test(trimmed) &&
+    !/console\./.test(trimmed);
+  if (hasPython) return 'terminal';
+
   // JSX の兆候があれば早期に jsx を返す（YAML/CSS 誤判定防止）
   const hasJsxSignals = /\b(function|const|return|=>)\b/.test(trimmed) && /<[A-Za-z]/.test(trimmed);
   if (hasJsxSignals) return 'jsx';
