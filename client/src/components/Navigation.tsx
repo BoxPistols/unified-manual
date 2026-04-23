@@ -212,6 +212,7 @@ export default function Navigation() {
             <div className="mb-3 pb-3 border-b border-sidebar-border">
               <button
                 onClick={() => setShowAchievements(!showAchievements)}
+                aria-expanded={showAchievements}
                 className="flex items-center gap-1.5 px-4 py-1.5 w-full text-left text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider hover:bg-sidebar-accent/50 rounded-lg transition-colors"
               >
                 <Trophy size={12} />

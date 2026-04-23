@@ -144,7 +144,7 @@ client/src/
 | React `useEffect` 発火 | Strict Mode で 2 回走る | 仕様は「レンダ後」、実測は環境依存 |
 | Three.js `requestAnimationFrame` | タブ非アクティブで停止 | 「60fps 保証ではない」 |
 
-書き方のテンプレ: **「仕様では X、実測では Y になることがある。理由は Z」** を 1 段落で。理論導出は appendix 扱いにして本文を汚さない。
+書き方のテンプレ: **「仕様では X、実測では Y になることがある。理由は Z」** を 1 段落で。理論導出は appendix に集約して本文を簡潔に保つ。
 
 ## CodingChallenge のヒント設計
 

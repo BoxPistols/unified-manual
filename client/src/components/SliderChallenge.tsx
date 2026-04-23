@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useId, useState, type ReactNode } from "react";
 import { SlidersHorizontal, RotateCcw } from "lucide-react";
 
 export interface SliderConfig {
@@ -26,6 +26,7 @@ export default function SliderChallenge({
   render,
   explanation,
 }: SliderChallengeProps) {
+  const uid = useId();
   const initial = Object.fromEntries(
     sliders.map((s) => [s.id, s.defaultValue]),
   );
@@ -59,7 +60,7 @@ export default function SliderChallenge({
             <div key={s.id}>
               <div className="flex items-baseline justify-between mb-1.5">
                 <label
-                  htmlFor={`slider-${s.id}`}
+                  htmlFor={`${uid}-${s.id}`}
                   className="text-sm font-medium text-foreground"
                 >
                   {s.label}
@@ -74,7 +75,7 @@ export default function SliderChallenge({
                 </span>
               </div>
               <input
-                id={`slider-${s.id}`}
+                id={`${uid}-${s.id}`}
                 type="range"
                 min={s.min}
                 max={s.max}

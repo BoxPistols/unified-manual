@@ -418,6 +418,37 @@ function App() {
 }`;
     expect(resolvePreviewType(code)).toBe("jsx");
   });
+
+  it("Python の def 関数定義は 'terminal'", () => {
+    const code = `def greet(name):
+    return f"Hello, {name}"`;
+    expect(resolvePreviewType(code)).toBe("terminal");
+  });
+
+  it("Python の from ... import は 'terminal'", () => {
+    const code = `from pandas import DataFrame
+df = DataFrame({"a": [1, 2, 3]})`;
+    expect(resolvePreviewType(code)).toBe("terminal");
+  });
+
+  it("Python の print() + # コメントは 'terminal'", () => {
+    const code = `import pandas as pd
+
+# サンプルデータ
+data = {"a": [1, 2, 3]}
+df = pd.DataFrame(data)
+print(df)`;
+    expect(resolvePreviewType(code)).toBe("terminal");
+  });
+
+  it("JSX で console.log + // コメントは Python 判定に混同されない", () => {
+    const code = `function App() {
+  // print debug info
+  console.log("hello");
+  return <div>Hi</div>;
+}`;
+    expect(resolvePreviewType(code)).toBe("jsx");
+  });
 });
 
 // ============================================================
