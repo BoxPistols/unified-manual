@@ -1,5 +1,19 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import OpenAI from "openai";
+import {
+  consumeQuota,
+  estimateTokens,
+  extractClientIp,
+  getRedis,
+  nextUtcMidnightEpoch,
+  QUOTA_POLICY_URL,
+  redeemInvite,
+  sessionKey,
+  TIER_CAPS,
+  todayUtc,
+  type InviteFailCode,
+  type Tier,
+} from "./_quota";
 
 interface ChatRequestBody {
   messages: { role: "user" | "assistant"; content: string }[];
@@ -7,12 +21,11 @@ interface ChatRequestBody {
   model?: string;
   provider?: "openai" | "gemini";
   userApiKey?: string;
+  inviteCode?: string;
 }
 
-// ユーザーキー必須のモデル
 const PREMIUM_MODELS = ["gpt-5.4-mini"];
 
-// プロバイダー別設定
 function getClient(
   provider: string,
   userApiKey?: string,
@@ -28,8 +41,6 @@ function getClient(
       defaultModel: "gemini-2.5-flash",
     };
   }
-
-  // OpenAI（デフォルト）
   const apiKey = userApiKey || process.env.OPENAI_API_KEY;
   if (!apiKey) return null;
   return {
@@ -38,12 +49,34 @@ function getClient(
   };
 }
 
+/** 200 / 429 / 503 すべてに付与する共通ヘッダ */
+function setCommonHeaders(
+  res: VercelResponse,
+  tier: Tier,
+  remaining: number | null,
+  limit: number | null,
+  inviteFail: InviteFailCode | null,
+) {
+  res.setHeader("X-Chat-Tier", tier);
+  res.setHeader("X-Chat-Quota-Policy", QUOTA_POLICY_URL);
+  res.setHeader("X-RateLimit-Reset", String(nextUtcMidnightEpoch()));
+  if (limit !== null && Number.isFinite(limit)) {
+    res.setHeader("X-RateLimit-Limit", String(limit));
+  }
+  if (remaining !== null && Number.isFinite(remaining)) {
+    res.setHeader("X-RateLimit-Remaining", String(remaining));
+  }
+  if (inviteFail) {
+    res.setHeader("X-Invite-Fail", inviteFail);
+  }
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { messages, systemPrompt, model, provider, userApiKey } =
+  const { messages, systemPrompt, model, provider, userApiKey, inviteCode } =
     req.body as ChatRequestBody;
 
   if (!messages || !Array.isArray(messages) || messages.length === 0) {
@@ -52,11 +85,73 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const resolvedProvider = provider || "openai";
 
-  // プレミアムモデルはユーザーキー必須
   if (model && PREMIUM_MODELS.includes(model) && !userApiKey) {
     return res
       .status(403)
       .json({ error: "このモデルの利用には API キーの設定が必要です" });
+  }
+
+  // ── Tier 判定 + quota consume ──
+  const redis = getRedis();
+  const ip = extractClientIp(req.headers["x-forwarded-for"]);
+  const ua = String(req.headers["user-agent"] ?? "unknown");
+
+  let tier: Tier = userApiKey ? "byok" : "anonymous";
+  let inviteFail: InviteFailCode | null = null;
+
+  if (!userApiKey && inviteCode && redis) {
+    const sid = sessionKey(ip, ua, inviteCode);
+    const result = await redeemInvite(redis, inviteCode, sid);
+    if (result.ok) {
+      tier = "invited";
+    } else {
+      inviteFail = result.err;
+    }
+  }
+
+  const sid = sessionKey(ip, ua, tier === "invited" ? inviteCode : undefined);
+  const day = todayUtc();
+  const estimatedInput = messages.reduce(
+    (sum, m) => sum + estimateTokens(m.content),
+    systemPrompt ? estimateTokens(systemPrompt) : 0,
+  );
+
+  let remaining: number | null = null;
+  let limit: number | null = null;
+  let globalKill = false;
+  let allowed = true;
+
+  if (redis) {
+    const result = await consumeQuota(redis, tier, sid, day, estimatedInput);
+    remaining = Number.isFinite(result.remaining) ? result.remaining : null;
+    limit = Number.isFinite(result.limit) ? result.limit : null;
+    globalKill = result.globalKill;
+    allowed = result.allowed;
+  } else if (tier !== "byok") {
+    // Redis 未設定: カウンタなしで運用、残量は tier cap をそのまま表示 (情報提供のみ)
+    limit = Number.isFinite(TIER_CAPS[tier]) ? TIER_CAPS[tier] : null;
+  }
+
+  // ── ヘッダ設定 (エラー応答にも必須) ──
+  setCommonHeaders(res, tier, remaining, limit, inviteFail);
+
+  // Global kill switch
+  if (globalKill && tier !== "byok") {
+    res.setHeader("X-Chat-Kill-Switch", "true");
+    return res.status(503).json({
+      error: "global_kill",
+      message: "本日の全体枠が上限に達したため、匿名アクセスを停止しています。",
+    });
+  }
+
+  // Tier quota exhausted
+  if (!allowed) {
+    res.setHeader("X-Invite-Fail", "exceeded_tier_rate_limit");
+    return res.status(429).json({
+      error: "quota_exhausted",
+      tier,
+      message: "今日の無料枠を使い切りました。",
+    });
   }
 
   const config = getClient(resolvedProvider, userApiKey);
@@ -66,7 +161,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const resolvedModel = model || config.defaultModel;
 
-  // SSE ヘッダー
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Connection", "keep-alive");

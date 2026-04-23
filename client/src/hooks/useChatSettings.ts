@@ -29,11 +29,13 @@ export const MODEL_OPTIONS: ChatModelOption[] = [
 interface ChatSettings {
   modelId: string;
   userApiKey: string;
+  inviteCode: string;
 }
 
 const DEFAULT_SETTINGS: ChatSettings = {
   modelId: "gpt-5.4-nano",
   userApiKey: "",
+  inviteCode: "",
 };
 
 function loadSettings(): ChatSettings {
@@ -76,12 +78,22 @@ export function useChatSettings() {
     });
   }, []);
 
+  const setInviteCode = useCallback((inviteCode: string) => {
+    setSettings((prev) => {
+      const next = { ...prev, inviteCode };
+      saveSettings(next);
+      return next;
+    });
+  }, []);
+
   return {
     modelId: settings.modelId,
     userApiKey: settings.userApiKey,
+    inviteCode: settings.inviteCode,
     selectedModel,
     isModelAvailable,
     setModelId,
     setUserApiKey,
+    setInviteCode,
   };
 }

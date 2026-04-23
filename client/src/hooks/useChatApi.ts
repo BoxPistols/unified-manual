@@ -81,7 +81,7 @@ export function useChatApi() {
           .slice(-10)
           .map((m) => ({ role: m.role, content: m.content }));
 
-        const { selectedModel, userApiKey } = chatSettings;
+        const { selectedModel, userApiKey, inviteCode } = chatSettings;
 
         const response = await fetch("/api/chat", {
           method: "POST",
@@ -92,6 +92,7 @@ export function useChatApi() {
             model: selectedModel.id,
             provider: selectedModel.provider,
             ...(userApiKey ? { userApiKey } : {}),
+            ...(inviteCode ? { inviteCode } : {}),
           }),
           signal: controller.signal,
         });

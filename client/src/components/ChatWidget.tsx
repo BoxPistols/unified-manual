@@ -305,6 +305,27 @@ export default function ChatWidget() {
                 </select>
               </div>
 
+              {/* 招待コード入力 */}
+              <div>
+                <label
+                  htmlFor="chat-invite-code"
+                  className="text-[12px] text-muted-foreground block mb-1"
+                >
+                  招待コード（任意）
+                </label>
+                <input
+                  id="chat-invite-code"
+                  type="text"
+                  value={chatSettings.inviteCode}
+                  onChange={(e) => chatSettings.setInviteCode(e.target.value)}
+                  placeholder="da-YYYY-xxxxxx"
+                  className="w-full px-2 py-1.5 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground text-xs focus:outline-none focus:ring-2 focus:ring-primary font-mono"
+                />
+                <p className="text-[12px] text-muted-foreground mt-1">
+                  招待コードを入力すると 1 日の上限が緩和されます
+                </p>
+              </div>
+
               {/* API キー入力 */}
               <div>
                 <label className="text-[12px] text-muted-foreground block mb-1">
