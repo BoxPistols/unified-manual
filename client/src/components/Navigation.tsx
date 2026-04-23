@@ -207,29 +207,28 @@ export default function Navigation() {
             </button>
           </div>
 
-          {/* ストリーク & 実績 */}
+          {/* 振り返り: ストリーク & 実績 (ユーザーが開いたときだけ表示) */}
           {!hasSearch && (currentStreak > 0 || achievements.some(a => isUnlocked(a.id))) && (
             <div className="mb-3 pb-3 border-b border-sidebar-border">
-              {/* ストリーク */}
-              {currentStreak > 0 && (
-                <div className="flex items-center gap-1.5 px-4 py-1.5">
-                  <Flame size={14} className="text-orange-500 streak-glow" />
-                  <span className="text-xs font-bold text-orange-600 dark:text-orange-400">
-                    {currentStreak}日連続
-                  </span>
-                </div>
-              )}
-              {/* 実績ボタン */}
               <button
                 onClick={() => setShowAchievements(!showAchievements)}
                 className="flex items-center gap-1.5 px-4 py-1.5 w-full text-left text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider hover:bg-sidebar-accent/50 rounded-lg transition-colors"
               >
                 <Trophy size={12} />
-                実績 ({achievements.filter(a => isUnlocked(a.id)).length}/{achievements.length})
+                振り返り ({achievements.filter(a => isUnlocked(a.id)).length}/{achievements.length})
                 <ChevronDown size={12} className={`ml-auto transition-transform ${showAchievements ? 'rotate-180' : ''}`} />
               </button>
               {showAchievements && (
                 <div className="mt-1 px-2 space-y-1.5 max-h-60 overflow-y-auto">
+                  {/* ストリークは展開時のみ表示 — 常時の煽り表示を避ける */}
+                  {currentStreak > 0 && (
+                    <div className="flex items-center gap-1.5 px-2 py-1.5">
+                      <Flame size={14} className="text-orange-500" />
+                      <span className="text-xs font-bold text-orange-600 dark:text-orange-400">
+                        {currentStreak}日連続
+                      </span>
+                    </div>
+                  )}
                   {achievements.map((a) => (
                     <AchievementBadge
                       key={a.id}
