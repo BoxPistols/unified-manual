@@ -8,6 +8,45 @@ import { useChatSettings } from "./useChatSettings";
 
 export type ChatMode = "ai" | "faq";
 
+export type ChatTier = "anonymous" | "invited" | "byok" | null;
+
+export interface QuotaInfo {
+  /** 残り呼び出し回数 (null = ヘッダ未送信 = バックエンド未対応) */
+  remaining: number | null;
+  /** 現在の tier 上限 */
+  limit: number | null;
+  /** 次のリセット epoch 秒 (UTC) */
+  resetEpoch: number | null;
+  /** 現在の tier */
+  tier: ChatTier;
+  /** 招待コード失敗理由 (yilmogxd と共通 enum) */
+  inviteFail: string | null;
+}
+
+const INITIAL_QUOTA: QuotaInfo = {
+  remaining: null,
+  limit: null,
+  resetEpoch: null,
+  tier: null,
+  inviteFail: null,
+};
+
+function parseQuotaHeaders(headers: Headers): QuotaInfo {
+  const parseNum = (v: string | null) => (v === null ? null : Number(v));
+  const tierRaw = headers.get("X-Chat-Tier");
+  const validTiers: ChatTier[] = ["anonymous", "invited", "byok"];
+  const tier = validTiers.includes(tierRaw as ChatTier)
+    ? (tierRaw as ChatTier)
+    : null;
+  return {
+    remaining: parseNum(headers.get("X-RateLimit-Remaining")),
+    limit: parseNum(headers.get("X-RateLimit-Limit")),
+    resetEpoch: parseNum(headers.get("X-RateLimit-Reset")),
+    tier,
+    inviteFail: headers.get("X-Invite-Fail"),
+  };
+}
+
 export function useChatApi() {
   const { messages, addMessage, updateLastMessage, clearHistory } =
     useChatHistory();
@@ -15,6 +54,7 @@ export function useChatApi() {
   const [isStreaming, setIsStreaming] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<ChatMode>("ai");
+  const [quota, setQuota] = useState<QuotaInfo>(INITIAL_QUOTA);
   const [location] = useLocation();
   const abortRef = useRef<AbortController | null>(null);
 
@@ -56,8 +96,36 @@ export function useChatApi() {
           signal: controller.signal,
         });
 
-        // APIキー未設定 → FAQ フォールバック
+        // レスポンスヘッダから quota 情報を取得 (バックエンド未送信なら null 維持)
+        setQuota(parseQuotaHeaders(response.headers));
+
+        // 429: tier quota exhausted (匿名・招待枠切れ)
+        if (response.status === 429) {
+          const reset = response.headers.get("X-RateLimit-Reset");
+          const resetText = reset
+            ? describeResetTime(Number(reset))
+            : "UTC 0 時 (JST 9 時)";
+          addMessage(
+            "assistant",
+            `今日の無料枠を使い切りました。${resetText}にリセットされます。それまでは FAQ 検索か、設定から API キーを入れて BYOK でご利用ください。`,
+          );
+          setIsStreaming(false);
+          return;
+        }
+
+        // 503: API key 未設定 / global kill / サービス停止
         if (response.status === 503) {
+          const globalKill =
+            response.headers.get("X-Chat-Kill-Switch") === "true";
+          if (globalKill) {
+            addMessage(
+              "assistant",
+              "本日の全体枠が上限に達したため、匿名アクセスを停止しています。招待コードをお持ちの方か、設定から API キーを入れて BYOK で引き続きご利用いただけます。",
+            );
+            setIsStreaming(false);
+            return;
+          }
+          // owner key 未設定 → FAQ フォールバック
           setMode("faq");
           const faqResult = searchFaq(text, ctx.manualId);
           if (faqResult) {
@@ -174,5 +242,20 @@ export function useChatApi() {
     error,
     mode,
     chatSettings,
+    quota,
   };
+}
+
+/**
+ * リセット epoch 秒を「UTC X 時 (JST Y 時)」の学習者向け文言に変換。
+ * 「明日の」など相対表現は日跨ぎの認知負荷を生むので避ける。
+ */
+function describeResetTime(resetEpoch: number): string {
+  if (!Number.isFinite(resetEpoch) || resetEpoch <= 0) {
+    return "UTC 0 時 (JST 9 時)";
+  }
+  const d = new Date(resetEpoch * 1000);
+  const utcH = d.getUTCHours();
+  const jstH = (utcH + 9) % 24;
+  return `UTC ${utcH} 時 (JST ${jstH} 時)`;
 }

@@ -42,6 +42,7 @@ export default function ChatWidget() {
     isStreaming,
     mode,
     chatSettings,
+    quota,
   } = useChatApi();
   const { size, handleResizeStart } = useChatResize();
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -219,6 +220,15 @@ export default function ChatWidget() {
                 className={`w-1.5 h-1.5 rounded-full ${mode === "ai" ? "bg-green-500" : "bg-zinc-400"}`}
                 title={mode === "ai" ? "AI 接続中" : "FAQ モード"}
               />
+              {/* 残量バッジ: tier quota を消費する層 (anonymous / invited) でのみ表示 */}
+              {quota.remaining !== null && quota.tier && quota.tier !== "byok" && (
+                <span
+                  className="text-[12px] px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 font-medium"
+                  title={`tier: ${quota.tier}${quota.limit !== null ? ` / limit: ${quota.limit}` : ""}`}
+                >
+                  今日あと {quota.remaining} 回
+                </span>
+              )}
               {pageContext.title && (
                 <span className="text-[12px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground truncate max-w-[140px]">
                   {pageContext.title}
