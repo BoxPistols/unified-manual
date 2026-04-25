@@ -184,6 +184,9 @@ const CmPlugins = lazy(() => import("./pages/claude-mux/tmux-customize/Plugins")
 const CmTmuxIntegration = lazy(() => import("./pages/claude-mux/integration/TmuxIntegration"));
 const CmTmuxpAutomation = lazy(() => import("./pages/claude-mux/integration/TmuxpAutomation"));
 const CmPracticalWorkflow = lazy(() => import("./pages/claude-mux/integration/PracticalWorkflow"));
+const CmContextEngineering = lazy(() => import("./pages/claude-mux/claude-core/ContextEngineering"));
+const CmHarnessEngineering = lazy(() => import("./pages/claude-mux/best-practices/HarnessEngineering"));
+const CmDesignMd = lazy(() => import("./pages/claude-mux/multi-ai-architecture/DesignMd"));
 const CmCmuxIntro = lazy(() => import("./pages/claude-mux/cmux/CmuxIntro"));
 const CmCmuxSetup = lazy(() => import("./pages/claude-mux/cmux/CmuxSetup"));
 const CmCmuxAgentTeams = lazy(() => import("./pages/claude-mux/cmux/CmuxAgentTeams"));
@@ -431,6 +434,9 @@ function App() {
                 <Route path="/claude-mux/integration/tmux-integration" component={CmTmuxIntegration} />
                 <Route path="/claude-mux/integration/tmuxp-automation" component={CmTmuxpAutomation} />
                 <Route path="/claude-mux/integration/practical-workflow" component={CmPracticalWorkflow} />
+                <Route path="/claude-mux/claude-core/context-engineering" component={CmContextEngineering} />
+                <Route path="/claude-mux/best-practices/harness-engineering" component={CmHarnessEngineering} />
+                <Route path="/claude-mux/multi-ai/design-md" component={CmDesignMd} />
                 <Route path="/claude-mux/cmux/cmux-intro" component={CmCmuxIntro} />
                 <Route path="/claude-mux/cmux/cmux-setup" component={CmCmuxSetup} />
                 <Route path="/claude-mux/cmux/agent-teams" component={CmCmuxAgentTeams} />

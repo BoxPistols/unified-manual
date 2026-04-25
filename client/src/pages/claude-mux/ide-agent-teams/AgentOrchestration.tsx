@@ -93,10 +93,22 @@ claude --teammate-mode tmux
 # iTerm2 を使う場合（macOS）
 claude --teammate-mode iterm2`} />
               </div>
+
+              <div className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
+                <h3 className="text-lg font-bold mb-3">cmux ネイティブ split（macOS）</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  macOS で cmux を使う場合、<code>cmux claude-teams</code> でチームメイトを cmux のネイティブ split として起動できる。tmux も iTerm2 も介さず、サイドバーのメタデータと通知リングで状態を可視化できる。
+                </p>
+                <CodeBlock language="bash" code={`# cmux ネイティブのチーム起動
+cmux claude-teams
+
+# サイドバーに親 + teammate が並び、各 split に独立した Claude Code が走る
+# 詳細は「cmux と Agent Teams」ページを参照`} />
+              </div>
             </div>
 
             <InfoBox type="info" title="どちらを選ぶか">
-              2〜3 人のチームメイトなら in-process モードで十分。4 人以上、または各メイトの出力を常時監視したい場合は split panes モードが見やすい。
+              2〜3 人なら in-process で十分。リモート/Linux で永続化したいなら tmux split panes、macOS ローカルで通知リング込みの可視化が欲しいなら cmux ネイティブ split が向く。
             </InfoBox>
           </section>
 

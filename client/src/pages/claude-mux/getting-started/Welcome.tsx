@@ -24,7 +24,7 @@ export default function Welcome() {
           </h1>
 
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed font-medium">
-            Claude Code を中心としたAI駆動開発のワークフローを体系的に学び、tmux による環境管理と組み合わせた、再現可能な開発基盤を構築するためのガイドです。
+            Claude Code を中心とした AI 駆動開発のハーネス（土台）を体系的に学び、tmux または cmux と組み合わせて再現可能な開発基盤を構築するためのガイドです。
           </p>
         </div>
 
@@ -43,7 +43,7 @@ export default function Welcome() {
                 { title: 'Claude Code を体系的に学びたい', desc: 'スラッシュコマンド、MCP、Subagents 等の機能を網羅的に理解したい方' },
                 { title: 'AIエージェントの開発効率を最大化したい', desc: 'コンテキスト管理、トークン最適化、権限設定でエージェントを使いこなしたい方' },
                 { title: 'コンテキストスイッチを減らしたい', desc: 'AIへの指示、ログ監視、テスト実行を一つの画面で完結させたい方' },
-                { title: '開発環境を再現可能にしたい', desc: 'CLAUDE.md、.mcp.json、.tmuxp.yaml で環境全体をコード化したい方' },
+                { title: '開発環境を再現可能にしたい', desc: 'CLAUDE.md / AGENTS.md / DESIGN.md と .mcp.json で、ハーネスごと環境をコード化したい方' },
               ].map(item => (
                 <div key={item.title} className="flex gap-3">
                   <div className="text-[var(--claude-primary)] font-bold mt-1">&#10003;</div>
@@ -62,7 +62,7 @@ export default function Welcome() {
             </h2>
 
             <p className="text-foreground mb-8 leading-relaxed">
-              本ガイドは11のセクション・30ステップで構成されています。前半で Claude Code の全機能を体系的に学び、後半で tmux の環境管理を習得した上で、最後に両者を統合した実践ワークフローを構築します。
+              前半で Claude Code の機能とハーネス設計（CLAUDE.md / Skills / Hooks / Subagents）を体系的に学び、中盤で tmux または cmux による環境管理を習得し、最後に両者を統合した実践ワークフローを構築します。
             </p>
 
             <div className="space-y-3">
@@ -88,9 +88,9 @@ export default function Welcome() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
                 { title: '実践的アプローチ', desc: '理論よりも実行を重視。各ステップに実行可能なコマンドとコード例を配置しています。' },
-                { title: 'Claude Code First', desc: 'AIエージェントを主軸に据え、tmux はエージェント運用のための環境管理ツールとして解説します。' },
-                { title: 'Cross Platform', desc: 'macOS、Windows (WSL2)、Linux の各環境に対応。OS固有の注意点も記載しています。' },
-                { title: '網羅的なリファレンス', desc: '30+ スラッシュコマンド、MCP サーバ、権限設定、Subagents 等を体系的に整理しています。' },
+                { title: 'Claude Code First', desc: 'AI エージェントを主軸に据え、tmux / cmux はエージェント運用のための環境管理層として解説します。' },
+                { title: 'Cross Platform', desc: 'tmux は macOS / Linux / WSL2 で動き、cmux は macOS ネイティブ。両方を併用するパターンも解説します。' },
+                { title: '網羅的なリファレンス', desc: 'スラッシュコマンド、MCP、Skills、Hooks、Subagents、Agent Teams を体系的に整理しています。' },
               ].map(item => (
                 <div key={item.title} className="p-4 rounded-lg border border-slate-200 dark:border-slate-800">
                   <h4 className="font-semibold text-foreground mb-2">{item.title}</h4>

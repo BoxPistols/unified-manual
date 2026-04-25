@@ -1,4 +1,4 @@
-import { Database, Link2, FolderSync, GitBranch, CheckCircle, Cog } from 'lucide-react';
+import { Database, Link2, FolderSync, FolderTree, GitBranch, CheckCircle, Cog } from 'lucide-react';
 import CodeBlock from '@/components/CodeBlock';
 import InfoBox from '@/components/InfoBox';
 import PageNavigation from '@/components/PageNavigation';
@@ -187,6 +187,63 @@ AGENTS.md の規約に従ってください。
 
             <InfoBox type="info" title="使い分け">
               AGENTS.md には全ツール共通の情報を、CLAUDE.md には Claude Code 固有の振る舞い指示のみを記述します。
+            </InfoBox>
+          </section>
+
+          {/* DESIGN.md による 3 層化 */}
+          <section>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+              <FolderTree className="text-[var(--claude-primary)] shrink-0" />
+              <span>DESIGN.md で設計の SSOT を分離する</span>
+            </h2>
+            <p className="leading-relaxed mb-6 text-muted-foreground">
+              CLAUDE.md（ツール固有指示）と AGENTS.md（共通規約）に加え、
+              <code className="text-sm bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded mx-1">DESIGN.md</code>
+              を 3 つ目の SSOT として置く構成。アーキテクチャ・意思決定・制約のような「事実」を、
+              指示や規約とは別ファイルで管理することで、各ファイルが薄く保たれます。
+            </p>
+
+            <div className="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-800 mb-6">
+              <table className="w-full text-sm">
+                <thead className="bg-slate-50 dark:bg-slate-900">
+                  <tr>
+                    <th className="px-4 py-3 text-left font-medium text-foreground border-b border-slate-200 dark:border-slate-800">ファイル</th>
+                    <th className="px-4 py-3 text-left font-medium text-foreground border-b border-slate-200 dark:border-slate-800">担当</th>
+                    <th className="px-4 py-3 text-left font-medium text-foreground border-b border-slate-200 dark:border-slate-800">更新頻度</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                  <tr className="bg-white dark:bg-slate-900">
+                    <td className="px-4 py-3 font-mono text-xs text-foreground">CLAUDE.md</td>
+                    <td className="px-4 py-3 text-muted-foreground">Claude Code 固有の指示</td>
+                    <td className="px-4 py-3 text-muted-foreground">高</td>
+                  </tr>
+                  <tr className="bg-white dark:bg-slate-900">
+                    <td className="px-4 py-3 font-mono text-xs text-foreground">AGENTS.md</td>
+                    <td className="px-4 py-3 text-muted-foreground">AI ツール共通の規約</td>
+                    <td className="px-4 py-3 text-muted-foreground">中</td>
+                  </tr>
+                  <tr className="bg-white dark:bg-slate-900">
+                    <td className="px-4 py-3 font-mono text-xs text-foreground">DESIGN.md</td>
+                    <td className="px-4 py-3 text-muted-foreground">アーキテクチャ・意思決定・制約</td>
+                    <td className="px-4 py-3 text-muted-foreground">低</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <CodeBlock language="markdown" code={`# CLAUDE.md（最小構成）
+
+このプロジェクトの基本ルールは以下を参照:
+- @AGENTS.md
+- @DESIGN.md
+
+# Claude Code 固有
+- /compact 後は AGENTS.md と DESIGN.md を再読込
+- Skills は .claude/skills/ 配下を参照`} />
+
+            <InfoBox type="info" title="詳細は専用ページ">
+              DESIGN.md の書き方・内容例・3 層運用の具体例は「CLAUDE.md / AGENTS.md / DESIGN.md」ページにまとめています。
             </InfoBox>
           </section>
 
