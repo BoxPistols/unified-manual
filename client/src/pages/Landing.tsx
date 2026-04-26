@@ -238,9 +238,13 @@ export default function Landing() {
                   最新のお知らせ
                 </h2>
               </div>
-              <p className="text-xs text-muted-foreground">
-                {ANNOUNCEMENTS.length} 件
-              </p>
+              <Link
+                href="/announcements"
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1"
+              >
+                すべて見る（{ANNOUNCEMENTS.length} 件）
+                <ArrowRight size={12} />
+              </Link>
             </div>
             <div className="max-h-[28rem] overflow-y-auto pr-2 space-y-3 [scrollbar-width:thin]">
               {ANNOUNCEMENTS.map((a) => {

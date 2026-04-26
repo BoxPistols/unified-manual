@@ -20,6 +20,15 @@ export interface Announcement {
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
+    id: "2026-04-27-announcements-page",
+    date: "2026-04-27",
+    title: "お知らせ全件ページを追加",
+    description:
+      "TOP の「最新のお知らせ」からジャンプできる /announcements を新設。カテゴリフィルタと年月別グルーピングで過去の更新履歴を体系的に閲覧できる。",
+    category: "feature",
+    link: "/announcements",
+  },
+  {
     id: "2026-04-27-cmux-fact-check",
     date: "2026-04-27",
     title: "cmux 教材を実機検証で更新",

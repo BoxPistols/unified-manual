@@ -15,6 +15,7 @@ import { Toaster } from "sonner";
 
 // ── ランディング ──
 const Landing = lazy(() => import("./pages/Landing"));
+const Announcements = lazy(() => import("./pages/Announcements"));
 const BugReport = lazy(() => import("./pages/BugReport"));
 const DevComponents = lazy(() => import("./pages/DevComponents"));
 const DevTestResults = lazy(() => import("./pages/DevTestResults"));
@@ -267,6 +268,7 @@ function App() {
               <Switch>
                 {/* ランディング */}
                 <Route path="/" component={Landing} />
+                <Route path="/announcements" component={Announcements} />
                 <Route path="/bug-report" component={BugReport} />
                 {import.meta.env.DEV && <Route path="/dev/components" component={DevComponents} />}
                 {import.meta.env.DEV && <Route path="/dev/test-results" component={DevTestResults} />}
