@@ -26,7 +26,7 @@ export const ANNOUNCEMENTS: Announcement[] = [
     description:
       "全 5 ページに VerifiedBox（バージョン・検証日）を追加。settings.json 改変の副作用警告と browser API の脅威モデル TL;DR、期待出力ブロックも追加。",
     category: "update",
-    link: "/claude-mux/cmux/cmux-intro",
+    link: "/claude-mux/cmux/cmux-setup",
   },
   {
     id: "2026-04-26-cmux-pages-added",
@@ -38,12 +38,30 @@ export const ANNOUNCEMENTS: Announcement[] = [
     link: "/claude-mux/cmux/cmux-intro",
   },
   {
-    id: "2026-04-26-harness-context-design",
+    id: "2026-04-26-harness-engineering",
     date: "2026-04-26",
-    title: "ハーネス・コンテキストエンジニアリング・DESIGN.md を追加",
+    title: "ハーネスエンジニアリングのページを追加",
     description:
-      "Claude Code 公式の最新情報を反映。Welcome / SSOT / AgentOrchestration の既存ページもリプレイス。",
+      "Claude Code を支える「ハーネス」の概念と設計指針。コンテキストエンジニアリング・DESIGN.md と合わせて 3 ページ追加。",
     category: "feature",
-    link: "/claude-mux",
+    link: "/claude-mux/best-practices/harness-engineering",
+  },
+  {
+    id: "2026-04-26-context-engineering",
+    date: "2026-04-26",
+    title: "コンテキストエンジニアリングのページを追加",
+    description:
+      "AGENTS.md / CLAUDE.md / プロンプト設計の使い分け、コンテキスト圧縮の判断軸を整理。",
+    category: "feature",
+    link: "/claude-mux/claude-core/context-engineering",
+  },
+  {
+    id: "2026-04-26-design-md",
+    date: "2026-04-26",
+    title: "CLAUDE.md / AGENTS.md / DESIGN.md の整理",
+    description:
+      "3 つのマークダウン設計ファイルの責務分担と Multi-AI 環境での使い分けを解説。",
+    category: "feature",
+    link: "/claude-mux/multi-ai/design-md",
   },
 ];

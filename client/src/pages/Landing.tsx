@@ -238,9 +238,12 @@ export default function Landing() {
                   最新のお知らせ
                 </h2>
               </div>
+              <p className="text-xs text-muted-foreground">
+                {ANNOUNCEMENTS.length} 件
+              </p>
             </div>
-            <div className="space-y-3">
-              {ANNOUNCEMENTS.slice(0, 3).map((a) => {
+            <div className="max-h-[28rem] overflow-y-auto pr-2 space-y-3 [scrollbar-width:thin]">
+              {ANNOUNCEMENTS.map((a) => {
                 const meta = announcementMeta[a.category];
                 const card = (
                   <div className="bg-card rounded border border-border hover:border-primary/50 transition-colors p-5">
