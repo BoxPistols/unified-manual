@@ -27,8 +27,8 @@ export default function CmuxSetup() {
           </p>
 
           <VerifiedBox
-            verifiedAt="2026-04-26"
-            cmuxVersion="cmux 0.63.x"
+            verifiedAt="2026-04-27"
+            cmuxVersion="cmux 0.63.2"
             platform="macOS 15.4 (Apple Silicon)"
             officialDocs="https://github.com/manaflow-ai/cmux"
           />
@@ -71,7 +71,8 @@ $ which cmux
 /opt/homebrew/bin/cmux
 
 $ cmux --version
-cmux 0.63.x
+cmux 0.63.2 (79) [179b16ce6]
+# 末尾の (ビルド番号) [コミット ID] は環境・バージョンにより変わる
 
 # Intel Mac の場合
 $ which cmux

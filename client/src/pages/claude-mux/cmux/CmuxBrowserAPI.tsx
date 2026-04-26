@@ -28,8 +28,8 @@ export default function CmuxBrowserAPI() {
           </p>
 
           <VerifiedBox
-            verifiedAt="2026-04-26"
-            cmuxVersion="cmux 0.63.x"
+            verifiedAt="2026-04-27"
+            cmuxVersion="cmux 0.63.2"
             platform="macOS 15.4 (Apple Silicon)"
             officialDocs="https://github.com/manaflow-ai/cmux"
           />
