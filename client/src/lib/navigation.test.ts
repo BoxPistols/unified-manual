@@ -20,18 +20,27 @@ import {
 describe("navigation データ整合性", () => {
   it("全マニュアルが定義されている", () => {
     const ids = manuals.map((m) => m.id);
-    expect(ids).toEqual(["git", "react", "claude-mux", "threejs"]);
+    expect(ids).toEqual([
+      "git",
+      "react",
+      "claude-mux",
+      "threejs",
+      "ai-ml",
+      "ux-design",
+    ]);
   });
 
-  it("ページ数が166", () => {
-    expect(pages.length).toBe(171);
+  it("総ページ数", () => {
+    expect(pages.length).toBe(202);
   });
 
   it("マニュアル別ページ数", () => {
-    expect(getManualPages("react").length).toBe(75);
+    expect(getManualPages("react").length).toBe(77);
     expect(getManualPages("git").length).toBe(27);
     expect(getManualPages("threejs").length).toBe(23);
     expect(getManualPages("claude-mux").length).toBe(52);
+    expect(getManualPages("ai-ml").length).toBe(11);
+    expect(getManualPages("ux-design").length).toBe(12);
   });
 
   it("全ページのパスがマニュアルプレフィックスで始まる", () => {
@@ -56,7 +65,14 @@ describe("navigation データ整合性", () => {
   });
 
   it("全セクションの manualId が有効", () => {
-    const validIds: ManualId[] = ["react", "git", "threejs", "claude-mux"];
+    const validIds: ManualId[] = [
+      "react",
+      "git",
+      "threejs",
+      "claude-mux",
+      "ai-ml",
+      "ux-design",
+    ];
     for (const section of sections) {
       expect(validIds).toContain(section.manualId);
     }

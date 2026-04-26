@@ -25,6 +25,10 @@ export default function WhyTmux() {
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
             AIコーディングの生産性を最大化する理由を理解しましょう。
           </p>
+
+          <InfoBox type="info" title="macOS ローカル開発がメインなら cmux も選択肢">
+            tmux はリモート / Linux / WSL2 で広く使えるマルチプレクサ。macOS ローカルで通知リング・ビルトインブラウザ・サイドバーメタデータで AI エージェントを管理したい場合は <code>cmux</code> も有力な選択肢で、両者は補完関係にあります。詳細は「cmux: GUI ベースのエージェント管理」ページを参照してください。
+          </InfoBox>
         </div>
 
         <div className="space-y-12 mt-8">

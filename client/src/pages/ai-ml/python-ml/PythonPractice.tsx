@@ -202,6 +202,7 @@ print(f"本文の最大文字数: {df['body_length'].max()}")`}
               title="CSV データの基本集計"
               description="Pandas を使って売上データの合計と平均を計算するコードを完成させよう。___ の部分を適切なコードで埋めてください。"
               preview={false}
+              previewType="terminal"
               initialCode={`import pandas as pd
 
 # サンプルデータの作成
@@ -609,6 +610,7 @@ if tables:
               title="JSON データの変換"
               description="JSON 文字列を読み込んで特定のキーを抽出するコードを完成させよう。___ の部分を適切なコードで埋めてください。"
               preview={false}
+              previewType="terminal"
               initialCode={`import json
 
 # JSON 文字列（API レスポンスを想定）
