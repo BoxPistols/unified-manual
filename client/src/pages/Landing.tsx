@@ -6,9 +6,18 @@ import {
   pages,
   type ManualId,
 } from "@/lib/navigation";
-import { ArrowRight, Code2, GitBranch, Box, Terminal, Brain, Palette } from "lucide-react";
+import { ArrowRight, Code2, GitBranch, Box, Terminal, Brain, Palette, Sparkles, Wrench, Bug, Tag } from "lucide-react";
 import CodePreview from "@/components/CodePreview";
 import CodingChallenge from "@/components/CodingChallenge";
+import { ANNOUNCEMENTS, type AnnouncementCategory } from "@/data/announcements";
+
+/* ── お知らせカテゴリ ── */
+const announcementMeta: Record<AnnouncementCategory, { label: string; icon: React.ReactNode }> = {
+  feature: { label: "新機能", icon: <Sparkles size={14} /> },
+  update: { label: "更新", icon: <Wrench size={14} /> },
+  fix: { label: "修正", icon: <Bug size={14} /> },
+  release: { label: "リリース", icon: <Tag size={14} /> },
+};
 
 /* ── マニュアル別アイコン ── */
 const manualIcons: Record<ManualId, React.ReactNode> = {
@@ -215,6 +224,69 @@ export default function Landing() {
           </div>
         </div>
       </section>
+
+      {/* ═══ What's New ═══ */}
+      {ANNOUNCEMENTS.length > 0 && (
+        <section className="border-b border-border bg-muted/20">
+          <div className="max-w-5xl mx-auto px-6 py-12 md:py-16">
+            <div className="flex items-baseline justify-between mb-6">
+              <div>
+                <p className="text-xs font-mono tracking-[0.15em] uppercase text-muted-foreground mb-2">
+                  What's New
+                </p>
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+                  最新のお知らせ
+                </h2>
+              </div>
+            </div>
+            <div className="space-y-3">
+              {ANNOUNCEMENTS.slice(0, 3).map((a) => {
+                const meta = announcementMeta[a.category];
+                const card = (
+                  <div className="bg-card rounded border border-border hover:border-primary/50 transition-colors p-5">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 mt-0.5">
+                        <span className="inline-flex items-center gap-1.5 text-xs px-2 py-1 rounded bg-muted text-foreground">
+                          {meta.icon}
+                          {meta.label}
+                        </span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-baseline gap-3 mb-1 flex-wrap">
+                          <h3 className="text-base font-semibold text-foreground">
+                            {a.title}
+                          </h3>
+                          <time className="text-xs font-mono text-muted-foreground">
+                            {a.date}
+                          </time>
+                        </div>
+                        {a.description && (
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {a.description}
+                          </p>
+                        )}
+                      </div>
+                      {a.link && (
+                        <ArrowRight
+                          size={16}
+                          className="text-muted-foreground flex-shrink-0 mt-1"
+                        />
+                      )}
+                    </div>
+                  </div>
+                );
+                return a.link ? (
+                  <Link key={a.id} href={a.link} className="block group">
+                    {card}
+                  </Link>
+                ) : (
+                  <div key={a.id}>{card}</div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ═══ Numbers ═══ */}
       <section className="border-b border-border">
