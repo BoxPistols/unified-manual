@@ -64,11 +64,12 @@ export default function ClaudeCheatsheet() {
               headers={['コマンド', '説明']}
               rows={[
                 ['/help', '利用可能なコマンドの一覧とヘルプを表示'],
-                ['/init', 'CLAUDE.md を生成してエージェントの初期設定を行う'],
-                ['/clear', '会話履歴をクリアして新しいセッションを開始'],
-                ['/compact [focus]', '会話を要約してコンテキストを圧縮（フォーカス指示を追加可能）'],
-                ['/model', 'AIモデルを切替え（Opus / Sonnet / Haiku）'],
-                ['/doctor', '環境と設定の健全性を診断'],
+                ['/init', 'CLAUDE.md を生成（CLAUDE_CODE_NEW_INIT=1 で対話セットアップ）'],
+                ['/clear', '空コンテキストで新会話開始。前会話は /resume で復帰可（エイリアス: /reset, /new）'],
+                ['/compact [focus]', '会話を要約してコンテキスト開放（同セッション継続）'],
+                ['/model [model]', 'モデル切替。引数なしでピッカー、左右キーで effort 調整'],
+                ['/effort [level|auto]', 'effort level 切替: low / medium / high / xhigh / max（モデル依存、auto で既定値）'],
+                ['/doctor', '環境と設定の健全性を診断（f キーで Claude に修正させる）'],
                 ['/exit (/quit)', 'REPLを終了（Ctrl+D でも可）'],
               ]}
             />
@@ -83,11 +84,13 @@ export default function ClaudeCheatsheet() {
             <CheatTable
               headers={['コマンド', '説明']}
               rows={[
-                ['/resume [session]', '過去のセッションを再開（引数なしでピッカー表示）'],
-                ['/rename <name>', '現在のセッションに名前を付ける'],
-                ['/export [filename]', '対話履歴をファイルまたはクリップボードに出力'],
-                ['/copy', '最後のアシスタント応答をクリップボードにコピー'],
-                ['/rewind', '会話やコードを以前のポイントに巻き戻す'],
+                ['/resume [session]', '過去のセッションを ID / 名前で再開（引数なしでピッカー）。エイリアス: /continue'],
+                ['/branch [name]', '会話を分岐。元セッションは /resume から戻れる（エイリアス: /fork）'],
+                ['/rewind', '会話 / コードを巻き戻し or 以降を要約。Esc×2 でも起動（/checkpoint, /undo）'],
+                ['/rename [name]', 'セッションに識別名を付与（引数なしで自動命名）'],
+                ['/export [filename]', '対話履歴をプレーンテキスト出力（引数なしでダイアログ）'],
+                ['/copy [N]', '最後または N 番目以前のアシスタント応答をコピー'],
+                ['/diff', '未コミット差分とターン毎差分をインタラクティブ表示'],
               ]}
             />
           </section>
@@ -101,18 +104,22 @@ export default function ClaudeCheatsheet() {
             <CheatTable
               headers={['コマンド', '説明']}
               rows={[
-                ['/config', '設定ファイル（API キー、パーミッション等）を管理'],
-                ['/permissions', 'ツール実行の許可設定を編集'],
-                ['/memory', 'CLAUDE.md の内容を確認・更新'],
-                ['/project', 'プロジェクト固有の設定を管理'],
-                ['/review', '現在のブランチの差分をコードレビュー'],
-                ['/pr-comments', 'PRのレビューコメントを取得して対応'],
-                ['/bug', 'バグレポートを作成して送信'],
-                ['/login', 'Anthropic アカウントにログイン'],
-                ['/logout', 'アカウントからログアウト'],
-                ['/status', '認証状態とアカウント情報を確認'],
-                ['/vim', 'Vim キーバインドモードの切替え'],
-                ['/terminal-setup', 'ターミナル統合のセットアップ（Shift+Enter等）'],
+                ['/config', 'theme / model / output style 等の Settings UI（エイリアス: /settings）'],
+                ['/permissions', 'allow / ask / deny ルールを管理（エイリアス: /allowed-tools）'],
+                ['/memory', 'CLAUDE.md と auto-memory を編集 / 閲覧'],
+                ['/usage', 'セッションコスト + プラン使用制限 + 統計（エイリアス: /cost, /stats）'],
+                ['/context', 'コンテキスト使用量をカラーグリッド表示と最適化提案'],
+                ['/review [PR]', 'PR をローカルレビュー（深いレビューは /ultrareview）'],
+                ['/security-review', 'カレントブランチ差分をセキュリティ観点で解析'],
+                ['/plan [description]', 'プランモード突入。説明を渡すと即タスク開始'],
+                ['/agents', 'subagent 設定を管理'],
+                ['/skills', 'skill 一覧（t キーでトークン数ソート）'],
+                ['/hooks', 'tool イベントの hook 設定を表示'],
+                ['/mcp', 'MCP サーバー接続と OAuth 認証を管理'],
+                ['/login (/logout)', 'Anthropic アカウントにサインイン / アウト'],
+                ['/status', 'バージョン / モデル / アカウント / 接続を Status タブに表示'],
+                ['/feedback (/bug)', 'フィードバック送信'],
+                ['/terminal-setup', 'Shift+Enter 等のキーバインドをターミナルへインストール'],
               ]}
             />
           </section>
@@ -129,10 +136,12 @@ export default function ClaudeCheatsheet() {
                 ['claude', '対話モード（REPL）を起動'],
                 ['claude "prompt"', 'ワンショット実行（結果を出力して終了）'],
                 ['claude -p "prompt"', 'パイプモード（stdin/stdout のみ、スピナー非表示）'],
-                ['claude -c', '直前のセッションを継続して起動'],
-                ['claude --resume <id>', '指定セッションIDで再開'],
-                ['claude --model <name>', '使用モデルを指定（opus, sonnet, haiku）'],
-                ['claude --allowedTools "tool"', '許可するツールを指定して起動'],
+                ['claude -c / claude --continue', '直前のセッションを継続して起動'],
+                ['claude --resume <id>', '指定セッション ID または名前で再開'],
+                ['claude --continue --fork-session', '直前を分岐起動（新 ID、元セッションは保持）'],
+                ['claude --model <name>', '使用モデルを指定（opus, sonnet, haiku, opusplan, opus[1m] 等）'],
+                ['claude --effort <level>', 'effort level を起動時に指定（low / medium / high / xhigh / max）'],
+                ['claude --debug', '起動時からデバッグログを有効化'],
                 ['claude --verbose', '詳細ログを表示して起動'],
                 ['claude --dangerously-skip-permissions', '全権限を自動承認（CI/スクリプト用）'],
                 ['cat file | claude "prompt"', 'ファイル内容をパイプで渡して処理'],
@@ -154,13 +163,16 @@ export default function ClaudeCheatsheet() {
                 ['Enter', 'プロンプトを送信'],
                 ['Shift + Enter', '改行を挿入（ターミナル設定が必要）'],
                 ['Escape', '応答の生成を中断'],
-                ['Ctrl + C', '現在の入力をキャンセル / 2回で終了'],
-                ['Ctrl + D', 'REPLを終了'],
+                ['Escape × 2', '/rewind を起動（コード / 会話を巻き戻し or 要約）'],
+                ['Ctrl + C', '現在の入力をキャンセル / 2 回で終了'],
+                ['Ctrl + D', 'REPL を終了'],
                 ['Tab', 'ファイルパスの補完'],
                 ['Up / Down', '入力履歴の参照'],
-                ['Shift + Tab', 'モデル切替（Opus ↔ Sonnet）'],
+                ['Shift + Tab', 'パーミッションモード切替（default / auto-accept / plan / auto）'],
                 ['# で始める', 'メモ入力モード（エージェントに送信しない）'],
                 ['! で始める', 'bash コマンドを直接実行'],
+                ['/ で始める', 'スラッシュコマンド / skill 呼び出し'],
+                ['@ で始める', 'ファイルパス補完'],
               ]}
             />
           </section>
