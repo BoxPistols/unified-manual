@@ -34,23 +34,33 @@ export default function CmuxSetup() {
             </h2>
 
             <p className="text-foreground mb-6 leading-relaxed">
-              cmux は Homebrew 経由でインストールできる。CLI
-              コマンドを利用する場合は、シンボリックリンクの作成も行う。
+              cmux は Homebrew の cask として配布されている。
+              インストール時に CLI も自動で PATH に通るため、手動の symlink 作業は不要。
             </p>
 
             <CodeBlock
               language="bash"
-              code={`# Homebrew でインストール
+              code={`# Homebrew でインストール（macOS 専用キャスク）
 brew install --cask cmux
 
-# CLI コマンドのシンボリックリンク作成
-sudo ln -sf "/Applications/cmux.app/Contents/Resources/bin/cmux" /usr/local/bin/cmux`}
+# Homebrew が自動で CLI をリンクする
+# Apple Silicon: /opt/homebrew/bin/cmux
+# Intel Mac:     /usr/local/bin/cmux
+
+# 確認
+which cmux           # → /opt/homebrew/bin/cmux
+cmux --version       # → cmux 0.63.x
+
+# 起動
+cmux                       # カレントディレクトリで新規 workspace を開く
+cmux ~/projects/my-app     # 指定パスで開く`}
             />
 
             <div className="mt-6">
               <InfoBox type="info" title="初回起動時の注意">
                 初回起動時に macOS
                 のセキュリティ確認が表示される場合は「開く」をクリック。
+                以降は <code className="text-primary">cmux</code> コマンドだけでアプリが立ち上がる。
               </InfoBox>
             </div>
           </section>
@@ -239,51 +249,89 @@ claude
             </h2>
 
             <p className="text-foreground mb-6 leading-relaxed">
-              Claude Code の Stop Hook を設定すると、タスク完了時に cmux
-              のデスクトップ通知を受け取れる。別のワークスペースで作業していても、エージェントの完了を見逃さない。
+              cmux には Claude Code 用の専用コマンド <code className="text-primary">cmux claude-hook</code> が
+              用意されている。<code className="text-primary">~/.claude/settings.json</code> の hooks に直接登録するだけで、
+              タスク完了・通知・プロンプト送信が cmux サイドバーと連動する。個別のシェルスクリプトを書く必要はない。
             </p>
 
             <h3 className="text-xl font-semibold text-foreground mb-4">
-              通知スクリプトの作成
+              cmux claude-hook のサブコマンド
             </h3>
 
-            <p className="text-foreground mb-4 leading-relaxed">
-              まず、cmux 環境でのみ通知を送る shell スクリプトを作成する。
-            </p>
-
-            <CodeBlock
-              language="bash"
-              code={`#!/bin/bash
-# ~/.claude/hooks/cmux-notify.sh
-if [ -S /tmp/cmux.sock ] || [ -n "\${CMUX_WORKSPACE_ID:-}" ]; then
-  cmux notify --title "Claude Code" --body "タスク完了"
-fi`}
-            />
-
-            <div className="mt-6">
-              <CodeBlock
-                language="bash"
-                code={`# スクリプトに実行権限を付与
-chmod +x ~/.claude/hooks/cmux-notify.sh`}
-              />
+            <div className="overflow-x-auto mb-6">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="bg-muted border-b border-border">
+                    <th className="p-3 text-left font-semibold text-foreground">サブコマンド</th>
+                    <th className="p-3 text-left font-semibold text-foreground">対応する Claude Code Hook</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border">
+                    <td className="p-3 font-mono text-foreground">session-start</td>
+                    <td className="p-3 text-muted-foreground">SessionStart（セッション開始）</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="p-3 font-mono text-foreground">stop</td>
+                    <td className="p-3 text-muted-foreground">Stop（タスク完了 → 通知リング点灯）</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="p-3 font-mono text-foreground">notification</td>
+                    <td className="p-3 text-muted-foreground">Notification（権限確認等の通知転送）</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="p-3 font-mono text-foreground">prompt-submit</td>
+                    <td className="p-3 text-muted-foreground">UserPromptSubmit（入力時に通知をクリア）</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
             <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">
-              settings.json の設定
+              settings.json への登録
             </h3>
 
             <p className="text-foreground mb-4 leading-relaxed">
-              Claude Code の設定ファイルに Stop Hook を登録する。
+              <code className="text-primary">~/.claude/settings.json</code> の <code>hooks</code> に追記する。
+              <code className="text-primary">$CMUX_SURFACE_ID</code> は cmux 内ターミナルでのみ自動設定されるため、
+              <code className="text-primary">[ -n "$CMUX_SURFACE_ID" ]</code> ガードを入れておけば cmux 外のセッションでは無害（hook がスキップされる）。
             </p>
 
             <CodeBlock
               language="json"
               code={`{
   "hooks": {
-    "stop": [
+    "Stop": [
       {
-        "command": "bash ~/.claude/hooks/cmux-notify.sh",
-        "event": "stop"
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -n \\"$CMUX_SURFACE_ID\\" ] && command -v cmux >/dev/null 2>&1 && cmux claude-hook stop || true"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -n \\"$CMUX_SURFACE_ID\\" ] && command -v cmux >/dev/null 2>&1 && cmux claude-hook notification || true"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -n \\"$CMUX_SURFACE_ID\\" ] && command -v cmux >/dev/null 2>&1 && cmux claude-hook prompt-submit || true"
+          }
+        ]
       }
     ]
   }
@@ -291,10 +339,36 @@ chmod +x ~/.claude/hooks/cmux-notify.sh`}
             />
 
             <div className="mt-6">
-              <InfoBox type="info" title="通知のカスタマイズ">
-                cmux notify コマンドの --body
-                オプションで通知内容を変更できる。タスクの種類（テスト完了、ビルド完了など）に応じてスクリプトを分けることも可能。
+              <InfoBox type="info" title="既存 hook と並列実行する場合">
+                memory-sync など他の hook がすでにある場合は、上書きせず同じ <code>hooks</code> 配列に並べて追加する。
+                配列内の hook は並列実行されるので、cmux 連携は「追加」する形で安全に共存できる。
               </InfoBox>
+            </div>
+
+            <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">
+              連携で起こること
+            </h3>
+
+            <div className="space-y-3">
+              <div className="p-4 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground mb-1">タスク完了で通知リングが点灯</p>
+                <p className="text-sm text-muted-foreground">
+                  Stop イベントで <code className="text-primary">cmux claude-hook stop</code> が呼ばれ、
+                  サイドバーに青いリングと未読バッジが表示される。<code className="text-primary">Cmd+Shift+U</code> で即ジャンプできる。
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground mb-1">プロンプト送信でリングが消える</p>
+                <p className="text-sm text-muted-foreground">
+                  ユーザーが入力すると <code className="text-primary">prompt-submit</code> が発火し、Running 状態に戻る。
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground mb-1">macOS デスクトップ通知</p>
+                <p className="text-sm text-muted-foreground">
+                  cmux アプリが裏に回っていてもシステム通知センターでタスク完了が告知される。
+                </p>
+              </div>
             </div>
           </section>
 

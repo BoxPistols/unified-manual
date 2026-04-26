@@ -79,36 +79,50 @@ export default function CmuxBrowserAPI() {
                 <tbody>
                   <tr className="border-b border-border">
                     <td className="p-3 font-semibold text-foreground">
-                      ax-snapshot
+                      browser snapshot
                     </td>
                     <td className="p-3 text-muted-foreground">
-                      アクセシビリティツリーを JSON で取得
-                    </td>
-                  </tr>
-                  <tr className="border-b border-border">
-                    <td className="p-3 font-semibold text-foreground">ref</td>
-                    <td className="p-3 text-muted-foreground">
-                      要素への参照（ref ID）を取得
-                    </td>
-                  </tr>
-                  <tr className="border-b border-border">
-                    <td className="p-3 font-semibold text-foreground">click</td>
-                    <td className="p-3 text-muted-foreground">
-                      ref 指定でクリック
-                    </td>
-                  </tr>
-                  <tr className="border-b border-border">
-                    <td className="p-3 font-semibold text-foreground">fill</td>
-                    <td className="p-3 text-muted-foreground">
-                      入力欄に値を設定
+                      アクセシビリティツリーを取得（--cursor / --compact / --selector / --max-depth で絞れる）
                     </td>
                   </tr>
                   <tr className="border-b border-border">
                     <td className="p-3 font-semibold text-foreground">
-                      evaluate
+                      browser click
                     </td>
                     <td className="p-3 text-muted-foreground">
-                      任意の JavaScript を評価
+                      CSS selector で要素クリック（dblclick / hover / focus / check 系も同形式）
+                    </td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="p-3 font-semibold text-foreground">
+                      browser fill / type
+                    </td>
+                    <td className="p-3 text-muted-foreground">
+                      CSS selector で入力欄に値を設定（fill は置換、type は逐次入力）
+                    </td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="p-3 font-semibold text-foreground">
+                      browser eval
+                    </td>
+                    <td className="p-3 text-muted-foreground">
+                      任意の JavaScript を評価（戻り値を返す）
+                    </td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="p-3 font-semibold text-foreground">
+                      browser get / screenshot
+                    </td>
+                    <td className="p-3 text-muted-foreground">
+                      url / title / text / html / 属性を取得、スクリーンショット保存
+                    </td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="p-3 font-semibold text-foreground">
+                      browser goto / wait
+                    </td>
+                    <td className="p-3 text-muted-foreground">
+                      URL 遷移、selector / load-state 到達待ち
                     </td>
                   </tr>
                 </tbody>
@@ -138,27 +152,28 @@ export default function CmuxBrowserAPI() {
               code={`# 1. dev サーバーを起動（左ペイン）
 npm run dev
 
-# 2. ビルトインブラウザを開く
-# Opt+Cmd+D
+# 2. ブラウザペインを右に分割して URL に移動
+cmux browser open-split right
+cmux browser goto http://localhost:5173
 
-# 3. ブラウザで dev サーバーの URL を開く
-# http://localhost:5173
+# 3. アクセシビリティツリーを取得（compact で要点だけ）
+cmux browser snapshot --compact
 
-# 4. アクセシビリティツリーを取得
-cmux browser ax-snapshot
+# 4. CSS selector で要素を操作
+cmux browser fill 'input[name="email"]' "test@example.com"
+cmux browser click 'button[type="submit"]'
 
-# 5. 取得した ref を使って要素を操作
-cmux browser click --ref <ref-id>
-cmux browser fill --ref <ref-id> --value "test"
+# 5. 結果を JS で確認
+cmux browser eval "location.pathname"
 
-# 6. 結果を JS で確認
-cmux browser evaluate --code "document.title"`}
+# 6. スクリーンショット保存
+cmux browser screenshot --out /tmp/result.png`}
             />
 
             <p className="text-foreground mt-6 leading-relaxed">
-              実際のコマンド名は cmux のバージョンで変わる可能性があるため、
-              <code className="text-primary">cmux --help</code>{" "}
-              または公式ドキュメントで確認する。
+              全コマンドは <code className="text-primary">cmux --help</code> で確認できる。
+              browser サブコマンドは <code>snapshot / goto / click / fill / type / eval / wait /
+              get / is / find / screenshot / cookies / storage</code> 等が揃っている。
             </p>
           </section>
 
@@ -179,15 +194,15 @@ cmux browser evaluate --code "document.title"`}
               code={`# Claude Code への指示例
 
 ログイン画面を実装してください。
-完了したら次のフローで動作確認してください:
+完了したら次のフローで cmux のブラウザを使って動作確認してください:
 
-1. dev サーバーを起動
-2. cmux のブラウザで /login を開く
-3. ax-snapshot でフォーム要素の ref を取得
-4. メール欄と パスワード欄に値を fill
-5. ログインボタンを click
-6. evaluate で URL が /dashboard に遷移したか確認
-7. 結果が想定と異なる場合は修正してから再検証`}
+1. cmux browser goto http://localhost:5173/login
+2. cmux browser snapshot --compact でフォーム構造を確認
+3. cmux browser fill 'input[name="email"]' "test@example.com"
+4. cmux browser fill 'input[type="password"]' "secret123"
+5. cmux browser click 'button[type="submit"]'
+6. cmux browser eval "location.pathname" で /dashboard に遷移したか確認
+7. 想定と異なる場合は修正してから再検証`}
             />
 
             <p className="text-foreground mt-6 leading-relaxed">
