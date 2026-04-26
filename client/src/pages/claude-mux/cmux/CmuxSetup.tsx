@@ -51,17 +51,36 @@ export default function CmuxSetup() {
               code={`# Homebrew でインストール（macOS 専用キャスク）
 brew install --cask cmux
 
-# Homebrew が自動で CLI をリンクする
-# Apple Silicon: /opt/homebrew/bin/cmux
-# Intel Mac:     /usr/local/bin/cmux
-
-# 確認
-which cmux           # → /opt/homebrew/bin/cmux
-cmux --version       # → cmux 0.63.x
-
 # 起動
 cmux                       # カレントディレクトリで新規 workspace を開く
 cmux ~/projects/my-app     # 指定パスで開く`}
+            />
+
+            <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">
+              期待出力（実機で確認できる正常系）
+            </h3>
+
+            <p className="text-foreground mb-4 leading-relaxed">
+              インストール後、以下のコマンドで結果を確認する。出力が違う場合は PATH または Homebrew のリンク状態を疑う。
+            </p>
+
+            <CodeBlock
+              language="bash"
+              code={`# Apple Silicon Mac
+$ which cmux
+/opt/homebrew/bin/cmux
+
+$ cmux --version
+cmux 0.63.x
+
+# Intel Mac の場合
+$ which cmux
+/usr/local/bin/cmux
+
+# Homebrew リンクが効いていない場合（CLI が見つからない）
+$ which cmux
+cmux not found
+# → 対処: brew link --overwrite cmux  もしくは brew reinstall --cask cmux`}
             />
 
             <div className="mt-6">
