@@ -145,6 +145,19 @@ client/src/
 - `Co-Authored-By` / 絵文字 / `Generated with Claude Code` を含めない
 - `git add .` より対象ファイル明示を優先
 - push 前にビルド + テスト通過を確認
+
+## 教材更新時のルール
+
+教材ページの追加・更新・修正を伴う PR では、`client/src/data/announcements.ts` の `ANNOUNCEMENTS` 配列の **先頭** にエントリを追加する（TOP の「最新のお知らせ」に表示される）。
+
+- `id`: `YYYY-MM-DD-kebab-case-slug` 形式
+- `date`: 当日の日付（`YYYY-MM-DD`）
+- `category`: `feature`（新ページ） / `update`（既存ページ更新） / `fix`（誤記訂正） / `release`（大型変更）
+- `title`: 「何が」分かる短いタイトル
+- `description`: 「どこに」「どんな効果が」を 1〜2 文で
+- `link`: 該当ページの最も具体的なパス（教材一覧ではなく実ページに直接ジャンプできるもの）
+
+複数ページにまたがる更新でも、それぞれ別エントリとして登録した方が発見性が高い（一覧画面で個別にリンクできるため）。
 <!-- claude-memory-sync: auto-generated -->
 
 ## グローバル設計方針
