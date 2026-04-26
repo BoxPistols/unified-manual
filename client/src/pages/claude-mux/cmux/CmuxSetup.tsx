@@ -299,6 +299,24 @@ claude
               settings.json への登録
             </h3>
 
+            <div className="mb-6">
+              <InfoBox type="warning" title="副作用: マシン全体の Claude Code 設定を変更します">
+                <p className="mb-2">
+                  この手順は <code className="text-primary">~/.claude/settings.json</code> を書き換えます。
+                  影響は <strong>このマシンで動く全ての Claude Code セッション</strong>（全プロジェクト共通）に及びます。
+                </p>
+                <p className="mb-2">
+                  <strong>事前バックアップ:</strong>{" "}
+                  <code className="text-primary">cp ~/.claude/settings.json ~/.claude/settings.json.bak</code>
+                </p>
+                <p>
+                  <strong>元に戻す:</strong> バックアップを書き戻すか、<code>hooks</code> セクションから
+                  <code className="text-primary mx-1">cmux claude-hook</code> を含む行を削除して保存。
+                  <code className="text-primary">[ -n "$CMUX_SURFACE_ID" ]</code> ガードがあるので、cmux 外では hook が no-op になる設計ではあるが、設定ファイル自体は残るため明示的なクリーンアップが必要。
+                </p>
+              </InfoBox>
+            </div>
+
             <p className="text-foreground mb-4 leading-relaxed">
               <code className="text-primary">~/.claude/settings.json</code> の <code>hooks</code> に追記する。
               <code className="text-primary">$CMUX_SURFACE_ID</code> は cmux 内ターミナルでのみ自動設定されるため、
@@ -528,6 +546,21 @@ claude
               <code className="text-primary mx-1">@パス</code>
               の形でクリップボードに書き戻す関数。依存ライブラリは不要（macOS 標準の osascript と pbcopy のみ使用）。
             </p>
+
+            <div className="mb-6">
+              <InfoBox type="warning" title="副作用: シェル設定とディレクトリを変更します">
+                <p className="mb-2">
+                  追記対象: <code className="text-primary">~/.zshrc</code>（既存内容は維持される。重複を避けるため定義済みなら追記しない）
+                </p>
+                <p className="mb-2">
+                  作成されるディレクトリ: <code className="text-primary">~/tmp/</code>（実行時に <code>mkdir -p</code>）
+                </p>
+                <p>
+                  保存される一時ファイル: <code className="text-primary">~/tmp/clip-YYYYMMDD-HHMMSS.png</code>。
+                  自動削除はないため、<code className="text-primary">find ~/tmp -name 'clip-*.png' -mtime +7 -delete</code> 等で定期的にクリーンすること。
+                </p>
+              </InfoBox>
+            </div>
 
             <CodeBlock
               language="bash"

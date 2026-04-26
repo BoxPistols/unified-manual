@@ -36,6 +36,23 @@ export default function CmuxBrowserAPI() {
         </div>
 
         <div className="space-y-12 mt-8">
+          {/* ── 脅威モデル TL;DR ── */}
+          <section>
+            <InfoBox type="warning" title="脅威モデル（読む前に把握）">
+              <p className="mb-2">
+                <code className="text-primary">cmux browser eval</code> は開いているページに <strong>任意の JavaScript を実行</strong> します。
+                <code className="text-primary">browser cookies</code> / <code className="text-primary">browser storage</code> も同様に同一オリジンのデータにフルアクセスできます。
+              </p>
+              <p className="mb-2">
+                <strong>原則: dev サーバーと、自分が所有・管理する検証環境のみを対象にする。</strong>
+                本番サイト・他人のサービス・SNS にログイン中のセッション等を開いた状態でこれらを実行しない。
+              </p>
+              <p>
+                認証情報を <code className="text-primary">browser fill</code> に渡す場合、コマンド履歴（<code>~/.zsh_history</code> 等）や cmux のログに残らないよう、環境変数や 1Password CLI 経由で渡す。
+              </p>
+            </InfoBox>
+          </section>
+
           {/* ── 位置づけ ── */}
           <section>
             <h2 className="text-3xl font-bold text-foreground mb-6">
