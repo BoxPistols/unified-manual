@@ -4,6 +4,7 @@ import PageNavigation from "@/components/PageNavigation";
 import BookmarkButton from "@/components/BookmarkButton";
 import StepIndicator from "@/components/StepIndicator";
 import SectionBadge from "@/components/SectionBadge";
+import VerifiedBox from "@/components/VerifiedBox";
 
 export default function CmuxSetup() {
   return (
@@ -24,6 +25,13 @@ export default function CmuxSetup() {
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
             インストールから Claude Code 連携、マルチエージェント運用まで。
           </p>
+
+          <VerifiedBox
+            verifiedAt="2026-04-26"
+            cmuxVersion="cmux 0.63.x"
+            platform="macOS 15.4 (Apple Silicon)"
+            officialDocs="https://github.com/manaflow-ai/cmux"
+          />
         </div>
 
         <div className="space-y-12 mt-8">

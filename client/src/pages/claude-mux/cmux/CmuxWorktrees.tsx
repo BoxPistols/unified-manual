@@ -4,6 +4,7 @@ import PageNavigation from "@/components/PageNavigation";
 import BookmarkButton from "@/components/BookmarkButton";
 import StepIndicator from "@/components/StepIndicator";
 import SectionBadge from "@/components/SectionBadge";
+import VerifiedBox from "@/components/VerifiedBox";
 
 export default function CmuxWorktrees() {
   return (
@@ -25,6 +26,13 @@ export default function CmuxWorktrees() {
             複数エージェントを並列で動かすときの作業ツリー分離。 git worktree と
             cmux のワークスペースを 1:1 で対応させる。
           </p>
+
+          <VerifiedBox
+            verifiedAt="2026-04-26"
+            cmuxVersion="cmux 0.63.x"
+            platform="macOS 15.4 (Apple Silicon)"
+            officialDocs="https://github.com/manaflow-ai/cmux"
+          />
         </div>
 
         <div className="space-y-12 mt-8">

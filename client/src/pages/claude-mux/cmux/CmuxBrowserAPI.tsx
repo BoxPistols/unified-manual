@@ -4,6 +4,7 @@ import PageNavigation from "@/components/PageNavigation";
 import BookmarkButton from "@/components/BookmarkButton";
 import StepIndicator from "@/components/StepIndicator";
 import SectionBadge from "@/components/SectionBadge";
+import VerifiedBox from "@/components/VerifiedBox";
 
 export default function CmuxBrowserAPI() {
   return (
@@ -25,6 +26,13 @@ export default function CmuxBrowserAPI() {
             cmux のブラウザは表示用ではなく、エージェントが操作できる API
             を持つ。 dev サーバーをエージェント側から検証するための土台。
           </p>
+
+          <VerifiedBox
+            verifiedAt="2026-04-26"
+            cmuxVersion="cmux 0.63.x"
+            platform="macOS 15.4 (Apple Silicon)"
+            officialDocs="https://github.com/manaflow-ai/cmux"
+          />
         </div>
 
         <div className="space-y-12 mt-8">
