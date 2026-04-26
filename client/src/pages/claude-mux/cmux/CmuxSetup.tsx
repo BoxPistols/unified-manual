@@ -362,6 +362,142 @@ chmod +x ~/.claude/hooks/cmux-notify.sh`}
             </p>
           </section>
 
+          {/* ── Tips: クリップボード画像の貼付 ── */}
+          <section>
+            <h2 className="text-3xl font-bold text-foreground mb-6">
+              Tips: クリップボード画像の貼付
+            </h2>
+
+            <p className="text-foreground mb-6 leading-relaxed">
+              cmux は libghostty ベースのため、クリップボードに保持した画像（スクリーンショット等）を Claude Code のプロンプト欄に
+              <code className="text-primary mx-1">Cmd+V</code>
+              で直接貼り付けることができない。iTerm2 では OSC 1337 などの独自プロトコルで画像転送が可能だが、Ghostty 系はテキスト中心の設計でこれをサポートしていない。
+            </p>
+
+            <div className="mb-6">
+              <InfoBox type="warning" title="現象">
+                スクショを撮影してクリップボードに保持した状態で
+                <code className="text-primary mx-1">Cmd+V</code>
+                を押しても、Claude Code に画像が渡らない。iTerm2 では同じ操作で画像が添付される。
+              </InfoBox>
+            </div>
+
+            <h3 className="text-xl font-semibold text-foreground mb-4">
+              回避策
+            </h3>
+
+            <p className="text-foreground mb-6 leading-relaxed">
+              いったんファイルとして保存し、ファイルパスを
+              <code className="text-primary mx-1">@パス</code>
+              形式で渡すのが基本方針。手段は 3 つある。
+            </p>
+
+            <div className="overflow-x-auto mb-8">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="bg-muted border-b border-border">
+                    <th className="p-3 text-left font-semibold text-foreground">
+                      手段
+                    </th>
+                    <th className="p-3 text-left font-semibold text-foreground">
+                      操作
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border">
+                    <td className="p-3 text-foreground">
+                      Finder からドラッグ&ドロップ
+                    </td>
+                    <td className="p-3 text-muted-foreground">
+                      画像ファイルを cmux のプロンプト欄にドロップ → 絶対パスが入力される
+                    </td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="p-3 text-foreground">
+                      スクショを直接ファイル保存
+                    </td>
+                    <td className="p-3 text-muted-foreground">
+                      <code className="text-primary">Cmd+Shift+4</code> で範囲撮影 → デスクトップに保存 →{" "}
+                      <code className="text-primary">@~/Desktop/...</code>
+                    </td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="p-3 text-foreground">
+                      シェル関数で自動化（推奨）
+                    </td>
+                    <td className="p-3 text-muted-foreground">
+                      <code className="text-primary">Cmd+Shift+Ctrl+4</code> でクリップボードに撮影 →{" "}
+                      <code className="text-primary">pbimg</code> 実行 →{" "}
+                      <code className="text-primary">Cmd+V</code>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-xl font-semibold text-foreground mb-4">
+              pbimg シェル関数
+            </h3>
+
+            <p className="text-foreground mb-4 leading-relaxed">
+              クリップボードの画像を <code className="text-primary mx-1">~/tmp</code>
+              に PNG 保存し、
+              <code className="text-primary mx-1">@パス</code>
+              の形でクリップボードに書き戻す関数。依存ライブラリは不要（macOS 標準の osascript と pbcopy のみ使用）。
+            </p>
+
+            <CodeBlock
+              language="bash"
+              code={`# ~/.zshrc に追記
+# クリップボードの画像を ~/tmp に PNG 保存し、@パスをクリップボードへ
+pbimg() {
+  local f="$HOME/tmp/clip-$(date +%Y%m%d-%H%M%S).png"
+  mkdir -p "$HOME/tmp"
+  if osascript -e "tell application \\"System Events\\" to write (the clipboard as «class PNGf») to (open for access POSIX file \\"$f\\" with write permission)" 2>/dev/null; then
+    printf "@%s" "$f" | pbcopy
+    echo "保存: $f"
+    echo "クリップボードに @パス をコピー済み（Cmd+V で貼付）"
+  else
+    echo "クリップボードに画像がありません" >&2
+    return 1
+  fi
+}`}
+            />
+
+            <h3 className="text-xl font-semibold text-foreground mt-8 mb-4">
+              使い方
+            </h3>
+
+            <CodeBlock
+              language="bash"
+              code={`# 1. 設定を反映
+source ~/.zshrc
+
+# 2. スクショを撮影（クリップボードへ）
+#    Cmd+Shift+Ctrl+4 で範囲選択
+
+# 3. cmux のプロンプト欄で関数を実行
+pbimg
+# → 保存: /Users/you/tmp/clip-20260426-153012.png
+# → クリップボードに @パス をコピー済み（Cmd+V で貼付）
+
+# 4. プロンプト欄に戻って Cmd+V
+#    → @/Users/you/tmp/clip-20260426-153012.png が貼付される
+
+# 5. Enter で送信。Claude Code が画像を読み取る`}
+            />
+
+            <div className="mt-6">
+              <InfoBox type="info" title="代替手段: pngpaste">
+                <code className="text-primary mx-1">brew install pngpaste</code>
+                で導入できる CLI ツール。
+                <code className="text-primary mx-1">pngpaste image.png</code>
+                でクリップボードを PNG 化できる。pbimg と同じことを Homebrew パッケージで済ませたい場合に便利。
+              </InfoBox>
+            </div>
+          </section>
+
           {/* ── 参考リンク ── */}
           <section>
             <h2 className="text-3xl font-bold text-foreground mb-6">
