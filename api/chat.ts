@@ -13,7 +13,7 @@ import {
   todayUtc,
   type InviteFailCode,
   type Tier,
-} from "./lib/quota";
+} from "./lib/quota.js";
 
 interface ChatRequestBody {
   messages: { role: "user" | "assistant"; content: string }[];
