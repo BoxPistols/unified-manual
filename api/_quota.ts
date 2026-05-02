@@ -25,8 +25,12 @@ let redisChecked = false;
 export function getRedis(): Redis | null {
   if (redisChecked) return cachedRedis;
   redisChecked = true;
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  // Vercel Marketplace の Upstash 統合は KV_REST_API_* prefix で env を生成 (旧 Vercel KV 互換)。
+  // 自前で UPSTASH_REDIS_REST_* を設定するケースもあるので両対応。
+  const url =
+    process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL;
+  const token =
+    process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN;
   if (!url || !token) return null;
   cachedRedis = new Redis({ url, token });
   return cachedRedis;
