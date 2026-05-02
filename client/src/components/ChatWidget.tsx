@@ -109,6 +109,7 @@ export default function ChatWidget() {
     const text = input.trim();
     if (!text || isStreaming) return;
     setInput("");
+    setShowSettings(false); // 質問入力に集中できるよう設定パネルを閉じる
     sendMessage(text);
   }, [input, isStreaming, sendMessage]);
 
