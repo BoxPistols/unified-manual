@@ -13,9 +13,11 @@ export const GLOBAL_DAILY_TOKEN_BUDGET = Number(
   process.env.CHAT_GLOBAL_DAILY_TOKENS ?? 1_000_000,
 );
 
-export const QUOTA_POLICY_URL =
+// trim() で env 末尾の改行混入 (echo で `vercel env add` した場合に発生) を吸収
+export const QUOTA_POLICY_URL = (
   process.env.CHAT_QUOTA_POLICY_URL ??
-  "https://dev-album.vercel.app/policy/chat-quota";
+  "https://dev-album.vercel.app/policy/chat-quota"
+).trim();
 
 const KEY_TTL_SECONDS = 172800;
 
